@@ -17,7 +17,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@suc.d9c1j.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`).then(() => {
-    app.listen(3000);
+    app.listen(4000);
 }).catch(err => {
     console.log(err);
 });
