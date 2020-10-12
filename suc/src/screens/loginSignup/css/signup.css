@@ -1,0 +1,25 @@
+@import '../../../assets/colors/_colors.css'; 
+
+.firstName{
+    margin-left: 30px;
+    margin-right: 10px;
+   
+}
+.lastName{
+    margin-left: 10px;
+    margin-right: 30px;
+}
+.inputSize{
+    padding-left: 30px;
+    margin-left: 0px;
+    padding-right: 30px;
+    margin-top: 10px;
+}
+.submitButton{
+    width: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
