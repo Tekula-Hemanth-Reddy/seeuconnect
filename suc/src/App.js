@@ -1,18 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
-import Button from 'react-bootstrap/Button';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactBootstrap, {Button, Col, Grid, Panel, FormGroup} from 'react-bootstrap'
 import Home from './screens/home.jsx'
+import LoginSignup from './screens/loginSignup/loginSignup.jsx';
 function App() {
   return (
     <div className="App">
       <Home/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Button variant="outline-warning">Warning</Button>{' '}
-      </header>
+      <LoginSignup/>
     </div>
   );
 }
