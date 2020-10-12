@@ -1,0 +1,17 @@
+.carousel{
+  height: 95vh;
+}
+img{
+  height: 95vh;
+}
+p{
+  float: right;
+}
+@media (max-width:500px) {
+  .carousel{
+    height: 60vh;
+  }
+  img{
+    height: 60vh;
+  }
+}
