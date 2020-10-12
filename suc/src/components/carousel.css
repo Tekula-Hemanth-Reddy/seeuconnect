@@ -1,0 +1,23 @@
+.carousel{
+  height: 650px;
+}
+img{
+  height: 650px;
+}
+.footer{
+  margin-bottom : "5px";
+  margin-left : 80%;
+  opacity: 0.3;
+  width: 20%;
+
+}
+.ico{
+    margin-bottom: 10px;
+    padding-right: 5px;
+    height: 15px;
+    width: 100%;
+}
+.mr{
+  width: 100%;
+  margin-right: 30px;
+}
