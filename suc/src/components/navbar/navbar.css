@@ -1,16 +1,3 @@
-.footer{
-  margin-bottom : "5px";
-  margin-left : 80%;
-  opacity: 0.3;
-  width: 20%;
-
-}
-.ico{
-    margin-bottom: 10px;
-    padding-right: 5px;
-    height: 15px;
-    width: 100%;
-}
 .mr{
   width: 100%;
   margin-right: 30px;
@@ -19,12 +6,29 @@
   margin-bottom: 30px;
 }
 a{
+  margin-right: 40px;
+}
+.personLogin{
   margin-right: 50px;
 }
-@media (max-width:500px){
+.navbar-dark .navbar-nav .nav-link.active{
+  color: blue;
+}
+/* media */
+@media (max-width:700px){
   a{
     margin-right: 10px;
-    font-size:2px;
+  }
+  .personLogin{
+    margin-right: 10px;
+  }
+}
+@media (max-width:515px){
+  a{
+    margin-right: 10px;
+  }
+  .personLogin{
+    margin-right: 10px;
   }
   .mr-auto{
     display: none;

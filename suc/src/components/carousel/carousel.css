@@ -4,14 +4,40 @@
 img{
   height: 95vh;
 }
-p{
+.followUs{
+  margin-top: -70px;
   float: right;
+  margin-right: 100px;
 }
-@media (max-width:500px) {
+/* media */
+@media (max-width:900px){
+  .followUs{
+    margin-top: -50px;
+    float: right;
+    margin-right: 10px;
+  }
+}
+@media (max-width:700px){
   .carousel{
-    height: 60vh;
+    height: 96vh;
   }
   img{
-    height: 60vh;
+    height: 96vh;
+  }
+  .followUs{
+    margin-top: -50px;
+    float: right;
+    margin-right: 5px;
+  }
+}
+@media (max-width:515px){
+  .carousel{
+    height: 50vh;
+  }
+  img{
+    height: 50vh;
+  }
+  .followUs{
+    display: none;
   }
 }

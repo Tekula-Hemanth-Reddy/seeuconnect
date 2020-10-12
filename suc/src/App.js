@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import Button from 'react-bootstrap/Button';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactBootstrap, {Button, Col, Grid, Panel, FormGroup} from 'react-bootstrap'
 import Home from './screens/home.jsx'
 function App() {
   return (

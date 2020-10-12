@@ -1,0 +1,15 @@
+.footer{
+    margin-bottom : "5px";
+    margin-right : 80%;
+    opacity: 0.3;
+    width: 20%;
+  }
+  .ico{
+      margin-bottom: 10px;
+      padding-right: 5px;
+      height: 15px;
+      width: 100%;
+  }
+  .buttonStyle{
+      display: inline;
+  }
