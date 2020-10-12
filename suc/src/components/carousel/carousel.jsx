@@ -4,9 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactBootstrap, {Carousel} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFacebook,faInstagram } from '@fortawesome/free-brands-svg-icons'
 import './carousel.css'
+import { faTwitter, faFacebook,faInstagram } from '@fortawesome/free-brands-svg-icons'
 const fb = <FontAwesomeIcon className='ico' icon={faFacebook} color="#3b5998" size="6x"  />
+const twi = <FontAwesomeIcon className='ico' icon={faTwitter} color="#00acee" size="6x" />
+const insta = <FontAwesomeIcon className='ico' icon={faInstagram} color="#3f729b" size="6x" />
+const element = <FontAwesomeIcon className='ico' icon={faCoffee} size="lg"  />
+
 
 function carousel(){
   return (<div className='carousel'><Carousel interval='1000'>
@@ -18,7 +22,7 @@ function carousel(){
       />
       <Carousel.Caption>
         <h3>First slide label</h3>
-        <p >Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <p >{fb} {twi} {insta}</p>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -30,7 +34,7 @@ function carousel(){
 
       <Carousel.Caption>
         <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>{fb} {twi} {insta}</p>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -41,8 +45,8 @@ function carousel(){
       />
 
       <Carousel.Caption>
-        <h3>Third slide label {fb}</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur. {fb}</p>
+        <h3>Third slide label </h3>
+        <p>{fb} {twi} {insta}</p>
       </Carousel.Caption>
     </Carousel.Item>
 

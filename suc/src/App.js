@@ -2,15 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/navbar.jsx'
-import Carousel from './components/carousel.jsx'
 import ReactBootstrap, {Button, Col, Grid, Panel, FormGroup} from 'react-bootstrap'
-
+import Home from './screens/home.jsx'
 function App() {
   return (
     <div className="App">
-    <Navbar/>
-    <Carousel/>
+      <Home/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

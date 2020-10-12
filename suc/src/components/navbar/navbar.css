@@ -1,9 +1,3 @@
-.carousel{
-  height: 650px;
-}
-img{
-  height: 650px;
-}
 .footer{
   margin-bottom : "5px";
   margin-left : 80%;
@@ -20,4 +14,19 @@ img{
 .mr{
   width: 100%;
   margin-right: 30px;
+}
+.nav{
+  margin-bottom: 30px;
+}
+a{
+  margin-right: 50px;
+}
+@media (max-width:500px){
+  a{
+    margin-right: 10px;
+    font-size:2px;
+  }
+  .mr-auto{
+    display: none;
+  }
 }

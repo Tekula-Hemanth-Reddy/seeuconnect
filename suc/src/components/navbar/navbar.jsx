@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './footer.jsx'
+
 import ReactBootstrap, {Navbar,Nav,Form,FormControl,Button,DropdownButton,Dropdown,NavItem} from 'react-bootstrap'
-import './carousel.css';
+import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,7 +12,7 @@ const user = <FontAwesomeIcon icon={faUser} />
 
 function navbar(){
   return (
-    <div>
+    <div className='nav'>
     <Navbar fixed="top" bg="dark" variant="dark">
     <Navbar.Brand href="#home">See U Connect</Navbar.Brand>
     <div className='mr'>
@@ -27,7 +27,6 @@ function navbar(){
 
   </Navbar>
 
-  <Footer/>
   </div>
   )
 }
