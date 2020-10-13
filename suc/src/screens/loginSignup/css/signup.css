@@ -17,6 +17,8 @@
 }
 .submitButton{
     width: 80%;
+    background-color: #61dafb;
+    color: black;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;

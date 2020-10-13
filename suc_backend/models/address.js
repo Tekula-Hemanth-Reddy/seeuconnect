@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    firstName: {
+const AddressSchema = new Schema({
+    state: {
         type: String,
         required: true
     },
-    lastName: {
+    city: {
         type: String,
         required: true
     },
-    email: {
+    location: {
         type: String,
         required: true
     },
-    password: {
-        type: String,
+    pinCode: {
+        type: Number,
         required: true
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Address', AddressSchema);

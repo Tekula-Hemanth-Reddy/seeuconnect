@@ -15,7 +15,7 @@ function Login()
                 <Form.Control required type="password" placeholder="Password*" />
             </Form.Group>
             <a href="#" style={{textDecoration:"none",float:"right"}}>Forgot Password?</a>
-            <Button className="submitButton" variant="primary" type="submit">
+            <Button className="submitButton" type="submit">
                 Login
             </Button>
         </Form>
