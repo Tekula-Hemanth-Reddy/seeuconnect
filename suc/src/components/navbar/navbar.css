@@ -22,14 +22,6 @@ a{
   .personLogin{
     margin-right: 10px;
   }
-}
-@media (max-width:515px){
-  a{
-    margin-right: 10px;
-  }
-  .personLogin{
-    margin-right: 10px;
-  }
   .mr-auto{
     display: none;
   }

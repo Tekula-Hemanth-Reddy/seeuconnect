@@ -42,6 +42,8 @@ module.exports = {
             return bcrypt.hash(args.userInput.password, 15);//for bCrypt the password to ensure security
         }).then(hashedPassword => {
             const user = new User({
+                firstName: args.userInput.firstName,
+                lastName: args.userInput.lastName,
                 email: args.userInput.email,
                 password: hashedPassword
             });

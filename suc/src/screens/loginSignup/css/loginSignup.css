@@ -3,11 +3,10 @@
 .loginSignupContainer{
     height: 95vh;
     width: 100%;
-    padding:100px;
-    
+    padding-top:200px;
 }
 .cardStyle{
-    width: 40rem;
+    width: 30rem;
     height: 25rem;
     margin-left:auto;
     margin-right:auto;
@@ -17,12 +16,10 @@
     align-self: center;
     margin-left: 35px;
     margin-top: 30px;
-    
 }
 .nav-tabs .nav-link{
     color:  #61dafb;
-    background-color: rgba(160, 179, 176, 0.25);
-    
+    background-color: rgba(160, 179, 176, 0.25); 
 }
 .nav-tabs .nav-link.active{
     background-color: #61dafb;
@@ -35,8 +32,86 @@
 }
 .submitButton{
     width: 80%;
+    background-color: #61dafb;
+    color: black;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 30px;
+}
+@media( max-width:900px ){
+    .loginSignupContainer{
+        height: 95vh;
+        width: 100%;
+        padding-top:300px;
+    }
+    .cardStyle{
+        width: 25rem;
+        height: 25rem;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: rgba(19, 35, 47, 0.9);
+    }
+    .tabsContainer{
+        align-self: center;
+        margin-left: 35px;
+        margin-top: 30px;
+    }
+}
+@media( max-width:700px ){
+    .loginSignupContainer{
+        height: 95vh;
+        width: 100%;
+        padding-top:100px;
+    }
+    .cardStyle{
+        width: 25rem;
+        height: 25rem;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: rgba(19, 35, 47, 0.9);
+    }
+    .tabsContainer{
+        align-self: center;
+        margin-left: 35px;
+        margin-top: 30px;
+    }
+}
+@media( max-width:435px ){
+    .loginSignupContainer{
+        height: 95vh;
+        width: 100%;
+        padding-top:100px;
+    }
+    .cardStyle{
+        width: 20rem;
+        height: 25rem;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: rgba(19, 35, 47, 0.9);
+    }
+    .tabsContainer{
+        align-self: center;
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+}
+@media( max-width:335px ){
+    .loginSignupContainer{
+        height: 95vh;
+        width: 100%;
+        padding-top:100px;
+    }
+    .cardStyle{
+        width: 15rem;
+        height: 25rem;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: rgba(19, 35, 47, 0.9);
+    }
+    .tabsContainer{
+        align-self: center;
+        margin-left: 25px;
+        margin-top: 30px;
+    }
 }
