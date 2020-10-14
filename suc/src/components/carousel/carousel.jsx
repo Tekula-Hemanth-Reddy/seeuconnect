@@ -39,7 +39,7 @@ function carousel(){
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    <div>
+    <div className="followUs" >
       <Follow />
     </div>
   </div>
