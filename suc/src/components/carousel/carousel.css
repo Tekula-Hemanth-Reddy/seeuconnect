@@ -1,5 +1,6 @@
 .carousel{
   height: 95vh;
+  background-color: black;
 }
 img{
   height: 95vh;
@@ -8,6 +9,9 @@ img{
   margin-top: -150px;
   float: right;
   margin-right: 10px;
+}
+.carousel-control-next-icon{
+  
 }
 /* media */
 @media (min-width:700px){
