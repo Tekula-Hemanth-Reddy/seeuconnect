@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap';
 import Follow from '../followApps/followApps';
+import firstImage from '../../assets/images/background.png';
 import './carousel.css';
 
 function carousel(){
@@ -11,31 +12,31 @@ function carousel(){
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg"
+          src={firstImage}
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
+          <h3>Graduate</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg"
+          src={firstImage}
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
+          <h3>Build your Profile</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg"
+          src={firstImage}
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h3>Third slide label </h3>
+          <h3>Get to Work </h3>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
