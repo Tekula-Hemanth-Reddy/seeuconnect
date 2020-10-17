@@ -4,13 +4,15 @@ module.exports = buildSchema(`
 type User {
     _id: ID!
     firstName: String!
-    secondName: String!
+    lastName: String!
     email: String!
     password: String
+    collegeSpecific: String!
+    profile: Profile!
 }
 input UserInput{
     firstName: String!
-    secondName: String!
+    lastName: String!
     email: String!
     password: String!
 }
@@ -18,17 +20,23 @@ input UserInput{
 type Language {
     _id: ID!
     language: String!
+    profile: Profile!
 }
 input LanguageInput{
     language: String!
+    profileId: String!
 }
 
 type Skill {
     _id: ID!
     skill: String!
+    rating: Int!
+    profile: Profile!
 }
 input SkillInput{
     skill: String!
+    rating: Int!
+    profileId: String!
 }
 
 type ReachOut {
@@ -38,6 +46,7 @@ type ReachOut {
     instagram: String
     faceBook: String
     twitter: String
+    profile: Profile!
 }
 input ReachOutInput {
     gitHub: String
@@ -45,18 +54,23 @@ input ReachOutInput {
     instagram: String
     faceBook: String
     twitter: String
+    profileId: String!
 }
 
 type Project {
     _id: ID!
     projectName: String!
-    projectDescription: String!
+    projectDescription: String
     projectUrl: String!
+    projectDemo: String
+    profile: Profile!
 }
 input ProjectInput{
     projectName: String!
-    projectDescription: String!
+    projectDescription: String
     projectUrl: String!
+    projectDemo: String
+    profileId: String!
 }
 
 type Course {
@@ -65,12 +79,14 @@ type Course {
     specialization: String!
     certificate: String!
     credentials: String!
+    profile: Profile!
 }
 input CourseInput{
     courseName: String!
     specialization: String!
     certificate: String!
     credentials: String!
+    profileId: String!
 }
 
 type Alumni{
@@ -90,11 +106,13 @@ type Achievement {
     title: String!
     achievementDescription: String
     certificate: String!
+    profile: Profile!
 }
 input AchievementInput {
     title: String!
     achievementDescription: String
     certificate: String!
+    profileId: String!
 }
 
 type Position {
@@ -104,6 +122,7 @@ type Position {
     positionDescription: String!
     startDate: String!
     endDate: String!
+    profile: Profile!
 }
 input PositionInput {
     positionHeld: String!
@@ -111,6 +130,33 @@ input PositionInput {
     positionDescription: String
     startDate: String!
     endDate: String!
+    profileId: String!
+}
+
+type AdditionalDetails {
+    _id: ID!
+    detailsDescription: String!
+    profile: Profile!
+}
+input AdditionalDetailsInput {
+    detailsDescription: String!
+    profileId: String!
+}
+
+type Address {
+    _id: ID!
+    state: String!
+    city: String!
+    location: String!
+    pinCode: Float!
+    profile: Profile!
+}
+input AddressInput {
+    state: String!
+    city: String!
+    location: String!
+    pinCode: Float!
+    profileId: String!
 }
 
 type School {
@@ -119,12 +165,14 @@ type School {
     schoolGrade: Float!
     schoolBoard: String!
     schoolYear: Float!
+    education: Education!
 }
 input SchoolInput {
     schoolName: String!
     schoolGrade: Float!
     schoolBoard: String!
     schoolYear: Float!
+    study: String!
 }
 
 type College {
@@ -134,6 +182,7 @@ type College {
     collegeCourse: String!
     collegeBoard: String!
     collegeYear: Float!
+    education: Education!
 }
 input CollegeInput {
     collegeName: String!
@@ -141,6 +190,7 @@ input CollegeInput {
     collegeCourse: String!
     collegeBoard: String!
     collegeYear: Float!
+    study: String!
 }
 
 type Graduation {
@@ -151,6 +201,7 @@ type Graduation {
     graduationCourse: String!
     graduationStream: String!
     graduationYear: Float!
+    education: Education!
 }
 input GraduationInput {
     graduationCollegeName: String!
@@ -159,28 +210,53 @@ input GraduationInput {
     graduationCourse: String!
     graduationStream: String!
     graduationYear: Float!
+    study: String!
 }
 
-type AdditionalDetails {
+type Education {
     _id: ID!
-    detailsDescription: String!
+    school: School
+    college: College
+    graduation: Graduation
+    profile: Profile!
 }
-input AdditionalDetailsInput {
-    detailsDescription: String!
+input EducationInput {
+    school: String
+    college: String
+    graduation: String
+    profile: String!
 }
 
-type Address {
+type Profile {
     _id: ID!
-    state: String!
-    city: String!
-    location: String!
-    pinCode: Float!
+    about: String,
+    phoneNumber: String!,
+    photo: String,
+    portFolio: String,
+    status: Boolean!,
+    interestedIntern: Boolean!,
+    strength: Int!,
+    addresses: Address,
+    education: Education,
+    skills: [Skill],
+    positions: [Position],
+    projects: [Project],
+    courses: [Course],
+    languages: [Language],
+    achievements: [Achievement],
+    detailsAdditional: [AdditionalDetails],
+    reachOuts: ReachOut,
+    users: User!
 }
-input AddressInput {
-    state: String!
-    city: String!
-    location: String!
-    pinCode: Float!
+
+input ProfileInput{
+    about: String,
+    phoneNumber: String!,
+    photo: String,
+    portFolio: String,
+    status: Boolean!,
+    interestedIntern: Boolean!,
+    userId: String!
 }
 
 type RootQuery {
@@ -193,11 +269,13 @@ type RootQuery {
     jobGivers: [Alumni!]!
     achievements: [Achievement!]!
     positions: [Position!]!
-    schools(schoolId: ID): School
-    colleges(collegeId: ID): College
-    graduationCollege(graduationId: ID): Graduation
-    detailsAdditional(detailsId: ID): AdditionalDetails
-    addresses(addressId: ID): Address
+    school(schoolId: String): School
+    college(collegeId: String): College
+    graduation(graduationId: String): Graduation
+    detailsAdditional: [AdditionalDetails!]!
+    addresses: [Address!]!
+    education : [Education!]!
+    profile: [Profile!]!
 }
 
 type RootMutation {
@@ -209,12 +287,14 @@ type RootMutation {
     CreateCourse(courseInput: CourseInput): Course
     CreateAlumni(alumniInput: AlumniInput): Alumni
     CreateAchievement(achievementInput: AchievementInput): Achievement
-    createPosition(positionInput: PositionInput): Position
+    CreatePosition(positionInput: PositionInput): Position
     CreateSchool(schoolInput: SchoolInput): School
     CreateCollege(collegeInput: CollegeInput): College
     CreateGraduation(graduationInput: GraduationInput): Graduation
     CreateAdditionalDetails(additionalDetailsInput: AdditionalDetailsInput): AdditionalDetails
     CreateAddress(addressInput: AddressInput): Address
+    CreateEducation(educationInput: EducationInput): Education
+    CreateProfile(profileInput: ProfileInput): Profile
 }
 
 schema {

@@ -22,6 +22,10 @@ const ReachOutSchema = new Schema({
     twitter: {
         type: String,
         required: false
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

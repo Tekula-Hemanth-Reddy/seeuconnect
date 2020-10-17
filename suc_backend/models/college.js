@@ -22,6 +22,11 @@ const CollegeSchema = new Schema({
     collegeYear : {
         type: Number,
         required: true
+    },
+    educationId : {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Education"
     }
 });
 

@@ -6,6 +6,14 @@ const SkillSchema = new Schema({
     skill: {
         type: String,
         required: true
+    },
+    rating:{
+        type: Number,
+        required: true
+    },
+    profileId:{
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

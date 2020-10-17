@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const education = require('./education');
 
 const Schema = mongoose.Schema;
 
@@ -18,6 +19,11 @@ const SchoolSchema = new Schema({
     schoolYear : {
         type: Number,
         required: true
+    },
+    educationId : {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Education"
     }
 });
 

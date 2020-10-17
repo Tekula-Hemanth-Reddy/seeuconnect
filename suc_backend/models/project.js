@@ -14,6 +14,14 @@ const ProjectSchema = new Schema({
     projectUrl: {
         type: String,
         required: true
+    },
+    projectDemo: {
+        type: String,
+        required: false
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

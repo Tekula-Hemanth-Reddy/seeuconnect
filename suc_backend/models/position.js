@@ -22,6 +22,10 @@ const PositionSchema = new Schema({
     endDate: {
         type: Date,
         required: true
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

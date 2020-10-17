@@ -26,6 +26,11 @@ const GraduationSchema = new Schema({
     graduationYear : {
         type: Number,
         required: true
+    },
+    educationId : {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Education"
     }
 });
 

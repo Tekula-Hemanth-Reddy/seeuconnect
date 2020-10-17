@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const college = require('./college');
 
 const Schema = mongoose.Schema;
 
@@ -18,6 +19,14 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    collegeSpecific: {
+        type: String,
+        default: "VCE"
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

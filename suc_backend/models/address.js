@@ -18,6 +18,10 @@ const AddressSchema = new Schema({
     pinCode: {
         type: Number,
         required: true
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

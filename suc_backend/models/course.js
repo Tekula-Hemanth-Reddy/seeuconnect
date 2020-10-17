@@ -9,7 +9,7 @@ const CourseSchema = new Schema({
     },
     specialization: {
         type: String,
-        required: true
+        required: false
     },
     certificate: {
         type: String,
@@ -18,6 +18,10 @@ const CourseSchema = new Schema({
     credentials: {
         type: String,
         requiredPaths: true
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

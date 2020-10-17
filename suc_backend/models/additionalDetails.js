@@ -6,6 +6,10 @@ const AdditionalDetailsSchema = new Schema({
     detailsDescription: {
         type: String,
         required: true
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

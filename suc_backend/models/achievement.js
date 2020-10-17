@@ -13,7 +13,11 @@ const AchievementSchema = new Schema({
     },
     certificate: {
         type: String,
-        required: true
+        required: false
+    },
+    profileId: {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 
