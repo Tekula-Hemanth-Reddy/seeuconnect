@@ -4,15 +4,17 @@ const Graduation = require('../../models/graduation');
 const Education = require('../../models/education');
 const Profile = require('../../models/profile');
 
-const { educationInfo, schoolInfo, collegeInfo, graduationInfo, profileInfo } = require('./_merge');
+const { educationInfo, schoolInfo, collegeInfo, graduationInfo, profileInfo, infoEducation } = require('./_merge');
 
 module.exports = {
     //school
-    school : async args => {
+    school : async () => {
         try{
-            const study = await School.findById(args.schoolId);
-            return{ ... study._doc, _id: study._doc._id.toString(),
-                education: educationInfo.bind(this, study._doc.educationId)};
+            const study = await School.find();
+            return study.map( result => {
+                return{ ... result._doc, _id: result._doc._id.toString(),
+                    education: infoEducation(result._doc.educationId)};
+            });
         }
         catch( err )
         {
@@ -33,18 +35,20 @@ module.exports = {
             const educate = await Education.findById(result._doc.educationId);
             educate.schoolId = result._doc._id.toString();
             await educate.save();
-            return { ...result._doc, _id: result.id, education: educationInfo.bind(this, result._doc.educationId) };
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
         }
     },
 
     //college
-    college : async args => {
+    college : async () => {
         try{
-            const study = await College.findById(args.collegeID);
-            return{ ... study._doc, _id: study._doc._id.toString(),
-                education: educationInfo.bind(this, study._doc.educationId)};
+            const study = await College.find();
+            return study.map( result => {
+                return{ ... result._doc, _id: result._doc._id.toString(),
+                    education: infoEducation(result._doc.educationId)};
+            });
         }
         catch( err )
         {
@@ -66,18 +70,20 @@ module.exports = {
             const educate = await Education.findById(result._doc.educationId);
             educate.collegeId = result._doc._id.toString();
             await educate.save();
-            return { ...result._doc, _id: result.id, education: educationInfo.bind(this, result._doc.educationId) };
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
         }
     },
 
     //graduation
-    graduation : async args => {
+    graduation : async () => {
         try{
-            const study = await Graduation.findById(args.graduationId);
-            return{ ... study._doc, _id: study._doc._id.toString(),
-                education: educationInfo.bind(this, study._doc.educationId)};
+            const study = await Graduation.find();
+            return study.map( result => {
+                return{ ... result._doc, _id: result._doc._id.toString(),
+                    education: infoEducation(result._doc.educationId)};
+            });
         }
         catch( err )
         {
@@ -101,7 +107,7 @@ module.exports = {
             const educate = await Education.findById(result._doc.educationId);
             educate.graduationId = result._doc._id.toString();
             await educate.save();
-            return { ...result._doc, _id: result.id, education: educationInfo.bind(this, result._doc.educationId) };
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
         }

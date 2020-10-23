@@ -160,11 +160,20 @@ const skillInfo = async profileId => {
     }
 };
 
+const infoEducation = async educationId => {
+    try {
+        const result = await Education.findById(educationId);
+        return educationInfo(result._doc.profileId);
+    } catch (err) {
+        throw err;
+    }
+};
+
 const schoolInfo = async schoolId => {
     try {
         const result = await School.findById(schoolId);
         return { ...result._doc, _id: result._doc._id.toString(),
-            education: educationInfo.bind(this, result._doc.educationId)  
+            education: infoEducation.bind(this, result._doc.educationId)  
         };
     } catch (err) {
         throw err;
@@ -174,7 +183,7 @@ const collegeInfo = async collegeId => {
     try {
         const result = await College.findById(collegeId);
         return { ...result._doc, _id: result._doc._id.toString(),
-            education: educationInfo.bind(this, result._doc.educationId)  
+            education: infoEducation.bind(this, result._doc.educationId)  
         };
     } catch (err) {
         throw err;
@@ -184,7 +193,7 @@ const graduationInfo = async graduationId => {
     try {
         const result = await Graduation.findById(graduationId);
         return { ...result._doc, _id: result._doc._id.toString(),
-            education: educationInfo.bind(this, result._doc.educationId)  
+            education: infoEducation.bind(this, result._doc.educationId)  
         };
     } catch (err) {
         throw err;
@@ -219,3 +228,4 @@ exports.schoolInfo = schoolInfo;
 exports.collegeInfo = collegeInfo;
 exports.graduationInfo = graduationInfo;
 exports.educationInfo = educationInfo;
+exports.infoEducation = infoEducation;

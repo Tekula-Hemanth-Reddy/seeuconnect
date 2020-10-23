@@ -269,9 +269,9 @@ type RootQuery {
     jobGivers: [Alumni!]!
     achievements: [Achievement!]!
     positions: [Position!]!
-    school(schoolId: String): School
-    college(collegeId: String): College
-    graduation(graduationId: String): Graduation
+    school: [School!]!
+    college: [College!]!
+    graduation: [Graduation!]!
     detailsAdditional: [AdditionalDetails!]!
     addresses: [Address!]!
     education : [Education!]!
