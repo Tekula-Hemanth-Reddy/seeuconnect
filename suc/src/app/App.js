@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './screens/home.jsx'
-import LoginSignup from './screens/loginSignup/loginSignup.jsx';
+import Routes from '../routes/routes'
 function App() {
   return (
     <div className="App">
-      <Home/>
-      <LoginSignup/>
+      <Routes/>
     </div>
   );
 }

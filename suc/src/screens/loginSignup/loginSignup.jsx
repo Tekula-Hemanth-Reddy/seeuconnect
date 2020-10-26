@@ -19,8 +19,6 @@ function LoginSignup()
             <SignUp/>
             </Tab>
         </Tabs>
-
-        
         </Card>
         </div>
     );
