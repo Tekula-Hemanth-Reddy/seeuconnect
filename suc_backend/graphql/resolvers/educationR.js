@@ -3,6 +3,7 @@ const College = require('../../models/college');
 const Graduation = require('../../models/graduation');
 const Education = require('../../models/education');
 const Profile = require('../../models/profile');
+const User = require('../../models/users');
 
 const { educationInfo, schoolInfo, collegeInfo, graduationInfo, profileInfo, infoEducation } = require('./_merge');
 
@@ -115,8 +116,14 @@ module.exports = {
 
     //education
     education : async () => {
+        // if (!req.isAuth) {
+        //     throw new Error("Unauthenticated");
+        // }
+        // const uId = await User.findById(req.userId);
+        // const pId = await User.findById(uId.profileId);
         try {
             const educate = await Education.find();
+            // const result = await Education.findById(pId.educationId);
             return educate.map( result => {
                 return { ...result._doc, _id: result._doc._id.toString(),
                     school: schoolInfo.bind(this,result._doc.schoolId),
@@ -130,12 +137,16 @@ module.exports = {
         }
     },
 
-    CreateEducation : async args =>{
+    CreateEducation : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        const pId = await User.findById(req.userId);
         const education = new Education({
             schoolId: null,
             collegeId: null,
             graduationId: null,
-            profileId: args.educationInput.profileId
+            profileId: pId.profileId
         });
         try {
             const result = await education.save();

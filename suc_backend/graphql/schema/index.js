@@ -17,6 +17,12 @@ input UserInput{
     password: String!
 }
 
+type AuthData{
+    userId: ID!
+    token: String!
+    tokenExpiration: Int!
+}
+
 type Language {
     _id: ID!
     language: String!
@@ -24,7 +30,6 @@ type Language {
 }
 input LanguageInput{
     language: String!
-    profileId: String!
 }
 
 type Skill {
@@ -36,7 +41,6 @@ type Skill {
 input SkillInput{
     skill: String!
     rating: Int!
-    profileId: String!
 }
 
 type ReachOut {
@@ -54,7 +58,6 @@ input ReachOutInput {
     instagram: String
     faceBook: String
     twitter: String
-    profileId: String!
 }
 
 type Project {
@@ -70,7 +73,6 @@ input ProjectInput{
     projectDescription: String
     projectUrl: String!
     projectDemo: String
-    profileId: String!
 }
 
 type Course {
@@ -86,19 +88,18 @@ input CourseInput{
     specialization: String!
     certificate: String!
     credentials: String!
-    profileId: String!
 }
 
 type Alumni{
     _id: ID!
-    companyName: String!
-    domain: String!
-    platform: String!
+    companyName: String
+    domain: String
+    platform: String
 }
 input AlumniInput {
-    companyName: String!
-    domain: String!
-    platform: String!
+    companyName: String
+    domain: String
+    platform: String
 }
 
 type Achievement {
@@ -112,7 +113,6 @@ input AchievementInput {
     title: String!
     achievementDescription: String
     certificate: String!
-    profileId: String!
 }
 
 type Position {
@@ -130,7 +130,6 @@ input PositionInput {
     positionDescription: String
     startDate: String!
     endDate: String!
-    profileId: String!
 }
 
 type AdditionalDetails {
@@ -140,7 +139,6 @@ type AdditionalDetails {
 }
 input AdditionalDetailsInput {
     detailsDescription: String!
-    profileId: String!
 }
 
 type Address {
@@ -156,7 +154,6 @@ input AddressInput {
     city: String!
     location: String!
     pinCode: Float!
-    profileId: String!
 }
 
 type School {
@@ -224,43 +221,42 @@ input EducationInput {
     school: String
     college: String
     graduation: String
-    profile: String!
 }
 
 type Profile {
     _id: ID!
-    about: String,
-    phoneNumber: String!,
-    photo: String,
-    portFolio: String,
-    status: Boolean!,
-    interestedIntern: Boolean!,
-    strength: Int!,
-    addresses: Address,
-    education: Education,
-    skills: [Skill],
-    positions: [Position],
-    projects: [Project],
-    courses: [Course],
-    languages: [Language],
-    achievements: [Achievement],
-    detailsAdditional: [AdditionalDetails],
-    reachOuts: ReachOut,
+    about: String
+    phoneNumber: String!
+    photo: String
+    portFolio: String
+    status: Boolean!
+    interestedIntern: Boolean!
+    strength: Int!
+    addresses: Address
+    education: Education
+    skills: [Skill]
+    positions: [Position]
+    projects: [Project]
+    courses: [Course]
+    languages: [Language]
+    achievements: [Achievement]
+    detailsAdditional: [AdditionalDetails]
+    reachOuts: ReachOut
     users: User!
 }
 
 input ProfileInput{
-    about: String,
-    phoneNumber: String!,
-    photo: String,
-    portFolio: String,
-    status: Boolean!,
-    interestedIntern: Boolean!,
-    userId: String!
+    about: String
+    phoneNumber: String!
+    photo: String
+    portFolio: String
+    status: Boolean!
+    interestedIntern: Boolean!
 }
 
 type RootQuery {
     users : [User!]!
+    login(email: String!, password: String!) : AuthData!
     languages: [Language!]!
     skills: [Skill!]!
     reachOuts: [ReachOut!]!

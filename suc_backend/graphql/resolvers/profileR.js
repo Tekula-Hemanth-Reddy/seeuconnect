@@ -4,8 +4,13 @@ const { userInfo, educationInfo, reachOutInfo, additionalInfo, achievementInfo, 
 
 module.exports = {
     profile : async () =>{
+        // console.log(req);
+        // if (!req.isAuth) {
+        //     throw new Error("Unauthenticated");
+        // }
+        // const user = await User.findById(req.userId);
         try {
-            // const result = await Profile.findById(args.profileId);
+            // const result = await Profile.findById(user.profileId);
             const profile = await Profile.find();
             return profile.map(result =>{
             return { ...result._doc, _id: result._doc._id.toString(),
@@ -26,7 +31,10 @@ module.exports = {
             throw err;
         }
     },
-    CreateProfile : async args => {
+    CreateProfile : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
         const information = new Profile({
             about: args.profileInput.about,
             phoneNumber: args.profileInput.phoneNumber,
@@ -45,13 +53,15 @@ module.exports = {
             achievementId: [],
             additionalId: [],
             reachOutId: null,
-            userId: args.profileInput.userId
+            userId: req.userId
         });
         try {
             const result = await information.save();
-            const user = await User.findById(result._doc.userId);
-            user.projectId = result.id;
+            const user = await User.findById(req.userId);
+            user.profileId = result.id;
             await user.save();
+            req.profileId=result.id;
+            console.log(req.profileId);
             return { ...result._doc, _id: result._doc._id.toString(),
                 addresses: addressInfo.bind(this,result._doc._id.toString()),
                 skills: skillInfo.bind(this,result._doc._id.toString()),

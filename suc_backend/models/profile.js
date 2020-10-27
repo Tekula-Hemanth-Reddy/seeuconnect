@@ -81,7 +81,7 @@ const ProfileSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "ReachOut"
     },
-    usedId: {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: "User"
     }
