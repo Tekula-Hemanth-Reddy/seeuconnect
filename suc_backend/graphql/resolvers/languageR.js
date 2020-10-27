@@ -1,11 +1,17 @@
 const Language = require('../../models/language');
 const Profile = require('../../models/profile');
+const User = require('../../models/users');
 const { profileInfo } = require('./_merge');
 
 module.exports = {
     //language
     languages : async () => {
+        // if (!req.isAuth) {
+        //     throw new Error("Unauthenticated");
+        // }
+        // const pId = await User.findById(req.userId);
         try {
+            // const languages = await Language.find({profileId: {$in: pId.profileId}});
             const languages = await Language.find();
             return languages.map(result => {
                 return { ...result._doc, _id: result._doc._id.toString(),
@@ -17,10 +23,14 @@ module.exports = {
         }
     },
 
-    CreateLanguage : async args => {
+    CreateLanguage : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        const pId = await User.findById(req.userId);
         const voice = new Language({
             language: args.languageInput.language,
-            profileId: args.languageInput.profileId
+            profileId: pId.profileId
         });
         try {
             const result = await voice.save();

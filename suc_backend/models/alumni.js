@@ -5,15 +5,19 @@ const Schema = mongoose.Schema;
 const AlumniSchema = new Schema({
     companyName: {
         type: String,
-        required: true
+        required: false
     },
     domain: {
         type: String,
-        required: true
+        required: false
     },
     platform: {
         type: String,
-        required: true
+        required: false
+    },
+    profileId : {
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
     }
 });
 

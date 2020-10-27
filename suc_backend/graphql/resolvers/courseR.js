@@ -1,12 +1,18 @@
 const Course = require('../../models/course');
 const Profile = require('../../models/profile');
+const User = require('../../models/users');
 const { profileInfo } = require('./_merge');
 
 module.exports = {
     //courses
-    courses : async () =>{
+    courses : async () => {
+        // if (!req.isAuth) {
+        //     throw new Error("Unauthenticated");
+        // }
+        // const pId = await User.findById(req.userId);
         try {
             const study = await Course.find();
+            // const study = await Course.find({profileId: {$in: pId.profileId}});
             return study.map(result => {
                 return { ...result._doc, _id: result._doc._id.toString(),
                     profile: profileInfo.bind(this,result._doc.profileId)
@@ -17,13 +23,17 @@ module.exports = {
         }
     },
 
-    CreateCourse : async args => {
+    CreateCourse : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        const pId = await User.findById(req.userId);
         const study = new Course({
             courseName: args.courseInput.courseName,
             specialization: args.courseInput.specialization,
             certificate: args.courseInput.certificate,
             credentials: args.courseInput.credentials,
-            profileId: args.courseInput.profileId
+            profileId: pId.profileId
         });
         try {
             const result = await study.save();
