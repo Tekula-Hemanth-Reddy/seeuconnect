@@ -1,0 +1,42 @@
+.fotter{
+    background-color: black;
+}
+.fotterDivision{
+    text-align: left;
+}
+.fotterDivisionLinks{
+    text-align: left;
+}
+.aboutUs{
+    color: #fff;
+}
+.unOrderListItems{
+    margin-left: -40px;
+}
+.headingsColor{
+    color: #007bff;
+}
+.listStyles{
+    list-style: none;
+}
+.contactDecorations{
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;  
+}
+.buttonSend{
+    margin-top:10px;
+    width:150px;
+    color:#007bff
+}
+.contactUs{
+    margin-top: 0px;
+}
+@media(max-width:576px){
+    .fotterDivision{
+        margin-top: 10px;
+    }
+    .contactUs{
+        margin-top: 20px;
+    }
+}

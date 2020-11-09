@@ -1,9 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap';
-import Follow from '../followApps/followApps';
-import firstImage from '../../assets/images/background.png';
-import './carousel.css';
+import firstImage from '../../../assets/images/background.png';
+import '../_css/carousel.css';
 
 function carousel(){
   return (
@@ -40,9 +39,6 @@ function carousel(){
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    <div className="followUs" >
-      <Follow />
-    </div>
   </div>
   )
 }

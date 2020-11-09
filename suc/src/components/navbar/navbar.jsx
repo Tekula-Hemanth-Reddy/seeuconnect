@@ -4,7 +4,7 @@ import { Navbar,Nav,Button } from 'react-bootstrap';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import history from '../../history/history';
 
 function navbar(){
@@ -23,9 +23,9 @@ function navbar(){
             </div>
           </Navbar.Collapse>
         <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/login')}>
-       {<FontAwesomeIcon icon={faUser} />}</Button>
-    </Navbar>
-  </div>
+        {<FontAwesomeIcon icon={faUser} />}</Button>
+      </Navbar>
+    </div>
   </Router>
   )
 }
