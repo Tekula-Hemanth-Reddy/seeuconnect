@@ -1,0 +1,25 @@
+.mainPCard{
+    background-color: #3a3838;
+    height: 200px;
+    width: 400px;
+    border-bottom-width: 4px;
+    border-top-left-radius: 0;
+    border-radius: 0;
+    margin:10px;
+}
+.titlePHeading{
+    font-size: 30px;
+    text-align: left;
+    color: white;
+    margin: 10px 0px 10px 2px;
+    font-style: bold;
+}
+.commonPRow{
+    margin-Bottom:05px;
+    
+}
+.commonPPara{
+    text-align: left;
+    font-size: 17.5px;
+    color: #b9b6b6;
+}

@@ -19,15 +19,15 @@ function SideNavBar() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path='/about' component={About} />
-          <Route path='/blog' component={Blog} />
-          <Route path='/contact' component={Contact}/>
-          <Route path='/education' component={Education} />
-          <Route path='/experience' component={Experience} />
-          <Route path='/home' exact component={Home} />
-          <Route path='/portfolio' component={PortFolio} />
-          <Route path='/skills' component={Skills} />
-          <Route path='/testimonial' exact component={Testimonial} />
+          <Route path='/profile/about' component={About} />
+          <Route path='/profile/blog' component={Blog} />
+          <Route path='/profile/contact' component={Contact}/>
+          <Route path='/profile/education' component={Education} />
+          <Route path='/profile/experience' component={Experience} />
+          <Route path='/profile/home' exact component={Home} />
+          <Route path='/profile/portfolio' component={PortFolio} />
+          <Route path='/profile/skills' component={Skills} />
+          <Route path='/profile/testimonial' exact component={Testimonial} />
         </Switch>
       </Router>
     </div>

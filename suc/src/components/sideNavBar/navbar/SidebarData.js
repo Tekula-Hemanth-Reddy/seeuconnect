@@ -9,55 +9,55 @@ import * as GrIcons from 'react-icons/gr';
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/home',
+    path: '/profile/home',
     icon: <AiIcons.AiFillHome/>,
     cName: 'nav-text'
   },
   {
     title: 'About Me',
-    path: '/about',
+    path: '/profile/about',
     icon: <FaIcons.FaUser/>,
     cName: 'nav-text'
   },
   {
     title: 'My Skills',
-    path: '/skills',
+    path: '/profile/skills',
     icon: <AiIcons.AiFillBulb/>,
     cName: 'nav-text'
   },
   {
     title: 'Education',
-    path: '/education',
+    path: '/profile/education',
     icon: <BsIcons.BsBookHalf />,
     cName: 'nav-text'
   },
   {
     title: 'My Port Folio',
-    path: '/portfolio',
+    path: '/profile/portfolio',
     icon: <BiIcons.BiShoppingBag />,
     cName: 'nav-text'
   },
   {
     title: 'Testimonials',
-    path: '/testimonial',
+    path: '/profile/testimonial',
     icon: <FaIcons.FaQuoteLeft />,
     cName: 'nav-text'
   },
   {
     title: 'Experience',
-    path: '/experience',
+    path: '/profile/experience',
     icon: <FaIcons.FaPencilAlt />,
     cName: 'nav-text'
   },
   {
     title: 'Blog',
-    path: '/blog',
+    path: '/profile/blog',
     icon: <FaIcons.FaNewspaper />,
     cName: 'nav-text'
   },
   {
     title: 'Contact',
-    path: '/contact',
+    path: '/profile/contact',
     icon: <GrIcons.GrMail />,
     cName: 'nav-text'
   }

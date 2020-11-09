@@ -1,0 +1,30 @@
+.trophyCardMain{
+    height: 180px;
+    width: 250px;
+    background-color: #3a3838;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+.trophyIcon{
+    height: 60px;
+    width: 60px;
+    color: yellow;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.countText{
+    font-size: 30px;
+    color: white;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 40px;
+    font-style: bold;
+    font-weight: 700;
+}
+.awardsText{
+    color: white;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 30px;
+
+}

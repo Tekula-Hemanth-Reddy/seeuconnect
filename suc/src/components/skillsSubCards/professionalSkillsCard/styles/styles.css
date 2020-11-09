@@ -1,0 +1,16 @@
+.pSkillsCardMainContainer
+{
+    background-color: #3a3838;
+    width: 100%;
+    border-radius: 0px;    
+}
+.titleStyle{
+    font-size: 30px;
+    color: white;
+    margin: 20px;
+}
+.subTitles{
+    font-size: 20px;
+    color: white;
+    text-align: left;
+}
