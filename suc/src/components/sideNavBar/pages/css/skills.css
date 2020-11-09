@@ -1,0 +1,43 @@
+.skillsContainer{
+    background-color: #20232a;
+    color: white;
+    margin-top: 05%;
+    margin-bottom: 05%;
+    width: 60%;
+}
+.skillsIcon{
+    color:#61dafb;
+    height:50px;
+    width:60px;
+    margin:30px 0px 20px 0px;
+}
+.skillsText{
+    margin:30px 0px 20px 0px;
+    text-align: left;
+    font-Size:35px;
+    font-Style:Bold;
+}
+.skillsDescCol{
+    margin:20px 10px 20px 10px;
+    align-Self:flex-start;
+}
+.skillsTextData{
+    text-Align:left;
+    color:#5f5d5d;
+    font-Size:17.5px;
+}
+.tagIcon{
+    color: white;
+    height: 30px;
+    width: 20px;
+    margin-bottom: 40px;
+}
+.hashtagColoumn
+{
+    margin-right: 10px;
+}
+.languageHeader{
+    font-size: 30px;
+    color: white;
+    margin:30px;
+}

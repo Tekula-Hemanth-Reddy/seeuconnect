@@ -1,0 +1,30 @@
+.experienceContainer{
+    background-color: #20232a;
+    color: white;
+    margin-top: 05%;
+    margin-bottom: 05%;
+    height: 80%;
+    width: 60%;
+
+}
+.experienceIcon{
+    color:#61dafb;
+    height:50px;
+    width:60px;
+    margin:30px 0px 20px 0px;
+}
+.experienceText{
+    margin:30px 0px 20px 0px;
+    text-align: left;
+    font-Size:35px;
+    font-Style:Bold;
+}
+.experienceDescCol{
+    margin:20px 10px 20px 10px;
+    align-Self:flex-start;
+}
+.experienceTextData{
+    text-Align:left;
+    color:#5f5d5d;
+    font-Size:17.5px;
+}

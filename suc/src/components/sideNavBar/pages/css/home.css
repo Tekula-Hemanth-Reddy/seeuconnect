@@ -1,0 +1,30 @@
+.mainContainer{
+    background-color: #20232a;
+    color: white;
+    margin-top: 05%;
+    height: 80%;
+    width: 60%;
+
+}
+.roundImage{
+    height: 200px;
+    width: 180px;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.subDivision{
+    margin-top: 100px;
+    
+}
+.greetingClass{
+    font-size:40px;
+    
+}
+.portfolioBtn{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+
+}

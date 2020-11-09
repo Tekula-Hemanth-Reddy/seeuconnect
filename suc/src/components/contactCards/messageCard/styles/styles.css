@@ -1,0 +1,35 @@
+.messageCardMainCard{
+    height:670px;
+    width: 400px;
+    margin-bottom: 40px;
+    background-color: #17b0df;
+}
+.heremeTitle{
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    text-align: left;
+}
+.formClass{
+    margin: 10px;
+}
+.sendButton{
+    background-color: white;
+    width: 150px;
+    height:50px;
+    margin-top: 20px;
+    
+}
+.contactMeIcon2{
+    color:#000000;
+    height:20px;
+    width:20px;
+    margin-top: 8px;
+   
+}
+.sendText{
+    color: #000000;
+    margin-top: 4px;
+    font-size: 20px;
+    
+}
