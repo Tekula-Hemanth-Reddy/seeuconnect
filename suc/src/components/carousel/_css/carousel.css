@@ -18,6 +18,7 @@ img{
     top: 80vh;
     height: 7vh;
     width: 7vh;
+    padding-right: 10px;
     background-color: black;
     border-radius: 10px;
   }
@@ -26,6 +27,7 @@ img{
     height: 7vh;
     width: 7vh;
     top: 70vh;
+    padding-right: 10px;
     background-color: black;
     border-radius: 10px;
   }

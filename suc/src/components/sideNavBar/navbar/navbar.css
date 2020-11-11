@@ -13,7 +13,7 @@
   }
   
   .nav-menu {
-    background-color: #20232a;
+    background-color: black;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -70,4 +70,11 @@
   span {
     margin-left: 16px;
   }
+  /* .navBarFixed{
+    position: fixed;
+    background-color: black;
+    color: white;
+    margin-top: 5%;
+    margin-left: 5%;
+  } */
   
