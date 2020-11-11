@@ -11,6 +11,7 @@ const projectResolver = require('./projectR');
 const resctOutResolver = require('./reachOutR');
 const skillResolver = require('./skillsR');
 const profileResolver = require('./profileR');
+const LatestResolver = require('./latestR');
 
 const rootResolver = {
     ...authResolver,
@@ -25,7 +26,8 @@ const rootResolver = {
     ...projectResolver,
     ...resctOutResolver,
     ...skillResolver,
-    ...profileResolver
+    ...profileResolver,
+    ...LatestResolver
 };
 
 module.exports = rootResolver;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card,Row,Col,Container} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import './styles/styles.css';
 
 function GeneralAward()

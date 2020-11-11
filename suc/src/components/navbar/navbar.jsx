@@ -19,7 +19,7 @@ function navbar(){
               <Nav className="mr-auto float-right">
                 <Nav.Link href="#latest">Latest</Nav.Link>
                 <Nav.Link href="#features">About</Nav.Link>
-                <Nav.Link href="#pricing">Contact Us</Nav.Link>
+                <Nav.Link href="/contactUs">Contact Us</Nav.Link>
               </Nav>
             </div>
           </Navbar.Collapse>
