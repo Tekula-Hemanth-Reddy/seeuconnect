@@ -254,6 +254,17 @@ input ProfileInput{
     interestedIntern: Boolean!
 }
 
+type Latest{
+    _id: ID!
+    title: String!
+    description: String!
+}
+
+input LatestInput {
+    title: String!
+    description: String!
+}
+
 type RootQuery {
     users : [User!]!
     login(email: String!, password: String!) : AuthData!
@@ -272,6 +283,7 @@ type RootQuery {
     addresses: [Address!]!
     education : [Education!]!
     profile: [Profile!]!
+    latest: [Latest!]!
 }
 
 type RootMutation {
@@ -291,6 +303,7 @@ type RootMutation {
     CreateAddress(addressInput: AddressInput): Address
     CreateEducation(educationInput: EducationInput): Education
     CreateProfile(profileInput: ProfileInput): Profile
+    CreateLatest(latestInput: LatestInput): Latest
 }
 
 schema {

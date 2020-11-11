@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card,CardGroup, Col, Container, Row,Button} from 'react-bootstrap';
+import {Col, Container, Row,Button} from 'react-bootstrap';
 import './css/home.css';
 import Image from 'react-bootstrap/Image';
 import AdityaImage from '../../../assets/images/background.png';

@@ -1,0 +1,17 @@
+.aboutImage{
+    height: 80%;
+    width: 80%;
+    margin: 5%;
+}
+.messageAbout{
+    color: #0014cc;
+    text-align: center;
+    margin: auto;
+}
+@media(max-width:1000px){
+    .messageAbout{
+        color: #0014cc;
+        text-align: center;
+        margin: 10%;
+    } 
+}

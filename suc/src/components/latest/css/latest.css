@@ -1,0 +1,42 @@
+.latestCarousel{
+    background-color: black;
+    padding: 5rem;
+}
+.cardDivision{
+    margin: 10px;
+}
+.mainCard{
+    width: 20rem;
+    background-color: #0014cc;
+    /* background: linear-gradient(to right, blue 0%, blue 50%, yellow 50%, yellow 100%); */
+    color: white;
+}
+@media(max-width:695px){
+    .latestCarousel{
+        background-color: black;
+        padding: 2rem;
+    }
+    .mainCard{
+        width: 20rem;
+        background-color: #0014cc;
+        color: white;
+    }
+    .cardDivision{
+        margin-left: -0.5rem;
+    }
+}
+@media(max-width:541px){
+    .cardDivision{
+        margin-left: 5rem;
+    }
+}
+@media(max-width:415px){
+    .cardDivision{
+        margin-left: 1rem;
+    }
+}
+@media(max-width:376px){
+    .cardDivision{
+        margin-left: 0rem;
+    }
+}
