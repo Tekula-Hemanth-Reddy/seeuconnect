@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import '../css/latest.css';
-import listData from '../data/latestData';
 class Latest extends Component {
 
     constructor(props) {

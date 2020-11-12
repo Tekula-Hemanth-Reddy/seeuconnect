@@ -6,6 +6,7 @@ import Home from '../screens/home/home';
 import ContactUs from '../components/Fotter/_component/_fotter';
 import SideNavBar from '../components/sideNavBar/sideNavBar';
 import Partition from '../screens/partition/_component/partition';
+import Alumni from '../screens/_alumni/_component/alumni';
 
 function Routes()
 {
@@ -17,6 +18,7 @@ function Routes()
                     <Route path="/student" component={LoginSignup} />
                     <Route path="/profile" component={SideNavBar}/>
                     <Route path="/login" component={Partition} />
+                    <Route path="/alumni" component={Alumni} />
                 </Switch>
             </Router>
 
