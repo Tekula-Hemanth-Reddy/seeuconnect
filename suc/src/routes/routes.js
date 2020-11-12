@@ -5,13 +5,16 @@ import LoginSignup from '../screens/loginSignup/loginSignup';
 import Home from '../screens/home/home';
 import ContactUs from '../components/Fotter/_component/_fotter';
 import SideNavBar from '../components/sideNavBar/sideNavBar';
+import Schooling from '../components/profilePages/education/education';
 import Partition from '../screens/partition/_component/partition';
 
 function Routes()
 {
     return(
+        <div>
         <Router history={history}>
                 <Switch>
+                    <Route path="/education" component={Schooling}/>  
                     <Route path="/home" component={Home}/>
                     <Route path="/contactUs" component={ContactUs} /> 
                     <Route path="/student" component={LoginSignup} />
@@ -19,9 +22,8 @@ function Routes()
                     <Route path="/login" component={Partition} />
                 </Switch>
             </Router>
-
+        </div>
     );
-
 }
 
 export default Routes;
