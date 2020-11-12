@@ -1,0 +1,31 @@
+.schoolContainer{
+    width: 40%;
+    background-color: #292727;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.titleStyle{
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+.titleSchool{
+    color: white;
+    margin: 10px 20px 0px 20px;
+    font-size: 20px;
+}
+.formSchoolRow{
+    margin-bottom: -20px;
+}
+.formSchoolRow2{
+    margin-bottom: 10px;
+    margin-top: -20px;
+}
+.formSchool{
+    margin-top: 10px;
+}
+.gradeTitle{
+    color: white;
+    font-size: 20px;
+    margin-left: 2px;
+}
