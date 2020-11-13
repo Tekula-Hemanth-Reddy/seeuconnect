@@ -5,7 +5,7 @@ import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import {BrowserRouter as Router} from 'react-router-dom';
-import history from '../../history/history';
+import history from '../../../history/history';
 
 
 function navbar(){

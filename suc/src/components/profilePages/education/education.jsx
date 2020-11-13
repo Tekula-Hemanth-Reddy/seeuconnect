@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
 import Schooling from './schooling/schooling';
 import SecondaryEducation from './secondaryEducation/secondaryEducation';
 import Graduation from './graduation/graduation';

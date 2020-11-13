@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap';
-import firstImage from '../../../assets/images/background.png';
+import firstImage from '../../../../assets/images/background.png';
 import '../_css/carousel.css';
 
 function carousel(){
