@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
-import * as HIIcons from 'react-icons/hi';
 
 export class Education extends Component 
 {

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import about from '../../../assets/images/about.png';
+import about from '../../../../assets/images/about.png';
 import '../_css/aboutsuc.css';
 
 class AboutSuc extends Component{

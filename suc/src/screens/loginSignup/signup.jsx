@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
 import './css/signup.css';
-import {BrowserRouter as Router} from 'react-router-dom';
 import history from '../../history/history';
 
 class SignUp extends Component {

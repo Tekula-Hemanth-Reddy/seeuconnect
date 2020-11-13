@@ -2,7 +2,7 @@ import React from "react";
 import './css/loginSignup.css';
 import BackGroundImage from '../../assets/images/background.png';
 import {Card, Tabs,Tab} from 'react-bootstrap';
-import Navbar from '../../components/navbar/navbar';
+import Navbar from '../../components/FirstPage/navbar/navbar';
 import Login from './login';
 import SignUp from './signup';
 

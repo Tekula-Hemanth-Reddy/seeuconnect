@@ -1,7 +1,9 @@
 import React from 'react';
-import {Container,Row,Col,Button,Image} from 'react-bootstrap';
+import {Container,Row,Col,Image,Card} from 'react-bootstrap';
 import '../_css/alumni.css';
-import AdityaImage from '../../../assets/images/Aditya.png';
+import AdityaImage from '../../../../assets/images/Aditya.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhoneAlt, faEnvelopeSquare, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 function About() {
@@ -26,59 +28,129 @@ function About() {
         </p>
       </Col>
     </Row>
-    
-    <Row>
-      
-      <Col >
-        <Container>
-          <Row className="headerRow">
-            <Col xs={6} className="headerCol"><h4>Personal Details</h4></Col>
-          </Row>
-          
-          <Row className="commonRow">
-            <Col xs={3}>Full Name</Col>
-            <Col xs={1}>:</Col>
-            <Col xs={6}><p className="commonPara">Hemanth Tekula</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Father's Name</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">Malla Reddy Tekula</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Address</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">Chityal,Nalgonda,Telangana</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Zip Code</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">505172</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Phone</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">9381201545</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Email</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">tekulahemanth@gmail.com</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Website</p></Col>
-            <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">http://www.hemanth.com</p></Col>
-          </Row>
-        </Container>
-      </Col>
-    </Row>
+    <Container>
+      <Row>
+        <Col xs={6}>
+          <Card body className="cardStyle">
+            <Row>
+              <Col xs={1}>
+                
+              </Col>
+              <Col xs={3} className="leftCard">
+                Company
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                Tidbeat
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={1} className="leftCard">
+                <FontAwesomeIcon className='ico' icon={faPhoneAlt} color="#007bff" size="md" style={{textAlign:"left"}}/>
+              </Col>
+              <Col xs={3} className="leftCard">
+                Phone
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                <a href="tel:+919876543210" style={{textDecoration:"none"}}>+91 9876543210</a>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={1} className="leftCard">
+                <FontAwesomeIcon className='ico' icon={faEnvelopeSquare} color="#007bff" size="md" style={{textAlign:"left"}}/>
+              </Col>
+              <Col xs={3} className="leftCard">
+                Email
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>dummy@gmail.com</a>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={1} className="leftCard">
+                <FontAwesomeIcon className='ico' icon={faMapMarkerAlt} color="#007bff" size="md" style={{textAlign:"left"}}/>
+              </Col>
+              <Col xs={3} className="leftCard">
+                Address
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                <a href="https://www.google.co.in/maps/" style={{textDecoration:"none",color:"#fff"}}>3-3-184/70,Sri KanakaDurga Enterprises,Main Road,Peddapally,Telangana</a>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+        <Col xs={6}>
+        <Card body className="cardStyle">
+        <Row>
+              <Col xs={1}>
+                
+              </Col>
+              <Col xs={3} className="leftCard">
+                Full Name
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                Aditya Nalla
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={1} className="leftCard">
+                <FontAwesomeIcon className='ico' icon={faPhoneAlt} color="#007bff" size="md" style={{textAlign:"left"}}/>
+              </Col>
+              <Col xs={3} className="leftCard">
+                Phone
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                <a href="tel:+919876543210" style={{textDecoration:"none"}}>+91 9876543210</a>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={1} className="leftCard">
+                <FontAwesomeIcon className='ico' icon={faEnvelopeSquare} color="#007bff" size="md" style={{textAlign:"left"}}/>
+              </Col>
+              <Col xs={3} className="leftCard">
+                Email
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={6} className="rightCard">
+                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>dummy@gmail.com</a>
+              </Col>
+            </Row>
+        </Card>
+        <Card body className="cardStyle" style={{marginTop:"30px"}}>
+            <Row>
+              <Col xs={5} className="leftCard">
+                Company Website
+              </Col>
+              <Col xs={2}>
+                :
+              </Col>
+              <Col xs={5} className="rightCard">
+                <a href="https://tidbeat.com/" style={{textDecoration:"none"}}>tidbeat.com</a>
+              </Col>
+            </Row>
+        </Card>
+        </Col>
+      </Row>
+    </Container>
   </Container>
   );
 }

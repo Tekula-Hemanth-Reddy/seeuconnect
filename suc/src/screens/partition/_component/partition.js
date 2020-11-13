@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Button} from 'react-bootstrap';
 import studentImg from '../../../assets/images/sliders/student.png';
 import alumniImg from '../../../assets/images/sliders/alumni.png';
-import NavBar from '../../../components/navbar/navbar';
+import NavBar from '../../../components/FirstPage/navbar/navbar';
 import {BrowserRouter as Router} from 'react-router-dom';
 import history from '../../../history/history';
 import '../_css/partition.css';

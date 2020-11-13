@@ -4,7 +4,9 @@
     margin-top: 05%;
     margin-bottom: 05%;
     height: 80%;
-    width: 60%;
+    width: 80%;
+    padding-bottom: 20px;
+    border-radius: 5px;
 
 }
 .aboutMeIcon{
@@ -41,3 +43,18 @@
     text-align: left;
 }
 
+
+.cardStyle{
+    background-color: transparent;
+    border-color: #61dafb;
+    border-width: 2px;
+    height: auto;
+    color: white;
+    margin: auto;
+}
+.leftCard{
+    text-align: right;
+}
+.rightCard{
+    text-align: left;
+}
