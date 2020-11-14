@@ -1,0 +1,31 @@
+.personalDetailsContainer{
+    width: 40%;
+    height: 750px;
+    background-color: #3a3838;    
+    margin-top: 40px;
+    
+}
+.personalDetailsTitle{
+    color: #61dafb;
+    font-size: 25px;
+    text-align: center;
+    top: 10px;
+}
+.personalDetailsSubContainer{
+    background-color: white;
+    margin-top: 0px;
+    height: 650px;
+}
+.personalDetailsGenderTitle{
+    margin: 10px 10px 0px 18px;
+}
+.personalDetailsTitleRow{
+   margin-top: -20px;
+}
+.personalDetailsFirstNameRow
+{
+   margin-top: 2px;
+}
+.personalDetailsFirstNameTitle{
+    margin: 10px 10px 0px 18px;
+}
