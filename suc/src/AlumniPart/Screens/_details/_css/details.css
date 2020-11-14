@@ -1,0 +1,25 @@
+.containerMain{
+    background-color: transparent;
+    color: white;
+    margin-top: 05%;
+    margin-bottom: 05%;
+    height: 80%;
+    width: 80%;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #61dafb;
+}
+
+.cardStyle{
+    background-color: transparent;
+    border-color: #61dafb;
+    border-width: 2px;
+    height: auto;
+    
+    color: white;
+    margin-top: 20px;
+}
+.formFirst{
+    margin-top: 23px;
+}

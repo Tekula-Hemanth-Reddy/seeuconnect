@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './css/loginSignup.css';
+import {BrowserRouter as Router} from 'react-router-dom';
 import history from '../../history/history';
 
 class Login extends Component {

@@ -1,0 +1,60 @@
+.mainContainer{
+    background-color: #20232a;
+    color: white;
+    margin-top: 05%;
+    margin-bottom: 05%;
+    height: 80%;
+    width: 80%;
+    padding-bottom: 20px;
+    border-radius: 5px;
+
+}
+.aboutMeIcon{
+    color:#61dafb;
+    height:50px;
+    width:60px;
+    margin:30px 0px 20px 0px;
+}
+.aboutMeText{
+    margin:30px 0px 20px 0px;
+    font-Size:35px;
+    font-Style:Bold;
+}
+.aboutMeDescCol{
+    margin:20px 10px 20px 10px;
+    align-Self:flex-start;
+}
+.aboutMeTextData{
+    text-Align:left;
+    color:#5f5d5d;
+    font-Size:17.5px;
+}
+.headerRow{
+    margin-Bottom:"15px";
+}
+.headerCol{
+    margin-Top:0px;
+    margin-bottom: 20px;
+}
+.commonRow{
+    margin-Bottom:10px;
+}
+.commonPara{
+    text-align: left;
+}
+
+
+.cardStyle{
+    background-color: transparent;
+    border-color: #61dafb;
+    border-width: 2px;
+    height: auto;
+    color: white;
+    margin: auto;
+}
+.leftCard{
+    text-align: right;
+}
+.rightCard{
+    text-align: left;
+}
