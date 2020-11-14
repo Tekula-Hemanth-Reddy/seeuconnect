@@ -1,37 +1,101 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Container,Row,Col,Image,Card} from 'react-bootstrap';
 import '../_css/alumni.css';
 import AdityaImage from '../../../../assets/images/Aditya.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelopeSquare, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import authContext from '../../../../context/auth-context';
 
 
-function About() {
-  return (
-    <Container className='mainContainer'>
-    <Row>
-      <Col xs={7}>
-      <div className="subDivision" style={{alignItems:"flex-start"}}>
-          <h1 className="greetingClass">Hello!!</h1>
-          <h1 className="greetingClass">Aditya Nalla</h1>
-      </div>
-      
-      </Col>
-      <Col xs={5}>
-        <Image src={AdityaImage} roundedCircle  className="roundImage"/>
-      </Col>
-    </Row>
-    
-    <Row >
-      <Col className="aboutMeDescCol">
-        <p className="aboutMeTextData">Hello,I’m Akshay Handge Creative Graphic Designer & User Experience Desiger based in Website, I create digital Products a more Beautiful and usable place. This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit quet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulpuate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt.
-        </p>
-      </Col>
-    </Row>
-    <Container>
+class About extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: "",
+      phone: "",
+      email: "",
+      company: "",
+      cmpPhone: "",
+      cmpMail: "",
+      cmpAddress: "",
+      cmpWebsite: ""
+    }
+  }
+
+  static contextType = authContext;
+
+  componentDidMount(){
+    const requestBody = {
+      query: `
+      query{
+        jobGivers(){
+          name
+          personPhone
+          personMail
+          companyName
+          companyPhone
+          companyMail
+          companyAddress
+          companyWebsite
+        }
+      }
+      `
+  };
+
+  const token = this.context.token;
+
+  fetch('http://localhost:4000/graphql', {
+          method: 'POST',
+          body: JSON.stringify(requestBody),
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token
+          }
+      }).then(res => {
+          if(res.status!== 200 && res.status!== 201){
+              throw new Error('Failed!');
+          }
+          return res.json();
+      })
+      .then(resData => {
+          console.log({...resData.data.jobGivers});
+          this.setState({name: resData.data.jobGivers.name,
+          phone: resData.data.jobGivers.personPhone,
+          email: resData.data.jobGivers.personMail,
+          company: resData.data.jobGivers.companyName,
+          cmpPhone: resData.data.jobGivers.companyPhone,
+          cmpMail: resData.data.jobGivers.companyMail,
+          cmpAddress: resData.data.jobGivers.companyAddress,
+          cmpWebsite: resData.data.jobGivers.companyWebsite});
+      })
+      .catch(err => {
+          console.log(err);
+      });
+  }
+
+  render(){
+    return(
+      <div style={{backgroundColor:"#000"}}>
+        <Container className="alumniContainer">
+          <Card className="alumniCardStyle" style={{marginTop:"20px",marginBottom: "20px"}}>
+          <Row>
+            <Col xs={7}>
+            <div className="subDivision" style={{alignItems:"flex-start"}}>
+                <h1 className="greetingClass">Hello!!!</h1>
+                <h1 className="greetingClass">{this.state.name}</h1>
+            </div>
+            
+            </Col>
+            <Col xs={5}>
+              <Image src={AdityaImage} roundedCircle  className="roundImage"/>
+            </Col>
+          </Row>
+          <hr style={{backgroundColor:"#fff",marginLeft:"20vh",marginRight:"20vh"}}/>
+          </Card>
+          <Container>
       <Row>
         <Col xs={6}>
-          <Card body className="cardStyle">
+          <Card body className="cardStyleAlumni">
             <Row>
               <Col xs={1}>
                 
@@ -43,7 +107,7 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                Tidbeat
+                {this.state.company}
               </Col>
             </Row>
             <Row>
@@ -57,7 +121,7 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="tel:+919876543210" style={{textDecoration:"none"}}>+91 9876543210</a>
+                <a href="tel:+919876543210" style={{textDecoration:"none"}}>{this.state.cmpPhone}</a>
               </Col>
             </Row>
             <Row>
@@ -71,7 +135,7 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>dummy@gmail.com</a>
+                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>{this.state.cmpMail}</a>
               </Col>
             </Row>
             <Row>
@@ -85,13 +149,13 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="https://www.google.co.in/maps/" style={{textDecoration:"none",color:"#fff"}}>3-3-184/70,Sri KanakaDurga Enterprises,Main Road,Peddapally,Telangana</a>
+                <a href="https://www.google.co.in/maps/" style={{textDecoration:"none",color:"#fff"}}>{this.state.cmpAddress}</a>
               </Col>
             </Row>
           </Card>
         </Col>
         <Col xs={6}>
-        <Card body className="cardStyle">
+        <Card body className="cardStyleAlumni">
         <Row>
               <Col xs={1}>
                 
@@ -103,10 +167,10 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                Aditya Nalla
+                {this.state.name}
               </Col>
-            </Row>
-            <Row>
+        </Row>
+        <Row>
               <Col xs={1} className="leftCard">
                 <FontAwesomeIcon className='ico' icon={faPhoneAlt} color="#007bff" size="md" style={{textAlign:"left"}}/>
               </Col>
@@ -117,7 +181,7 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="tel:+919876543210" style={{textDecoration:"none"}}>+91 9876543210</a>
+                <a href="tel:+919876543210" style={{textDecoration:"none"}}>{this.state.phone}</a>
               </Col>
             </Row>
             <Row>
@@ -131,11 +195,11 @@ function About() {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>dummy@gmail.com</a>
+                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>{this.state.email}</a>
               </Col>
             </Row>
         </Card>
-        <Card body className="cardStyle" style={{marginTop:"30px"}}>
+        <Card body className="cardStyleAlumni" style={{marginTop:"30px"}}>
             <Row>
               <Col xs={5} className="leftCard">
                 Company Website
@@ -144,15 +208,17 @@ function About() {
                 :
               </Col>
               <Col xs={5} className="rightCard">
-                <a href="https://tidbeat.com/" style={{textDecoration:"none"}}>tidbeat.com</a>
+                <a href="https://tidbeat.com/" style={{textDecoration:"none"}}>{this.state.cmpWebsite}</a>
               </Col>
             </Row>
         </Card>
         </Col>
       </Row>
     </Container>
-  </Container>
-  );
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default About;

@@ -5,12 +5,15 @@
     width: 100%;
     padding-top:200px;
 }
-.cardStyle{
+.loginSignupCardStyle{
     width: 30rem;
-    height: 25rem;
+    height: 28rem;
     margin-left:auto;
     margin-right:auto;
-    background-color: rgba(19, 35, 47, 0.9);
+    background-color: black;
+    border-width: 2px;
+    border-color: #61dafb;
+    border-radius: 5px;
 }
 .tabsContainer{
     align-self: center;

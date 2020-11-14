@@ -4,11 +4,7 @@ const college = require('./college');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
+    name: {
         type: String,
         required: true
     },
@@ -20,13 +16,17 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    collegeSpecific: {
+    userType: {
         type: String,
-        default: "VCE"
+        required: true
     },
     profileId: {
         type: Schema.Types.ObjectId,
         ref: "Profile"
+    },
+    alumniId: {
+        type: Schema.Types.ObjectId,
+        ref: "Alumni"
     }
 });
 
