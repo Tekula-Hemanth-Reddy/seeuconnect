@@ -5,9 +5,6 @@ import about from '../../../../assets/images/about.png';
 import '../_css/aboutsuc.css';
 
 class AboutSuc extends Component{
-    constructor(props) {
-        super(props);
-      }
     render(){
         return (
             <Container>

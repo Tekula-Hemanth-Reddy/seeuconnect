@@ -7,19 +7,19 @@ import Login from './login';
 import SignUp from './signup';
 
 
-function LoginSignup()
+function LoginSignup(props)
 {
     return(
         <div>
             <Navbar/>
             <div className="loginSignupContainer" style={{ backgroundImage: 'url('+BackGroundImage+')' }}>
-            <Card className="cardStyle">
+            <Card className="loginSignupCardStyle">
             <Tabs defaultActiveKey="Login" id="uncontrolled-tab-example" className="tabsContainer">
                 <Tab eventKey="Login" title="Login" >
-                <Login/>
+                <Login />
                 </Tab>
                 <Tab eventKey="SignUp" title="SignUp" >
-                <SignUp/>
+                <SignUp type={props.typeUser}/>
                 </Tab>
             </Tabs>
             </Card>

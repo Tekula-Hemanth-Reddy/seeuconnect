@@ -3,22 +3,23 @@ const { buildSchema } = require('graphql');
 module.exports = buildSchema(`
 type User {
     _id: ID!
-    firstName: String!
-    lastName: String!
+    name: String!
     email: String!
     password: String
-    collegeSpecific: String!
+    userType: String!
     profile: Profile!
+    alumni: Alumni!
 }
 input UserInput{
-    firstName: String!
-    lastName: String!
+    name: String!
     email: String!
     password: String!
+    userType: String!
 }
 
 type AuthData{
     userId: ID!
+    userType: String!
     token: String!
     tokenExpiration: Int!
 }
@@ -92,14 +93,24 @@ input CourseInput{
 
 type Alumni{
     _id: ID!
+    name: String
+    personPhone: String
+    personMail: String
     companyName: String
-    domain: String
-    platform: String
+    companyPhone: String
+    companyMail: String
+    companyAddress: String
+    companyWebsite: String
+    users: User!
 }
 input AlumniInput {
+    name: String
+    personPhone: String
     companyName: String
-    domain: String
-    platform: String
+    companyPhone: String
+    companyMail: String
+    companyAddress: String
+    companyWebsite: String
 }
 
 type Achievement {
@@ -293,7 +304,7 @@ type RootMutation {
     CreateReachOut(reachOutInput: ReachOutInput): ReachOut
     CreateProject(projectInput: ProjectInput): Project
     CreateCourse(courseInput: CourseInput): Course
-    CreateAlumni(alumniInput: AlumniInput): Alumni
+    CreateAlumni(userId: String!): Alumni
     CreateAchievement(achievementInput: AchievementInput): Achievement
     CreatePosition(positionInput: PositionInput): Position
     CreateSchool(schoolInput: SchoolInput): School
@@ -304,6 +315,8 @@ type RootMutation {
     CreateEducation(educationInput: EducationInput): Education
     CreateProfile(profileInput: ProfileInput): Profile
     CreateLatest(latestInput: LatestInput): Latest
+
+    UpdateAlumni(alumniInput: AlumniInput): Alumni
 }
 
 schema {
