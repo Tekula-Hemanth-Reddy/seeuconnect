@@ -4,20 +4,16 @@ const Schema = mongoose.Schema;
 
 const AddressSchema = new Schema({
     state: {
-        type: String,
-        required: true
+        type: String
     },
     city: {
-        type: String,
-        required: true
+        type: String
     },
     location: {
-        type: String,
-        required: true
+        type: String
     },
     pinCode: {
-        type: Number,
-        required: true
+        type: Number
     },
     profileId: {
         type: Schema.Types.ObjectId,

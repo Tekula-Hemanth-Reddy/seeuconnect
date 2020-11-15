@@ -7,7 +7,7 @@ import authContext from '../../context/auth-context';
 class SignUp extends Component {
     constructor(props){
         super(props);
-        this.state = {userType: props.type};
+        this.state = {userType: ""+props.type};
         this.nameEl = React.createRef();
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
@@ -54,12 +54,18 @@ class SignUp extends Component {
         .then(resData => {
             console.log(resData);
             this.setState({idUser: resData.data.CreateUser._id});
-            // if(this.state.userType==="alumni"){
+            if(this.state.userType==='alumni'){
                 if(resData.data.CreateUser._id){
                     this.context.signUp(resData.data.CreateUser._id);
                     history.push('/loading');
                 }
-            // }
+            }
+            if(this.state.userType==='student'){
+                if(resData.data.CreateUser._id){
+                    this.context.signUp(resData.data.CreateUser._id);
+                    history.push('/stuproloading');
+                }
+            }
         })
         .catch(err => {
             console.log(err);

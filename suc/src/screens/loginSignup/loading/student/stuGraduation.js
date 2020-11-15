@@ -2,9 +2,9 @@ import React from 'react';
 import {Spinner,Card,Container} from 'react-bootstrap';
 import history from '../../../../history/history';
 import authContext from '../../../../context/auth-context';
-import Loader from '../../../../AlumniPart/Components/loader/loader';
+import Loading from '../../../../AlumniPart/Components/loader/loader';
 
-const Loading =props => {
+const StuGraduation =props => {
     return(
         <div>
             <authContext.Consumer>
@@ -12,9 +12,8 @@ const Loading =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateAlumni(userId:"${context.idUser}"){
-                            name
-                            personPhone
+                            CreateGraduation(userId:"${context.idUser}"){
+                            _id
                             }
                         }
                         `
@@ -41,9 +40,9 @@ const Loading =props => {
                     });
                 }}
             </authContext.Consumer>
-            <Loader />
+            <Loading />
         </div>
     )
 }
 
-export default Loading;
+export default StuGraduation;

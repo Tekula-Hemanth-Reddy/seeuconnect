@@ -5,24 +5,19 @@ const Schema = mongoose.Schema;
 
 const SchoolSchema = new Schema({
     schoolName : {
-        type: String,
-        required: true
+        type: String
     },
     schoolGrade : {
-        type: Number,
-        required: true
+        type: Number
     },
     schoolBoard : {
-        type: String,
-        required: true
+        type: String
     },
     schoolYear : {
-        type: Number,
-        required: true
+        type: Number
     },
     educationId : {
         type: Schema.Types.ObjectId,
-        required: true,
         ref: "Education"
     }
 });

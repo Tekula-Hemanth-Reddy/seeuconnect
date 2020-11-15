@@ -5,12 +5,16 @@ import AdityaImage from '../../../../assets/images/Aditya.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelopeSquare, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import authContext from '../../../../context/auth-context';
+import NavBar from '../../../Components/navBar/component/alumniNavbar';
 
 
 class About extends Component {
   constructor(props){
     super(props);
+    console.log(this.props.alumniId);
     this.state = {
+      userId: this.props.alumniId,
+      title: "",
       name: "",
       phone: "",
       email: "",
@@ -28,7 +32,7 @@ class About extends Component {
     const requestBody = {
       query: `
       query{
-        jobGivers(){
+        jobGivers(userId:"${this.state.userId}"){
           name
           personPhone
           personMail
@@ -37,6 +41,9 @@ class About extends Component {
           companyMail
           companyAddress
           companyWebsite
+          users{
+            name
+          }
         }
       }
       `
@@ -48,8 +55,8 @@ class About extends Component {
           method: 'POST',
           body: JSON.stringify(requestBody),
           headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + token
+              'Content-Type': 'application/json'
+              // 'Authorization': 'Bearer ' + token
           }
       }).then(res => {
           if(res.status!== 200 && res.status!== 201){
@@ -58,8 +65,10 @@ class About extends Component {
           return res.json();
       })
       .then(resData => {
+        console.log(token);
           console.log({...resData.data.jobGivers});
-          this.setState({name: resData.data.jobGivers.name,
+          this.setState({title: resData.data.jobGivers.users.name,
+          name: resData.data.jobGivers.name,
           phone: resData.data.jobGivers.personPhone,
           email: resData.data.jobGivers.personMail,
           company: resData.data.jobGivers.companyName,
@@ -76,13 +85,14 @@ class About extends Component {
   render(){
     return(
       <div style={{backgroundColor:"#000"}}>
+        <NavBar />
         <Container className="alumniContainer">
           <Card className="alumniCardStyle" style={{marginTop:"20px",marginBottom: "20px"}}>
           <Row>
             <Col xs={7}>
             <div className="subDivision" style={{alignItems:"flex-start"}}>
                 <h1 className="greetingClass">Hello!!!</h1>
-                <h1 className="greetingClass">{this.state.name}</h1>
+                <h1 className="greetingClass">{this.state.title}</h1>
             </div>
             
             </Col>
