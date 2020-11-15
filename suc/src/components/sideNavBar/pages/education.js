@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import {Container,Row,Col} from 'react-bootstrap';
 import * as HIIcons from 'react-icons/fa';
 import EducationSmallCard from '../../educationSmallCard/component/educationSmallCard';
 import './css/education.css';
-=======
->>>>>>> 0b7f92959e3e42b7b219970af07cec1df464533b
 
 export class Education extends Component
 {
