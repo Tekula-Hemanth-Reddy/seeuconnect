@@ -2,23 +2,25 @@ import React, { Component} from 'react';
 import {Form,Button,Col} from 'react-bootstrap';
 import './css/signup.css';
 import history from '../../history/history';
+import authContext from '../../context/auth-context';
 
 class SignUp extends Component {
     constructor(props){
         super(props);
-        this.firstEl = React.createRef();
-        this.lastEl = React.createRef();
+        this.state = {userType: props.type};
+        this.nameEl = React.createRef();
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
         this.conPassEl = React.createRef();
     }
+    static contextType = authContext;
 
     submitHandler = (event) =>{
         event.preventDefault();
-        const First = ""+this.firstEl.current.value;
-        const Last = ""+this.lastEl.current.value;
+        const Name = ""+this.nameEl.current.value;
         const Email = ""+this.emailEl.current.value;
         const Password = ""+this.passwordEl.current.value;
+        const UserType = this.state.userType;
         const ConPassword = ""+this.conPassEl.current.value;
         if(Password.trim() !== ConPassword.trim()){
             return null;
@@ -27,10 +29,11 @@ class SignUp extends Component {
         const requestBody = {
             query: `
             mutation{
-                CreateUser(userInput:{firstName:"${First}", lastName:"${Last}", email: "${Email}", password:"${Password}"}){
-                  firstName
-                  lastName
+                CreateUser(userInput:{name:"${Name}", email: "${Email}", password:"${Password}",userType:"${UserType}"}){
+                  _id
+                  name
                   email
+                  userType
                 }
               }
             `
@@ -50,7 +53,13 @@ class SignUp extends Component {
         })
         .then(resData => {
             console.log(resData);
-            history.push('/student')
+            this.setState({idUser: resData.data.CreateUser._id});
+            // if(this.state.userType==="alumni"){
+                if(resData.data.CreateUser._id){
+                    this.context.signUp(resData.data.CreateUser._id);
+                    history.push('/loading');
+                }
+            // }
         })
         .catch(err => {
             console.log(err);
@@ -59,15 +68,10 @@ class SignUp extends Component {
     render(){
         return(
             <Form onSubmit={this.submitHandler}>
-                <Form.Row>
-                <Form.Group  className="firstName"  as={Col} controlId="formGridFirstName">
-                <Form.Control required type="name" placeholder="First Name*" ref={this.firstEl} />
-                </Form.Group>
 
-                <Form.Group  className="lastName"  as={Col} controlId="formGridLastName">
-                <Form.Control required type="name" placeholder="Last Name*" ref={this.lastEl} />
+                <Form.Group  className="inputSize"  as={Col} controlId="formGridLastName">
+                <Form.Control required type="name" placeholder="Name*" ref={this.nameEl} />
                 </Form.Group>
-                </Form.Row>
         
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridEmail">
                 <Form.Control required type="email" placeholder="Enter email*" ref={this.emailEl} />

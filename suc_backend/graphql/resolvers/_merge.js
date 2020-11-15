@@ -12,19 +12,32 @@ const School = require('../../models/school');
 const College = require('../../models/college');
 const Graduation = require('../../models/graduation');
 const Education = require('../../models/education');
+const Alumni = require('../../models/alumni');
 const User = require('../../models/users');
 
 const userInfo = async userId =>{
     try{
         const user = await User.findById(userId);
         return {...user._doc, _id: user._doc._id.toString(),
-            profile: profileInfo.bind(this,user._doc.profileId)
+            profile: profileInfo.bind(this,user._doc.profileId),
+            alumni: alumniInfo.bind(this,user._doc.alumniId)
         };
     }
     catch ( err ){
         throw err;
     }
 }
+
+const alumniInfo = async alumniId => {
+    try {
+        const result = await Alumni.findById(alumniId);
+        return { ...result._doc, _id: result._doc._id.toString(),
+            users: userInfo.bind(this,result._doc.userId)
+        };
+    } catch (err) {
+        throw err;
+    }
+};
 
 const profileInfo = async profileId => {
     try {
@@ -147,6 +160,7 @@ const reachOutInfo = async profileId => {
     }
 };
 
+
 const skillInfo = async profileId => {
     try {
         const skills = await Skill.find({profileId: {$in: profileId}});
@@ -214,6 +228,7 @@ const educationInfo = async profileId => {
 };
 
 exports.userInfo = userInfo;
+exports.alumniInfo = alumniInfo;
 exports.profileInfo = profileInfo;
 exports.achievementInfo = achievementInfo;
 exports.additionalInfo = additionalInfo;

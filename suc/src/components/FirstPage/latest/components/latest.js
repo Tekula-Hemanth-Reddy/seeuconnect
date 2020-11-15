@@ -48,62 +48,6 @@ class Latest extends Component {
 
     render(){
 
-        // let listData=[
-        //     {
-        //         title:'First',
-        //         description: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-        //     },
-        //     {
-        //         title:'Second',
-        //         description: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-        //     },
-        //     {
-        //         title:'Third',
-        //         description: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-        //     },
-        //     {
-        //         title:'Four',
-        //         description: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-        //     },
-        //     {
-        //         title:'Five',
-        //         description: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-        //     },
-        // ];
-
-    // const requestBody = {
-    //     query: `
-    //     query{
-    //         latest{
-    //           _id
-    //           title
-    //           description
-    //         }
-    //       }
-    //     `
-    // };
-
-    // fetch('http://localhost:4000/graphql', {
-    //         method: 'POST',
-    //         body: JSON.stringify(requestBody),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }).then(res => {
-    //         if(res.status!== 200 && res.status!== 201){
-    //             throw new Error('Failed!');
-    //         }
-    //         return res.json();
-    //     })
-    //     .then(resData => {
-    //         console.log({...resData.data.latest});
-    //         // list=resData.data.latest;
-    //         this.setState({listData: resData.data.latest});
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1000 },

@@ -1,25 +1,20 @@
-.containerMain{
+.detailsContainer{
     background-color: transparent;
     color: white;
-    margin-top: 05%;
-    margin-bottom: 05%;
-    height: 80%;
-    width: 80%;
-    padding-bottom: 20px;
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: #61dafb;
+    height: 100vh;
+    width: 100%;
+    padding-top: 10vh;
 }
-
-.cardStyle{
+.detailsCardStyle{
     background-color: transparent;
     border-color: #61dafb;
     border-width: 2px;
     height: auto;
-    
+    text-align: center;
     color: white;
-    margin-top: 20px;
+    padding: 5vh;
 }
-.formFirst{
-    margin-top: 23px;
+.detailsImage {
+    height: 20vh;
+    width: 20vh;
 }

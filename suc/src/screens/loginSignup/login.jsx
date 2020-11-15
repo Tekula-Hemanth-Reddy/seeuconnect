@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './css/loginSignup.css';
-import history from '../../history/history';
+import authContext from '../../context/auth-context';
 
 class Login extends Component {
     constructor(props){
@@ -10,6 +10,8 @@ class Login extends Component {
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
     }
+
+    static contextType = authContext;
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -22,6 +24,7 @@ class Login extends Component {
                 login(email:"${Email}",password:"${Password}"){
                   userId
                   token
+                  userType
                   tokenExpiration
                 }
               }
@@ -42,7 +45,9 @@ class Login extends Component {
         })
         .then(resData => {
             console.log(resData);
-            history.push('/profile')
+            if(resData.data.login.token){
+                this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
+            }
         })
         .catch(err => {
             console.log(err);
