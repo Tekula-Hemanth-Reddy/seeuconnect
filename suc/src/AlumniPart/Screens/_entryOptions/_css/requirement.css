@@ -1,0 +1,17 @@
+.requireContainer{
+    background-color: transparent;
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+.requireCardStyle{
+    background-color: transparent;
+    border-color: #61dafb;
+    border-width: 2px;
+    height: auto;
+    text-align: center;
+    color: white;
+    padding: 5vh;
+}

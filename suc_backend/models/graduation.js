@@ -4,32 +4,25 @@ const Schema = mongoose.Schema;
 
 const GraduationSchema = new Schema({
     graduationCollegeName : {
-        type: String,
-        required: true
+        type: String
     },
     graduationCollegeGrade : {
-        type: Number,
-        required: true
+        type: Number
     },
     graduationUniversity : {
-        type: String,
-        required: true
+        type: String
     },
     graduationCourse : {
-        type: String,
-        required: true
+        type: String
     },
     graduationStream : {
-        type: String,
-        required: true
+        type: String
     },
     graduationYear : {
-        type: Number,
-        required: true
+        type: Number
     },
     educationId : {
         type: Schema.Types.ObjectId,
-        required: true,
         ref: "Education"
     }
 });

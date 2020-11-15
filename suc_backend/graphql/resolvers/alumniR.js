@@ -5,12 +5,10 @@ const { userInfo } = require('./_merge');
 
 module.exports = {
     //alumni
-    jobGivers : async (req) =>{
-        if (!req.isAuth) {
-            throw new Error("Unauthenticated");
-        }
+    jobGivers : async (args) =>{
         try {
-            const result = await Alumni.find({userId: {$in: req.userId}});
+            const user = await User.findById(args.userId);
+            const result = await Alumni.findById(user.alumniId);
             return { ...result._doc, _id: result._doc._id.toString(),
                 users: userInfo.bind(this,result._doc.userId)
             };

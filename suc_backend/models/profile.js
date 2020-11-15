@@ -17,15 +17,12 @@ const ProfileSchema = new Schema({
     },
     status: {
         type: Boolean,
-        required: true
     },
     interestedIntern: {
         type: Boolean,
-        required: true
     },
     strength: {
         type: Number,
-        required: true
     },
     addressId: {
         type: Schema.Types.ObjectId,

@@ -24,24 +24,43 @@ module.exports = {
         }
     },
 
-    CreateReachOut : async (args, req) => {
-        if (!req.isAuth) {
-            throw new Error("Unauthenticated");
-        }
-        const pId = await User.findById(req.userId);
+    CreateReachOut : async (args) => {
+        try {
+        const pId = await User.findById(args.userId);
         const contact = new ReachOut({
-            gitHub: args.reachOutInput.gitHub,
-            linkedIn: args.reachOutInput.linkedIn,
-            instagram: args.reachOutInput.instagram,
-            faceBook: args.reachOutInput.faceBook,
-            twitter: args.reachOutInput.twitter,
+            gitHub: null,
+            linkedIn: null,
+            instagram: null,
+            faceBook: null,
+            twitter: null,
             profileId: pId.profileId
         });
-        try {
             const result = await contact.save();
             const profile = await Profile.findById(result._doc.profileId);
             profile.reachOutId = result.id;
             await profile.save();
+            return {...result._doc, _id: result._doc._id.toString(),
+                profile: profileInfo.bind(this,result._doc.profileId)
+                };
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    UpdateReachOut : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        try {
+        const pId = await User.findById(req.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const contact = await ReachOut.findById(profile.reachOutId);
+            contact.gitHub= args.reachOutInput.gitHub;
+            contact.linkedIn= args.reachOutInput.linkedIn;
+            contact.instagram= args.reachOutInput.instagram;
+            contact.faceBook= args.reachOutInput.faceBook;
+            contact.twitter= args.reachOutInput.twitter;
+            const result = await contact.save();
             return {...result._doc, _id: result._doc._id.toString(),
                 profile: profileInfo.bind(this,result._doc.profileId)
                 };

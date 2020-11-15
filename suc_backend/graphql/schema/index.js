@@ -154,71 +154,68 @@ input AdditionalDetailsInput {
 
 type Address {
     _id: ID!
-    state: String!
-    city: String!
-    location: String!
-    pinCode: Float!
+    state: String
+    city: String
+    location: String
+    pinCode: Float
     profile: Profile!
 }
 input AddressInput {
-    state: String!
-    city: String!
-    location: String!
-    pinCode: Float!
+    state: String
+    city: String
+    location: String
+    pinCode: Float
 }
 
 type School {
     _id: ID!
-    schoolName: String!
-    schoolGrade: Float!
-    schoolBoard: String!
-    schoolYear: Float!
+    schoolName: String
+    schoolGrade: Float
+    schoolBoard: String
+    schoolYear: Float
     education: Education!
 }
 input SchoolInput {
-    schoolName: String!
-    schoolGrade: Float!
-    schoolBoard: String!
-    schoolYear: Float!
-    study: String!
+    schoolName: String
+    schoolGrade: Float
+    schoolBoard: String
+    schoolYear: Float
 }
 
 type College {
     _id: ID!
-    collegeName: String!
-    collegeGrade: Float!
-    collegeCourse: String!
-    collegeBoard: String!
-    collegeYear: Float!
+    collegeName: String
+    collegeGrade: Float
+    collegeCourse: String
+    collegeBoard: String
+    collegeYear: Float
     education: Education!
 }
 input CollegeInput {
-    collegeName: String!
-    collegeGrade: Float!
-    collegeCourse: String!
-    collegeBoard: String!
-    collegeYear: Float!
-    study: String!
+    collegeName: String
+    collegeGrade: Float
+    collegeCourse: String
+    collegeBoard: String
+    collegeYear: Float
 }
 
 type Graduation {
     _id: ID!
-    graduationCollegeName: String!
-    graduationCollegeGrade: Float!
-    graduationUniversity: String!
-    graduationCourse: String!
-    graduationStream: String!
-    graduationYear: Float!
+    graduationCollegeName: String
+    graduationCollegeGrade: Float
+    graduationUniversity: String
+    graduationCourse: String
+    graduationStream: String
+    graduationYear: Float
     education: Education!
 }
 input GraduationInput {
-    graduationCollegeName: String!
-    graduationCollegeGrade: Float!
-    graduationUniversity: String!
-    graduationCourse: String!
-    graduationStream: String!
-    graduationYear: Float!
-    study: String!
+    graduationCollegeName: String
+    graduationCollegeGrade: Float
+    graduationUniversity: String
+    graduationCourse: String
+    graduationStream: String
+    graduationYear: Float
 }
 
 type Education {
@@ -237,12 +234,12 @@ input EducationInput {
 type Profile {
     _id: ID!
     about: String
-    phoneNumber: String!
+    phoneNumber: String
     photo: String
     portFolio: String
-    status: Boolean!
-    interestedIntern: Boolean!
-    strength: Int!
+    status: Boolean
+    interestedIntern: Boolean
+    strength: Int
     addresses: Address
     education: Education
     skills: [Skill]
@@ -258,11 +255,11 @@ type Profile {
 
 input ProfileInput{
     about: String
-    phoneNumber: String!
+    phoneNumber: String
     photo: String
     portFolio: String
-    status: Boolean!
-    interestedIntern: Boolean!
+    status: Boolean
+    interestedIntern: Boolean
 }
 
 type Latest{
@@ -284,7 +281,7 @@ type RootQuery {
     reachOuts: [ReachOut!]!
     projects: [Project!]!
     courses: [Course!]!
-    jobGivers: [Alumni!]!
+    jobGivers(userId: String!): Alumni!
     achievements: [Achievement!]!
     positions: [Position!]!
     school: [School!]!
@@ -301,22 +298,28 @@ type RootMutation {
     CreateUser(userInput: UserInput): User
     CreateLanguage(languageInput: LanguageInput): Language
     CreateSkill(skillInput: SkillInput): Skill
-    CreateReachOut(reachOutInput: ReachOutInput): ReachOut
+    CreateReachOut(userId: String!): ReachOut
     CreateProject(projectInput: ProjectInput): Project
     CreateCourse(courseInput: CourseInput): Course
     CreateAlumni(userId: String!): Alumni
     CreateAchievement(achievementInput: AchievementInput): Achievement
     CreatePosition(positionInput: PositionInput): Position
-    CreateSchool(schoolInput: SchoolInput): School
-    CreateCollege(collegeInput: CollegeInput): College
-    CreateGraduation(graduationInput: GraduationInput): Graduation
+    CreateSchool(userId: String!): School
+    CreateCollege(userId: String!): College
+    CreateGraduation(userId: String!): Graduation
     CreateAdditionalDetails(additionalDetailsInput: AdditionalDetailsInput): AdditionalDetails
-    CreateAddress(addressInput: AddressInput): Address
-    CreateEducation(educationInput: EducationInput): Education
-    CreateProfile(profileInput: ProfileInput): Profile
+    CreateAddress(userId: String!): Address
+    CreateEducation(userId: String!): Education
+    CreateProfile(userId: String!): Profile
     CreateLatest(latestInput: LatestInput): Latest
 
     UpdateAlumni(alumniInput: AlumniInput): Alumni
+    UpdateProfile(profileInput: ProfileInput): Profile
+    UpdateReachOut(reachOutInput: ReachOutInput): ReachOut
+    UpdateAddress(addressInput: AddressInput): Address
+    UpdateSchool(schoolInput: SchoolInput): School
+    UpdateCollege(collegeInput: CollegeInput): College
+    UpdateGraduation(graduationInput: GraduationInput): Graduation
 }
 
 schema {
