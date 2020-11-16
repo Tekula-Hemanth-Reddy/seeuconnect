@@ -8,9 +8,9 @@ function HindiCard()
 {
     return(
         <Card className="languageCard" style={{borderBottomColor:"#00c5fc"}}>
-        <CircularProgressbar value={75} 
+        <CircularProgressbar value={100} 
                              text='Hindi' 
-                             strokeWidth={5} 
+                             strokeWidth={3} 
                              className="progressBar" 
                              styles={buildStyles({
                                 textColor: "#00c5fc",

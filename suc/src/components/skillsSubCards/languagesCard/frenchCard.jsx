@@ -8,9 +8,9 @@ function FrenchCard()
 {
     return(
         <Card className="languageCard" style={{borderBottomColor:"orange"}}>
-        <CircularProgressbar value={75} 
+        <CircularProgressbar value={100} 
                              text='French' 
-                             strokeWidth={5} 
+                             strokeWidth={3} 
                              className="progressBar" 
                              styles={buildStyles({
                                 textColor: "orange",

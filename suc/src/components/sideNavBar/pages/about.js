@@ -23,13 +23,6 @@ function About() {
       </Col>
     </Row>
     
-    <Row >
-      <Col className="aboutMeDescCol">
-        <p className="aboutMeTextData">Hello,I’m Akshay Handge Creative Graphic Designer & User Experience Desiger based in Website, I create digital Products a more Beautiful and usable place. This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit quet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulpuate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt.
-        </p>
-      </Col>
-    </Row>
-    
     <Row>
       <Col>
         <Container>
@@ -50,19 +43,13 @@ function About() {
       <Col >
         <Container>
           <Row className="headerRow">
-            <Col xs={6} className="headerCol"><h4>Personal Details</h4></Col>
+            <Col xs={6} md="auto" className="headerCol"><h4>Personal Details</h4></Col>
           </Row>
           
           <Row className="commonRow">
-            <Col xs={3}>Full Name</Col>
-            <Col xs={1}>:</Col>
-            <Col xs={6}><p className="commonPara">Hemanth Tekula</p></Col>
-          </Row>
-
-          <Row className="commonRow">
-            <Col xs={3} ><p className="commonPara">Father's Name</p></Col>
+            <Col xs={3} style={{textAlign:"left"}}>Full Name</Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">Malla Reddy Tekula</p></Col>
+            <Col xs={6}><p className="commonPara">Hemanth Tekula</p></Col>
           </Row>
 
           <Row className="commonRow">

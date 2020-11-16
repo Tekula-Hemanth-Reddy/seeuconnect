@@ -1,7 +1,7 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as BsIcons from 'react-icons/bs';
+import * as MdIcons from 'react-icons/md';
 import * as GrIcons from 'react-icons/gr';
 import * as RiIcons from 'react-icons/ri';
 import * as BiIcons from 'react-icons/bi';
@@ -47,6 +47,24 @@ export const SidebarData = [
     title: 'Achievements',
     path: '/profile/edit/achievement',
     icon: <BiIcons.BiTrophy/>,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Languages',
+    path: '/profile/edit/language',
+    icon: <MdIcons.MdLanguage/>,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Courses',
+    path: '/profile/edit/course',
+    icon: <MdIcons.MdSubject/>,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Address',
+    path: '/profile/edit/address',
+    icon: <FaIcons.FaAddressBook/>,
     cName: 'nav-text'
   },
   {

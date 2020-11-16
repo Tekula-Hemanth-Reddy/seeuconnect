@@ -7,14 +7,14 @@ import 'react-circular-progressbar/dist/styles.css';
 function TeluguCard()
 {
     return(
-        <Card className="languageCard" style={{borderBottomColor:"red"}}>
-        <CircularProgressbar value={75} 
+        <Card className="languageCard" style={{borderBottomColor:"#28a745"}}>
+        <CircularProgressbar value={100} 
                              text='Telugu' 
-                             strokeWidth={5} 
+                             strokeWidth={3} 
                              className="progressBar" 
                              styles={buildStyles({
-                                textColor: "red",
-                                pathColor: "red",
+                                textColor: "#28a745",
+                                pathColor: "#28a745",
                               })}/>
         </Card>
     );
