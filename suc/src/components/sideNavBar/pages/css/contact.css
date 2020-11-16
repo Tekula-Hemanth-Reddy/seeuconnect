@@ -1,5 +1,5 @@
 .mainContactContainer{
-    background-color: #20232a;
+    background-color: #292727;
     color: white;
     margin-top: 05%;
     margin-left: 50vh;
@@ -9,7 +9,7 @@
 
 }
 .contactMeIcon{
-    color:#61dafb;
+    color:#007fbb;
     height:50px;
     width:60px;
     margin:30px 0px 20px 0px;
@@ -27,4 +27,8 @@
     text-Align:left;
     color:#5f5d5d;
     font-Size:17.5px;
+}
+.socialIcons{
+    height: 25px;
+    width: 25px;
 }

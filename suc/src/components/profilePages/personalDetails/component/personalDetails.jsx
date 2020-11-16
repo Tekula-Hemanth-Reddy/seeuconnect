@@ -233,95 +233,13 @@ export class PersonalDetails extends Component{
                         </Row>
                     </Col>
                 </Row>
-                <Row style={{textAlign:"left"}}>
-                    <Col>
-                        <p style={{marginLeft:"4px"}}>Address</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Row>
-                            <p className="personalDetailsGenderTitle">State</p>
-                        </Row>
-                        <Row className="personalDetailsTitleRow">
-                            <Col>
-                            <Form.Group>
-                                    <Form.Control 
-                                        size="text" 
-                                        type="text" 
-                                        placeholder="Telangana" 
-                                        ref={this.stateEl}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>             
-                    </Col>
-                    <Col>
-                        <Row>
-                            <p className="personalDetailsGenderTitle">City</p>
-                        </Row>
-                        <Row className="personalDetailsTitleRow">
-                            <Col>
-                            <Form.Group>
-                                    <Form.Control 
-                                        size="text" 
-                                        type="text" 
-                                        placeholder="Hyderabad" 
-                                        ref={this.cityEl}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>             
-                    </Col>
-                </Row>
-                <Row>
-                <Col xs={3}>
-                        <Row>
-                            <p className="personalDetailsFirstNameTitle">PinCode</p>
-                        </Row>
-                        <Row className="personalDetailsFirstNameRow">
-                            <Col>
-                                <div className="formRow">
-                                    <Form.Group>
-                                        <Form.Control 
-                                            size="text" 
-                                            type="text"
-                                            placeholder={"111111"}
-                                            ref={this.pinEl}
-                                        ></Form.Control>
-                                    <br />
-                                    </Form.Group>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col >
-                        <Row>
-                            <p className="personalDetailsFirstNameTitle">{"CompleteAddress"}</p>
-                        </Row>
-                        <Row className="personalDetailsFirstNameRow" 
-                        >
-                            <Col>
-                                <div className="formRow">
-                                    <Form.Group>
-                                        <Form.Control 
-                                            as="textarea"
-                                            rows={4} 
-                                            ref={this.addressEl}
-                                            placeholder={"Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"} 
-                                        ></Form.Control>
-                                    <br />
-                                    </Form.Group>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+
                 <Row >
-                    <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" type="submit" size="lg">Submit</Button>
-                    </Col>
+                <Col style={{textAlign:"right"}}>
+                    <Button className="buttonRow" variant="outline-primary" size="lg">Submit</Button>{' '}
+                </Col>
                 </Row>
+
                 </Container>
                 </Card>
                 </Form>
