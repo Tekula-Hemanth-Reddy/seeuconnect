@@ -21,12 +21,6 @@ function Experience() {
         </Col>
       </Row>
 
-      <Row >
-        <Col className="experienceDescCol">
-          <p className="experienceTextData">Proin gravida nibh vel velit quet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulpuate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt.
-          </p>
-        </Col>
-    </Row>
 
     <Row>
       <Col >

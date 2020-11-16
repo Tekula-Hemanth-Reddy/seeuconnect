@@ -23,12 +23,6 @@ function Skills() {
           </Col>
       </Row>
 
-      <Row >
-        <Col className="skillsDescCol">
-          <p className="skillsTextData">Proin gravida nibh vel velit quet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulpuate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt.
-          </p>
-        </Col>
-      </Row>
 
       <Row>
       <Col xs={1}><div><HIIcons.FaTags className="tagIcon"/></div></Col>

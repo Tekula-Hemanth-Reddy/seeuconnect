@@ -2,7 +2,7 @@
     background-color: #000000;
     height: 180px;
     width: 140px;
-    border-bottom-color:red;
+    border-bottom-color:#6f42c1;
     border-bottom-width: 4px;
     border-top-left-radius: 0;
     border-radius: 0;
@@ -11,12 +11,12 @@
 .cardWIcon{
     height: 50px;
     width: 50px;
-    color: red;
+    color: #6f42c1;
     margin-left: 30px;
     margin-top: 30px;
 }
 .cardWTitle{
     margin: 20px 0px 0px 0px;
-    font-weight: 600;
-    color: red;
+    font-weight: 500;
+    color:#6f42c1;
 }

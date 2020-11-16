@@ -8,7 +8,7 @@ function LogodesignCard()
     return(
         <Card className="mainLCard">
         <HIIcons.FaRegLightbulb className="cardLIcon"/>
-        <Card.Title className="cardLTitle">LogoDesign</Card.Title>
+        <Card.Title className="cardLTitle">DesignThinking</Card.Title>
         </Card>
 
     );

@@ -9,6 +9,9 @@ import Achievements from '../profilePages/achievements/component/achievement';
 import Project from '../profilePages/project/component/project';
 import ReachOut from '../profilePages/reachout/component/reachout';
 import Skill from '../profilePages/skills/component/skills';
+import Languages from '../profilePages/languages/component/languages';
+import Courses from '../profilePages/courses/component/courses';
+import Address from '../profilePages/address/component/address';
 
 function SideNavBar() {
   return (
@@ -23,6 +26,9 @@ function SideNavBar() {
           <Route path='/profile/edit/project' exact component={Project} />
           <Route path='/profile/edit/reachOut' component={ReachOut} />
           <Route path='/profile/edit/skill' component={Skill}/>
+          <Route path='/profile/edit/language' component={Languages}/>
+          <Route path='/profile/edit/course' component={Courses}/>
+          <Route path='/profile/edit/address' component={Address}/>
           </Switch>
       </Router>
     </div>
