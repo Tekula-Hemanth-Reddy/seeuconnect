@@ -55,10 +55,10 @@ module.exports = {
         const profile = await Profile.findById(pId.profileId);
         const address = await Address.find(profile.addressId);
 
-            address.state= args.addressInput.state;
-            address.city= args.addressInput.city;
-            address.location= args.addressInput.location;
-            address.pinCode= +args.addressInput.pinCode;
+            address.state= ""+args.addressInput.state;
+            address.city= ""+args.addressInput.city;
+            address.location= ""+args.addressInput.location;
+            address.pinCode= ""+args.addressInput.pinCode;
 
             const result = await address.save();
             return {...result._doc, _id: result._doc._id.toString(),

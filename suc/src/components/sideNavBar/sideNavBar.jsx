@@ -9,10 +9,14 @@ import Experience from './pages/experience';
 import Home from './pages/home';
 import Skills from './pages/skills';
 import EditSideBar from '../editSideNavBar/sideNavBar';
+import authContext from '../../context/auth-context';
 import Home1 from '../../screens/home/home';
 
-function SideNavBar() {
+const SideNavBar=() =>{
   return (
+    <authContext.Consumer>
+        {(context)=>{
+          return(
     <div>
       <Router>
         <Navbar />
@@ -26,7 +30,9 @@ function SideNavBar() {
           <Route path='/profile/edit' component={EditSideBar}/>
         </Switch>
       </Router>
-    </div>
+    </div>);
+    }}
+    </authContext.Consumer>
   );
 }
 

@@ -17,6 +17,7 @@ import StuEducation from '../screens/loginSignup/loading/student/stuEducation';
 import StuSchool from '../screens/loginSignup/loading/student/stuSchool';
 import StuCollege from '../screens/loginSignup/loading/student/stuCollege';
 import StuGraduation from '../screens/loginSignup/loading/student/stuGraduation';
+import EditSideBar from '../components/editSideNavBar/sideNavBar';
 
 class Routes extends Component {
     state = {
@@ -46,6 +47,7 @@ class Routes extends Component {
                             <Route path="/home" component={Home}/>
                             <Route path="/student" component={() => <LoginSignup typeUser="student"/>} />
                             <Route path="/profile" component={SideNavBar}/>
+                            <Route path='/profile/edit' component={EditSideBar}/>
 
                             <Route path="/alumni" component={() => <LoginSignup typeUser="alumni"/>} />
                             <Route path="/login" component={Partition} />

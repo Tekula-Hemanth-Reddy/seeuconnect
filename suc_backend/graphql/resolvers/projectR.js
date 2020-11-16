@@ -1,5 +1,6 @@
 const Project = require('../../models/project');
 const Profile = require('../../models/profile');
+const User = require('../../models/users');
 const { profileInfo } = require('./_merge');
 
 module.exports = {
