@@ -24,23 +24,43 @@ module.exports = {
         }
     },
 
-    CreateAddress : async (args, req) => {
-        if (!req.isAuth) {
-            throw new Error("Unauthenticated");
-        }
-        const pId = await User.findById(req.userId);
+    CreateAddress : async (args) => {
+        try {
+        const pId = await User.findById(args.userId);
         const address = new Address({
-            state: args.addressInput.state,
-            city: args.addressInput.city,
-            location: args.addressInput.location,
-            pinCode: +args.addressInput.pinCode,
+            state: null,
+            city: null,
+            location: null,
+            pinCode: null,
             profileId: pId.profileId
         });
-        try {
             const result = await address.save();
             const profile = await Profile.findById(result._doc.profileId);
             profile.addressId = result.id;
             await profile.save();
+            return {...result._doc, _id: result._doc._id.toString(),
+                profile: profileInfo.bind(this,result._doc.profileId)
+                };
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    UpdateAddress : async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        try {
+        const pId = await User.findById(req.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const address = await Address.find(profile.addressId);
+
+            address.state= args.addressInput.state;
+            address.city= args.addressInput.city;
+            address.location= args.addressInput.location;
+            address.pinCode= +args.addressInput.pinCode;
+
+            const result = await address.save();
             return {...result._doc, _id: result._doc._id.toString(),
                 profile: profileInfo.bind(this,result._doc.profileId)
                 };

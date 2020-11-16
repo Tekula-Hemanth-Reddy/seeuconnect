@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './css/loginSignup.css';
 import authContext from '../../context/auth-context';
+import history from '../../history/history';
 
 class Login extends Component {
     constructor(props){
@@ -47,6 +48,7 @@ class Login extends Component {
             console.log(resData);
             if(resData.data.login.token){
                 this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
+                history.push('/alumniProfile');
             }
         })
         .catch(err => {

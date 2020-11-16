@@ -3,7 +3,8 @@ import {Container,Card,Form,Button,Image} from 'react-bootstrap';
 import '../_css/details.css';
 import BackGround from '../../../../assets/images/background/background1.jpg';
 import authContext from '../../../../context/auth-context';
-
+import NavBar from '../../../Components/navBar/component/alumniNavbar';
+import history from '../../../../history/history';
 
 class Details extends Component{
     constructor(props){
@@ -65,6 +66,7 @@ class Details extends Component{
         })
         .then(resData => {
             console.log(resData);
+            history.push('/alumniProfile');
         })
         .catch(err => {
             console.log(err);
@@ -73,6 +75,7 @@ class Details extends Component{
     render(){
         return(
             <div style={{backgroundColor:"#000"}}>
+                <NavBar />
                 <Container className="detailsContainer">
                     <Form onSubmit={this.submitHandler}>
                         <h2>Personel Details</h2>

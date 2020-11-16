@@ -4,28 +4,22 @@ const Schema = mongoose.Schema;
 
 const CollegeSchema = new Schema({
     collegeName : {
-        type: String,
-        required: true
+        type: String
     },
     collegeGrade : {
-        type: Number,
-        required: true
+        type: Number
     },
     collegeCourse : {
-        type: String,
-        required: true
+        type: String
     },
     collegeBoard : {
-        type: String,
-        required: true
+        type: String
     },
     collegeYear : {
-        type: Number,
-        required: true
+        type: Number
     },
     educationId : {
         type: Schema.Types.ObjectId,
-        required: true,
         ref: "Education"
     }
 });

@@ -24,18 +24,39 @@ module.exports = {
     },
 
     CreateSchool : async args =>{
-        const school = new School({
-            schoolName: args.schoolInput.schoolName,
-            schoolGrade: +args.schoolInput.schoolGrade,
-            schoolBoard: args.schoolInput.schoolBoard,
-            schoolYear: +args.schoolInput.schoolYear,
-            educationId: args.schoolInput.study
-        });
         try {
+        const pId = await User.findById(args.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const school = new School({
+            schoolName: null,
+            schoolGrade: null,
+            schoolBoard: null,
+            schoolYear: null,
+            educationId: profile.educationId
+        });
             const result = await school.save();
-            const educate = await Education.findById(result._doc.educationId);
+            const educate = await Education.findById(profile.educationId);
             educate.schoolId = result._doc._id.toString();
             await educate.save();
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
+        } catch (err) {
+            throw err;
+        }
+    },
+    UpdateSchool : async (args,req) =>{
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        try {
+        const pId = await User.findById(req.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const educate = await Education.findById(profile.educationId);
+        const school = await School.findById(educate.schoolId);
+            school.schoolName= args.schoolInput.schoolName;
+            school.schoolGrade= +args.schoolInput.schoolGrade;
+            school.schoolBoard= args.schoolInput.schoolBoard;
+            school.schoolYear= +args.schoolInput.schoolYear;
+            const result = await school.save();
             return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
@@ -58,19 +79,43 @@ module.exports = {
     },
 
     CreateCollege : async args =>{
-        const college = new College({
-            collegeName: args.collegeInput.collegeName,
-            collegeGrade: +args.collegeInput.collegeGrade,
-            collegeCourse: args.collegeInput.collegeCourse,
-            collegeBoard: args.collegeInput.collegeBoard,
-            collegeYear: +args.collegeInput.collegeYear,
-            educationId: args.collegeInput.study
-        });
         try {
+            const pId = await User.findById(args.userId);
+            const profile = await Profile.findById(pId.profileId);
+            const college = new College({
+            collegeName: null,
+            collegeGrade: null,
+            collegeCourse: null,
+            collegeBoard: null,
+            collegeYear: null,
+            educationId: profile.educationId
+        });
             const result = await college.save();
             const educate = await Education.findById(result._doc.educationId);
             educate.collegeId = result._doc._id.toString();
             await educate.save();
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    UpdateCollege : async (args,req) =>{
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        try {
+        const pId = await User.findById(req.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const educate = await Education.findById(profile.educationId);
+        const college = await College.findById(educate.collegeId);
+            college.collegeName= args.collegeInput.collegeName;
+            college.collegeGrade= +args.collegeInput.collegeGrade;
+            college.collegeCourse= args.collegeInput.collegeCourse;
+            college.collegeBoard= args.collegeInput.collegeBoard;
+            college.collegeYear= +args.collegeInput.collegeYear;
+
+            const result = await college.save();
             return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
@@ -94,20 +139,46 @@ module.exports = {
     },
 
     CreateGraduation : async args =>{
-        const graduation = new Graduation({
-            graduationCollegeName: args.graduationInput.graduationCollegeName,
-            graduationCollegeGrade: +args.graduationInput.graduationCollegeGrade,
-            graduationUniversity: args.graduationInput.graduationUniversity,
-            graduationCourse: args.graduationInput.graduationCourse,
-            graduationStream: args.graduationInput.graduationStream,
-            graduationYear: +args.graduationInput.graduationYear,
-            educationId: args.graduationInput.study
-        });
         try {
+            const pId = await User.findById(args.userId);
+            const profile = await Profile.findById(pId.profileId);
+            const graduation = new Graduation({
+                graduationCollegeName: null,
+                graduationCollegeGrade: null,
+                graduationUniversity: null,
+                graduationCourse: null,
+                graduationStream: null,
+                graduationYear: null,
+                educationId: profile.educationId
+            });
             const result = await graduation.save();
             const educate = await Education.findById(result._doc.educationId);
             educate.graduationId = result._doc._id.toString();
             await educate.save();
+            return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    UpdateGraduation : async (args,req) =>{
+        if (!req.isAuth) {
+            throw new Error("Unauthenticated");
+        }
+        try {
+        const pId = await User.findById(req.userId);
+        const profile = await Profile.findById(pId.profileId);
+        const educate = await Education.findById(profile.educationId);
+        const graduation = await Graduation.findById(educate.graduationId);
+
+            graduation.graduationCollegeName= args.graduationInput.graduationCollegeName;
+            graduation.graduationCollegeGrade= +args.graduationInput.graduationCollegeGrade;
+            graduation.graduationUniversity= args.graduationInput.graduationUniversity;
+            graduation.graduationCourse= args.graduationInput.graduationCourse;
+            graduation.graduationStream= args.graduationInput.graduationStream;
+            graduation.graduationYear= +args.graduationInput.graduationYear;
+        
+            const result = await graduation.save();
             return { ...result._doc, _id: result.id, education: infoEducation(result._doc.educationId) };
         } catch (err) {
             throw err;
@@ -137,18 +208,15 @@ module.exports = {
         }
     },
 
-    CreateEducation : async (args, req) => {
-        if (!req.isAuth) {
-            throw new Error("Unauthenticated");
-        }
-        const pId = await User.findById(req.userId);
+    CreateEducation : async (args) => {
+        try {
+        const pId = await User.findById(args.userId);
         const education = new Education({
             schoolId: null,
             collegeId: null,
             graduationId: null,
             profileId: pId.profileId
         });
-        try {
             const result = await education.save();
             const profile = await Profile.findById(result._doc.profileId);
             profile.educationId = result.id;
