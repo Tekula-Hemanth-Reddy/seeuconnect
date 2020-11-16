@@ -1,13 +1,14 @@
 .reachOutContainer{
-    background-color: #292727;
-    margin-top: 40px;
-    height: 700px;
+    background-color: transparent;
+    margin-top: 0px;
+    height: 780px;
     width: 600px;
     padding:50px;
+    margin-bottom: 0px;
     
 }
 .reachOutTitleStyle{
-    color:  #61dafb;
+    color:  #007bff;
     font-size: 25px;
     text-align: center;
 }

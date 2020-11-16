@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
 import '../styles/styles.css';
 
 export class PersonalDetails extends Component{
@@ -8,6 +8,7 @@ export class PersonalDetails extends Component{
     {
         return(
             <Container className="personalDetailsContainer">
+                <Card style={{borderColor:"#007fbb",borderWidth:"2px",backgroundColor:"transparent",padding:"15px"}}>
                 <Row>
                     <Col><p className="personalDetailsTitle">Personal Details</p></Col>
                 </Row>
@@ -213,6 +214,8 @@ export class PersonalDetails extends Component{
                 </Row>
                 
                 </Container>
+                
+                </Card>
 
             </Container>
 

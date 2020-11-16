@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
 import './styles/styles.css';
 
 export  class Schooling extends Component
@@ -13,6 +13,8 @@ export  class Schooling extends Component
         const { values, inputChange } = this.props;
     return(
         <Container className="schoolContainer">
+        <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+
             <Row>
                 <Col><p className="titleStyle">Secondary(X) Details</p></Col>
             </Row>
@@ -121,7 +123,7 @@ export  class Schooling extends Component
                     <Button className="buttonRow" size="lg" variant="outline-primary"  onClick={this.continue}>Next</Button>{' '}
                 </Col>
             </Row>
-
+            </Card>
         </Container>
 
     );

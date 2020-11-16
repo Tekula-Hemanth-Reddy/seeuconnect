@@ -17,32 +17,7 @@ import Requirement from '../AlumniPart/Screens/_entryOptions/_component/requirem
 import authContext from '../context/auth-context';
 import AlumniLoader from '../screens/loginSignup/loading/alumni/alumniLoader';
 
-class Routes extends Component
-{
-<<<<<<< HEAD
-    return(
-        <div>
-        <Router history={history}>
-                <Switch>
-                    <Redirect from="/" to="/home" exact />
-                    <Route path="/education" component={Schooling}/>  
-                    <Route path="/home" component={Home}/>
-                    <Route path="/student" component={LoginSignup} />
-                    <Route path="/profile" component={SideNavBar}/>
-                    <Route path="/login" component={Partition} />
-                    <Route path="/personalDetails" component={PersonalDetails}/>  
-                    <Route path="/reachout" component={ReachOut}/>  
-                    <Route path="/project" component={Project}/>  
-                    <Route path="/experience" component={Experience}/>  
-                    <Route path="/ach" component={Achievement}/>  
-                    <Route path="/alumni" component={Alumni} />
-                    <Route path="/details" component={AlumniDetails} />
-                    <Route path="/requirement" component={Requirement} />
-                </Switch>
-            </Router>
-        </div>
-    );
-=======
+class Routes extends Component {
     state = {
         token: null,
         userId: null,
@@ -80,6 +55,11 @@ class Routes extends Component
                             <Route path="/alumniProfile" component={Alumni} />
                             <Route path="/details" component={AlumniDetails} />
                             <Route path="/requirement" component={Requirement} />
+                            <Route path="/personalDetails" component={PersonalDetails} />
+                            <Route path="/reachOut" component={ReachOut} />
+                            <Route path="/project" component={Project} />
+                            <Route path="/experience" component={Experience} />     
+                            <Route path="/achievement" component={Achievement} />               
                             {this.state.idUser && <Route path="/loading" component={AlumniLoader} alumniId={this.state.idUser}/>}
                         </Switch>
                     </authContext.Provider>
@@ -87,7 +67,6 @@ class Routes extends Component
             </div>
         );
     }
->>>>>>> fe5103cef9c3f39deab18ee8661bbed2efcf290a
 }
 
 export default Routes;

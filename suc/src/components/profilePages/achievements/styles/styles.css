@@ -1,13 +1,13 @@
 .projectContainer{
-    background-color: #292727;
-    margin-top: 40px;
-    height: 700px;
+    background-color: #181616;
     width: 600px;
-    padding:50px;
+    height: 780px;
+    margin-top: -20px;
+    
     
 }
 .projectTitleStyle{
-    color:  #61dafb;
+    color:  #007bff;
     font-size: 25px;
     text-align: center;
 }

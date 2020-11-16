@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
 import '../styles/styles.css';
 
 export class Experience extends Component
@@ -8,6 +8,8 @@ export class Experience extends Component
     {
         return(
            <Container className="projectContainer">
+           <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+
                 <Row>
                 <Col><p className="projectTitleStyle">Add Experience</p></Col>
                 </Row>
@@ -122,7 +124,7 @@ export class Experience extends Component
                         <Button className="buttonRow" variant="outline-primary" size="lg">Add</Button>{' '}
                     </Col>
                 </Row>
-                
+                </Card>
            </Container>
 
 

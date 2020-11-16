@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
 import './styles/styles.css';
 
 export class Graduation extends Component
@@ -20,6 +20,7 @@ export class Graduation extends Component
         const { values, inputChange } = this.props;
     return(
         <Container className="schoolContainer">
+        <Card style={{borderColor:"#007fbb",borderWidth:"2px",width:"90%",backgroundColor:"transparent",padding:"20px"}}>
             <Row>
                 <Col><p className="titleStyle">Graduation Details</p></Col>
             </Row>
@@ -232,7 +233,7 @@ export class Graduation extends Component
                 </Col>
             </Row>
 
-
+            </Card>
         </Container>
 
     );

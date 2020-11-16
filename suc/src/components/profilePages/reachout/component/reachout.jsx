@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
 import '../styles/styles.css';
 
 export class ReachOut extends Component
@@ -8,6 +8,8 @@ export class ReachOut extends Component
     {
         return(
            <Container className="reachOutContainer">
+           <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+
                 <Row>
                 <Col><p className="reachOutTitleStyle">Reach Out</p></Col>
                 </Row>
@@ -105,7 +107,7 @@ export class ReachOut extends Component
                         <Button className="buttonRow" variant="outline-primary" size="lg">Submit</Button>{' '}
                     </Col>
                 </Row>
-                
+                </Card>
            </Container>
 
 
