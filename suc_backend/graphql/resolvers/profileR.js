@@ -1,5 +1,6 @@
 const Profile = require('../../models/profile');
 const User = require('../../models/users');
+const Address = require('../../models/address');
 const { userInfo, educationInfo, reachOutInfo, additionalInfo, achievementInfo, languageInfo, courseInfo, projectInfo, positionInfo, skillInfo, addressInfo } = require('./_merge');
 
 module.exports = {
@@ -39,7 +40,8 @@ module.exports = {
             phoneNumber: null,
             photo: null,
             portFolio: null,
-            status: null,
+            email: user.email,
+            status: false,
             interestedIntern: null,
             strength: null,
             addressId: null,
@@ -81,14 +83,23 @@ module.exports = {
         try{
         const user = await User.findById(req.userId);
         const result = await Profile.findById(user._doc.profileId);
-            result.about= args.profileInput.about;
-            result.phoneNumber= args.profileInput.phoneNumber;
-            result.photo= args.profileInput.photo;
-            result.portFolio= args.profileInput.portFolio;
-            result.status= args.profileInput.status;
+            result.name= ""+args.profileInput.name;
+            result.phoneNumber= ""+args.profileInput.phoneNumber;
+            result.photo= null;
+            result.portFolio= ""+args.profileInput.portFolio;
             result.interestedIntern= args.profileInput.interestedIntern;
             result.strength= 10;
+
             await result.save();
+
+            const address = await Address.find(result.addressId);
+            address.state= ""+args.profileInput.state;
+            address.city= ""+args.profileInput.city;
+            address.location= ""+args.profileInput.location;
+            address.pinCode= ""+args.profileInput.pinCode;
+
+            await address.save();
+
             return { ...result._doc, _id: result._doc._id.toString(),
                 addresses: addressInfo.bind(this,result._doc._id.toString()),
                 skills: skillInfo.bind(this,result._doc._id.toString()),

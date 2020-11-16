@@ -9,12 +9,16 @@ import Achievements from '../profilePages/achievements/component/achievement';
 import Project from '../profilePages/project/component/project';
 import ReachOut from '../profilePages/reachout/component/reachout';
 import Skill from '../profilePages/skills/component/skills';
+import authContext from '../../context/auth-context';
 import Languages from '../profilePages/languages/component/languages';
 import Courses from '../profilePages/courses/component/courses';
 import Address from '../profilePages/address/component/address';
 
-function SideNavBar() {
+const SideNavBar=()=> {
   return (
+    <authContext.Consumer>
+        {(context)=>{
+          return(
     <div style={{backgroundColor:" #181616"}}>
       <Router>
         <Navbar />
@@ -31,7 +35,9 @@ function SideNavBar() {
           <Route path='/profile/edit/address' component={Address}/>
           </Switch>
       </Router>
-    </div>
+    </div>);
+  }}
+  </authContext.Consumer>
   );
 }
 

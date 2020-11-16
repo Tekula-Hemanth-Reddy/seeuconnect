@@ -1,13 +1,84 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
+import history from '../../../../history/history';
 import '../styles/styles.css';
 
 export class PersonalDetails extends Component{
+
+    constructor(props){
+        super(props);
+        this.titleEl = React.createRef();
+        this.pEl = React.createRef();
+        this.iEl = React.createRef();
+        this.firstEl = React.createRef();
+        this.lastEl = React.createRef();
+        this.phonePersonEl = React.createRef();
+        this.stateEl = React.createRef();
+        this.cityEl = React.createRef();
+        this.pinEl = React.createRef();
+        this.addressEl = React.createRef();
+        this.websiteEl = React.createRef();
+    }
+
+    static contextType = authContext;
+
+    submitHandler = (event) =>{
+        event.preventDefault();
+        const Title = ""+this.titleEl.current.value;
+        const Phn = ""+this.pEl.current.value;
+        const intrested = ""+this.iEl.current.value==="false"?"false":"true";
+        const FirstName = ""+this.firstEl.current.value;
+        const LastName = ""+this.lastEl.current.value;
+        const Phone = ""+this.phonePersonEl.current.value;
+        const State = ""+this.stateEl.current.value;
+        const City = ""+this.cityEl.current.value;
+        const Pin = ""+this.pinEl.current.value;
+        const Website = ""+this.websiteEl.current.value;
+        const Address = ""+this.addressEl.current.value;
+
+        const requestBody = {
+            query: `
+            mutation{
+                UpdateProfile(profileInput:{name:"${Title}${FirstName}${" "}${LastName}",phoneNumber:"${Phn}${" "}${Phone}",portFolio:"${Website}",interestedIntern:${intrested},state:"${State}",city:"${City}",pinCode:"${Pin}",location:"${Address}"}){
+                  _id
+                  name
+                  phoneNumber
+                }
+              }
+            `
+        };
+
+        const token = this.context.token;
+        console.log(token);
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            console.log(resData);
+            history.push('/profile/edit/education');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
 
     render()
     {
         return(
             <Container className="personalDetailsContainer">
+                <Form onSubmit={this.submitHandler}>
                 <Card style={{borderColor:"#007fbb",borderWidth:"2px",backgroundColor:"transparent",padding:"15px"}}>
                 <Row>
                     <Col><p className="personalDetailsTitle">Personal Details</p></Col>
@@ -21,18 +92,19 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
-                                <Form>
+                                
                                     <Form.Group controlId="exampleForm.ControlSelect1">
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        ref={this.titleEl}
                                         >
                                         <option>Mr.</option>
                                         <option>Mrs.</option>
                                         <option>Ms.</option>
                                         </Form.Control>
                                     </Form.Group>
-                                </Form>
+                                
                             </Col>
                         </Row>             
                     </Col>
@@ -42,15 +114,16 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow">
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="text" 
+                                            type="text"
+                                            ref={this.firstEl} 
                                         />
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -60,15 +133,16 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow">
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="text" 
+                                            type="text"
+                                            ref={this.lastEl} 
                                         />
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -81,16 +155,17 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow">
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"+91"} 
+                                            placeholder={"+91"}
+                                            ref={this.pEl} 
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -102,16 +177,17 @@ export class PersonalDetails extends Component{
                         style={{marginTop:"24px",
                         right:"15px"}}>
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"9848274559"} 
+                                            placeholder={"9848274559"}
+                                            ref={this.phonePersonEl}
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -123,16 +199,17 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow">
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="url"
-                                            placeholder={"www.elonmusk.com"} 
+                                            type="text"
+                                            placeholder={"www.elonmusk.com"}
+                                            ref={this.websiteEl}
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -142,17 +219,16 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow" style={{marginTop:"-23px"}}>
                             <Col>
-                                <Form>
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        ref={this.iEl}
                                         >
                                         <option>Yes</option>
                                         <option>No</option>
                                         </Form.Control>
                                     </Form.Group>
-                                </Form>
                             </Col>
                         </Row>
                     </Col>
@@ -165,9 +241,8 @@ export class PersonalDetails extends Component{
                 </Row>
 
                 </Container>
-                
                 </Card>
-
+                </Form>
             </Container>
 
 

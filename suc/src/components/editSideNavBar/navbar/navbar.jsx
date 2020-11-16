@@ -28,10 +28,10 @@ const SideNavBar = () => {
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
-                  <a href={item.path}>
+                  <Link to={item.path}>
                     {item.icon} 
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}

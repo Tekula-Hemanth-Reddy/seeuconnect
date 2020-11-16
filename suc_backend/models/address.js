@@ -13,7 +13,7 @@ const AddressSchema = new Schema({
         type: String
     },
     pinCode: {
-        type: Number
+        type: String
     },
     profileId: {
         type: Schema.Types.ObjectId,

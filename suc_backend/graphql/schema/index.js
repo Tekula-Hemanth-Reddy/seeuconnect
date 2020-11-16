@@ -157,14 +157,14 @@ type Address {
     state: String
     city: String
     location: String
-    pinCode: Float
+    pinCode: String
     profile: Profile!
 }
 input AddressInput {
     state: String
     city: String
     location: String
-    pinCode: Float
+    pinCode: String
 }
 
 type School {
@@ -233,7 +233,7 @@ input EducationInput {
 
 type Profile {
     _id: ID!
-    about: String
+    name: String
     phoneNumber: String
     photo: String
     portFolio: String
@@ -254,12 +254,15 @@ type Profile {
 }
 
 input ProfileInput{
-    about: String
+    name: String
     phoneNumber: String
-    photo: String
     portFolio: String
-    status: Boolean
     interestedIntern: Boolean
+    state: String
+    city: String
+    pinCode: String
+    location: String
+    userId: String
 }
 
 type Latest{

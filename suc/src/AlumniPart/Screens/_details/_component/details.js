@@ -182,14 +182,13 @@ class Details extends Component{
                             </div>
                             <div className="row">
                                 <div className="col-lg-2 col-md-2 col-sm-2 col-xl-2">
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Group>
                                         <Form.Control 
-                                        as="select"
-                                        ref={this.pEl}
-                                        >
-                                        <option>+91</option>
-                                        <option>+060</option>
-                                        </Form.Control>
+                                            size="text" 
+                                            type="text"
+                                            placeholder={"+91"}
+                                            ref={this.pEl} 
+                                        ></Form.Control>
                                     </Form.Group>
                                 </div>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5">
@@ -233,14 +232,13 @@ class Details extends Component{
                                 <div className="col-lg-7 col-md-7 col-sm-7 col-xl-7">
                                     <div className="row">
                                     <div className="col-lg-3 col-md-3 col-sm-3 col-xl-3">
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Group>
                                         <Form.Control 
-                                        as="select"
-                                        ref={this.cEl}
-                                        >
-                                        <option>+91</option>
-                                        <option>+060</option>
-                                        </Form.Control>
+                                            size="text" 
+                                            type="text"
+                                            placeholder={"+91"}
+                                            ref={this.cEl} 
+                                        ></Form.Control>
                                     </Form.Group>
                                 </div>
                                 <div className="col-lg-9 col-md-9 col-sm-9 col-xl-9">

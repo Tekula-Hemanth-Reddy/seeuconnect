@@ -1,14 +1,67 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Card,Form,Button} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
+import history from '../../../../history/history';
 import '../styles/styles.css';
 
 export class Skills extends Component{
+
+    
+    constructor(props){
+        super(props);
+        this.nameEl = React.createRef();
+        this.rangeEl = React.createRef();
+    }
+
+    static contextType = authContext;
+
+    submitHandler = (event) =>{
+        event.preventDefault();
+        const Name = ""+this.nameEl.current.value;
+        const Range = Number(""+this.rangeEl.current.value);
+        const requestBody = {
+            query: `
+            mutation{
+                CreateSkill(skillInput:{skill:"${Name}",rating:${Range}})
+                {
+                  skill
+                  rating
+                }
+              }
+            `
+        };
+
+        const token = this.context.token;
+        console.log(token);
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            console.log(resData);
+            history.push('/profile/edit');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
 
     render()
     {
         return(
                 <Container className="skillsContainer">
-
+                    <Form onSubmit={this.submitHandler}>
                 <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
 
                     <Row>
@@ -23,11 +76,12 @@ export class Skills extends Component{
 
                     <Row className="personalDetailsTitleRow" style={{marginLeft:"10px"}}>
                             <Col md="auto">
-                                <Form>
+                                
                                     <Form.Group controlId="exampleForm.ControlSelect1">
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        ref={this.nameEl}
                                         >
                                         <option>C</option>
                                         <option>C++</option>
@@ -48,7 +102,7 @@ export class Skills extends Component{
                                         <option>Graphql</option>
                                         </Form.Control>
                                     </Form.Group>
-                                </Form>
+                                
                             </Col>
                         </Row>             
 
@@ -61,26 +115,28 @@ export class Skills extends Component{
                         
                         <Row className="personalDetailsFirstNameRow" style={{marginLeft:"10px"}}>
                             <Col md="auto">
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
                                             type="number" 
                                             placeholder="75"
+                                            ref={this.rangeEl}
                                         />
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
 
                         <Row style={{marginRight:"10px",marginBottom:"10px"}} >
                             <Col style={{textAlign:"right"}}>
-                                <Button className="buttonRow" variant="outline-primary" size="lg">Add</Button>{' '}
+                                <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Add</Button>{' '}
                             </Col>
                         </Row>
 
                         </Card>
+                        </Form>
                 </Container>
             );
     }
