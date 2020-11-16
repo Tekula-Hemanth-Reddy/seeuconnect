@@ -1,0 +1,16 @@
+.skillsContainer{
+    background-color: #292727;
+    background-color: transparent;    
+    width: 40%;
+    height:760px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+   
+   
+}
+.addSkillTitle{
+    color: #007fbb;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+}

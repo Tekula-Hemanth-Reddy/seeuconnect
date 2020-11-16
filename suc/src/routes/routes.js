@@ -6,6 +6,11 @@ import Home from '../screens/home/home';
 import SideNavBar from '../components/sideNavBar/sideNavBar';
 import Schooling from '../components/profilePages/education/education';
 import Partition from '../screens/partition/_component/partition';
+import PersonalDetails from '../components/profilePages/personalDetails/component/personalDetails';
+import ReachOut from '../components/profilePages/reachout/component/reachout';
+import Project from '../components/profilePages/project/component/project';
+import Experience from '../components/profilePages/experience/component/experience';
+import Achievement from '../components/profilePages/achievements/component/achievement';
 import Alumni from '../AlumniPart/Screens/_alumni/_component/alumni';
 import AlumniDetails from '../AlumniPart/Screens/_details/_component/details';
 import Requirement from '../AlumniPart/Screens/_entryOptions/_component/requirement';
@@ -19,8 +24,7 @@ import StuSchool from '../screens/loginSignup/loading/student/stuSchool';
 import StuCollege from '../screens/loginSignup/loading/student/stuCollege';
 import StuGraduation from '../screens/loginSignup/loading/student/stuGraduation';
 
-class Routes extends Component
-{
+class Routes extends Component {
     state = {
         token: null,
         userId: null,
@@ -55,6 +59,11 @@ class Routes extends Component
                             <Route path="/alumniProfile" component={() => <Alumni alumniId={this.state.userId}/>}/>
                             <Route path="/details" component={() => <AlumniDetails alumniId={this.state.userId}/>} />
                             <Route path="/requirement" component={Requirement} />
+                            <Route path="/personalDetails" component={PersonalDetails} />
+                            <Route path="/reachOut" component={ReachOut} />
+                            <Route path="/project" component={Project} />
+                            <Route path="/experience" component={Experience} />     
+                            <Route path="/achievement" component={Achievement} />               
                             {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={this.state.idUser}/>}/>}
                             {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={this.state.idUser}/>}/>}
                             {this.state.idUser && <Route path="/stuaddloading" component={() => <StuAddress studentId={this.state.idUser}/>}/>}

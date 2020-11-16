@@ -6,3 +6,14 @@
     height: 80%;
     width: 60%;
 }
+.educationIcon{
+    color:#61dafb;
+    height:50px;
+    width:60px;
+    margin:30px 0px 20px 0px;
+}
+.educationText{
+    margin:30px 0px 20px 0px;
+    font-Size:35px;
+    font-Style:Bold;
+}
