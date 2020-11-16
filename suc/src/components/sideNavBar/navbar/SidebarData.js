@@ -47,12 +47,6 @@ export const SidebarData = [
     path: '/profile/edit',
     icon: <RiIcons.RiEditBoxLine />,
     cName: 'nav-text'
-  },
-  {
-    title: 'Log Out',
-    path: '/home',
-    icon: <RiIcons.RiLogoutCircleRLine />,
-    cName: 'nav-text'
-  }  
+  }
 
 ];

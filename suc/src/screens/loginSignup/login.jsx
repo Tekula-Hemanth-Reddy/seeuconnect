@@ -48,7 +48,12 @@ class Login extends Component {
             console.log(resData);
             if(resData.data.login.token){
                 this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
-                history.push('/alumniProfile');
+                if(resData.data.login.userType==='alumni'){
+                    history.push('/alumniProfile');
+                }
+                if(resData.data.login.userType==='student'){
+                    history.push('/profile');
+                }
             }
         })
         .catch(err => {

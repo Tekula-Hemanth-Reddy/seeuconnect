@@ -116,6 +116,47 @@ export class PersonalDetails extends Component{
                         </Row>
                     </Col>
                 </Row>
+                <Row>
+                    <Col xs={8}>
+                        <Row>
+                            <p className="personalDetailsFirstNameTitle">Portfolio</p>
+                        </Row>
+                        <Row className="personalDetailsFirstNameRow">
+                            <Col>
+                                <Form className="formRow">
+                                    <Form.Group>
+                                        <Form.Control 
+                                            size="text" 
+                                            type="url"
+                                            placeholder={"www.elonmusk.com"} 
+                                        ></Form.Control>
+                                    <br />
+                                    </Form.Group>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col xs={4}>
+                        <Row>
+                            <p className="personalDetailsFirstNameTitle">Interested Intern</p>
+                        </Row>
+                        <Row className="personalDetailsFirstNameRow" style={{marginTop:"-23px"}}>
+                            <Col>
+                                <Form>
+                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                        <Form.Label></Form.Label>
+                                        <Form.Control 
+                                        as="select"
+                                        >
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
                 <Row style={{textAlign:"left"}}>
                     <Col>
                         <p style={{marginLeft:"4px"}}>Address</p>

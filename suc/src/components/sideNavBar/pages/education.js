@@ -9,7 +9,7 @@ export class Education extends Component
   render()
   {
     return (
-      <Container className='mainContainer'>
+      <Container className='mainEducationContainer'>
         <Row>
           <Col xs={1}>
             <div>

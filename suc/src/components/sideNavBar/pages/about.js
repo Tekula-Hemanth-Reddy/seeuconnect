@@ -10,7 +10,7 @@ import './css/about.css';
 
 function About() {
   return (
-    <Container className='mainContainer'>
+    <Container className='mainAboutContainer'>
     <Row>
       <Col xs={1}>
         <div>

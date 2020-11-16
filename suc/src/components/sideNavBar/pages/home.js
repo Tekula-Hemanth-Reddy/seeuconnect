@@ -8,7 +8,7 @@ import AdityaImage from '../../../assets/images/background.png';
 function Home() {
   return (
     
-    <Container className="mainContainer">
+    <Container className="mainHomeContainer">
       <Row>
       <Col xs={6}>
       <div className="subDivision" style={{alignItems:"flex-start"}}>
