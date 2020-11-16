@@ -20,9 +20,75 @@ class Details extends Component{
         this.emailEl = React.createRef();
         this.addressEl = React.createRef();
         this.websiteEl = React.createRef();
+        this.state = {
+            userId: this.props.alumniId,
+            title: "",
+            name: "",
+            phone: "",
+            email: "",
+            company: "",
+            cmpPhone: "",
+            cmpMail: "",
+            cmpAddress: "",
+            cmpWebsite: ""
+          };
     }
 
     static contextType = authContext;
+
+    componentDidMount(){
+        const requestBody = {
+          query: `
+          query{
+            jobGivers(userId:"${this.state.userId}"){
+              name
+              personPhone
+              personMail
+              companyName
+              companyPhone
+              companyMail
+              companyAddress
+              companyWebsite
+              users{
+                name
+              }
+            }
+          }
+          `
+      };
+    
+      const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json'
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data.jobGivers});
+              this.setState({title: resData.data.jobGivers.users.name,
+              name: resData.data.jobGivers.name,
+              phone: resData.data.jobGivers.personPhone,
+              email: resData.data.jobGivers.personMail,
+              company: resData.data.jobGivers.companyName,
+              cmpPhone: resData.data.jobGivers.companyPhone,
+              cmpMail: resData.data.jobGivers.companyMail,
+              cmpAddress: resData.data.jobGivers.companyAddress,
+              cmpWebsite: resData.data.jobGivers.companyWebsite});
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
 
     submitHandler = (event) =>{
         event.preventDefault();

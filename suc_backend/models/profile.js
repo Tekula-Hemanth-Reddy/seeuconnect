@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
-    about: {
+    Name: {
         type: String
     },
     phoneNumber: {
         type: Number
+    },
+    Email: {
+        type: String
     },
     photo: {
         type: String

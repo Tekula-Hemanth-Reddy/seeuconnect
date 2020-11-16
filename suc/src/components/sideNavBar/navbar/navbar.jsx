@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
+import {Button} from 'react-bootstrap';
 import * as RiIcons from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './navbar.css';
 import { IconContext } from 'react-icons';
+import authContext from '../../../context/auth-context';
 
 function SideNavBar() {
   const [sidebar, setSidebar] = useState(false);
@@ -13,6 +14,9 @@ function SideNavBar() {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
+    <authContext.Consumer>
+        {(context)=>{
+          return(
     <div>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
@@ -38,10 +42,15 @@ function SideNavBar() {
                 </li>
               );
             })}
+            <li className="nav-text" style={{marginLeft:"-2px"}}>
+              <Button href="/home" variant="outline-primary" size="lg" style={{borderWidth:"0px"}} onClick={context.logout}><RiIcons.RiLogoutCircleRLine style={{marginRight:"20px"}}/>Log Out</Button>
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>
-    </div>
+    </div>);
+    }}
+    </authContext.Consumer>
   );
 }
 

@@ -9,7 +9,7 @@ import './css/contact.css';
 
 function Contact() {
   return (
-    <Container className="mainContainer">
+    <Container className="mainContactContainer">
       <Row>
         <Col xs={1}>
           <div>
