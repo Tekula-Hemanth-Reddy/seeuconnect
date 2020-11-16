@@ -10,7 +10,7 @@ import './css/skills.css';
 
 function Skills() {
   return (
-    <Container className="skillsContainer">
+    <Container className="skillsContainer1">
       
       <Row>
           <Col xs={1}>
