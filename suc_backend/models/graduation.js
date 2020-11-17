@@ -7,7 +7,7 @@ const GraduationSchema = new Schema({
         type: String
     },
     graduationCollegeGrade : {
-        type: Number
+        type: String
     },
     graduationUniversity : {
         type: String
@@ -18,7 +18,10 @@ const GraduationSchema = new Schema({
     graduationStream : {
         type: String
     },
-    graduationYear : {
+    graduationStartYear : {
+        type: Number
+    },
+    graduationEndYear : {
         type: Number
     },
     educationId : {
