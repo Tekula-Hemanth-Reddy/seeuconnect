@@ -251,6 +251,7 @@ type Profile {
     name: String
     phoneNumber: String
     photo: String
+    email: String
     portFolio: String
     status: Boolean
     interestedIntern: Boolean
@@ -287,7 +288,7 @@ input LatestInput {
 }
 
 type RootQuery {
-    users : [User!]!
+    users(userId: String!) : User
     login(email: String!, password: String!) : AuthData!
     languages: [Language!]!
     skills: [Skill!]!

@@ -6,17 +6,13 @@ const { profileInfo, alumniInfo } = require('./_merge');
 module.exports = {
 
     //users login
-    users: async () => {
+    users: async (args) => {
         try {
-            const users = await User.find();
-            return users.map(
-                user => {
-                    return {...user._doc, _id: user._doc._id.toString(),
-                        profile: profileInfo.bind(this,user._doc.profileId),
-                        alumni: alumniInfo.bind(this,result._doc.alumniId)
-                    };
-                }
-            );
+            const result = await User.findById(args.userId);
+            return {...result._doc, _id: result._doc._id.toString(),
+                profile: profileInfo.bind(this,result._doc.profileId),
+                alumni: alumniInfo.bind(this,result._doc.alumniId)
+            };
         } catch (err) {
             throw new Error("No Users");
         }
