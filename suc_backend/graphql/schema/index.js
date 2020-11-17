@@ -30,7 +30,7 @@ type Language {
     profile: Profile!
 }
 input LanguageInput{
-    language: String!
+    language: String
 }
 
 type Skill {

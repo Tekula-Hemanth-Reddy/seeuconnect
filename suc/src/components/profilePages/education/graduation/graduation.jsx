@@ -33,7 +33,7 @@ export class Graduation extends Component
             const NewschoolGrade= ""+this.props.values.schoolGrade;
             const NewschoolBoard= ""+this.props.values.schoolBoard;
             const NewsecondarySchoolName= ""+this.props.values.secondarySchoolName;
-            const NewySecondarySchool= Number(""+this.props.values.ySecondarySchoolName);
+            const NewySecondarySchool=2016;
             const NewsecondarySchoolGrade= ""+this.props.values.secondarySchoolGrade;
             const NewsecondarySchoolBoard= ""+this.props.values.secondarySchoolBoard;
             const NewsecondarySchoolStream= ""+this.props.values.secondarySchoolStream;

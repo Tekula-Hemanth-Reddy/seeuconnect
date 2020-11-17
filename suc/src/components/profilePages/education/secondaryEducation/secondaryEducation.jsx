@@ -98,7 +98,7 @@ export class SecondaryEducation extends Component
                             <Form.Control 
                                 as="select"
                                 onChange={inputChange('ySecondarySchool')} 
-                                value={values.ysecondarySchool}
+                                value={values.ySecondarySchool}
                             >
                             <option>2020</option>
                             <option>2019</option>
