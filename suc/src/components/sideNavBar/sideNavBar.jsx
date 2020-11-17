@@ -21,7 +21,7 @@ const SideNavBar=() =>{
       <Router>
         <Navbar />
         <Switch>
-          <Route path='/profile/about' component={About} />
+          <Route path='/profile/about' component={() => <About studentId={context.userId}/>} />
           <Route path='/profile/contact' component={Contact}/>
           <Route path='/profile/education' component={Education} />
           <Route path='/profile/experience' component={Experience} />

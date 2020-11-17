@@ -1,9 +1,16 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Card,Container,Row,Col} from 'react-bootstrap';
 import './emailCard.css';
 
-function EmailCard()
+class EmailCard extends Component
 {
+    constructor(props){
+        super(props);
+        this.state={
+            email: ""+this.props.mail,
+        }
+    }
+    render(){
     return(
         <Card className="mainECard">
             <Container>
@@ -14,18 +21,13 @@ function EmailCard()
                 </Row>
                 <Row>
                     <Col>
-                        <p className="emailEText">nallaaditya1415@gmail.com</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <p className="emailEText">tekulahemanth@gmail.com</p>
+                        <p className="emailEText">{this.state.email}</p>
                     </Col>
                 </Row>
             </Container>
         </Card>
     );
-    
+    }
 }
 
 export default EmailCard;
