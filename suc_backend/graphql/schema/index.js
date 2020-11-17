@@ -30,7 +30,7 @@ type Language {
     profile: Profile!
 }
 input LanguageInput{
-    language: String!
+    language: String
 }
 
 type Skill {
@@ -170,52 +170,54 @@ input AddressInput {
 type School {
     _id: ID!
     schoolName: String
-    schoolGrade: Float
+    schoolGrade: String
     schoolBoard: String
-    schoolYear: Float
+    schoolYear: Int
     education: Education!
 }
 input SchoolInput {
     schoolName: String
-    schoolGrade: Float
+    schoolGrade: String
     schoolBoard: String
-    schoolYear: Float
+    schoolYear: Int
 }
 
 type College {
     _id: ID!
     collegeName: String
-    collegeGrade: Float
+    collegeGrade: String
     collegeCourse: String
     collegeBoard: String
-    collegeYear: Float
+    collegeYear: Int
     education: Education!
 }
 input CollegeInput {
     collegeName: String
-    collegeGrade: Float
+    collegeGrade: String
     collegeCourse: String
     collegeBoard: String
-    collegeYear: Float
+    collegeYear: Int
 }
 
 type Graduation {
     _id: ID!
     graduationCollegeName: String
-    graduationCollegeGrade: Float
+    graduationCollegeGrade: String
     graduationUniversity: String
     graduationCourse: String
     graduationStream: String
-    graduationYear: Float
+    graduationStartYear: Int
+    graduationEndYear: Int
     education: Education!
 }
 input GraduationInput {
     graduationCollegeName: String
-    graduationCollegeGrade: Float
+    graduationCollegeGrade: String
     graduationUniversity: String
     graduationCourse: String
     graduationStream: String
-    graduationYear: Float
+    graduationStartYear: Int
+    graduationEndYear: Int
 }
 
 type Education {
@@ -226,9 +228,22 @@ type Education {
     profile: Profile!
 }
 input EducationInput {
-    school: String
-    college: String
-    graduation: String
+    schoolName: String
+    schoolGrade: String
+    schoolBoard: String
+    schoolYear: Int
+    collegeName: String
+    collegeGrade: String
+    collegeCourse: String
+    collegeBoard: String
+    collegeYear: Int
+    graduationCollegeName: String
+    graduationCollegeGrade: String
+    graduationUniversity: String
+    graduationCourse: String
+    graduationStream: String
+    graduationStartYear: Int
+    graduationEndYear: Int
 }
 
 type Profile {
@@ -258,11 +273,6 @@ input ProfileInput{
     phoneNumber: String
     portFolio: String
     interestedIntern: Boolean
-    state: String
-    city: String
-    pinCode: String
-    location: String
-    userId: String
 }
 
 type Latest{
@@ -323,6 +333,7 @@ type RootMutation {
     UpdateSchool(schoolInput: SchoolInput): School
     UpdateCollege(collegeInput: CollegeInput): College
     UpdateGraduation(graduationInput: GraduationInput): Graduation
+    UpdateEducation(educationInput: EducationInput): Education
 }
 
 schema {

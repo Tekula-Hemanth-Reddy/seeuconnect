@@ -8,7 +8,7 @@ const SchoolSchema = new Schema({
         type: String
     },
     schoolGrade : {
-        type: Number
+        type: String
     },
     schoolBoard : {
         type: String

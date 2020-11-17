@@ -1,9 +1,16 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
+import history from '../../../../history/history';
 import './styles/styles.css';
 
 export class Graduation extends Component
 {
+    constructor(props)
+    {
+        super(props);
+        
+    }
 
     continue = e => {
         e.preventDefault();
@@ -14,12 +21,85 @@ export class Graduation extends Component
         e.preventDefault();
         this.props.prevStep();
     };
+    static contextType = authContext;
+
 
     render()
     {
         const { values, inputChange } = this.props;
+        const submitHandler = () =>{
+            const NewschoolName= ""+this.props.values.schoolName;
+            const NewySchool= Number(""+this.props.values.ySchool);
+            const NewschoolGrade= ""+this.props.values.schoolGrade;
+            const NewschoolBoard= ""+this.props.values.schoolBoard;
+            const NewsecondarySchoolName= ""+this.props.values.secondarySchoolName;
+            const NewySecondarySchool=2016;
+            const NewsecondarySchoolGrade= ""+this.props.values.secondarySchoolGrade;
+            const NewsecondarySchoolBoard= ""+this.props.values.secondarySchoolBoard;
+            const NewsecondarySchoolStream= ""+this.props.values.secondarySchoolStream;
+            const NewcollegeName= ""+this.props.values.collegeName;
+            const NewyCollegeStart= Number(""+this.props.values.yCollegeStart);
+            const NewyCollegeEnd= Number(""+this.props.values.yCollegeEnd);
+            const NewcollegeGrade= ""+this.props.values.collegeGrade;
+            const NewcollegeStream= ""+this.props.values.collegeStream;
+            const NewcollegeCourse= ""+this.props.values.collegeCourse;
+            const NewcollegeBoard= ""+this.props.values.collegeBoard;
+            
+            console.log(
+                NewschoolName,
+                NewySchool,
+                NewschoolGrade,
+                NewschoolBoard,
+                NewsecondarySchoolName,
+                NewySecondarySchool,
+                NewsecondarySchoolGrade,
+                NewsecondarySchoolBoard,
+                NewsecondarySchoolStream,
+                NewcollegeName,
+                NewyCollegeStart,
+                NewyCollegeEnd,
+                NewcollegeGrade,
+                NewcollegeStream,
+                NewcollegeCourse,
+                NewcollegeBoard,);
+    
+            const requestBody = {
+                query: `
+                mutation{
+                    UpdateEducation(educationInput:{schoolName:"${NewschoolName}",schoolGrade:"${NewschoolGrade}",schoolBoard:"${NewschoolBoard}",schoolYear:${NewySchool},collegeName:"${NewsecondarySchoolName}",collegeGrade:"${NewsecondarySchoolGrade}",collegeCourse:"${NewsecondarySchoolStream}",collegeBoard:"${NewsecondarySchoolBoard}",collegeYear:${ NewySecondarySchool},graduationCollegeName:"${NewcollegeName}",graduationCollegeGrade:"${NewcollegeGrade}",graduationUniversity:"${NewcollegeBoard}",graduationCourse:"${NewcollegeCourse}",graduationStream:"${NewcollegeStream}",graduationStartYear:${NewyCollegeStart},graduationEndYear:${NewyCollegeEnd}}){
+                      _id
+                    }
+                  }
+                `
+            };
+    
+            const token = this.context.token;
+            console.log(token);
+    
+            fetch('http://localhost:4000/graphql', {
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then(res => {
+                if(res.status!== 200 && res.status!== 201){
+                    throw new Error('Failed!');
+                }
+                return res.json();
+            })
+            .then(resData => {
+                console.log(resData);
+                history.push('/profile/edit');
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        };    
     return(
         <Container className="schoolContainer">
+            <Form onSubmit={submitHandler}>
         <Card style={{borderColor:"#007fbb",borderWidth:"2px",width:"90%",backgroundColor:"transparent",padding:"20px"}}>
             <Row>
                 <Col><p className="titleStyle">Graduation Details</p></Col>
@@ -31,7 +111,7 @@ export class Graduation extends Component
 
             <Row className="formSchoolRow">
                 <Col>
-                    <Form className="formSchool">
+                    <div className="formSchool">
                         <Form.Group>
                             <Form.Control 
                                 size="text" 
@@ -41,7 +121,7 @@ export class Graduation extends Component
                                 value={values.collegeName}/>
                             <br />
                         </Form.Group>
-                    </Form>
+                    </div>
                 </Col>
             </Row>
 
@@ -53,7 +133,7 @@ export class Graduation extends Component
 
                     <Row className="formSchoolRow2">
                         <Col>
-                            <Form>
+                            <div>
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Label></Form.Label>
                                     <Form.Control 
@@ -85,7 +165,7 @@ export class Graduation extends Component
                                     <option>1998</option>
                                     </Form.Control>
                                 </Form.Group>
-                            </Form>
+                            </div>
                         </Col>
                     </Row>
                 </Col>
@@ -96,13 +176,23 @@ export class Graduation extends Component
 
                     <Row className="formSchoolRow2">
                         <Col>
-                            <Form>
+                            <div>
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Label></Form.Label>
                                     <Form.Control 
                                         as="select"
                                         onChange={inputChange('yCollegeEnd')} 
                                         value={values.ycollegeEnd}>
+                                        <option>2030</option>
+                                        <option>2029</option>
+                                        <option>2028</option>
+                                        <option>2027</option>
+                                        <option>2026</option>
+                                        <option>2025</option>
+                                        <option>2024</option>
+                                        <option>2023</option>
+                                        <option>2022</option>
+                                        <option>2021</option>
                                         <option>2020</option>
                                         <option>2019</option>
                                         <option>2018</option>
@@ -127,7 +217,7 @@ export class Graduation extends Component
                                         <option>1998</option>
                                     </Form.Control>
                                 </Form.Group>
-                            </Form>
+                            </div>
                         </Col>
                     </Row>
                 </Col>
@@ -142,7 +232,7 @@ export class Graduation extends Component
 
                         <Row className="formSchoolRow">
                             <Col>
-                                <Form className="formSchool">
+                                <div className="formSchool">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
@@ -152,7 +242,7 @@ export class Graduation extends Component
                                             value={values.collegeCourse} />
                                         <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                 </Col>
@@ -164,7 +254,7 @@ export class Graduation extends Component
 
                             <Row className="formSchoolRow">
                                 <Col>
-                                    <Form className="formSchool">
+                                    <div className="formSchool">
                                         <Form.Group>
                                             <Form.Control 
                                                 size="text" 
@@ -174,7 +264,7 @@ export class Graduation extends Component
                                                 value={values.collegeStream} />
                                             <br />
                                         </Form.Group>
-                                    </Form>
+                                    </div>
                                 </Col>
                             </Row>
                 </Col>
@@ -187,7 +277,7 @@ export class Graduation extends Component
 
             <Row className="formSchoolRow">
                 <Col>
-                    <Form className="formSchool">
+                    <div className="formSchool">
                         <Form.Group>
                             <Form.Control 
                                 size="text" 
@@ -197,7 +287,7 @@ export class Graduation extends Component
                                 value={values.collegeBoard}/>
                             <br />
                         </Form.Group>
-                    </Form>
+                    </div>
                 </Col>
             </Row>
 
@@ -209,7 +299,7 @@ export class Graduation extends Component
                 </Col>
 
                 <Col md="auto">
-                    <Form>
+                    <div>
                         <Form.Group>
                             <Form.Control 
                                 size="text" 
@@ -219,7 +309,7 @@ export class Graduation extends Component
                                 value={values.collegeGrade}/>
                             <br />
                         </Form.Group>
-                    </Form>
+                    </div>
                 
                 </Col>
             </Row>
@@ -229,11 +319,12 @@ export class Graduation extends Component
                     <Button className="buttonRow" variant="outline-warning" size="lg" onClick={this.back}>Previous</Button>{' '}
                 </Col>           
                 <Col style={{textAlign:"right"}}>
-                    <Button className="buttonRow" variant="outline-primary" size="lg"  onClick={this.continue}>Submit</Button>{' '}
+                    <Button className="buttonRow" variant="outline-primary" size="lg"  onClick={submitHandler}>Submit</Button>{' '}
                 </Col>
             </Row>
 
             </Card>
+            </Form>
         </Container>
 
     );

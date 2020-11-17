@@ -117,12 +117,12 @@ export class Education extends Component
                     />
                     </div>
                 );
-            case 4:
-                return (
+            // case 4:
+            //     return (
                    
-                    <Profile/>
+            //         <Profile/>
                     
-                );
+            //     );
 
         }
     

@@ -19,7 +19,7 @@ export class Languages extends Component{
         const requestBody = {
             query: `
             mutation{
-                CreateLanguage(languageInput:"${Name}"){
+                CreateLanguage(languageInput:{language:"${Name}"}){
                     language 
                   }
               }

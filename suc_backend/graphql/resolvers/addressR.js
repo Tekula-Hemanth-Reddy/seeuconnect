@@ -53,14 +53,14 @@ module.exports = {
         try {
         const pId = await User.findById(req.userId);
         const profile = await Profile.findById(pId.profileId);
-        const address = await Address.find(profile.addressId);
+        const place = await Address.findById(profile.addressId);
 
-            address.state= ""+args.addressInput.state;
-            address.city= ""+args.addressInput.city;
-            address.location= ""+args.addressInput.location;
-            address.pinCode= ""+args.addressInput.pinCode;
+            place.state= ""+args.addressInput.state;
+            place.city= ""+args.addressInput.city;
+            place.location= ""+args.addressInput.location;
+            place.pinCode= ""+args.addressInput.pinCode;
 
-            const result = await address.save();
+            const result = await place.save();
             return {...result._doc, _id: result._doc._id.toString(),
                 profile: profileInfo.bind(this,result._doc.profileId)
                 };

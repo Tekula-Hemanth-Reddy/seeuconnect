@@ -7,7 +7,7 @@ const CollegeSchema = new Schema({
         type: String
     },
     collegeGrade : {
-        type: Number
+        type: String
     },
     collegeCourse : {
         type: String
