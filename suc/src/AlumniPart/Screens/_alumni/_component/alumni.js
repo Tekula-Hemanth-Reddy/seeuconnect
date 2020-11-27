@@ -177,7 +177,7 @@ class About extends Component {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                {this.state.name}
+              {this.state.name&&<div>{this.state.name.split("-")[0]}{" "}{this.state.name.split("-")[1]}{" "}{this.state.name.split("-")[2]}</div>}
               </Col>
         </Row>
         <Row>
