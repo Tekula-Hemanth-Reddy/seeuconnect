@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {Button} from 'react-bootstrap';
 import * as AiIcons from 'react-icons/ri';
+import * as IoIcons from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
+import history from '../../../../src/history/history';
 import './navbar.css';
 import { IconContext } from 'react-icons';
 import authContext from '../../../context/auth-context'
@@ -28,13 +30,17 @@ const SideNavBar = () => {
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
-                  <Link to={item.path}>
+                  <Link to={item.path} >
                     {item.icon} 
                     <span>{item.title}</span>
                   </Link>
                 </li>
               );
             })}
+            <li className="nav-text" style={{marginLeft:"-2px"}}>
+            <Button href="/profile/home" variant="outline-primary" size="lg" style={{borderWidth:"0px"}} onClick={()=>{history.push('/profile/home')}}><IoIcons.IoMdReturnLeft style={{marginRight:"20px"}}/>Return Back</Button>
+                
+                </li>
             <li className="nav-text" style={{marginLeft:"-2px"}}>
                   <Button href="/home" variant="outline-primary" size="lg" style={{borderWidth:"0px"}} onClick={context.logout}><RiIcons.RiLogoutCircleRLine style={{marginRight:"20px"}}/>Log Out</Button>
                 </li>

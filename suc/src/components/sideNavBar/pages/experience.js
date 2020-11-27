@@ -22,7 +22,7 @@ function Experience() {
       </Row>
 
 
-    <Row>
+    <Row style={{marginLeft:"20px",marginTop:"20px"}}>
       <Col >
         <Container>
           <Row>
@@ -36,16 +36,7 @@ function Experience() {
           </Row>
         </Container>
       </Col>
-      <Col style={{marginLeft:"240px"}}>
-        <Container>
-          <Row>
-            <Col><TrophyCard/></Col>
-          </Row>
-          <Row>
-            <Col><GeneralAward/></Col>
-          </Row>
-        </Container>
-      </Col>
+      
     </Row>
 
     </Container>

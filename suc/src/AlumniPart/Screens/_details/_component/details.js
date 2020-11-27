@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-import {Container,Card,Form,Button,Image} from 'react-bootstrap';
+import {Container,Card,Form,Button} from 'react-bootstrap';
 import '../_css/details.css';
-import BackGround from '../../../../assets/images/background/background1.jpg';
 import authContext from '../../../../context/auth-context';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 import history from '../../../../history/history';

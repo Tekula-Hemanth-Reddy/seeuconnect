@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 import {Spinner,Card,Container} from 'react-bootstrap';
 import './loader.css'
 

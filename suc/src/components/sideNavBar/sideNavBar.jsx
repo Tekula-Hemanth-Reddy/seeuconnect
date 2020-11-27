@@ -9,8 +9,9 @@ import Experience from './pages/experience';
 import Home from './pages/home';
 import Skills from './pages/skills';
 import EditSideBar from '../editSideNavBar/sideNavBar';
+import Courses from './pages/courses';
 import authContext from '../../context/auth-context';
-import Home1 from '../../screens/home/home';
+
 
 const SideNavBar=() =>{
   return (
@@ -27,6 +28,7 @@ const SideNavBar=() =>{
           <Route path='/profile/experience' component={Experience} />
           <Route path='/profile/home' exact component={Home} />
           <Route path='/profile/skills' component={Skills} />
+          <Route path='/profile/courses' component={Courses}/>
           <Route path='/profile/edit' component={EditSideBar}/>
         </Switch>
       </Router>

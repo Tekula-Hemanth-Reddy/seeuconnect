@@ -5,7 +5,6 @@ import * as MdIcons from 'react-icons/md';
 import * as GrIcons from 'react-icons/gr';
 import * as RiIcons from 'react-icons/ri';
 import * as BiIcons from 'react-icons/bi';
-import * as IoIcons from 'react-icons/io';
 export const SidebarData = [
   {
     title: 'PersonalDetails',
@@ -65,12 +64,6 @@ export const SidebarData = [
     title: 'Address',
     path: '/profile/edit/address',
     icon: <FaIcons.FaAddressBook/>,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Return Back',
-    path: '/profile/home',
-    icon: <IoIcons.IoMdReturnLeft />,
     cName: 'nav-text'
   }
 
