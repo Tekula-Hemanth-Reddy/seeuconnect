@@ -75,11 +75,11 @@ class Details extends Component{
             console.log(token);
               console.log({...resData.data.jobGivers});
               this.setState({title: resData.data.jobGivers.users.name,
-              name: resData.data.jobGivers.name,
-              phone: resData.data.jobGivers.personPhone,
+              name: (""+resData.data.jobGivers.name)===""?"---":(""+resData.data.jobGivers.name),
+              phone: (""+resData.data.jobGivers.personPhone)===""?"+91   ":(""+resData.data.jobGivers.personPhone),
               email: resData.data.jobGivers.personMail,
               company: resData.data.jobGivers.companyName,
-              cmpPhone: resData.data.jobGivers.companyPhone,
+              cmpPhone: (""+resData.data.jobGivers.companyPhone)===""?"+91   ":(""+resData.data.jobGivers.companyPhone),
               cmpMail: resData.data.jobGivers.companyMail,
               cmpAddress: resData.data.jobGivers.companyAddress,
               cmpWebsite: resData.data.jobGivers.companyWebsite});
@@ -91,9 +91,9 @@ class Details extends Component{
 
     submitHandler = (event) =>{
         event.preventDefault();
-        const Title = ""+this.titleEl.current.value;
-        const Phn = ""+this.pEl.current.value;
-        const Cmp = ""+this.cEl.current.value;
+        const Title = (""+this.titleEl.current.value)===""?"Mr.":""+this.titleEl.current.value;
+        const Phn = (""+this.pEl.current.value)===""?"+91":""+this.pEl.current.value;
+        const Cmp = (""+this.cEl.current.value)===""?"+91":""+this.pEl.current.value;
         const FirstName = ""+this.firstEl.current.value;
         const LastName = ""+this.lastEl.current.value;
         const PhonePerson = ""+this.phonePersonEl.current.value;
@@ -106,7 +106,7 @@ class Details extends Component{
         const requestBody = {
             query: `
             mutation{
-                UpdateAlumni(alumniInput:{name:"${Title}${FirstName}${" "}${LastName}",personPhone:"${Phn}${" "}${PhonePerson}",companyName:"${Company}",companyPhone:"${Cmp}${" "}${PhoneCompany}",companyMail:"${Email}",companyAddress:"${Address}",companyWebsite:"${Website}"}){
+                UpdateAlumni(alumniInput:{name:"${Title}${"-"}${FirstName}${"-"}${LastName}",personPhone:"${Phn}${" "}${PhonePerson}",companyName:"${Company}",companyPhone:"${Cmp}${" "}${PhoneCompany}",companyMail:"${Email}",companyAddress:"${Address}",companyWebsite:"${Website}"}){
                   _id
                   name
                 }
@@ -147,14 +147,15 @@ class Details extends Component{
                         <Card className="detailsCardStyle" style={{marginTop:"20px",marginBottom: "20px"}}>
                             <div className="row">
                                 <div className="col-lg-2 col-md-2 col-sm-2 col-xl-2">
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Group>
                                         <Form.Control 
-                                        as="select"
-                                        ref={this.titleEl}
-                                        >
-                                        <option>Mr.</option>
-                                        <option>Miss.</option>
-                                        </Form.Control>
+                                            size="text" 
+                                            type="text"
+                                            placeholder={"Mr./Miss"}
+                                            defaultValue={this.state.phone.substring(0,3)}
+                                            defaultValue={this.state.name.split("-")[1]}
+                                            ref={this.titleEl} 
+                                        ></Form.Control>
                                     </Form.Group>
                                 </div>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5">
@@ -163,7 +164,8 @@ class Details extends Component{
                                             className="inputBoxStyle"
                                             size="text" 
                                             type="text" 
-                                            placeholder="First Name*" 
+                                            placeholder="First Name*"
+                                            defaultValue={this.state.name.split("-")[1]}
                                             ref={this.firstEl}
                                         />
                                     </Form.Group>
@@ -173,7 +175,8 @@ class Details extends Component{
                                     <Form.Control 
                                         size="text" 
                                         type="text" 
-                                        placeholder="Last Name*" 
+                                        placeholder="Last Name*"
+                                        defaultValue={this.state.name.split("-")[2]}
                                         ref={this.lastEl}
                                     />
                                 </Form.Group>
@@ -186,6 +189,7 @@ class Details extends Component{
                                             size="text" 
                                             type="text"
                                             placeholder={"+91"}
+                                            defaultValue={this.state.phone.substring(0,3)}
                                             ref={this.pEl} 
                                         ></Form.Control>
                                     </Form.Group>
@@ -195,7 +199,8 @@ class Details extends Component{
                                     <Form.Control 
                                         size="text" 
                                         type="Number" 
-                                        placeholder="Phone Number" 
+                                        placeholder="Phone Number"
+                                        defaultValue={this.state.phone.substring(4,this.state.phone.length)}
                                         ref={this.phonePersonEl}
                                     />
                                 </Form.Group>
@@ -210,7 +215,8 @@ class Details extends Component{
                                     <Form.Control 
                                         size="text" 
                                         type="text" 
-                                        placeholder="Company Name" 
+                                        placeholder="Company Name"
+                                        defaultValue={this.state.company} 
                                         ref={this.companyEl}
                                     />
                                 </Form.Group>
@@ -220,7 +226,8 @@ class Details extends Component{
                                     <Form.Control 
                                         size="text" 
                                         type="text" 
-                                        placeholder="Company Website" 
+                                        placeholder="Company Website"
+                                        defaultValue={this.state.cmpWebsite}
                                         ref={this.websiteEl}
                                     />
                                 </Form.Group>
@@ -236,6 +243,7 @@ class Details extends Component{
                                             size="text" 
                                             type="text"
                                             placeholder={"+91"}
+                                            defaultValue={this.state.cmpPhone.substring(0,3)}
                                             ref={this.cEl} 
                                         ></Form.Control>
                                     </Form.Group>
@@ -245,7 +253,8 @@ class Details extends Component{
                                     <Form.Control 
                                         size="text" 
                                         type="Number" 
-                                        placeholder="Phone Number" 
+                                        placeholder="Phone Number"
+                                        defaultValue={this.state.cmpPhone.substring(4,this.state.cmpPhone.length)} 
                                         ref={this.phoneCompanyEl}
                                     />
                                 </Form.Group>
@@ -255,7 +264,8 @@ class Details extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="email" 
-                                            placeholder="Email" 
+                                            placeholder="Email"
+                                            defaultValue={this.state.cmpMail} 
                                             ref={this.emailEl}
                                         />
                                     </Form.Group>
@@ -263,7 +273,8 @@ class Details extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text" 
-                                            placeholder="Address" 
+                                            placeholder="Address"
+                                            defaultValue={this.state.cmpAddress} 
                                             ref={this.addressEl}
                                         />
                                     </Form.Group>

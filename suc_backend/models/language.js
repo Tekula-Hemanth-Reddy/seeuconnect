@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 
 const LanguageSchema = new Schema({
     language: {
-        type: String,
-        required: true
+        type: String
     },
     profileId: {
         type: Schema.Types.ObjectId,

@@ -15,10 +15,6 @@ export class PersonalDetails extends Component{
         this.firstEl = React.createRef();
         this.lastEl = React.createRef();
         this.phonePersonEl = React.createRef();
-        this.stateEl = React.createRef();
-        this.cityEl = React.createRef();
-        this.pinEl = React.createRef();
-        this.addressEl = React.createRef();
         this.websiteEl = React.createRef();
     }
 
@@ -36,16 +32,12 @@ export class PersonalDetails extends Component{
         const FirstName = ""+this.firstEl.current.value;
         const LastName = ""+this.lastEl.current.value;
         const Phone = ""+this.phonePersonEl.current.value;
-        const State = ""+this.stateEl.current.value;
-        const City = ""+this.cityEl.current.value;
-        const Pin = ""+this.pinEl.current.value;
         const Website = ""+this.websiteEl.current.value;
-        const Address = ""+this.addressEl.current.value;
 
         const requestBody = {
             query: `
             mutation{
-                UpdateProfile(profileInput:{name:"${Title}${FirstName}${" "}${LastName}",phoneNumber:"${Phn}${" "}${Phone}",portFolio:"${Website}",interestedIntern:${intrested},state:"${State}",city:"${City}",pinCode:"${Pin}",location:"${Address}"}){
+                UpdateProfile(profileInput:{name:"${Title}${FirstName}${" "}${LastName}",phoneNumber:"${Phn}${" "}${Phone}",portFolio:"${Website}",interestedIntern:${intrested}}){
                   _id
                   name
                   phoneNumber
@@ -250,7 +242,7 @@ export class PersonalDetails extends Component{
 
                 <Row >
                 <Col style={{textAlign:"right"}}>
-                    <Button className="buttonRow" variant="outline-primary" size="lg">Submit</Button>{' '}
+                    <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>{' '}
                 </Col>
                 </Row>
 

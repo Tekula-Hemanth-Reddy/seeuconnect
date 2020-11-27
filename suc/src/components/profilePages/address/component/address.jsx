@@ -1,13 +1,71 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
+import history from '../../../../history/history';
 import '../styles/styles.css';
 
 export class Address extends Component{
+    constructor(props){
+        super(props);
+        this.stateEl = React.createRef();
+        this.cityEl = React.createRef();
+        this.pinEl = React.createRef();
+        this.addressEl = React.createRef();
+    }
+
+    static contextType = authContext;
+
+    submitHandler = (event) =>{
+        event.preventDefault();
+        const State = ""+this.stateEl.current.value;
+        const City = ""+this.cityEl.current.value;
+        const Pin = ""+this.pinEl.current.value;
+        const Address = ""+this.addressEl.current.value;
+
+        const requestBody = {
+            query: `
+            mutation{
+                UpdateAddress(addressInput:{state:"${State}",city:"${City}",location:"${Address}",pinCode:"${Pin}"}){
+                  state
+                  city
+                  location
+                  pinCode
+                }
+              }
+            `
+        };
+
+        const token = this.context.token;
+        console.log(token);
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            console.log(resData);
+            history.push('/profile/edit/education');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
 
     render()
     {
         return(
             <Container className="personalDetailsContainer">
+                <Form onSubmit={this.submitHandler}>
                 <Card style={{borderColor:"#007fbb",borderWidth:"2px",backgroundColor:"transparent",padding:"15px"}}>
                 <Row>
                     <Col><p className="personalDetailsTitle">Address</p></Col>
@@ -27,18 +85,17 @@ export class Address extends Component{
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
-                                <Form>
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
-                                        <Form.Label></Form.Label>
+                            <div className="formRow">
+                                    <Form.Group>
                                         <Form.Control 
-                                        as="select"
-                                        >
-                                        <option>Telangana</option>
-                                        <option>AndhraPradesh</option>
-                                        <option>Karnataka</option>
-                                        </Form.Control>
+                                            size="text" 
+                                            type="text"
+                                            placeholder={"Telangana"}
+                                            ref={this.stateEl}
+                                        ></Form.Control>
+                                    <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>             
                     </Col>
@@ -48,18 +105,17 @@ export class Address extends Component{
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
-                                <Form>
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
-                                        <Form.Label></Form.Label>
+                            <div className="formRow">
+                                    <Form.Group>
                                         <Form.Control 
-                                        as="select"
-                                        >
-                                        <option>Hyderabad</option>
-                                        <option>Nalgonda</option>
-                                        <option>Peddapalli</option>
-                                        </Form.Control>
+                                            size="text" 
+                                            type="text"
+                                            placeholder={"Hyderabad"}
+                                            ref={this.cityEl}
+                                        ></Form.Control>
+                                    <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>             
                     </Col>
@@ -71,16 +127,17 @@ export class Address extends Component{
                         </Row>
                         <Row className="personalDetailsFirstNameRow">
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"111111"} 
+                                            placeholder={"111111"}
+                                            ref={this.pinEl} 
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
@@ -91,31 +148,31 @@ export class Address extends Component{
                         <Row className="personalDetailsFirstNameRow" 
                         >
                             <Col>
-                                <Form className="formRow">
+                                <div className="formRow">
                                     <Form.Group>
                                         <Form.Control 
                                             as="textarea"
                                             rows={4} 
-                                            
+                                            ref={this.addressEl}
                                             placeholder={"Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"} 
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
-                                </Form>
+                                </div>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
                 <Row >
                     <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" size="lg">Submit</Button>{' '}
+                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>{' '}
                     </Col>
                 </Row>
                 
                 </Container>
                 
                 </Card>
-
+                </Form>
             </Container>
 
 
