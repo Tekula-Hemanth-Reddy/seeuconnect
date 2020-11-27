@@ -24,7 +24,7 @@ const AlumniNavBar =props => {
                     </Nav>
                     </div>
                 </Navbar.Collapse>
-                <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/alumninav')}>
+                <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/home')}>
                 {<FontAwesomeIcon icon={faSignOutAlt} />}</Button>
             </Navbar>
             </div>
