@@ -11,10 +11,7 @@ export class Courses  extends Component
   constructor(props){
     super(props);
     this.state = {
-      courseName: "",
-      specialization: "",
-      certificate: "",
-      credentials: "",
+      courseData:[]
     }
   }
 
@@ -58,10 +55,7 @@ export class Courses  extends Component
         console.log(token);
           console.log({...resData.data.jobGivers});
           this.setState({
-          courseName: resData.data.users.profile.courses.courseName,
-          specialization:resData.data.users.profile.courses.specialization,
-          certificate:resData.data.users.profile.courses.certificate,
-          credentials:resData.data.users.profile.courses.credentials,
+          courseData: resData.data.users.profile.courses
         });
       })
       .catch(err => {
@@ -71,29 +65,6 @@ export class Courses  extends Component
 
     render()
     {   
-
-        const CoursesData = [
-            {
-              courseName: 'Introduction to Machine Learning',
-              credentials:'NPTEL03506985',
-              specialization:'Deep Learning',
-              certificate:'https://www.abc.com'
-            },
-            {
-              courseName: 'Introduction to Python',
-              credentials:'Coursera56894562',
-              specialization:'Machine Learning',
-              certificate:'https://www.abc.com'
-            },
-            {
-              courseName: '30 Days of Cloud Program',
-              credentials:' ',
-              specialization:'Google Cloud',
-              certificate:'https://google.qwiklabs.com/public_profiles/c8a5cdeb-cf33-4797-b494-c1a17fe7fb30#'
-            }
-            
-          ];
-    
         return (
             <Container className="courses1Container">
               
@@ -109,7 +80,7 @@ export class Courses  extends Component
               </Row>
 
               <div>
-              {CoursesData.map((item, index) => 
+              {this.state.courseData.map((item, index) => 
                 {
                     return(
                         <Card className="companyCoursesCardMain">

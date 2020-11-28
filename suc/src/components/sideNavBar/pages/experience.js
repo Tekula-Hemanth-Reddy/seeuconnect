@@ -1,20 +1,15 @@
 import React,{Component} from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container,Row,Col,Card} from 'react-bootstrap';
 import * as HIIcons from 'react-icons/fa';
+import * as CIIcons from 'react-icons/cg';
 import './css/experience.css';
-import CompanyExperienceCard from '../../companyExperienceCard/companyExperienceCard';
 import authContext from '../../../context/auth-context';
 
 class Experience extends Component {
   constructor(props){
     super(props);
     this.state = {
-      name: "",
-      location: "",
-      pin: "",
-      phone: "",
-      email: "",
-      website: ""
+      positionData:[]
     }
   }
 
@@ -61,12 +56,7 @@ class Experience extends Component {
         console.log(token);
           console.log({...resData.data.jobGivers});
           this.setState({
-          name: resData.data.users.profile.name,
-          location: resData.data.users.profile.addresses.location,
-          pin: resData.data.users.profile.addresses.pinCode,
-          phone: resData.data.users.profile.phoneNumber,
-          email: resData.data.users.profile.email,
-          website: resData.data.users.profile.portFolio
+          positionData: resData.data.users.profile.positions
         });
       })
       .catch(err => {
@@ -91,15 +81,30 @@ class Experience extends Component {
     <Row style={{marginLeft:"20px",marginTop:"20px"}}>
       <Col >
         <Container>
-          <Row>
-            <Col><CompanyExperienceCard/></Col>
+          {this.state.positionData.map(item =>(
+            <Row>
+            <Col>
+            <Card className="companyExperienceCardMain">
+                <Card.Body>
+                    <Card.Title className="cardTitleStyle">
+                        <Row>
+                        <Col xs={1}><CIIcons.CgRecord className="titleIconStyle"/></Col>
+                        <Col xs={8}><p className="titleText">{item.positionHeld}{" At "}{item.companyName}</p></Col>
+                        </Row>
+                    </Card.Title>
+
+                    <Card.Subtitle className="mb-2 text-muted subtitleText">{item.startData}{" - "}{item.endDate}</Card.Subtitle>
+                  
+                    <Card.Text className="cardText">
+                        {item.positionDescription}
+                    </Card.Text>
+{/* 
+                    <Card.Link href="#" className="linkText">https://google.com</Card.Link> */}
+                </Card.Body>
+            </Card>
+            </Col>
           </Row>
-          <Row>
-            <Col><CompanyExperienceCard/></Col>
-          </Row>
-          <Row>
-            <Col><CompanyExperienceCard/></Col>
-          </Row>
+          ))}
         </Container>
       </Col>
       

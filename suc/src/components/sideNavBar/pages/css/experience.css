@@ -29,3 +29,34 @@
     color:#5f5d5d;
     font-Size:17.5px;
 }
+.companyExperienceCardMain{
+    height: 250px;
+    width: 500px;
+    background-color: #3a3838;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+.cardTitleStyle{
+    text-align: left;
+}
+.titleIconStyle{
+    color: #007fbb;
+}
+.titleText{
+    color: white;
+}
+.subtitleText{
+    text-align: left;
+    margin-left: 30px;
+    color:#b9b6b6;
+}
+.cardText{
+    text-align: left;
+    margin-left: 30px;
+    color: #b9b6b6;
+}
+.linkText{
+    text-align: left;
+    margin-right: 270px;
+    color: #007fbb;
+}
