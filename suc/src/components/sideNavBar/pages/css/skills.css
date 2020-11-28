@@ -42,3 +42,18 @@
     color: white;
     margin:30px;
 }
+.languageCard{
+    background-color: black;
+    height: 140px;
+    width: 140px;
+    border-bottom-width: 4px;
+    border-top-left-radius: 0;
+    border-radius: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.progressBar{
+    margin:10px 18px 10px 0px;
+    
+}

@@ -14,7 +14,6 @@ import Awards from './pages/awards';
 import Projects from './pages/projects';
 import authContext from '../../context/auth-context';
 
-
 const SideNavBar=() =>{
   return (
     <authContext.Consumer>

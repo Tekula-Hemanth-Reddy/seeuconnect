@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import Schooling from './schooling/schooling';
 import SecondaryEducation from './secondaryEducation/secondaryEducation';
 import Graduation from './graduation/graduation';
-import Profile from '../../sideNavBar/sideNavBar';
 import './styles/styles.css';
 
 

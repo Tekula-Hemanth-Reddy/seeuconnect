@@ -3,8 +3,6 @@ import {Container,Row,Col,Card,Form,Button} from 'react-bootstrap';
 import '../_css/requirement.css';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 
-
-
 class Requirement extends Component{
     constructor(props){
         super(props);
