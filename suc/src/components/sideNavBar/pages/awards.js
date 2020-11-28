@@ -10,9 +10,7 @@ export class Awards  extends Component
   constructor(props){
     super(props);
     this.state = {
-      title: "",
-      description: "",
-      certificate: "",
+      awardData:[]
     }
   }
 
@@ -55,9 +53,7 @@ export class Awards  extends Component
         console.log(token);
           console.log({...resData.data.jobGivers});
           this.setState({
-          title: resData.data.users.profile.achievements.title,
-          description:resData.data.users.profile.achievements.description,
-          certificate:resData.data.users.profile.achievements.certificate,
+          awardData: resData.data.users.profile.achievements
         });
       })
       .catch(err => {
@@ -66,27 +62,7 @@ export class Awards  extends Component
   }
 
     render()
-    {   
-
-        const CoursesData = [
-            {
-              title: 'Runner up Tech fest',
-              description:'NPTEL03506985',
-              certificate:'https://www.abc.com'
-            },
-            {
-              title: '3rd Prize in Hackathon',
-              description:'Coursera56894562',
-              certificate:'https://www.abc.com'
-            },
-            {
-              title: '3rd Prize in Hackathon',
-              description:'Coursera56894562',
-              certificate:'https://www.abc.com'
-            }
-            
-          ];
-    
+    {  
         return (
             <Container className="courses1Container">
               
@@ -102,7 +78,7 @@ export class Awards  extends Component
               </Row>
 
               <div>
-              {CoursesData.map((item, index) => 
+              {this.state.awardData.map((item, index) => 
                 {
                     return(
                         <Card className="awardsCardMain">
@@ -117,7 +93,7 @@ export class Awards  extends Component
                                 <Card.Subtitle className="mb-2 text-muted subtitleText">{item.certificateId}</Card.Subtitle>
                             
                                 <Card.Text className="cardText">
-                                    {item.description}
+                                    {item.achievementDescription}
                                 </Card.Text>
 
                                 <Card.Text href="#" className="cardText">

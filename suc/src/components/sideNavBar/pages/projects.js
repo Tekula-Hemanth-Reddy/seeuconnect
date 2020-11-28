@@ -11,10 +11,7 @@ export class Projects  extends Component
   constructor(props){
     super(props);
     this.state = {
-      projectName:"",
-      projectDemo:"",
-      projectDescription:"",
-      projectUrl:"",
+      projectData:[]
     }
   }
 
@@ -58,11 +55,7 @@ export class Projects  extends Component
         console.log(token);
           console.log({...resData.data.jobGivers});
           this.setState({
-          projectName:resData.data.users.profile.projects.projectName,
-          projectDemo:resData.data.users.profile.projects.projectDemo,
-          projectDescription:resData.data.users.profile.projects.projectDescription,
-          projectUrl:resData.data.users.profile.projects.projectUrl,
-         
+            projectData:resData.data.users.profile.projects         
         });
       })
       .catch(err => {
@@ -72,30 +65,6 @@ export class Projects  extends Component
 
     render()
     {   
-
-        const CoursesData = [
-            {
-                projectName: 'Introduction to Machine Learning',
-                projectDescription:'NPTEL03506985',
-                projectUrl:'Deep Learning',
-                projectDemo:'https://www.abc.com'
-              },
-              {
-                projectName: 'Introduction to Machine Learning',
-                projectDescription:'NPTEL03506985',
-                projectUrl:'Deep Learning',
-                projectDemo:'https://www.abc.com'
-              },
-              {
-                projectName: 'Introduction to Machine Learning',
-                projectDescription:'NPTEL03506985',
-                projectUrl:'Deep Learning',
-                projectDemo:'https://www.abc.com'
-              },
-              
-            
-          ];
-    
         return (
             <Container className="courses1Container">
               
@@ -111,7 +80,7 @@ export class Projects  extends Component
               </Row>
 
               <div>
-              {CoursesData.map((item, index) => 
+              {this.state.projectData.map((item, index) => 
                 {
                     return(
                         <Card className="awardsCardMain">
