@@ -43,7 +43,7 @@ export class Awards  extends Component
                   </div>
                 </Col>
                 <Col xs={8}>
-                  <p className="courses1Text">Courses</p>
+                  <p className="courses1Text">Awards</p>
                 </Col>
               </Row>
 

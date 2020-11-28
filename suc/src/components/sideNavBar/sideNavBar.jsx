@@ -10,6 +10,7 @@ import Home from './pages/home';
 import Skills from './pages/skills';
 import EditSideBar from '../editSideNavBar/sideNavBar';
 import Courses from './pages/courses';
+import Awards from './pages/awards';
 import authContext from '../../context/auth-context';
 
 
@@ -30,6 +31,7 @@ const SideNavBar=() =>{
           <Route path='/profile/skills' component={Skills} />
           <Route path='/profile/courses' component={Courses}/>
           <Route path='/profile/edit' component={EditSideBar}/>
+          <Route path='/profile/awards' component={Awards}/>
         </Switch>
       </Router>
     </div>);
