@@ -6,6 +6,7 @@ import '../styles/styles.css';
 
 export class PersonalDetails extends Component{
 
+    
     constructor(props){
         super(props);
         this.titleEl = React.createRef();
@@ -18,6 +19,10 @@ export class PersonalDetails extends Component{
     }
 
     static contextType = authContext;
+
+    
+
+   
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -89,6 +94,7 @@ export class PersonalDetails extends Component{
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        defaultValue="Mr"
                                         ref={this.titleEl}
                                         >
                                         <option>Mr.</option>
@@ -111,6 +117,7 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
+                                            defaultValue=" "
                                             ref={this.firstEl} 
                                         />
                                     <br />
@@ -130,6 +137,7 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
+                                            defaultValue=" "
                                             ref={this.lastEl} 
                                         />
                                     <br />
@@ -154,6 +162,7 @@ export class PersonalDetails extends Component{
                                             type="text"
                                             placeholder={"+91"}
                                             ref={this.pEl} 
+                                            defaultValue="+91"
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -170,12 +179,15 @@ export class PersonalDetails extends Component{
                         right:"15px"}}>
                             <Col>
                                 <div className="formRow">
-                                    <Form.Group>
+                                    <Form.Group controlId="validationCustom01">
                                         <Form.Control 
                                             size="text" 
-                                            type="text"
+                                            type="number"
                                             placeholder={"9848274559"}
+                                            defaultValue=" "
                                             ref={this.phonePersonEl}
+                                            pattern={'^d{10}$'}
+                                            required
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -195,9 +207,10 @@ export class PersonalDetails extends Component{
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="text"
+                                            type="url"
                                             placeholder={"www.elonmusk.com"}
                                             ref={this.websiteEl}
+                                            defaultValue=" "
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -215,6 +228,7 @@ export class PersonalDetails extends Component{
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        default="Yes"
                                         ref={this.iEl}
                                         >
                                         <option>Yes</option>

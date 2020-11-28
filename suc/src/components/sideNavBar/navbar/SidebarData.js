@@ -4,6 +4,8 @@ import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
 import * as GrIcons from 'react-icons/gr';
 import * as RiIcons from 'react-icons/ri';
+import * as MDIcons from 'react-icons/md';
+import * as BIIcons from 'react-icons/bi';
 
 export const SidebarData = [
   {
@@ -43,10 +45,29 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Courses',
+    path: '/profile/courses',
+    icon: <MDIcons.MdSubject />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Awards',
+    path: '/profile/awards',
+    icon: <BIIcons.BiAward />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Projects',
+    path: '/profile/projects',
+    icon: <AiIcons.AiOutlineProject />,
+    cName: 'nav-text'
+  },
+  {
     title: 'Edit',
     path: '/profile/edit',
     icon: <RiIcons.RiEditBoxLine />,
     cName: 'nav-text'
   }
+ 
 
 ];

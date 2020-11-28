@@ -1,31 +1,31 @@
-.experienceContainer{
+.courses1Container{
     background-color: #292727;
     color: white;
     margin-top: 05%;
     margin-left: 50vh;
     margin-bottom: 05%;
-    height: 80%;
     width: 40%;
+    padding-bottom: 20px;
+
 
 }
-.experienceIcon{
+.companyCoursesCardMain{
+    height: 250px;
+    width: 500px;
+    background-color: #3a3838;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.courses1Icon{
     color:#007fbb;
     height:50px;
     width:60px;
     margin:30px 0px 20px 0px;
 }
-.experienceText{
+.courses1Text{
     margin:30px 0px 20px 30px;
     text-align: left;
     font-Size:35px;
     font-Style:Bold;
-}
-.experienceDescCol{
-    margin:20px 10px 20px 10px;
-    align-Self:flex-start;
-}
-.experienceTextData{
-    text-Align:left;
-    color:#5f5d5d;
-    font-Size:17.5px;
 }
