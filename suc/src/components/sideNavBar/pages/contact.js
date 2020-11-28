@@ -116,7 +116,7 @@ class Contact extends Component {
         <Col>
           <Container>
             <Row>
-              <Col><EmailCard mail={"email"+this.state.email}/></Col>
+              <Col><EmailCard mail={this.state.email}/></Col>
             </Row>
             <Row>
               <Col><PhoneCard Mobile={this.state.phone}/></Col>

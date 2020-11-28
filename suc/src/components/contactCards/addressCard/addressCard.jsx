@@ -2,15 +2,10 @@ import React,{Component} from 'react';
 import {Card,Container,Row,Col} from 'react-bootstrap';
 import './addressCard.css';
 
-class AddressCard extends Component
+function AddressCard(props)
 {
-    constructor(props){
-        super(props);
-        this.state={
-            address: ""+this.props.Place,
-        }
-    }
-    render(){
+   
+   
     return(
         <Card className="mainAACard">
             <Container>
@@ -21,13 +16,13 @@ class AddressCard extends Component
                 </Row>
                 <Row>
                     <Col>
-                    <p className="emailAText">{this.state.address}</p>
+                    <p className="emailAText">{props.Place}</p>
                     </Col>
                 </Row>
             </Container>
         </Card>
     );
-    }
+    
 }
 
 export default AddressCard;
