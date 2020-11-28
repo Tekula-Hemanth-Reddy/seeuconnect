@@ -152,9 +152,6 @@ class Contact extends Component {
           </Container>
         </Col>
       </Row>
-
-
-
     </Container>
     );}
 }
