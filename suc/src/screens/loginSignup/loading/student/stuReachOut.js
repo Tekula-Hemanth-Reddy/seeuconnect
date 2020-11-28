@@ -1,5 +1,4 @@
 import React from 'react';
-import {Spinner,Card,Container} from 'react-bootstrap';
 import history from '../../../../history/history';
 import authContext from '../../../../context/auth-context';
 import Loading from '../../../../AlumniPart/Components/loader/loader';

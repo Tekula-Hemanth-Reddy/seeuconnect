@@ -1,10 +1,7 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Card,Form,Button} from 'react-bootstrap';
 import '../_css/requirement.css';
-import BackGround from '../../../../assets/images/background/background1.jpg';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
-import MiniCard from './miniSkill';
-
 
 class Requirement extends Component{
     constructor(props){

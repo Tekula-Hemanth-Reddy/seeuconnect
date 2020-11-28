@@ -6,12 +6,6 @@ import './styles/styles.css';
 
 export class Graduation extends Component
 {
-    constructor(props)
-    {
-        super(props);
-        
-    }
-
     continue = e => {
         e.preventDefault();
         this.props.nextStep();

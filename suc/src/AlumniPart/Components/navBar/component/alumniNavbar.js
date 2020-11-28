@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar,Nav,Button,Form,FormControl } from 'react-bootstrap';
+import { Navbar,Nav,Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import history from '../../../../history/history';
 import {BrowserRouter as Router} from 'react-router-dom';
-import authContext from '../../../../context/auth-context';
 import '../css/alumniNavbar.css'
 
 const AlumniNavBar =props => {

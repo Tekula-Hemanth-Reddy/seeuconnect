@@ -6,9 +6,6 @@ import '../_css/requirement.css';
 
 
 class MiniSkill extends Component{
-    constructor(props){
-        super(props)
-    }
     render(){
         return(
             <div  style={{backgroundColor:"#000"}}>

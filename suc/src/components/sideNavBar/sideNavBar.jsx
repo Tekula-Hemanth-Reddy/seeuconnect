@@ -10,7 +10,6 @@ import Home from './pages/home';
 import Skills from './pages/skills';
 import EditSideBar from '../editSideNavBar/sideNavBar';
 import authContext from '../../context/auth-context';
-import Home1 from '../../screens/home/home';
 
 const SideNavBar=() =>{
   return (

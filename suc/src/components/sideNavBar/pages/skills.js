@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container,Row,Col,Card} from 'react-bootstrap';
+import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import * as HIIcons from 'react-icons/fa';
 import ProfessionalSkillsCard from '../../skillsSubCards/professionalSkillsCard/professionalSkillsCard';
-import TeluguCard from '../../skillsSubCards/languagesCard/teluguCard';
-import HindiCard from '../../skillsSubCards/languagesCard/hindiCard';
-import EnglishCard from '../../skillsSubCards/languagesCard/englishCard';
-import FrenchCard from '../../skillsSubCards/languagesCard/frenchCard';
 import authContext from '../../../context/auth-context';
+import 'react-circular-progressbar/dist/styles.css';
 import './css/skills.css';
 
 class Skills extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      name: "",
-      location: "",
-      pin: "",
-      phone: "",
-      email: "",
-      website: ""
-    }
+    this.state = {languageData: []};
   }
 
   static contextType = authContext;
@@ -35,10 +26,6 @@ class Skills extends Component {
           profile{
             languages{
               language
-            }
-            skills{
-              skill
-              rating
             }
           }
         }
@@ -63,15 +50,7 @@ class Skills extends Component {
       })
       .then(resData => {
         console.log(token);
-          console.log({...resData.data.jobGivers});
-          this.setState({
-          name: resData.data.users.profile.name,
-          location: resData.data.users.profile.addresses.location,
-          pin: resData.data.users.profile.addresses.pinCode,
-          phone: resData.data.users.profile.phoneNumber,
-          email: resData.data.users.profile.email,
-          website: resData.data.users.profile.portFolio
-        });
+        this.setState({languageData: resData.data.users.profile.languages});
       })
       .catch(err => {
           console.log(err);
@@ -113,10 +92,23 @@ class Skills extends Component {
       </Row>
 
       <Row>
-        <Col md="auto"><EnglishCard/></Col>
-        <Col md="auto"><FrenchCard/></Col>
-        <Col md="auto"><TeluguCard/></Col>
-        <Col md="auto"><HindiCard/></Col>
+        {/* <Col md="auto"><EnglishCard/></Col>
+        <Col md="auto"><FrenchCard/></Col> */}
+        {this.state.languageData.map(item =>(
+          <Col md="auto">
+          <Card className="languageCard" style={{borderBottomColor:"#00c5fc"}}>
+          <CircularProgressbar value={100} 
+                               text={item.language} 
+                               strokeWidth={3} 
+                               className="progressBar" 
+                               styles={buildStyles({
+                                  textColor: "#00c5fc",
+                                  pathColor: "#00c5fc",
+                                })}/>
+          </Card>
+          </Col>
+        ))}
+        {/* <Col md="auto"><HindiCard/></Col> */}
       </Row>
 
 

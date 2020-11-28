@@ -77,7 +77,7 @@ class Contact extends Component {
       })
       .then(resData => {
         console.log(token);
-          console.log({...resData.data.jobGivers});
+          console.log({...resData.data});
           this.setState({
           email:resData.data.users.profile.email,
           phone:resData.data.users.profile.phoneNumber,
@@ -92,6 +92,7 @@ class Contact extends Component {
           twitter:resData.data.users.profile.reachOuts.twitter,
           fullAdd: ""+resData.data.users.profile.addresses.location+","+resData.data.users.profile.addresses.city+","+resData.data.users.profile.addresses.state
         });
+        console.log(this.state.email);
       })
       .catch(err => {
           console.log(err);
@@ -115,7 +116,7 @@ class Contact extends Component {
         <Col>
           <Container>
             <Row>
-              <Col><EmailCard mail={this.state.email}/></Col>
+              <Col><EmailCard mail={"email"+this.state.email}/></Col>
             </Row>
             <Row>
               <Col><PhoneCard Mobile={this.state.phone}/></Col>

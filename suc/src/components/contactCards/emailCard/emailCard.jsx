@@ -6,6 +6,7 @@ class EmailCard extends Component
 {
     constructor(props){
         super(props);
+        console.log(props);
         this.state={
             email: ""+this.props.mail,
         }
