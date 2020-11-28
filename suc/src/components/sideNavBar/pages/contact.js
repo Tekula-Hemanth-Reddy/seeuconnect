@@ -116,7 +116,7 @@ class Contact extends Component {
         <Col>
           <Container>
             <Row>
-              <Col><EmailCard mail={"email"+this.state.email}/></Col>
+              <Col><EmailCard mail={this.state.email}/></Col>
             </Row>
             <Row>
               <Col><PhoneCard Mobile={this.state.phone}/></Col>
@@ -126,19 +126,19 @@ class Contact extends Component {
             </Row>
             <Row style={{margin:"20px 10px 10px 10px"}}>
               <Col md="auto">
-                <FaIcons.FaInstagram className="socialIcons"/>
+                <a href={this.state.instagram} target="_blank" style={{margin:"0px"}}><FaIcons.FaInstagram className="socialIcons"/></a>
               </Col>
               <Col md="auto">
-                <FaIcons.FaFacebook className="socialIcons"/>
+              <a href={this.state.face} target="_blank" style={{margin:"0px"}}><FaIcons.FaFacebook className="socialIcons"/></a>
               </Col>
               <Col md="auto">
-                <FaIcons.FaGithub className="socialIcons"/>
+              <a href={this.state.git} target="_blank" style={{margin:"0px"}}><FaIcons.FaGithub className="socialIcons"/></a>
               </Col>
               <Col md="auto">
-                <FaIcons.FaTwitter className="socialIcons"/>
+              <a href={this.state.twitter} target="_blank" style={{margin:"0px"}}><FaIcons.FaTwitter className="socialIcons"/></a>
               </Col>
               <Col md="auto">
-                <FaIcons.FaLinkedin className="socialIcons"/>
+              <a href={this.state.linked} target="_blank" style={{margin:"0px"}}><FaIcons.FaLinkedin className="socialIcons"/></a>
               </Col>
             </Row>
           </Container>
