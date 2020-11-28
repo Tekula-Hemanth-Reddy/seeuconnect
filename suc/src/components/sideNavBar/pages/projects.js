@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Card} from 'react-bootstrap';
 import * as AiIcons from 'react-icons/ai';
-import * as BIIcons from 'react-icons/bi';
 import * as GRIcons from 'react-icons/gr';
 import './css/awards.css';
 import authContext from '../../../context/auth-context';

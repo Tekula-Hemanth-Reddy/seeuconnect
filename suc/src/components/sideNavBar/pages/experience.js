@@ -3,8 +3,6 @@ import {Container,Row,Col} from 'react-bootstrap';
 import * as HIIcons from 'react-icons/fa';
 import './css/experience.css';
 import CompanyExperienceCard from '../../companyExperienceCard/companyExperienceCard';
-import TrophyCard from '../../awardCards/trophyCard/trophyCard';
-import GeneralAward from '../../awardCards/generalAward/generalAward';
 import authContext from '../../../context/auth-context';
 
 class Experience extends Component {
