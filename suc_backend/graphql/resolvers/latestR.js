@@ -23,5 +23,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteLatest : async args =>{
+        try {
+            const latest = await Latest.findById(args.latestId);
+            await Latest.deleteOne({_id: args.latestId});
+            return { ...latest._doc, _id: latest._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

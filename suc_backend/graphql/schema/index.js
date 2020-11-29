@@ -335,6 +335,14 @@ type RootMutation {
     UpdateCollege(collegeInput: CollegeInput): College
     UpdateGraduation(graduationInput: GraduationInput): Graduation
     UpdateEducation(educationInput: EducationInput): Education
+
+    DeleteSkill(skillId: String!): Skill
+    DeleteProject(projectId: String!): Project
+    DeleteCourse(courseId: String!): Course
+    DeleteAchievement(achievementId: String!): Achievement
+    DeletePosition(positionId: String!): Position
+    DeleteLatest(latestId: String!): Latest
+    DeleteLanguage(languageId: String!): Language
 }
 
 schema {

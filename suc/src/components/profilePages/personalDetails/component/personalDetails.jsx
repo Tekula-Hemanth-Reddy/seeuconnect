@@ -132,10 +132,11 @@ export class PersonalDetails extends Component{
                 <Row>
                     <Col>
                         <Row>
-                            <p className="personalDetailsGenderTitle">Title</p>
+                            <p className="personalDetailsGenderTitle" style={{marginBottom:"22px"}}>Title</p>
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
+                            <div className="formRow">
                                 <Form.Group>
                                     <Form.Control 
                                         size="text" 
@@ -146,6 +147,7 @@ export class PersonalDetails extends Component{
                                     ></Form.Control>
                                 <br />
                                 </Form.Group>
+                                </div>
                             </Col>
                         </Row>             
                     </Col>
