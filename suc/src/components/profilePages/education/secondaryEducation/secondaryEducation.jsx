@@ -1,10 +1,78 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
 import './styles/styles.css';
 
 export class SecondaryEducation extends Component
 {
-
+    constructor(props){
+        super(props);
+        this.state = {
+          cn:"",
+          cg:"",
+          cc:"",
+          cb:"",
+          cy:""
+        }
+      }
+    
+      static contextType = authContext;
+    
+      componentDidMount(){
+    
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+                profile{
+                education{
+                college{
+                  collegeName
+                  collegeGrade
+                  collegeCourse
+                  collegeBoard
+                  collegeYear
+                }
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data.users});
+              this.setState({
+                cn : resData.data.users.profile.education.college.collegeName,
+                cg : resData.data.users.profile.education.college.collegeGrade,
+                cc : resData.data.users.profile.education.college.collegeCourse,
+                cb : resData.data.users.profile.education.college.collegeBoard,
+                cy : resData.data.users.profile.education.college.collegeYear
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
+    
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -37,7 +105,8 @@ export class SecondaryEducation extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
-                                placeholder="e.g. Delhi Public School " 
+                                placeholder="e.g. Delhi Public School "
+                                defaultValue={this.state.cn} 
                                 onChange={inputChange('secondarySchoolName')} 
                                 value={values.secondarySchoolName}/>
                             <br />
@@ -57,7 +126,8 @@ export class SecondaryEducation extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
-                                placeholder="e.g. M.P.C " 
+                                placeholder="e.g. M.P.C "
+                                defaultValue={this.state.cc}
                                 onChange={inputChange('secondarySchoolStream')} 
                                 value={values.secondarySchoolStream}/>
                             <br />
@@ -78,6 +148,7 @@ export class SecondaryEducation extends Component
                                 size="text" 
                                 type="text" 
                                 placeholder="e.g. TSBIE "
+                                defaultValue={this.state.cb}
                                 onChange={inputChange('secondarySchoolBoard')} 
                                 value={values.secondarySchoolBoard} />
                             <br />
@@ -99,6 +170,7 @@ export class SecondaryEducation extends Component
                                 as="select"
                                 onChange={inputChange('ySecondarySchool')} 
                                 value={values.ySecondarySchool}
+                                defaultValue={this.state.cy}
                             >
                             <option>2020</option>
                             <option>2019</option>
@@ -141,6 +213,7 @@ export class SecondaryEducation extends Component
                                 size="text" 
                                 type="number" 
                                 placeholder="8.7 "
+                                defaultValue={this.state.cg}
                                 onChange={inputChange('secondarySchoolGrade')} 
                                 value={values.secondarySchoolGrade} />
                             <br />

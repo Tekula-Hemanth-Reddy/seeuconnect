@@ -16,18 +16,67 @@ export class PersonalDetails extends Component{
         this.lastEl = React.createRef();
         this.phonePersonEl = React.createRef();
         this.websiteEl = React.createRef();
+        this.state = {
+            name:"",
+            phone:"",
+            portfolio:"",
+            interested:""
+        }
     }
 
     static contextType = authContext;
 
-    
+    componentDidMount(){
 
-   
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+            profile{
+                name
+                phoneNumber
+                interestedIntern
+                portFolio
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+              this.setState({
+              name: resData.data.users.profile.name===""?"---":resData.data.users.profile.name,
+              interested: (resData.data.users.profile.interestedIntern)?"Yes":"NO",
+              phone: resData.data.users.profile.phoneNumber===""?"+91- ":resData.data.users.profile.phoneNumber,
+              portfolio: resData.data.users.profile.portFolio
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
 
     submitHandler = (event) =>{
         event.preventDefault();
-        const Title = ""+this.titleEl.current.value;
-        const Phn = ""+this.pEl.current.value;
+        const Title = (""+this.titleEl.current.value)===""?"Mr.":(""+this.titleEl.current.value);
+        const Phn = (""+this.pEl.current.value)===""?"+91":(""+this.pEl.current.value);
         const intrested = ""+this.iEl.current.value==="false"?"false":"true";
         const FirstName = ""+this.firstEl.current.value;
         const LastName = ""+this.lastEl.current.value;
@@ -37,7 +86,7 @@ export class PersonalDetails extends Component{
         const requestBody = {
             query: `
             mutation{
-                UpdateProfile(profileInput:{name:"${Title}${FirstName}${" "}${LastName}",phoneNumber:"${Phn}${" "}${Phone}",portFolio:"${Website}",interestedIntern:${intrested}}){
+                UpdateProfile(profileInput:{name:"${Title}${"-"}${FirstName}${"-"}${LastName}",phoneNumber:"${Phn}${"-"}${Phone}",portFolio:"${Website}",interestedIntern:${intrested}}){
                   _id
                   name
                   phoneNumber
@@ -89,22 +138,16 @@ export class PersonalDetails extends Component{
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
-                                
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
-                                        <Form.Label></Form.Label>
-                                        <Form.Control 
-                                        as="select"
-                                        defaultValue="Mr"
-                                        ref={this.titleEl}
-                                        required
-                                        id="id1"
-                                        >
-                                        <option>Mr.</option>
-                                        <option>Mrs.</option>
-                                        <option>Ms.</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                                
+                                <Form.Group>
+                                    <Form.Control 
+                                        size="text" 
+                                        type="text"
+                                        placeholder={"Mr./Mrs./Ms."}
+                                        ref={this.titleEl} 
+                                        defaultValue={this.state.name.split("-")[0]}
+                                    ></Form.Control>
+                                <br />
+                                </Form.Group>
                             </Col>
                         </Row>             
                     </Col>
@@ -119,10 +162,10 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            defaultValue=" "
                                             required
                                             id="id1"
                                             pattern="[a-zA-Z ]+"
+                                            defaultValue={this.state.name.split("-")[1]}
                                             ref={this.firstEl} 
                                         />
                                     <br />
@@ -142,7 +185,7 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            defaultValue=" "
+                                            defaultValue={this.state.name.split("-")[2]}
                                             ref={this.lastEl} 
                                             required
                                             id="id1"
@@ -170,7 +213,7 @@ export class PersonalDetails extends Component{
                                             type="text"
                                             placeholder={"+91"}
                                             ref={this.pEl} 
-                                            defaultValue="+91"
+                                            defaultValue={this.state.phone.split("-")[0]}
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -218,7 +261,7 @@ export class PersonalDetails extends Component{
                                             type="url"
                                             placeholder={"www.elonmusk.com"}
                                             ref={this.websiteEl}
-                                            defaultValue=" "
+                                            defaultValue={this.state.portfolio}
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -236,7 +279,7 @@ export class PersonalDetails extends Component{
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
-                                        default="Yes"
+                                        default={this.state.interested}
                                         ref={this.iEl}
                                         >
                                         <option>Yes</option>
