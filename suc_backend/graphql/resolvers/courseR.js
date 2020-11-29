@@ -28,23 +28,39 @@ module.exports = {
             throw new Error("Unauthenticated");
         }
         const pId = await User.findById(req.userId);
-        const study = new Course({
-            courseName: args.courseInput.courseName,
-            specialization: args.courseInput.specialization,
-            certificate: args.courseInput.certificate,
-            credentials: args.courseInput.credentials,
-            profileId: pId.profileId
-        });
-        try {
-            const result = await study.save();
-            const profile = await Profile.findById(result._doc.profileId);
-            profile.courseId.push(result.id);
-            await profile.save();
-            return { ...result._doc, _id: result._doc._id.toString(),
-                profile: profileInfo.bind(this,result._doc.profileId)
-            };
-        } catch (err) {
-            throw err;
+        const userCourse = await Course.findOne({ $and: [ { profileId: pId.profileId }, {courseName: args.courseInput.courseName} ] });
+        if(userCourse){
+            userCourse.specialization= args.courseInput.specialization;
+            userCourse.certificate= args.courseInput.certificate;
+            userCourse.credentials= args.courseInput.credentials;
+            try {
+                const result = await userCourse.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
+        }
+        else{
+            const study = new Course({
+                courseName: args.courseInput.courseName,
+                specialization: args.courseInput.specialization,
+                certificate: args.courseInput.certificate,
+                credentials: args.courseInput.credentials,
+                profileId: pId.profileId
+            });
+            try {
+                const result = await study.save();
+                const profile = await Profile.findById(result._doc.profileId);
+                profile.courseId.push(result.id);
+                await profile.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
         }
     },
     DeleteCourse : async args =>{

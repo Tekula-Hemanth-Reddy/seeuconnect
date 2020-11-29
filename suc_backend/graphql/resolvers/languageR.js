@@ -28,20 +28,29 @@ module.exports = {
             throw new Error("Unauthenticated");
         }
         const pId = await User.findById(req.userId);
-        const voice = new Language({
-            language: args.languageInput.language,
-            profileId: pId.profileId
-        });
-        try {
-            const result = await voice.save();
-            const profile = await Profile.findById(result._doc.profileId);
-            profile.languageId.push(result.id);
-            await profile.save();
-            return { ...result._doc, _id: result._doc._id.toString(),
-                profile: profileInfo.bind(this,result._doc.profileId)
+        const userLanguage = await Language.findOne({ $and: [ { profileId: pId.profileId }, { language: args.languageInput.language} ] });
+        //to find user already exist or not
+        if (!userLanguage) {
+            const voice = new Language({
+                language: args.languageInput.language,
+                profileId: pId.profileId
+            });
+            try {
+                const result = await voice.save();
+                const profile = await Profile.findById(result._doc.profileId);
+                profile.languageId.push(result.id);
+                await profile.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
+        }
+        else{
+            return { ...userLanguage._doc, _id: userLanguage._doc._id.toString(),
+                profile: profileInfo.bind(this,userLanguage._doc.profileId)
             };
-        } catch (err) {
-            throw err;
         }
     },
     DeleteLanguage : async args =>{

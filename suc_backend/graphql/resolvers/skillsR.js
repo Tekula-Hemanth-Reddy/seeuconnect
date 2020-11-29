@@ -28,21 +28,31 @@ module.exports = {
             throw new Error("Unauthenticated");
         }
         const pId = await User.findById(req.userId);
-        const ability = new Skill({
-            skill: args.skillInput.skill,
-            rating: args.skillInput.rating,
-            profileId: pId.profileId
-        });
-        try {
-            const result = await ability.save();
-            const profile = await Profile.findById(result._doc.profileId);
-            profile.skillId.push(result.id);
-            await profile.save();
+        const userSkill = await Skill.findOne({ $and: [ { profileId: pId.profileId }, { skill: args.skillInput.skill} ] });
+        if(userSkill){
+            userSkill.rating=args.skillInput.rating;
+            const result = await userSkill.save();
             return { ...result._doc, _id: result._doc._id.toString(),
                 profile: profileInfo.bind(this,result._doc.profileId)
             };
-        } catch (err) {
-            throw err;
+        }
+        else{
+            const ability = new Skill({
+                skill: args.skillInput.skill,
+                rating: args.skillInput.rating,
+                profileId: pId.profileId
+            });
+            try {
+                const result = await ability.save();
+                const profile = await Profile.findById(result._doc.profileId);
+                profile.skillId.push(result.id);
+                await profile.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
         }
     },
     DeleteSkill : async args =>{

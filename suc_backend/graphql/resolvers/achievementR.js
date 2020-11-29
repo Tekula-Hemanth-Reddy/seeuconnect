@@ -28,22 +28,37 @@ module.exports = {
             throw new Error("Unauthenticated");
         }
         const pId = await User.findById(req.userId);
-        const jobsDone = new Achievement({
-            title: args.achievementInput.title,
-            achievementDescription: args.achievementInput.achievementDescription,
-            certificate: args.achievementInput.certificate,
-            profileId: pId.profileId
-        });
-        try {
-            const result = await jobsDone.save();
-            const profile = await Profile.findById(result._doc.profileId);
-            profile.achievementId.push(result.id);
-            await profile.save();
-            return { ...result._doc, _id: result._doc._id.toString(),
-                profile: profileInfo.bind(this,result._doc.profileId)
-            };
-        } catch (err) {
-            throw err;
+        const userAchievement = await Achievement.findOne({ $and: [ { profileId: pId.profileId }, {title: args.achievementInput.title} ] });
+        if(userAchievement){
+            userAchievement.achievementDescription= args.achievementInput.achievementDescription;
+            userAchievement.certificate= args.achievementInput.certificate;
+            try {
+                const result = await userAchievement.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
+        }
+        else{
+            const jobsDone = new Achievement({
+                title: args.achievementInput.title,
+                achievementDescription: args.achievementInput.achievementDescription,
+                certificate: args.achievementInput.certificate,
+                profileId: pId.profileId
+            });
+            try {
+                const result = await jobsDone.save();
+                const profile = await Profile.findById(result._doc.profileId);
+                profile.achievementId.push(result.id);
+                await profile.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
         }
     },
     DeleteAchievement : async args =>{
