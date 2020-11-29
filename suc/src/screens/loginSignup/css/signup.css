@@ -25,3 +25,10 @@
     margin-bottom: 30px;
 }
 
+#id1:valid{
+    color: black;
+}
+#id1:invalid{
+    color: red;
+}
+

@@ -80,15 +80,20 @@ class SignUp extends Component {
                 </Form.Group>
         
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridEmail">
-                <Form.Control required type="email" placeholder="Enter email*" ref={this.emailEl} />
+                <Form.Control required="Enter valid email" type="email" placeholder="Enter email*" ref={this.emailEl} 
+                title="Please enter Valid email Address" id="id1"/>
                 </Form.Group>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword">
-                <Form.Control required type="password" placeholder="Password*" ref={this.passwordEl} />
+                <Form.Control required type="password" placeholder="Password*" ref={this.passwordEl} 
+                id="id1"
+                 pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})"/>
                 </Form.Group>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword2">
-                <Form.Control required type="Password" placeholder="Confirm Password*" ref={this.conPassEl} />
+                <Form.Control required type="Password" placeholder="Confirm Password*" 
+                ref={this.conPassEl}  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
+                id="id1" />
                 </Form.Group>
         
                 <Button className="submitButton" variant="primary" type="submit">

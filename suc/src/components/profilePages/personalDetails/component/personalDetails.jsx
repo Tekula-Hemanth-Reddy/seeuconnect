@@ -96,6 +96,8 @@ export class PersonalDetails extends Component{
                                         as="select"
                                         defaultValue="Mr"
                                         ref={this.titleEl}
+                                        required
+                                        id="id1"
                                         >
                                         <option>Mr.</option>
                                         <option>Mrs.</option>
@@ -118,6 +120,9 @@ export class PersonalDetails extends Component{
                                             size="text" 
                                             type="text"
                                             defaultValue=" "
+                                            required
+                                            id="id1"
+                                            pattern="[a-zA-Z ]+"
                                             ref={this.firstEl} 
                                         />
                                     <br />
@@ -139,6 +144,9 @@ export class PersonalDetails extends Component{
                                             type="text"
                                             defaultValue=" "
                                             ref={this.lastEl} 
+                                            required
+                                            id="id1"
+                                            pattern="[a-zA-Z ]+"
                                         />
                                     <br />
                                     </Form.Group>
@@ -183,11 +191,11 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="number"
-                                            placeholder={"9848274559"}
-                                            defaultValue=" "
+                                            placeholder={"9126126126"}
                                             ref={this.phonePersonEl}
-                                            pattern={'^d{10}$'}
+                                            pattern="^[6-9]\d{9}$"
                                             required
+                                            id="id1"
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
