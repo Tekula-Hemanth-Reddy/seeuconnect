@@ -119,8 +119,10 @@ export class Skills extends Component{
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="number" 
+                                            type="text" 
                                             placeholder="75"
+                                            pattern="^[1-9][0-9]?$|^100$"
+                                            id="id1"
                                             ref={this.rangeEl}
                                         />
                                     <br />

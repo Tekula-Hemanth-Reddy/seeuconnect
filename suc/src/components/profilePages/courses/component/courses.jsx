@@ -82,6 +82,9 @@ export class Courses extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     type="text" 
+                                    required
+                                    id="id1"
+                                    minLength="4"
                                     placeholder="Nptel DS & ML" 
                                     ref={this.courseTitle}
                                     />
@@ -141,6 +144,7 @@ export class Courses extends Component
                                             <Form.Group>
                                                 <Form.Control size="text" 
                                                     type="url" 
+                                                    placeholder="https://gdrive.com/certficate"
                                                     ref={this.certificate}
                                                     />
                                                 <br />

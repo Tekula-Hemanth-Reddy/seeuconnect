@@ -138,7 +138,7 @@ export class Address extends Component{
                 <Row>
                     <Col>
                         <Row>
-                            <p className="personalDetailsGenderTitle">State</p>
+                            <p className="personalDetailsGenderTitle" style={{color:"white"}}>State</p>
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
@@ -192,6 +192,8 @@ export class Address extends Component{
                                             size="text" 
                                             type="text"
                                             placeholder="111111"
+                                            pattern="[1-9][0-9]{5}"
+                                            id="id1"
                                             defaultValue={this.state.PinCode}
                                             ref={this.pinEl} 
                                         ></Form.Control>
@@ -213,6 +215,7 @@ export class Address extends Component{
                                         <Form.Control 
                                             as="textarea"
                                             rows={4} 
+                                            maxLength="200"
                                             ref={this.addressEl}
                                             placeholder="Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"
                                             defaultValue={this.state.location}

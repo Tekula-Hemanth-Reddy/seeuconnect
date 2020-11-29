@@ -84,6 +84,9 @@ export class Experience extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     type="text" 
+                                    required
+                                    minlength="4"
+                                    id="id1"
                                     placeholder="TidbEat"
                                     ref={this.cmpEl}
                                     />
@@ -103,6 +106,9 @@ export class Experience extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     type="text" 
+                                    required
+                                    minlength="4"
+                                    id="id1"
                                     placeholder="Full Stack Developer"
                                     ref={this.posEl} 
                                     />
@@ -123,6 +129,7 @@ export class Experience extends Component
                                 <Form.Control size="text" 
                                     as="textarea"
                                     rows={4} 
+                                    maxlength="150"
                                     placeholder=""
                                     ref={this.desEl}
                                     />
