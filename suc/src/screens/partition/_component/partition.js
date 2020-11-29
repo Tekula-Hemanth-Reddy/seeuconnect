@@ -19,14 +19,12 @@ class Partition extends Component{
                                 className="aboutImage"
                                 src={alumniImg}
                                 alt="About Suc"
-                                // style={{borderRadius: "100%"}}
                             />
                         </div>
                         <div className="col-lg-6 messageAbout">
                             <Button variant="outline-primary" size="lg" className="loginButton" onClick={() => history.push('/alumni')}>Alumni</Button>
                         </div>
                 </div>
-                {/* <hr className="lineBreak" style={{backgroundColor:"#000"}}/> */}
                 <div>
                 <div className="row center" style={{backgroundColor:"#000"}}>
                         <div className="col-lg-6 messageAbout">

@@ -55,8 +55,6 @@ export class Courses extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.jobGivers});
               this.setState({
               courseData: resData.data.users.profile.courses
             });
@@ -103,7 +101,6 @@ export class Courses extends Component
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {
@@ -189,25 +186,22 @@ export class Courses extends Component
                 
                 <Row>
                     <p className="projectFormTitle">Certificate</p>
-                                </Row>
-                
-                                <Row className="formProjectRow">
-                                    <Col>
-                                        <div className="formBlog">
-                                            <Form.Group>
-                                                <Form.Control size="text" 
-                                                    type="url" 
-                                                    placeholder="https://gdrive.com/certficate"
-                                                    ref={this.certificate}
-                                                    />
-                                                <br />
-                                            </Form.Group>
-                                        </div>
-                                    </Col>
-                                 </Row>
-                
-               
-
+                    </Row>
+    
+                    <Row className="formProjectRow">
+                        <Col>
+                            <div className="formBlog">
+                                <Form.Group>
+                                    <Form.Control size="text" 
+                                        type="url" 
+                                        placeholder="https://gdrive.com/certficate"
+                                        ref={this.certificate}
+                                        />
+                                    <br />
+                                </Form.Group>
+                            </div>
+                        </Col>
+                     </Row>
                 <Row >
                     <Col style={{textAlign:"right"}}>
                         <Button className="buttonRow" variant="outline-primary" type="submit" size="lg">Add</Button>{' '}

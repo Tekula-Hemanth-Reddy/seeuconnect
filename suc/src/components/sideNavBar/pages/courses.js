@@ -52,8 +52,6 @@ export class Courses  extends Component
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
           courseData: resData.data.users.profile.courses
         });

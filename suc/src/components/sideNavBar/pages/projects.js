@@ -52,8 +52,6 @@ export class Projects  extends Component
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
             projectData:resData.data.users.profile.projects         
         });

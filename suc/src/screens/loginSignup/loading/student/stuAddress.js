@@ -31,7 +31,6 @@ const StuAddress =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/sturealoading')
                     })
                     .catch(err => {

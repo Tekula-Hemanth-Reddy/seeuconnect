@@ -64,8 +64,6 @@ class About extends Component {
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
           name: resData.data.users.profile.name===""?"---":resData.data.users.profile.name,
           location: resData.data.users.profile.addresses.location,

@@ -76,8 +76,6 @@ class Contact extends Component {
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data});
           this.setState({
           email:resData.data.users.profile.email,
           phone:resData.data.users.profile.phoneNumber,

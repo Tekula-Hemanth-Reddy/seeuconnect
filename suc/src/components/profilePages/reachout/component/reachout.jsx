@@ -61,8 +61,6 @@ export class ReachOut extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data});
               this.setState({
               git:resData.data.users.profile.reachOuts.gitHub,
               linked:resData.data.users.profile.reachOuts.linkedIn,
@@ -98,8 +96,6 @@ export class ReachOut extends Component
         };
 
         const token = this.context.token;
-        console.log(token);
-
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
             body: JSON.stringify(requestBody),
@@ -114,7 +110,6 @@ export class ReachOut extends Component
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {

@@ -52,7 +52,6 @@ class SignUp extends Component {
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             this.setState({idUser: resData.data.CreateUser._id});
             if(this.state.userType==='alumni'){
                 if(resData.data.CreateUser._id){
