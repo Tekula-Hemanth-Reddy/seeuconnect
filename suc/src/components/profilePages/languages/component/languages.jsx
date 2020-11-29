@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {Container,Row,Col,Card,Form,Button} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/styles.css';
 
 export class Languages extends Component{
@@ -9,9 +11,51 @@ export class Languages extends Component{
     constructor(props){
         super(props);
         this.nameEl = React.createRef();
+        this.state = {languageData: []};
     }
 
     static contextType = authContext;
+    componentDidMount(){
+
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+              profile{
+                languages{
+                  language
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+            this.setState({languageData: resData.data.users.profile.languages});
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -55,9 +99,12 @@ export class Languages extends Component{
     render()
     {
         return(
+            <div style={{marginLeft:"20vh"}}>
+            <Row>
+                <Col md={8}>
                 <Container className="languagesContainer">
                 <Form onSubmit={this.submitHandler}>
-                <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+                <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px",marginTop:"20%"}}>
 
                     <Row>
                         <Col>
@@ -105,6 +152,26 @@ export class Languages extends Component{
                         </Card>
                         </Form>
                 </Container>
+                </Col>
+                <Col md={3}>
+                    <h2 style={{color:"#fff",marginTop:"15%"}}>Languages</h2>
+                    {this.state.languageData.map(item =>(
+                        <div style={{paddingTop:"20%"}}>
+                        <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+                            <Row>
+                                <Col md={8}>
+                                    <h5 style={{color:"#fff",marginTop:"5px"}}>{item.language}</h5>
+                                </Col>
+                                <Col md={4}>
+                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                </Col>
+                            </Row>
+                            </Card>
+                        </div>
+                    ))}
+                </Col>
+                </Row>
+                </div>
             );
     }
    
