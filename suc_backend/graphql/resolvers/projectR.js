@@ -46,5 +46,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteProject : async args =>{
+        try {
+            const projects = await Project.findById(args.projectId);
+            await Project.deleteOne({_id: args.projectId});
+            return { ...projects._doc, _id: projects._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

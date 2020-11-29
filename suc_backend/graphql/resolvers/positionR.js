@@ -47,5 +47,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeletePosition : async args =>{
+        try {
+            const stand = await Position.findById(args.positionId);
+            await Position.deleteOne({_id: args.positionId});
+            return { ...stand._doc, _id: stand._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

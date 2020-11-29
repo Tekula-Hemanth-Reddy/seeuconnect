@@ -44,5 +44,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteSkill : async args =>{
+        try {
+            const skills = await Skill.findById(args.skillId);
+            await Skill.deleteOne({_id: args.skillId});
+            return { ...skills._doc, _id: skills._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

@@ -30,6 +30,7 @@ export class Courses extends Component
             users(userId:"${token}"){
               profile{
                 courses{
+                  _id
                   courseName
                   specialization
                   certificate
@@ -102,6 +103,42 @@ export class Courses extends Component
         })
         .then(resData => {
             history.push('/profile/edit');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+    onDelete = (courseId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteCourse(courseId:"${courseId}"){
+                    _id
+                    courseName
+                    specialization
+                    certificate
+                    credentials
+                }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({courseData: this.state.courseData.filter(function(crs) { 
+                return crs._id !== courseId 
+            })});
         })
         .catch(err => {
             console.log(err);
@@ -222,7 +259,7 @@ export class Courses extends Component
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.courseName}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>
