@@ -43,5 +43,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteLanguage : async args =>{
+        try {
+            const result = await Language.findById(args.languageId);
+            await Language.deleteOne({_id: args.languageId});
+            return { ...result._doc, _id: result._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

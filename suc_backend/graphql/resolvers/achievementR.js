@@ -45,5 +45,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteAchievement : async args =>{
+        try {
+            const result = await Achievement.findById(args.achievementId);
+            await Achievement.deleteOne({_id: args.achievementId});
+            return { ...result._doc, _id: result._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };

@@ -31,6 +31,7 @@ export class Experience extends Component
             users(userId:"${token}"){
               profile{
                 positions{
+                    _id
                   positionHeld
                   companyName
                   positionDescription
@@ -106,6 +107,44 @@ export class Experience extends Component
         })
         .then(resData => {
             history.push('/profile/edit');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
+    onDelete = (deleteId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeletePosition(positionId:"${deleteId}"){
+                    _id
+                    positionHeld
+                    companyName
+                    positionDescription
+                    startDate
+                    endDate
+                  }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({positionData: this.state.positionData.filter(function(common) { 
+                return common._id !== deleteId 
+            })});
         })
         .catch(err => {
             console.log(err);
@@ -252,7 +291,7 @@ export class Experience extends Component
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.positionHeld}{"-"}{item.companyName}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>

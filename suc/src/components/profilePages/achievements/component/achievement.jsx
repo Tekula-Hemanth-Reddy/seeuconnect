@@ -29,6 +29,7 @@ export class Achievement extends Component
             users(userId:"${token}"){
               profile{
                 achievements{
+                    _id
                   title
                   achievementDescription
                   certificate
@@ -96,6 +97,41 @@ export class Achievement extends Component
         })
         .then(resData => {
             history.push('/profile/edit');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+    onDelete = (deleteId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteAchievement(achievementId:"${deleteId}"){
+                    _id
+                    title
+                    achievementDescription
+                    certificate
+                  }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({awardData: this.state.awardData.filter(function(common) { 
+                return common._id !== deleteId 
+            })});
         })
         .catch(err => {
             console.log(err);
@@ -196,7 +232,7 @@ export class Achievement extends Component
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.title}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>

@@ -46,5 +46,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    DeleteCourse : async args =>{
+        try {
+            const result = await Course.findById(args.courseId);
+            await Course.deleteOne({_id: args.courseId});
+            return { ...result._doc, _id: result._doc._id.toString()};
+        } catch (err) {
+            throw err;
+        }
     }
 };
