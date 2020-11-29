@@ -28,24 +28,40 @@ module.exports = {
             throw new Error("Unauthenticated");
         }
         const pId = await User.findById(req.userId);
-        const stand = new Position({
-            positionHeld: args.positionInput.positionHeld,
-            companyName: args.positionInput.companyName,
-            positionDescription: args.positionInput.positionDescription,
-            startDate: new Date(args.positionInput.startDate),
-            endDate: new Date(args.positionInput.endDate),//TODO : need to accept null value
-            profileId: pId.profileId
-        });
-        try {
-            const result = await stand.save();
-            const profile = await Profile.findById(result._doc.profileId);
-            profile.positionId.push(result.id);
-            await profile.save();
-            return { ...result._doc, _id: result._doc._id.toString(),
-                profile: profileInfo.bind(this,result._doc.profileId)
-            };
-        } catch (err) {
-            throw err;
+        const userPosition = await Position.findOne({ $and: [ { profileId: pId.profileId }, {positionHeld: args.positionInput.positionHeld}, {companyName: args.positionInput.companyName} ] });
+        if(userPosition){
+            userPosition.positionDescription= args.positionInput.positionDescription;
+            userPosition.startDate= new Date(args.positionInput.startDate);
+            userPosition.endDate= new Date(args.positionInput.endDate);
+            try {
+                const result = await userPosition.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
+        }
+        else{
+            const stand = new Position({
+                positionHeld: args.positionInput.positionHeld,
+                companyName: args.positionInput.companyName,
+                positionDescription: args.positionInput.positionDescription,
+                startDate: new Date(args.positionInput.startDate),
+                endDate: new Date(args.positionInput.endDate),//TODO : need to accept null value
+                profileId: pId.profileId
+            });
+            try {
+                const result = await stand.save();
+                const profile = await Profile.findById(result._doc.profileId);
+                profile.positionId.push(result.id);
+                await profile.save();
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    profile: profileInfo.bind(this,result._doc.profileId)
+                };
+            } catch (err) {
+                throw err;
+            }
         }
     },
     DeletePosition : async args =>{
