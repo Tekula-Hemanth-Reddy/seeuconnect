@@ -13,9 +13,68 @@ export class ReachOut extends Component
         this.insEl = React.createRef();
         this.facEl = React.createRef();
         this.twiEl = React.createRef();
+        this.state = {
+            git: "",
+            linked: "",
+            instagram: "",
+            face: "",
+            twitter: ""
+          }
     }
 
     static contextType = authContext;
+    componentDidMount(){
+
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+              profile{
+                reachOuts{
+                  gitHub
+                  linkedIn
+                  instagram
+                  faceBook
+                  twitter
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data});
+              this.setState({
+              git:resData.data.users.profile.reachOuts.gitHub,
+              linked:resData.data.users.profile.reachOuts.linkedIn,
+              instagram:resData.data.users.profile.reachOuts.instagram,
+              face:resData.data.users.profile.reachOuts.faceBook,
+              twitter:resData.data.users.profile.reachOuts.twitter
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -85,7 +144,8 @@ export class ReachOut extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     type="text" 
-                                    placeholder="http://github.com.com/abc" 
+                                    placeholder="http://github.com.com/abc"
+                                    defaultValue={this.state.git}
                                     ref={this.gitEl}
                                     />
                                 <br />
@@ -105,6 +165,7 @@ export class ReachOut extends Component
                                 <Form.Control size="text" 
                                     type="text" 
                                     placeholder="http://linkedin.com/abc"
+                                    defaultValue={this.state.linked}
                                     ref={this.linEl}
                                     />
                                 <br />
@@ -124,6 +185,7 @@ export class ReachOut extends Component
                                 <Form.Control size="text" 
                                     type="text" 
                                     placeholder="http://instagram.com/abc"
+                                    defaultValue={this.state.instagram}
                                     ref={this.insEl} 
                                     />
                                 <br />
@@ -142,6 +204,7 @@ export class ReachOut extends Component
                                 <Form.Control size="text" 
                                     type="text" 
                                     placeholder="http://facebook.com/abc"
+                                    defaultValue={this.state.face}
                                     ref={this.facEl}
                                     />
                                 <br />
@@ -160,6 +223,7 @@ export class ReachOut extends Component
                                 <Form.Control size="text" 
                                     type="text" 
                                     placeholder="http://twitter.com/abc"
+                                    defaultValue={this.state.twitter}
                                     ref={this.twiEl} 
                                     />
                                 <br />

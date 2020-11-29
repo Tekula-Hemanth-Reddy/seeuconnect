@@ -1,9 +1,75 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import authContext from '../../../../context/auth-context';
 import './styles/styles.css';
 
 export  class Schooling extends Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+          sn:"",
+          sg:"",
+          sb:"",
+          sy:""
+        }
+      }
+    
+      static contextType = authContext;
+    
+      componentDidMount(){
+    
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+                profile{
+                education{
+                  school{
+                    schoolName
+                    schoolGrade
+                    schoolBoard
+                    schoolYear
+                  }
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data.users});
+              this.setState({
+                sn : resData.data.users.profile.education.school.schoolName,
+                sg : resData.data.users.profile.education.school.schoolGrade,
+                sb : resData.data.users.profile.education.school.schoolBoard,
+                sy : resData.data.users.profile.education.school.schoolYear
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
+
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -29,7 +95,8 @@ export  class Schooling extends Component
                         <Form.Group>
                             <Form.Control size="text" 
                                 type="text" 
-                                placeholder="e.g. Delhi Public School " 
+                                placeholder="e.g. Delhi Public School "
+                                defaultValue={this.state.sn}
                                 onChange={inputChange('schoolName')} value={values.schoolName} />
                             <br />
                         </Form.Group>
@@ -48,7 +115,8 @@ export  class Schooling extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
-                                placeholder="e.g. CBSE " 
+                                placeholder="e.g. CBSE "
+                                defaultValue={this.state.sb} 
                                 onChange={inputChange('schoolBoard')} value={values.schoolBoard}    />
                             <br />
                         </Form.Group>
@@ -66,7 +134,8 @@ export  class Schooling extends Component
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label></Form.Label>
                             <Form.Control 
-                            as="select" 
+                            as="select"
+                            defaultValue={this.state.sy}
                             onChange={inputChange('ySchool')} value={values.ySchool}
                             >
                             <option>2020</option>
@@ -109,7 +178,8 @@ export  class Schooling extends Component
                             <Form.Control 
                                 size="text" 
                                 type="number" 
-                                placeholder="9.86 " 
+                                placeholder="9.86 "
+                                defaultValue={this.state.sg}
                                 onChange={inputChange('schoolGrade')} value={values.schoolGrade}/>
                             <br />
                         </Form.Group>
