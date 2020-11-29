@@ -6,6 +6,80 @@ import './styles/styles.css';
 
 export class Graduation extends Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+          gn:"",
+          gg:"",
+          gu:"",
+          gc:"",
+          gs:"",
+          gsy:"",
+          gey:""
+        }
+      }
+    
+      static contextType = authContext;
+    
+      componentDidMount(){
+    
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+                profile{
+                education{
+                  graduation{
+                    graduationCollegeName
+                    graduationCollegeGrade
+                    graduationUniversity
+                    graduationCourse
+                    graduationStream
+                    graduationStartYear
+                    graduationEndYear
+                  }
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data.users});
+              this.setState({
+                gn : resData.data.users.profile.education.graduation.graduationCollegeName,
+                gg : resData.data.users.profile.education.graduation.graduationCollegeGrade,
+                gu : resData.data.users.profile.education.graduation.graduationUniversity,
+                gc : resData.data.users.profile.education.graduation.graduationCourse,
+                gs : resData.data.users.profile.education.graduation.graduationStream,
+                gsy: resData.data.users.profile.education.graduation.graduationStartYear,
+                gey: resData.data.users.profile.education.graduation.graduationEndYear
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
+    
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -15,7 +89,6 @@ export class Graduation extends Component
         e.preventDefault();
         this.props.prevStep();
     };
-    static contextType = authContext;
 
 
     render()
@@ -110,7 +183,8 @@ export class Graduation extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
-                                placeholder="e.g. Vasavi College of Engineering " 
+                                placeholder="e.g. Vasavi College of Engineering "
+                                defaultValue={this.state.gn} 
                                 onChange={inputChange('collegeName')} 
                                 value={values.collegeName}/>
                             <br />
@@ -132,6 +206,7 @@ export class Graduation extends Component
                                     <Form.Label></Form.Label>
                                     <Form.Control 
                                     as="select"
+                                    defaultValue={this.state.gsy}
                                     onChange={inputChange('yCollegeStart')} 
                                     value={values.ycollegeStart}
                                     >
@@ -175,6 +250,7 @@ export class Graduation extends Component
                                     <Form.Label></Form.Label>
                                     <Form.Control 
                                         as="select"
+                                        defaultValue={this.state.gey}
                                         onChange={inputChange('yCollegeEnd')} 
                                         value={values.ycollegeEnd}>
                                         <option>2030</option>
@@ -232,6 +308,7 @@ export class Graduation extends Component
                                             size="text" 
                                             type="text" 
                                             placeholder="e.g. B.E/B.TECH "
+                                            defaultValue={this.state.gc}
                                             onChange={inputChange('collegeCourse')} 
                                             value={values.collegeCourse} />
                                         <br />
@@ -254,6 +331,7 @@ export class Graduation extends Component
                                                 size="text" 
                                                 type="text" 
                                                 placeholder="e.g. CSE "
+                                                defaultValue={this.state.gs}
                                                 onChange={inputChange('collegeStream')} 
                                                 value={values.collegeStream} />
                                             <br />
@@ -276,7 +354,8 @@ export class Graduation extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
-                                placeholder="e.g. TSBIE " 
+                                placeholder="e.g. TSBIE "
+                                defaultValue={this.state.gu}
                                 onChange={inputChange('collegeBoard')} 
                                 value={values.collegeBoard}/>
                             <br />
@@ -298,7 +377,8 @@ export class Graduation extends Component
                             <Form.Control 
                                 size="text" 
                                 type="number" 
-                                placeholder="8.7 " 
+                                placeholder="8.7 "
+                                defaultValue={this.state.gg} 
                                 onChange={inputChange('collegeGrade')} 
                                 value={values.collegeGrade}/>
                             <br />

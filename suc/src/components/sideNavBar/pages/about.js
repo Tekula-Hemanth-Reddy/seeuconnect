@@ -67,10 +67,10 @@ class About extends Component {
         console.log(token);
           console.log({...resData.data.jobGivers});
           this.setState({
-          name: resData.data.users.profile.name,
+          name: resData.data.users.profile.name===""?"---":resData.data.users.profile.name,
           location: resData.data.users.profile.addresses.location,
           pin: resData.data.users.profile.addresses.pinCode,
-          phone: resData.data.users.profile.phoneNumber,
+          phone: resData.data.users.profile.phoneNumber===""?"+91- ":resData.data.users.profile.phoneNumber,
           email: resData.data.users.profile.email,
           website: resData.data.users.profile.portFolio
         });
@@ -121,7 +121,7 @@ class About extends Component {
           <Row className="commonRow">
             <Col xs={3} style={{textAlign:"left"}}>Full Name</Col>
             <Col xs={1} >:</Col>
-            <Col xs={6}><p className="commonPara">{this.state.name}</p></Col>
+            <Col xs={6}><p className="commonPara">{this.state.name.split("-")[0]}{" "}{this.state.name.split("-")[1]}{" "}{this.state.name.split("-")[2]}</p></Col>
           </Row>
 
           <Row className="commonRow">
@@ -139,7 +139,7 @@ class About extends Component {
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Phone</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">{this.state.phone}</p></Col>
+            <Col xs={6} ><p className="commonPara">{this.state.phone.split("-")[0]}{" "}{this.state.phone.split("-")[1]}</p></Col>
           </Row>
 
           <Row className="commonRow">

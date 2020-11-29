@@ -11,9 +11,66 @@ export class Address extends Component{
         this.cityEl = React.createRef();
         this.pinEl = React.createRef();
         this.addressEl = React.createRef();
+        this.state = {
+            location: "",
+            State: "",
+            City: "",
+            PinCode: "",
+          }
     }
 
     static contextType = authContext;
+    componentDidMount(){
+
+        const token = this.context.userId;
+    
+        const requestBody = {
+          query: `
+          query{
+            users(userId:"${token}"){
+              profile{
+                addresses{
+                  location
+                  state
+                  city
+                  pinCode
+                }
+              }
+            }
+          }
+          `
+      };
+    
+      // const token = this.context.token;
+    
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+            console.log(token);
+              console.log({...resData.data});
+              this.setState({
+              location:resData.data.users.profile.addresses.location,
+              State:resData.data.users.profile.addresses.state,
+              City:resData.data.users.profile.addresses.city,
+              PinCode:resData.data.users.profile.addresses.pinCode,
+              });
+            console.log(this.state.email);
+          })
+          .catch(err => {
+              console.log(err);
+          });
+      }
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -90,7 +147,8 @@ export class Address extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"Telangana"}
+                                            placeholder="Telangana"
+                                            defaultValue={this.state.State}
                                             ref={this.stateEl}
                                         ></Form.Control>
                                     <br />
@@ -110,7 +168,8 @@ export class Address extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"Hyderabad"}
+                                            placeholder="Hyderabad"
+                                            defaultValue={this.state.City}
                                             ref={this.cityEl}
                                         ></Form.Control>
                                     <br />
@@ -132,7 +191,8 @@ export class Address extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
-                                            placeholder={"111111"}
+                                            placeholder="111111"
+                                            defaultValue={this.state.PinCode}
                                             ref={this.pinEl} 
                                         ></Form.Control>
                                     <br />
@@ -154,7 +214,8 @@ export class Address extends Component{
                                             as="textarea"
                                             rows={4} 
                                             ref={this.addressEl}
-                                            placeholder={"Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"} 
+                                            placeholder="Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"
+                                            defaultValue={this.state.location}
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
