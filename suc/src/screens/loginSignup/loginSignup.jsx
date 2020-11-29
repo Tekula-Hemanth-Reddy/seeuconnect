@@ -16,7 +16,7 @@ function LoginSignup(props)
             <Card className="loginSignupCardStyle">
             <Tabs defaultActiveKey="Login" id="uncontrolled-tab-example" className="tabsContainer">
                 <Tab eventKey="Login" title="Login" >
-                <Login />
+                <Login type={props.typeUser} />
                 </Tab>
                 <Tab eventKey="SignUp" title="SignUp" >
                 <SignUp type={props.typeUser}/>
