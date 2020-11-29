@@ -58,8 +58,6 @@ export class SecondaryEducation extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.users});
               this.setState({
                 cn : resData.data.users.profile.education.college.collegeName,
                 cg : resData.data.users.profile.education.college.collegeGrade,

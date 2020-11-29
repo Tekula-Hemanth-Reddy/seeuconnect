@@ -59,8 +59,6 @@ export class Experience extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.jobGivers});
               this.setState({
               positionData: resData.data.users.profile.positions
             });
@@ -92,7 +90,6 @@ export class Experience extends Component
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -108,7 +105,6 @@ export class Experience extends Component
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {

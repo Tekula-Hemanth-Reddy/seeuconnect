@@ -57,8 +57,6 @@ export class Address extends Component{
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data});
               this.setState({
               location:resData.data.users.profile.addresses.location,
               State:resData.data.users.profile.addresses.state,
@@ -93,7 +91,6 @@ export class Address extends Component{
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -109,7 +106,6 @@ export class Address extends Component{
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit/education');
         })
         .catch(err => {

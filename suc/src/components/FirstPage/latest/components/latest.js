@@ -37,8 +37,6 @@ class Latest extends Component {
                 return res.json();
             })
             .then(resData => {
-                console.log({...resData.data.latest});
-                // list=resData.data.latest;
                 this.setState({listData: resData.data.latest});
             })
             .catch(err => {

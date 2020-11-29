@@ -49,7 +49,6 @@ export class Languages extends Component{
               return res.json();
           })
           .then(resData => {
-            console.log(token);
             this.setState({languageData: resData.data.users.profile.languages});
           })
           .catch(err => {
@@ -87,7 +86,6 @@ export class Languages extends Component{
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {

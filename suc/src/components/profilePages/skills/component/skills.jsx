@@ -53,7 +53,6 @@ export class Skills extends Component{
               return res.json();
           })
           .then(resData => {
-            console.log(token);
             this.setState({skillData: resData.data.users.profile.skills});
           })
           .catch(err => {
@@ -78,7 +77,6 @@ export class Skills extends Component{
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -94,7 +92,6 @@ export class Skills extends Component{
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {

@@ -72,8 +72,6 @@ class Details extends Component{
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.jobGivers});
               this.setState({title: resData.data.jobGivers.users.name,
               name: (""+resData.data.jobGivers.name)===""?"---":(""+resData.data.jobGivers.name),
               phone: (""+resData.data.jobGivers.personPhone)===""?"+91   ":(""+resData.data.jobGivers.personPhone),
@@ -130,7 +128,6 @@ class Details extends Component{
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/alumniProfile');
         })
         .catch(err => {

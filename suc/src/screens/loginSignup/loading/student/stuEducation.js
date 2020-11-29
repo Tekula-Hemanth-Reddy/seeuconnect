@@ -31,7 +31,6 @@ const StuEducation =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/stuschloading')
                     })
                     .catch(err => {

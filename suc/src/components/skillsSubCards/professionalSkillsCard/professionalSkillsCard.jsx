@@ -47,7 +47,6 @@ class ProfessionalSkillsCard extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
             this.setState({skillData: resData.data.users.profile.skills});
           })
           .catch(err => {

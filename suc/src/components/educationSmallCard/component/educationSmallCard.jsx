@@ -85,8 +85,6 @@ export class EducationSmallCard extends Component
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
             sn : resData.data.users.profile.education.school.schoolName,
             sg : resData.data.users.profile.education.school.schoolGrade,

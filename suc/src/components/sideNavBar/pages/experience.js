@@ -53,8 +53,6 @@ class Experience extends Component {
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
           positionData: resData.data.users.profile.positions
         });

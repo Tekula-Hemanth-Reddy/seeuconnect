@@ -55,8 +55,6 @@ export class Project extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.jobGivers});
               this.setState({
                 projectData:resData.data.users.profile.projects         
             });
@@ -86,7 +84,6 @@ export class Project extends Component
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -102,7 +99,6 @@ export class Project extends Component
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit');
         })
         .catch(err => {

@@ -53,8 +53,6 @@ class Home extends Component {
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
           name: resData.data.users.name,
           website: resData.data.users.profile.portFolio});
