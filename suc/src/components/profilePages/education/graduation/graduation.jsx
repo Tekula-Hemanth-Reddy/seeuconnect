@@ -63,8 +63,6 @@ export class Graduation extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.users});
               this.setState({
                 gn : resData.data.users.profile.education.graduation.graduationCollegeName,
                 gg : resData.data.users.profile.education.graduation.graduationCollegeGrade,
@@ -141,7 +139,6 @@ export class Graduation extends Component
             };
     
             const token = this.context.token;
-            console.log(token);
     
             fetch('http://localhost:4000/graphql', {
                 method: 'POST',
@@ -157,7 +154,6 @@ export class Graduation extends Component
                 return res.json();
             })
             .then(resData => {
-                console.log(resData);
                 history.push('/profile/edit');
             })
             .catch(err => {

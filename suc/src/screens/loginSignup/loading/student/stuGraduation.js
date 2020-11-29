@@ -31,7 +31,6 @@ const StuGraduation =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/home')
                     })
                     .catch(err => {

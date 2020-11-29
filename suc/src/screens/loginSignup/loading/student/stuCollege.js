@@ -31,7 +31,6 @@ const StuCollege =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/stugraloading')
                     })
                     .catch(err => {

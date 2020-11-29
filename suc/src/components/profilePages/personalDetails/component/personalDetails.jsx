@@ -96,7 +96,6 @@ export class PersonalDetails extends Component{
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -112,7 +111,6 @@ export class PersonalDetails extends Component{
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             history.push('/profile/edit/education');
         })
         .catch(err => {

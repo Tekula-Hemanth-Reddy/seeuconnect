@@ -31,7 +31,6 @@ const StuProfile =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/stuaddloading')
                     })
                     .catch(err => {

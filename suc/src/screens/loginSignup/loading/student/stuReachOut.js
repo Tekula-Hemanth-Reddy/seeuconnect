@@ -31,7 +31,6 @@ const StuReachOut =props => {
                         return res.json();
                     })
                     .then(resData => {
-                        console.log(resData);
                         history.push('/stueduloading')
                     })
                     .catch(err => {

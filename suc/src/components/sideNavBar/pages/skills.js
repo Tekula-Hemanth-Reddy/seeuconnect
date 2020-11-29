@@ -49,7 +49,6 @@ class Skills extends Component {
           return res.json();
       })
       .then(resData => {
-        console.log(token);
         this.setState({languageData: resData.data.users.profile.languages});
       })
       .catch(err => {

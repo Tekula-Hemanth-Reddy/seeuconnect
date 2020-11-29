@@ -50,8 +50,6 @@ export class Awards  extends Component
           return res.json();
       })
       .then(resData => {
-        console.log(token);
-          console.log({...resData.data.jobGivers});
           this.setState({
           awardData: resData.data.users.profile.achievements
         });

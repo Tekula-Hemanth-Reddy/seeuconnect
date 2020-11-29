@@ -45,7 +45,6 @@ class Login extends Component {
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
             if(resData.data.login.token){
                 this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
                 if(resData.data.login.userType==='alumni'){

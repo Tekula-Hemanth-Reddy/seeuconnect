@@ -56,8 +56,6 @@ export  class Schooling extends Component
               return res.json();
           })
           .then(resData => {
-            console.log(token);
-              console.log({...resData.data.users});
               this.setState({
                 sn : resData.data.users.profile.education.school.schoolName,
                 sg : resData.data.users.profile.education.school.schoolGrade,
