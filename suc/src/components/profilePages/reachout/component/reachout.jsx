@@ -143,7 +143,8 @@ export class ReachOut extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
+                                    type="url"
+                                    id="id1" 
                                     placeholder="http://github.com.com/abc"
                                     defaultValue={this.state.git}
                                     ref={this.gitEl}
@@ -163,7 +164,8 @@ export class ReachOut extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
+                                    type="url"
+                                    id="id1" 
                                     placeholder="http://linkedin.com/abc"
                                     defaultValue={this.state.linked}
                                     ref={this.linEl}
@@ -183,7 +185,8 @@ export class ReachOut extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
+                                    type="url"
+                                    id="id1" 
                                     placeholder="http://instagram.com/abc"
                                     defaultValue={this.state.instagram}
                                     ref={this.insEl} 
@@ -202,7 +205,8 @@ export class ReachOut extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
+                                    type="url"
+                                    id="id1" 
                                     placeholder="http://facebook.com/abc"
                                     defaultValue={this.state.face}
                                     ref={this.facEl}
@@ -221,7 +225,8 @@ export class ReachOut extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
+                                    type="url"
+                                    id="id1" 
                                     placeholder="http://twitter.com/abc"
                                     defaultValue={this.state.twitter}
                                     ref={this.twiEl} 

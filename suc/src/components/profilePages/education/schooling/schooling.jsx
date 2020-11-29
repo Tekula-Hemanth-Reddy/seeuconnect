@@ -97,6 +97,7 @@ export  class Schooling extends Component
                                 type="text" 
                                 placeholder="e.g. Delhi Public School "
                                 defaultValue={this.state.sn}
+                                required
                                 onChange={inputChange('schoolName')} value={values.schoolName} />
                             <br />
                         </Form.Group>
@@ -115,6 +116,7 @@ export  class Schooling extends Component
                             <Form.Control 
                                 size="text" 
                                 type="text" 
+                                required
                                 placeholder="e.g. CBSE "
                                 defaultValue={this.state.sb} 
                                 onChange={inputChange('schoolBoard')} value={values.schoolBoard}    />
@@ -135,6 +137,7 @@ export  class Schooling extends Component
                             <Form.Label></Form.Label>
                             <Form.Control 
                             as="select"
+                            required
                             defaultValue={this.state.sy}
                             onChange={inputChange('ySchool')} value={values.ySchool}
                             >
@@ -177,8 +180,10 @@ export  class Schooling extends Component
                         <Form.Group>
                             <Form.Control 
                                 size="text" 
-                                type="number" 
-                                placeholder="9.86 "
+                                type="text" 
+                                placeholder="9.86"
+                                id="id1"
+                                required
                                 defaultValue={this.state.sg}
                                 onChange={inputChange('schoolGrade')} value={values.schoolGrade}/>
                             <br />

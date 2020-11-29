@@ -83,6 +83,9 @@ export class Project extends Component
                                     type="text" 
                                     placeholder="TidbEat"
                                     ref={this.titleEl} 
+                                    required
+                                    minlength="4"
+                                    id="id1"
                                     />
                                 <br />
                             </Form.Group>
@@ -103,6 +106,8 @@ export class Project extends Component
                                     rows={4} 
                                     placeholder=""
                                     ref={this.desEl}
+                                    maxlength="150"
+                                    id="id1"
                                     />
                                 <br />
                             </Form.Group>
@@ -119,9 +124,10 @@ export class Project extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
-                                    placeholder="http://abc.com"
+                                    type="url" 
+                                    placeholder="http://www.vce.ac.in"
                                     ref={this.urlEl}
+                                    id="id1"
                                     />
                                 <br />
                             </Form.Group>
@@ -137,9 +143,10 @@ export class Project extends Component
                         <div className="formBlog">
                             <Form.Group>
                                 <Form.Control size="text" 
-                                    type="text" 
-                                    placeholder="http://youtube.com"
+                                    type="url" 
+                                    placeholder="http://www.youtube.com/3kfirgs"
                                     ref={this.demEl}
+                                    id="id1"
                                     />
                                 <br />
                             </Form.Group>

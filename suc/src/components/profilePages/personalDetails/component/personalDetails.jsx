@@ -162,6 +162,9 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="text"
+                                            required
+                                            id="id1"
+                                            pattern="[a-zA-Z ]+"
                                             defaultValue={this.state.name.split("-")[1]}
                                             ref={this.firstEl} 
                                         />
@@ -184,6 +187,9 @@ export class PersonalDetails extends Component{
                                             type="text"
                                             defaultValue={this.state.name.split("-")[2]}
                                             ref={this.lastEl} 
+                                            required
+                                            id="id1"
+                                            pattern="[a-zA-Z ]+"
                                         />
                                     <br />
                                     </Form.Group>
@@ -227,12 +233,13 @@ export class PersonalDetails extends Component{
                                     <Form.Group controlId="validationCustom01">
                                         <Form.Control 
                                             size="text" 
-                                            type="number"
-                                            placeholder={"9848274559"}
-                                            defaultValue={this.state.phone.split("-")[1]}
+                                            type="text"
+                                            placeholder={"9126126126"}
                                             ref={this.phonePersonEl}
-                                            pattern={'^d{10}$'}
+                                            pattern="[789][0-9]{9}"
+                                            maxLength="10"
                                             required
+                                            id="id1"
                                         ></Form.Control>
                                     <br />
                                     </Form.Group>
@@ -253,7 +260,8 @@ export class PersonalDetails extends Component{
                                         <Form.Control 
                                             size="text" 
                                             type="url"
-                                            placeholder={"www.elonmusk.com"}
+                                            id="id1"
+                                            placeholder={"https://www.vce.ac.in"}
                                             ref={this.websiteEl}
                                             defaultValue={this.state.portfolio}
                                         ></Form.Control>
@@ -273,6 +281,7 @@ export class PersonalDetails extends Component{
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        required
                                         default={this.state.interested}
                                         ref={this.iEl}
                                         >

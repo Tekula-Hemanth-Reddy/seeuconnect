@@ -77,6 +77,9 @@ export class Achievement extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     type="text" 
+                                    required
+                                    id="id1"
+                                    minlength="4"
                                     placeholder="TidbEat"
                                     ref={this.titleEl}
                                     />
@@ -95,6 +98,7 @@ export class Achievement extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     as="textarea"
+                                    maxlength="150"
                                     rows={4} 
                                     placeholder=""
                                     ref={this.desEl}
@@ -115,6 +119,7 @@ export class Achievement extends Component
                                 <Form.Group>
                                     <Form.Control size="text" 
                                         type="url" 
+                                        id="id1"
                                         placeholder="http://youtube.com/"
                                         ref={this.urlEl}
                                         />
