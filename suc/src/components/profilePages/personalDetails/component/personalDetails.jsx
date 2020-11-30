@@ -236,7 +236,7 @@ export class PersonalDetails extends Component{
                                             type="text"
                                             placeholder={"9126126126"}
                                             ref={this.phonePersonEl}
-                                            pattern="[789][0-9]{9}"
+                                            pattern="[6789][0-9]{9}"
                                             maxLength="10"
                                             required
                                             id="id1"

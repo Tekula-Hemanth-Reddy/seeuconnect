@@ -10,7 +10,7 @@ class Requirement extends Component{
     constructor(props){
         super(props);
         this.state = {
-            skillList:[],
+            skillList:["Java","Ds","Html","CSS"],
             userInput : "", 
             studentsData:[],
         }
@@ -58,29 +58,31 @@ class Requirement extends Component{
 
     static contextType = authContext;
 
-  componentDidMount(){
-
-   
-
+    componentDidMount()
+    {
     const requestBody = {
       query: `
-      query{
-        profile{
+        query{
+          profile{
+            _id
             name
+            interestedIntern
             skills{
+              _id
               skill
               rating
             }
-            interestedIntern
-            projects{
-              projectName
-            }
             positions{
-              positionHeld
+              _id
             }
-            
+            projects{
+              _id
+            }
+            courses{
+              _id
+            }
           }
-      }
+        }
       `
   };
 
@@ -99,14 +101,81 @@ class Requirement extends Component{
       })
       .then(resData => {
           this.setState({
-          studentsData: resData.data.profile,
+            studentsData: resData.data.profile,
         });
+        console.log(this.state.studentsData);
+        this.UsefulData();
       })
       .catch(err => {
           console.log(err);
       });
-      console.log(this.state.studentsData);
   }
+
+  //it is a function which returns the list of ids in sorted order by comparing the skills needed by him with the profile skills as of now 
+  // i just called this function after retrival of data in compound did mount by giving few fixed values in this.state.skillList 
+  //todo: make this function call when you click show button and pass this this.state.studentsData array to new page and show in the list form if possible try to show main details of that paticular student if pressed 
+  UsefulData(){
+    let listData = [];
+    for (let index = 0; index < this.state.studentsData.length; index++)
+    {
+        let element = this.state.studentsData[index];
+        if(element.interestedIntern)
+        {
+            let skillDummyArray = element.skills;
+            let skillArray=[];
+            for(let j=0;j<skillDummyArray.length;j++)
+            {
+              skillArray.push(skillDummyArray[j].skill);
+            }
+            let match = 0;
+            for (let i = 0; i < this.state.skillList.length; i++){
+              for (let k = 0; k < skillArray.length; k++){
+                if(skillArray[k]===this.state.skillList[i]){
+                  match++;
+                  break;
+                }
+              }
+            }
+            let data ={
+              id : element._id,
+              name: element.name,
+              skill: element.skills.length,
+              positions: element.positions.length,
+              projects: element.projects.length,
+              courses: element.courses.length,
+              count: match
+            }
+            listData.push(data);
+            listData = listData.sort((a, b) => {
+              if((b.count - a.count)!==0){
+                return (b.count - a.count);
+              }
+              else{
+                if((b.positions - a.positions)!==0){
+                  return (b.positions - a.positions);
+                }
+                else{
+                  if((b.projects - a.projects)!==0){
+                    return (b.projects - a.projects);
+                  }
+                  else{
+                    if((b.courses - a.courses)!==0){
+                      return (b.courses - a.courses);
+                    }
+                    else{
+                      return (b.skill - a.skill);
+                    }
+                  }
+                }
+              }
+            });
+            console.log(listData);
+            this.setState({
+              studentsData: listData,
+          });
+      }  
+  }
+}
 
 
     render(){
@@ -197,12 +266,18 @@ class Requirement extends Component{
                             style={{marginLeft:"20vh",marginRight:"20vh"}}
                             onClick = {()=>this.addSkill()} >Add Skill</Button>{' '}
                     </Card>
+                    <Row>
+                    <Col xs={12}>
+                    {/* onclick={this.submitHandler.bind(this)} */}
+                    <Button variant="outline-warning" type='submit'>Show People</Button>{' '}
+                    </Col>
+                    </Row>
                     </Col>
                     <Col xs={6}>
-                    <h2 style={{color:"#fff",marginTop:"15%"}}>Languages</h2>
+                    <h3 style={{color:"#fff",marginTop:"5%"}}>Skills You Needed</h3>
                     {this.state.skillList.map(item =>(
         
-                        <div style={{paddingTop:"20%"}}>
+                        <div style={{paddingTop:"3%",paddingBottom:"2%"}}>
                         <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
                             <Row>
                                 <Col md={8}>
@@ -216,11 +291,6 @@ class Requirement extends Component{
                         </div>
                     ))}
                 </Col>
-                </Row>
-                <Row>
-                    <Col xs={6}>
-                    <Button variant="outline-warning">Show People</Button>
-                    </Col>
                 </Row>
                 </Form> 
             </Container>
