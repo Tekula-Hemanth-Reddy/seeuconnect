@@ -11,7 +11,7 @@ const StuCollege =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateCollege(userId:"${context.idUser}"){
+                            CreateCollege(userId:"${sessionStorage.getItem('idUser')}"){
                             _id
                             }
                         }

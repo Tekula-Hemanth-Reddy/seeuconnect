@@ -23,7 +23,7 @@ export class Graduation extends Component
     
       componentDidMount(){
     
-        const token = this.context.userId;
+        const token = sessionStorage.getItem('userId');
     
         const requestBody = {
           query: `
@@ -110,23 +110,23 @@ export class Graduation extends Component
             const NewcollegeCourse= ""+this.props.values.collegeCourse;
             const NewcollegeBoard= ""+this.props.values.collegeBoard;
             
-            console.log(
-                NewschoolName,
-                NewySchool,
-                NewschoolGrade,
-                NewschoolBoard,
-                NewsecondarySchoolName,
-                NewySecondarySchool,
-                NewsecondarySchoolGrade,
-                NewsecondarySchoolBoard,
-                NewsecondarySchoolStream,
-                NewcollegeName,
-                NewyCollegeStart,
-                NewyCollegeEnd,
-                NewcollegeGrade,
-                NewcollegeStream,
-                NewcollegeCourse,
-                NewcollegeBoard,);
+            // console.log(
+            //     NewschoolName,
+            //     NewySchool,
+            //     NewschoolGrade,
+            //     NewschoolBoard,
+            //     NewsecondarySchoolName,
+            //     NewySecondarySchool,
+            //     NewsecondarySchoolGrade,
+            //     NewsecondarySchoolBoard,
+            //     NewsecondarySchoolStream,
+            //     NewcollegeName,
+            //     NewyCollegeStart,
+            //     NewyCollegeEnd,
+            //     NewcollegeGrade,
+            //     NewcollegeStream,
+            //     NewcollegeCourse,
+            //     NewcollegeBoard,);
     
             const requestBody = {
                 query: `
@@ -138,7 +138,7 @@ export class Graduation extends Component
                 `
             };
     
-            const token = this.context.token;
+            const token = sessionStorage.getItem('token');
     
             fetch('http://localhost:4000/graphql', {
                 method: 'POST',

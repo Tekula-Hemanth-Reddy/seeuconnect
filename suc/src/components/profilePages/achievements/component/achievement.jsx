@@ -21,7 +21,7 @@ export class Achievement extends Component
     static contextType = authContext;
     componentDidMount(){
 
-        const token = this.context.userId;
+        const token = sessionStorage.getItem('userId');
     
         const requestBody = {
           query: `
@@ -80,7 +80,7 @@ export class Achievement extends Component
             `
         };
 
-        const token = this.context.token;
+        const token = sessionStorage.getItem('token');
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',

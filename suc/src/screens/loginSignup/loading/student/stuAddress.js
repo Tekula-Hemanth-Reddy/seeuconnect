@@ -11,7 +11,7 @@ const StuAddress =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateAddress(userId:"${context.idUser}"){
+                            CreateAddress(userId:"${sessionStorage.getItem('idUser')}"){
                             _id
                             }
                         }

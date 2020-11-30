@@ -1,7 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap';
-import firstImage from '../../../../assets/images/background.png';
+import buildImage from '../../../../assets/images/background/build.jpg';
+import getToWork from '../../../../assets/images/background/gettowork.jpg';
+import graduate from '../../../../assets/images/background/graduate.jpg';
 import '../_css/carousel.css';
 
 function carousel(){
@@ -11,8 +13,8 @@ function carousel(){
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={firstImage}
-          alt="First slide"
+          src={graduate}
+          alt="Graduate"
         />
         <Carousel.Caption>
           <h3>Graduate</h3>
@@ -21,8 +23,8 @@ function carousel(){
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={firstImage}
-          alt="Third slide"
+          src={buildImage}
+          alt="Build your Profile"
         />
         <Carousel.Caption>
           <h3>Build your Profile</h3>
@@ -31,8 +33,8 @@ function carousel(){
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={firstImage}
-          alt="Third slide"
+          src={getToWork}
+          alt="Get to Work "
         />
         <Carousel.Caption>
           <h3>Get to Work </h3>

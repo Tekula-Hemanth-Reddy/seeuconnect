@@ -15,7 +15,7 @@ function EmailCard(props)
                 </Row>
                 <Row>
                     <Col>
-                        <p className="emailEText">{props.mail}</p>
+                        <p className="emailEText"><a href={"mailto:"}{...props.mail} style={{textDecoration:"none"}}>{props.mail}</a></p>
                     </Col>
                 </Row>
             </Container>
