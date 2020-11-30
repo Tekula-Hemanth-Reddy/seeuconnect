@@ -109,24 +109,6 @@ export class Graduation extends Component
             const NewcollegeStream= ""+this.props.values.collegeStream;
             const NewcollegeCourse= ""+this.props.values.collegeCourse;
             const NewcollegeBoard= ""+this.props.values.collegeBoard;
-            
-            // console.log(
-            //     NewschoolName,
-            //     NewySchool,
-            //     NewschoolGrade,
-            //     NewschoolBoard,
-            //     NewsecondarySchoolName,
-            //     NewySecondarySchool,
-            //     NewsecondarySchoolGrade,
-            //     NewsecondarySchoolBoard,
-            //     NewsecondarySchoolStream,
-            //     NewcollegeName,
-            //     NewyCollegeStart,
-            //     NewyCollegeEnd,
-            //     NewcollegeGrade,
-            //     NewcollegeStream,
-            //     NewcollegeCourse,
-            //     NewcollegeBoard,);
     
             const requestBody = {
                 query: `

@@ -94,7 +94,11 @@ export class Skills extends Component{
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.skillData];
+            list.push(resData.data.CreateSkill)
+            this.setState({
+                skillData: list
+              });
         })
         .catch(err => {
             console.log(err);
@@ -163,6 +167,7 @@ export class Skills extends Component{
                                         <Form.Label></Form.Label>
                                         <Form.Control 
                                         as="select"
+                                        required="true"
                                         ref={this.nameEl}
                                         >
                                         <option>C</option>
@@ -201,7 +206,8 @@ export class Skills extends Component{
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="text" 
+                                            type="text"
+                                            required="true"
                                             placeholder="75"
                                             pattern="^[1-9][0-9]?$|^100$"
                                             id="id1"

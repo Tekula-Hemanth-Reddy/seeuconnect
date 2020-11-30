@@ -64,6 +64,7 @@ export class Languages extends Component{
             query: `
             mutation{
                 CreateLanguage(languageInput:{language:"${Name}"}){
+                    _id
                     language 
                   }
               }
@@ -86,7 +87,11 @@ export class Languages extends Component{
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.languageData];
+            list.push(resData.data.CreateLanguage)
+            this.setState({
+                languageData: list
+              });
         })
         .catch(err => {
             console.log(err);

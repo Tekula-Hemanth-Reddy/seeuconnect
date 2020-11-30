@@ -72,6 +72,7 @@ export class Achievement extends Component
             query: `
             mutation{
                 CreateAchievement(achievementInput:{title:"${Title}",achievementDescription:"${Description}",certificate:"${File}"}){
+                  _id
                   achievementDescription
                   certificate
                   title
@@ -96,7 +97,11 @@ export class Achievement extends Component
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.awardData];
+            list.push(resData.data.CreateAchievement)
+            this.setState({
+                awardData: list
+              });
         })
         .catch(err => {
             console.log(err);

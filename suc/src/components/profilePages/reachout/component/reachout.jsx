@@ -110,7 +110,7 @@ export class ReachOut extends Component
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            this.componentDidMount();
         })
         .catch(err => {
             console.log(err);

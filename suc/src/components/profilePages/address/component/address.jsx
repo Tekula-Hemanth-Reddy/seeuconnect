@@ -106,7 +106,7 @@ export class Address extends Component{
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit/education');
+            this.componentDidMount();
         })
         .catch(err => {
             console.log(err);

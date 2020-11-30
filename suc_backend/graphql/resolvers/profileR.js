@@ -37,7 +37,7 @@ module.exports = {
         const information = new Profile({
             about: null,
             phoneNumber: null,
-            photo: null,
+            photo: "null",
             portFolio: null,
             email: user.email,
             status: false,
