@@ -11,7 +11,7 @@ const StuEducation =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateEducation(userId:"${context.idUser}"){
+                            CreateEducation(userId:"${sessionStorage.getItem('idUser')}"){
                             _id
                             }
                         }

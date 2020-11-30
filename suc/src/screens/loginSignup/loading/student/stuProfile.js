@@ -11,7 +11,7 @@ const StuProfile =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateProfile(userId:"${context.idUser}"){
+                            CreateProfile(userId:"${sessionStorage.getItem('idUser')}"){
                             _id
                             }
                         }

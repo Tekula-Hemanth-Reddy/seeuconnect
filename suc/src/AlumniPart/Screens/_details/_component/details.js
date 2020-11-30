@@ -112,7 +112,7 @@ class Details extends Component{
             `
         };
 
-        const token = this.context.token;
+        const token = sessionStorage.getItem('token');
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',

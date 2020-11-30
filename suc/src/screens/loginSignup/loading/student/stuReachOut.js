@@ -11,7 +11,7 @@ const StuReachOut =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateReachOut(userId:"${context.idUser}"){
+                            CreateReachOut(userId:"${sessionStorage.getItem('idUser')}"){
                             _id
                             }
                         }

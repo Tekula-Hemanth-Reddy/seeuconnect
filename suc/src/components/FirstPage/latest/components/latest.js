@@ -93,7 +93,6 @@ class Latest extends Component {
                                 <Card.Text>
                                 {item.description}
                                 </Card.Text>
-                                <Button variant="outline-secondary">View More</Button>
                             </Card.Body>
                         </Card>
                     </div>

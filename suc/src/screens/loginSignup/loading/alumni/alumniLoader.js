@@ -11,7 +11,7 @@ const Loading =props => {
                     const requestBody = {
                         query: `
                         mutation{
-                            CreateAlumni(userId:"${context.idUser}"){
+                            CreateAlumni(userId:"${sessionStorage.getItem('idUser')}"){
                             name
                             personPhone
                             }

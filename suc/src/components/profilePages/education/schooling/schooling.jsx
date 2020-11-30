@@ -19,7 +19,7 @@ export  class Schooling extends Component
     
       componentDidMount(){
     
-        const token = this.context.userId;
+        const token = sessionStorage.getItem('userId');
     
         const requestBody = {
           query: `
