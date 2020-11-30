@@ -1,7 +1,7 @@
 import React from 'react';
 import './sideNavBar.css';
 import Navbar from './navbar/navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect   } from 'react-router-dom';
 import PersonalDetails from '../profilePages/personalDetails/component/personalDetails';
 import Education from '../profilePages/education/education';
 import Experience from '../profilePages/experience/component/experience';
@@ -14,7 +14,6 @@ import Languages from '../profilePages/languages/component/languages';
 import Courses from '../profilePages/courses/component/courses';
 import Address from '../profilePages/address/component/address';
 
-
 const SideNavBar=()=> {
   return (
     <authContext.Consumer>
@@ -24,6 +23,8 @@ const SideNavBar=()=> {
       <Router>
         <Navbar />
         <Switch>
+          <Redirect from="/profile/home" to="/profile/about" exact />
+          <Redirect from="/profile/edit" to="/profile/edit/personalDetails" exact />
           <Route path='/profile/edit/personalDetails' component={PersonalDetails} />
           <Route path='/profile/edit/education' component={Education}/>
           <Route path='/profile/edit/experience' component={Experience} />

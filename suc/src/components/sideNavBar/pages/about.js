@@ -11,8 +11,10 @@ import './css/about.css';
 
 class About extends Component {
 
-  constructor(props){
+  constructor(props){  
     super(props);
+    let data=sessionStorage.getItem('token');
+    console.log(data);
     this.state = {
       name: "",
       location: "",
@@ -26,8 +28,7 @@ class About extends Component {
   static contextType = authContext;
 
   componentDidMount(){
-
-    const token = this.context.userId;
+    const token = sessionStorage.getItem('userId');
 
     const requestBody = {
       query: `
@@ -137,19 +138,19 @@ class About extends Component {
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Phone</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">{this.state.phone.split("-")[0]}{" "}{this.state.phone.split("-")[1]}</p></Col>
+            <Col xs={6} ><p className="commonPara"><a href={"tel:"}{...this.state.phone.split("-")[0]}{...this.state.phone.split("-")[1]} style={{textDecoration:"none"}}>{this.state.phone.split("-")[0]}{" "}{this.state.phone.split("-")[1]}</a></p></Col>
           </Row>
 
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Email</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">{this.state.email}</p></Col>
+            <Col xs={6} ><p className="commonPara"><a href={"mailto:"}{...this.state.email} style={{textDecoration:"none"}}>{this.state.email}</a></p></Col>
           </Row>
 
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Website</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara">{this.state.website}</p></Col>
+            <Col xs={6} ><p className="commonPara"><a href={this.state.website} target="_blank" style={{textDecoration:"none"}}>{this.state.website}</a></p></Col>
           </Row>
         </Container>
       </Col>

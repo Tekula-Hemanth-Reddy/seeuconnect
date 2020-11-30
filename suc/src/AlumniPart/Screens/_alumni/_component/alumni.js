@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Image,Card} from 'react-bootstrap';
 import '../_css/alumni.css';
-import AdityaImage from '../../../../assets/images/Aditya.png';
+import PersonImage from '../../../../assets/images/about.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelopeSquare, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import authContext from '../../../../context/auth-context';
@@ -11,7 +11,6 @@ import NavBar from '../../../Components/navBar/component/alumniNavbar';
 class About extends Component {
   constructor(props){
     super(props);
-    console.log(this.props.alumniId);
     this.state = {
       userId: this.props.alumniId,
       title: "",
@@ -24,6 +23,7 @@ class About extends Component {
       cmpAddress: "",
       cmpWebsite: ""
     }
+    console.log(this.state.userId);
   }
 
   static contextType = authContext;
@@ -95,7 +95,7 @@ class About extends Component {
             
             </Col>
             <Col xs={5}>
-              <Image src={AdityaImage} roundedCircle  className="roundImage"/>
+              <Image src={PersonImage} roundedCircle  className="roundImage"/>
             </Col>
           </Row>
           <hr style={{backgroundColor:"#fff",marginLeft:"20vh",marginRight:"20vh"}}/>

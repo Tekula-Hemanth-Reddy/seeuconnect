@@ -39,7 +39,10 @@ const SideNavBar = () => {
             })}
             <li className="nav-text" style={{marginLeft:"-2px"}}>
             <Button href="/profile/home" variant="outline-primary" size="lg" style={{borderWidth:"0px"}} onClick={()=>{history.push('/profile/home')}}><IoIcons.IoMdReturnLeft style={{marginRight:"20px"}}/>Return Back</Button>
-                
+                  {/* <Link to={'/profile/home'} >
+                    <IoIcons.IoMdReturnLeft/> 
+                    <span>Return Back</span>
+                  </Link> */}
                 </li>
             <li className="nav-text" style={{marginLeft:"-2px"}}>
                   <Button href="/home" variant="outline-primary" size="lg" style={{borderWidth:"0px"}} onClick={context.logout}><RiIcons.RiLogoutCircleRLine style={{marginRight:"20px"}}/>Log Out</Button>

@@ -29,14 +29,19 @@ class Routes extends Component {
     }
     login = (token, userId, userType, tokenExpiration) => {
         this.setState({token: token, userId: userId, userType: userType});
+        sessionStorage.setItem('token',token);
+        sessionStorage.setItem('userId',userId);
+        sessionStorage.setItem('userType',userType);
     };
 
     logout= () => {
         this.setState({token: null,userId:null,userType:null,idUser:null});
+        sessionStorage.clear();
     };
 
     signUp = (userId) => {
         this.setState({idUser: userId});
+        sessionStorage.setItem('idUser',userId);
     };
     render(){
         return(
@@ -52,21 +57,21 @@ class Routes extends Component {
 
                             <Route path="/alumni" component={() => <LoginSignup typeUser="alumni"/>} />
                             <Route path="/login" component={Partition} />
-                            <Route path="/alumniProfile" component={() => <Alumni alumniId={this.state.userId}/>}/>
-                            <Route path="/details" component={() => <AlumniDetails alumniId={this.state.userId}/>} />
+                            <Route path="/alumniProfile" component={() => <Alumni alumniId={sessionStorage.getItem('userId')}/>}/>
+                            <Route path="/details" component={() => <AlumniDetails alumniId={sessionStorage.getItem('userId')}/>} />
                             <Route path="/requirement" component={Requirement} />
                             <Route path="/studentFailure" component={() => <StudentFailure message="Login through Student"/>} />
                             <Route path="/alumniFailure" component={() => <StudentFailure message="Login through Alumni"/>} />
                             <Route path="/failure" component={() => <StudentFailure message="CredentialsFailure"/>} />
                                            
-                            {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stuaddloading" component={() => <StuAddress studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/sturealoading" component={() => <StuReachOut studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stueduloading" component={() => <StuEducation studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stuschloading" component={() => <StuSchool studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stucolloading" component={() => <StuCollege studentId={this.state.idUser}/>}/>}
-                            {this.state.idUser && <Route path="/stugraloading" component={() => <StuGraduation studentId={this.state.idUser}/>}/>}
+                            {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stuaddloading" component={() => <StuAddress studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/sturealoading" component={() => <StuReachOut studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stueduloading" component={() => <StuEducation studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stuschloading" component={() => <StuSchool studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stucolloading" component={() => <StuCollege studentId={sessionStorage.getItem('idUser')}/>}/>}
+                            {this.state.idUser && <Route path="/stugraloading" component={() => <StuGraduation studentId={sessionStorage.getItem('idUser')}/>}/>}
                         </Switch>
                     </authContext.Provider>
                 </Router>
