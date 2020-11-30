@@ -17,11 +17,11 @@ const PositionSchema = new Schema({
     },
     startDate: {
         type: Date,
-        required: true
+        required: false
     },
     endDate: {
         type: Date,
-        required: true
+        required: false
     },
     profileId: {
         type: Schema.Types.ObjectId,

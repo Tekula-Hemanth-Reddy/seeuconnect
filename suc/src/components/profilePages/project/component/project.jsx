@@ -101,7 +101,11 @@ export class Project extends Component
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.projectData];
+            list.push(resData.data.CreateProject)
+            this.setState({
+                projectData: list
+              });
         })
         .catch(err => {
             console.log(err);
@@ -174,6 +178,7 @@ export class Project extends Component
                                     required
                                     minlength="4"
                                     id="id1"
+                                    required="true"
                                     />
                                 <br />
                             </Form.Group>
@@ -194,8 +199,9 @@ export class Project extends Component
                                     rows={4} 
                                     placeholder=""
                                     ref={this.desEl}
-                                    maxlength="150"
+                                    maxlength="550"
                                     id="id1"
+                                    required="true"
                                     />
                                 <br />
                             </Form.Group>
@@ -216,6 +222,7 @@ export class Project extends Component
                                     placeholder="http://www.vce.ac.in"
                                     ref={this.urlEl}
                                     id="id1"
+                                    required="true"
                                     />
                                 <br />
                             </Form.Group>

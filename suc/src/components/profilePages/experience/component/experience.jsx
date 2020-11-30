@@ -80,6 +80,7 @@ export class Experience extends Component
             query: `
             mutation{
                 CreatePosition(positionInput:{positionHeld:"${Position}",companyName:"${Company}",positionDescription:"${Description}",startDate:"${Start}",endDate:"${End}"}){
+                  _id
                   positionHeld
                   companyName
                   positionDescription
@@ -106,7 +107,11 @@ export class Experience extends Component
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.positionData];
+            list.push(resData.data.CreatePosition)
+            this.setState({
+                positionData: list
+              });
         })
         .catch(err => {
             console.log(err);

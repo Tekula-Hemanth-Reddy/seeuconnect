@@ -76,6 +76,7 @@ export class Courses extends Component
             query: `
             mutation{
                 CreateCourse(courseInput:{courseName:"${Title}",specialization:"${Spec}",certificate:"${Cert}",credentials:"${CertId}"}){
+                    _id
                     courseName
                     specialization
                     certificate
@@ -101,7 +102,11 @@ export class Courses extends Component
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit');
+            let list = [...this.state.courseData];
+            list.push(resData.data.CreateCourse)
+            this.setState({
+                courseData: list
+              });
         })
         .catch(err => {
             console.log(err);
