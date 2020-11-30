@@ -18,6 +18,7 @@ import StuSchool from '../screens/loginSignup/loading/student/stuSchool';
 import StuCollege from '../screens/loginSignup/loading/student/stuCollege';
 import StuGraduation from '../screens/loginSignup/loading/student/stuGraduation';
 import EditSideBar from '../components/editSideNavBar/sideNavBar';
+import StudentFailure from '../screens/failureScreens/component/studentFailure';
 
 class Routes extends Component {
     state = {
@@ -54,6 +55,9 @@ class Routes extends Component {
                             <Route path="/alumniProfile" component={() => <Alumni alumniId={this.state.userId}/>}/>
                             <Route path="/details" component={() => <AlumniDetails alumniId={this.state.userId}/>} />
                             <Route path="/requirement" component={Requirement} />
+                            <Route path="/studentFailure" component={() => <StudentFailure message="Login through Student"/>} />
+                            <Route path="/alumniFailure" component={() => <StudentFailure message="Login through Alumni"/>} />
+                            <Route path="/failure" component={() => <StudentFailure message="CredentialsFailure"/>} />
                                            
                             {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={this.state.idUser}/>}/>}
                             {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={this.state.idUser}/>}/>}
