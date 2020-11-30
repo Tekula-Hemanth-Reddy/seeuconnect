@@ -28,6 +28,7 @@ export class Skills extends Component{
             users(userId:"${token}"){
               profile{
                 skills{
+                    _id
                   skill
                   rating
                 }
@@ -69,6 +70,7 @@ export class Skills extends Component{
             mutation{
                 CreateSkill(skillInput:{skill:"${Name}",rating:${Range}})
                 {
+                    _id
                   skill
                   rating
                 }
@@ -99,6 +101,40 @@ export class Skills extends Component{
         });
     };
 
+    onDelete = (deleteId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteSkill(skillId:"${deleteId}"){
+                    _id
+                    skill
+                    rating
+                  }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({skillData: this.state.skillData.filter(function(common) { 
+                return common._id !== deleteId 
+            })});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
 
     render()
     {
@@ -197,7 +233,7 @@ export class Skills extends Component{
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.skill}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>

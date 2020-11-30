@@ -25,6 +25,7 @@ export class Languages extends Component{
             users(userId:"${token}"){
               profile{
                 languages{
+                  _id
                   language
                 }
               }
@@ -54,7 +55,7 @@ export class Languages extends Component{
           .catch(err => {
               console.log(err);
           });
-      }
+      };
 
     submitHandler = (event) =>{
         event.preventDefault();
@@ -70,7 +71,6 @@ export class Languages extends Component{
         };
 
         const token = this.context.token;
-        console.log(token);
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -93,6 +93,39 @@ export class Languages extends Component{
         });
     };
 
+    onDelete = (languageId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteLanguage(languageId:"${languageId}"){
+                  language
+                  _id
+                }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({languageData: this.state.languageData.filter(function(lan) { 
+                return lan._id !== languageId 
+            })});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
 
     render()
     {
@@ -154,6 +187,7 @@ export class Languages extends Component{
                 <Col md={3}>
                     <h2 style={{color:"#fff",marginTop:"15%"}}>Languages</h2>
                     {this.state.languageData.map(item =>(
+        
                         <div style={{paddingTop:"20%"}}>
                         <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
                             <Row>
@@ -161,7 +195,7 @@ export class Languages extends Component{
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.language}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes}/>}</Button>
                                 </Col>
                             </Row>
                             </Card>

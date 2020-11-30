@@ -30,6 +30,7 @@ export class Project extends Component
             users(userId:"${token}"){
               profile{
                 projects{
+                    _id
                   projectName
                   projectDemo
                   projectDescription
@@ -74,10 +75,11 @@ export class Project extends Component
             query: `
             mutation{
                 CreateProject(projectInput:{projectName:"${Title}",projectDescription:"${Description}",projectUrl:"${Urlpro}",projectDemo:"${Demo}"}){
-                projectName
-                  projectDescription
-                  projectUrl
-                  projectDemo
+                    _id
+                    projectName
+                    projectDemo
+                    projectDescription
+                    projectUrl
                 }
               }
             `
@@ -100,6 +102,43 @@ export class Project extends Component
         })
         .then(resData => {
             history.push('/profile/edit');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
+    onDelete = (deleteId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteProject(projectId:"${deleteId}"){
+                    _id
+                    projectName
+                    projectDescription
+                    projectUrl
+                    projectDemo
+                  }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({projectData: this.state.projectData.filter(function(common) { 
+                return common._id !== deleteId 
+            })});
         })
         .catch(err => {
             console.log(err);
@@ -223,7 +262,7 @@ export class Project extends Component
                                     <h5 style={{color:"#fff",marginTop:"5px"}}>{item.projectName}</h5>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger">{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)}>{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>
