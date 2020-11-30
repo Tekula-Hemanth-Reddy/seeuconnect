@@ -60,7 +60,7 @@ class Requirement extends Component{
 
   componentDidMount(){
 
-    const token = this.context.userId;
+   
 
     const requestBody = {
       query: `
@@ -99,7 +99,7 @@ class Requirement extends Component{
       })
       .then(resData => {
           this.setState({
-          studentsData: resData.data.users.profile,
+          studentsData: resData.data.profile,
         });
       })
       .catch(err => {
