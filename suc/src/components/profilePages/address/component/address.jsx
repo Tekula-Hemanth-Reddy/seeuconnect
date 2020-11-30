@@ -134,7 +134,7 @@ export class Address extends Component{
                 <Row>
                     <Col>
                         <Row>
-                            <p className="personalDetailsGenderTitle" style={{color:"white"}}>State</p>
+                            <p className="personalDetailsGenderTitle" style={{color:"white",marginBottom:"20px"}}>State</p>
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>
@@ -155,7 +155,7 @@ export class Address extends Component{
                     </Col>
                     <Col>
                         <Row>
-                            <p className="personalDetailsGenderTitle">City</p>
+                            <p className="personalDetailsGenderTitle" style={{color:"white",marginBottom:"20px"}}>City</p>
                         </Row>
                         <Row className="personalDetailsTitleRow">
                             <Col>

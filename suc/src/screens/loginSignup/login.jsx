@@ -1,8 +1,7 @@
 import React, { Component,useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Alert from 'react-bootstrap/Alert';
+import StudentFailure from '../../screens/failureScreens/component/studentFailure';
 import './css/loginSignup.css';
 import authContext from '../../context/auth-context';
 import history from '../../history/history';
@@ -12,7 +11,6 @@ class Login extends Component {
         super(props);
         this.state = {
             userType: ""+props.type,
-            mes:"Hello"
         };
      
         this.emailEl = React.createRef();
@@ -51,8 +49,6 @@ class Login extends Component {
             return res.json();
         })
         .then(resData => {
-            console.log(resData);
-            console.log(this.state);
             if(resData.data.login.token){
                 this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
                 if(resData.data.login.userType==='alumni' && this.state.userType==='alumni'){
@@ -64,43 +60,29 @@ class Login extends Component {
                 else if(resData.data.login.userType==='alumni' && this.state.userType==='student')
                 {
                     //here he should login through alumni; but he came login through student;
-                    // this.show=true;
-                    // this.message="You are Alumni; Please login through Alumni";
-                    // this.state.mes="You are Alumni; Please login through Alumni";
-                    this.setState({
-                        mes:"You are Alumni; Please login through Alumni"
-                    });
-                    console.log(this.state.mes);
-                }
-                // else if(resData.data.login.userType==='student' && this.state.userType==='alumni')
-                // {
-                //     //here he should login through student; but he came login through alumni;
-                //     this.show=true;
-                //     this.message="You are Student; Please login through Student";
-                //     console.log(this.message);
-                //    return(
-                //         <div>
-                //             <Alert show={true} variant="success">
-                //             <Alert.Heading>How's it going?!</Alert.Heading>
-                //             <p>
-                //                 {this.message}
-                //             </p>
-                //             <hr />
-                //             </Alert>
+                   
+                   history.push('/alumniFailure');
                     
-                //         </div>
-                //    );
 
-                // }
+                }
+                else if(resData.data.login.userType==='student' && this.state.userType==='alumni')
+                {
+                    //here he should login through student; but he came login through alumni;
+                    history.push('/studentFailure');
+                  
+
+                }
+                
             }
         })
         .catch(err => {
-            console.log(err);
+            history.push('/failure');
         });
     };
 
    
     render(){
+      
         return(
             <Form onSubmit={this.submitHandler} >
                 <Form.Label><h2 style={{color:"White"}}>Welcome Back!!</h2></Form.Label>
@@ -115,23 +97,6 @@ class Login extends Component {
             <Button className="submitButton" type="submit">
                 Login
             </Button>
-        <a href="#" style={{textDecoration:"none",float:"center"}}><h5>{this.state.mes}</h5></a>
-            {/* <p style={{color:"white"}}>{this.state.mes}</p> */}
-            {/* <Modal show={this.show} onHide={()=>{this.show=false}}> 
-                <Modal.Header closeButton>
-                <Modal.Title>Oops</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{this.message}</Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={()=>{this.show=false}}>
-                    Close
-                </Button>
-                <Button variant="primary" onClick={()=>{this.show=false}}>
-                    Save Changes
-                </Button>
-                </Modal.Footer>
-            </Modal> */}
-
             </Form>
         )
     }
