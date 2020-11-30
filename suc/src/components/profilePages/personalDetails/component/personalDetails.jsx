@@ -62,9 +62,9 @@ export class PersonalDetails extends Component{
           })
           .then(resData => {
               this.setState({
-              name: resData.data.users.profile.name===""?"---":resData.data.users.profile.name,
+              name: resData.data.users.profile.name===null?"---":resData.data.users.profile.name,
               interested: (resData.data.users.profile.interestedIntern)?"Yes":"NO",
-              phone: resData.data.users.profile.phoneNumber===""?"+91- ":resData.data.users.profile.phoneNumber,
+              phone: resData.data.users.profile.phoneNumber===null?"+91- ":resData.data.users.profile.phoneNumber,
               portfolio: resData.data.users.profile.portFolio
             });
           })
@@ -111,7 +111,7 @@ export class PersonalDetails extends Component{
             return res.json();
         })
         .then(resData => {
-            history.push('/profile/edit/education');
+            this.componentDidMount();
         })
         .catch(err => {
             console.log(err);

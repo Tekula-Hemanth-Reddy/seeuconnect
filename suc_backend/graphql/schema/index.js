@@ -64,14 +64,14 @@ input ReachOutInput {
 type Project {
     _id: ID!
     projectName: String!
-    projectDescription: String
+    projectDescription: String!
     projectUrl: String!
     projectDemo: String
     profile: Profile!
 }
 input ProjectInput{
     projectName: String!
-    projectDescription: String
+    projectDescription: String!
     projectUrl: String!
     projectDemo: String
 }
@@ -79,16 +79,16 @@ input ProjectInput{
 type Course {
     _id: ID!
     courseName: String!
-    specialization: String!
-    certificate: String!
-    credentials: String!
+    specialization: String
+    certificate: String
+    credentials: String
     profile: Profile!
 }
 input CourseInput{
     courseName: String!
-    specialization: String!
-    certificate: String!
-    credentials: String!
+    specialization: String
+    certificate: String
+    credentials: String
 }
 
 type Alumni{
@@ -117,30 +117,30 @@ type Achievement {
     _id: ID!
     title: String!
     achievementDescription: String
-    certificate: String!
+    certificate: String
     profile: Profile!
 }
 input AchievementInput {
     title: String!
     achievementDescription: String
-    certificate: String!
+    certificate: String
 }
 
 type Position {
     _id: ID!
     positionHeld: String!
-    companyName: String!
-    positionDescription: String!
-    startDate: String!
-    endDate: String!
+    companyName: String
+    positionDescription: String
+    startDate: String
+    endDate: String
     profile: Profile!
 }
 input PositionInput {
     positionHeld: String!
     companyName: String
     positionDescription: String
-    startDate: String!
-    endDate: String!
+    startDate: String
+    endDate: String
 }
 
 type AdditionalDetails {
@@ -290,22 +290,22 @@ input LatestInput {
 type RootQuery {
     users(userId: String!) : User
     login(email: String!, password: String!) : AuthData!
-    languages: [Language!]!
-    skills: [Skill!]!
-    reachOuts: [ReachOut!]!
-    projects: [Project!]!
-    courses: [Course!]!
+    languages: [Language]
+    skills: [Skill]
+    reachOuts: [ReachOut]
+    projects: [Project]
+    courses: [Course]
     jobGivers(userId: String!): Alumni!
-    achievements: [Achievement!]!
-    positions: [Position!]!
-    school: [School!]!
-    college: [College!]!
-    graduation: [Graduation!]!
-    detailsAdditional: [AdditionalDetails!]!
-    addresses: [Address!]!
-    education : [Education!]!
-    profile: [Profile!]!
-    latest: [Latest!]!
+    achievements: [Achievement]
+    positions: [Position]
+    school: [School]
+    college: [College]
+    graduation: [Graduation]
+    detailsAdditional: [AdditionalDetails]
+    addresses: [Address]
+    education : [Education]
+    profile: [Profile]
+    latest: [Latest]
 }
 
 type RootMutation {

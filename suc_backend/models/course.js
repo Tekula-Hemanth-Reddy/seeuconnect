@@ -13,11 +13,11 @@ const CourseSchema = new Schema({
     },
     certificate: {
         type: String,
-        required: true
+        required: false
     },
     credentials: {
         type: String,
-        requiredPaths: true
+        requiredPaths: false
     },
     profileId: {
         type: Schema.Types.ObjectId,

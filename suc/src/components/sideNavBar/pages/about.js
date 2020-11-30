@@ -66,10 +66,10 @@ class About extends Component {
       })
       .then(resData => {
           this.setState({
-          name: resData.data.users.profile.name===""?"---":resData.data.users.profile.name,
+          name: resData.data.users.profile.name===null?"---":resData.data.users.profile.name,
           location: resData.data.users.profile.addresses.location,
           pin: resData.data.users.profile.addresses.pinCode,
-          phone: resData.data.users.profile.phoneNumber===""?"+91- ":resData.data.users.profile.phoneNumber,
+          phone: resData.data.users.profile.phoneNumber===null?"+91- ":resData.data.users.profile.phoneNumber,
           email: resData.data.users.profile.email,
           website: resData.data.users.profile.portFolio
         });
