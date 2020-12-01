@@ -36,6 +36,7 @@ class Details extends Component{
     static contextType = authContext;
 
     componentDidMount(){
+        sessionStorage.removeItem("my_skills");
         const requestBody = {
           query: `
           query{
