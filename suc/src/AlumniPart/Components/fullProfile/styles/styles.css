@@ -1,0 +1,16 @@
+.fullProfileContainer{
+    background-color: transparent;
+    color: white;
+    height: auto;
+    width: 100%;
+    padding-top: 10vh;
+}
+.fullProfileCard{
+    border-color: #007fbb;
+    border-width: 2px;
+    background-color: black;
+    width: 85%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+
+}
