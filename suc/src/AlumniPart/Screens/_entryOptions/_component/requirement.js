@@ -10,9 +10,10 @@ class Requirement extends Component{
     constructor(props){
         super(props);
         this.state = {
-            skillList:["Java","Ds","Html","CSS"],
+            skillList:[],
             userInput : "", 
             studentsData:[],
+            studentsList:[],
         }
     }
 
@@ -66,11 +67,11 @@ class Requirement extends Component{
           profile{
             _id
             name
+            phoneNumber
+            email
             interestedIntern
             skills{
-              _id
               skill
-              rating
             }
             positions{
               _id
@@ -102,9 +103,10 @@ class Requirement extends Component{
       .then(resData => {
           this.setState({
             studentsData: resData.data.profile,
+            skillList: sessionStorage.getItem("my_skills")===null?[]:JSON.parse(sessionStorage.getItem("my_skills")),
         });
         console.log(this.state.studentsData);
-        this.UsefulData();
+        console.log(this.state.skillList);
       })
       .catch(err => {
           console.log(err);
@@ -116,21 +118,16 @@ class Requirement extends Component{
   //todo: make this function call when you click show button and pass this this.state.studentsData array to new page and show in the list form if possible try to show main details of that paticular student if pressed 
   UsefulData(){
     let listData = [];
+    sessionStorage.setItem("my_skills", JSON.stringify(this.state.skillList));
     for (let index = 0; index < this.state.studentsData.length; index++)
     {
         let element = this.state.studentsData[index];
         if(element.interestedIntern)
         {
-            let skillDummyArray = element.skills;
-            let skillArray=[];
-            for(let j=0;j<skillDummyArray.length;j++)
-            {
-              skillArray.push(skillDummyArray[j].skill);
-            }
             let match = 0;
             for (let i = 0; i < this.state.skillList.length; i++){
-              for (let k = 0; k < skillArray.length; k++){
-                if(skillArray[k]===this.state.skillList[i]){
+              for (let k = 0; k < element.skills.length; k++){
+                if(element.skills[k].skill===this.state.skillList[i].value){
                   match++;
                   break;
                 }
@@ -139,6 +136,8 @@ class Requirement extends Component{
             let data ={
               id : element._id,
               name: element.name,
+              phoneNumber: element.phoneNumber,
+              email: element.email,
               skill: element.skills.length,
               positions: element.positions.length,
               projects: element.projects.length,
@@ -170,11 +169,11 @@ class Requirement extends Component{
               }
             });
             console.log(listData);
-            this.setState({
-              studentsData: listData,
-          });
-      }  
+      } 
   }
+  this.setState({
+    studentsList: listData,
+  });
 }
 
 
@@ -243,6 +242,7 @@ class Requirement extends Component{
                         value = {this.state.userInput} 
                         onChange = {item => this.updateInput(item.target.value)} 
                         >
+                          <option> </option>
                         <option>C</option>
                         <option>C++</option>
                         <option>DS</option>
@@ -268,8 +268,7 @@ class Requirement extends Component{
                     </Card>
                     <Row>
                     <Col xs={12}>
-                    {/* onclick={this.submitHandler.bind(this)} */}
-                    <Button variant="outline-warning" type='submit'>Show People</Button>{' '}
+                    <Button variant="outline-warning" onClick={this.UsefulData.bind(this)}>Show People</Button>
                     </Col>
                     </Row>
                     </Col>
