@@ -104,6 +104,40 @@ export class LatestNews extends Component{
             console.log(err);
         });
     };
+    onDelete = (deleteId) =>{
+        const requestBody = {
+            query: `
+            mutation{
+                DeleteLatest(latestId:"${deleteId}"){
+                    _id
+                  title
+                  description
+                  }
+              }
+            `
+        };
+
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if(res.status!== 200 && res.status!== 201){
+                throw new Error('Failed!');
+            }
+            return res.json();
+        })
+        .then(resData => {
+            this.setState({latestData: this.state.latestData.filter(function(common) { 
+                return common._id !== deleteId 
+            })});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
 
 
     render()
@@ -120,7 +154,7 @@ export class LatestNews extends Component{
                 {this.state.isSuccess && <div style={{marginTop:"0px"}}>
                     <Modal.Dialog>
                         <Modal.Header closeButton>
-                            <Modal.Title>Skill Added SuccessFully</Modal.Title>
+                            <Modal.Title>News Added SuccessFully</Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body>
@@ -128,8 +162,7 @@ export class LatestNews extends Component{
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button href="/profile/about" variant="info">Done</Button>
-                            <Button href="/profile/edit/skill" variant="primary">Add Another</Button>
+                            <Button href="/adminLatestNews" variant="primary">Done</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </div>
@@ -222,7 +255,7 @@ export class LatestNews extends Component{
                                     </Row>
                                 </Col>
                                 <Col md={4}>
-                                <Button variant="outline-danger" >{<FontAwesomeIcon icon={faTimes} />}</Button>
+                                <Button variant="outline-danger" onClick={this.onDelete.bind(this,item._id)} >{<FontAwesomeIcon icon={faTimes} />}</Button>
                                 </Col>
                             </Row>
                             </Card>
