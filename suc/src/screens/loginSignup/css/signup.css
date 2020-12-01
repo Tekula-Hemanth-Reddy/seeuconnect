@@ -27,7 +27,6 @@
 .signUpSpinnerBorder {
     color: #61dafb;
     display: inline-block;
-    margin-left: 15vh;
     margin-bottom: 5vh;
     vertical-align: text-bottom;
     border: .25em solid currentColor;
