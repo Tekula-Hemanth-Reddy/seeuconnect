@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import '../styles/styles.css';
@@ -20,7 +20,9 @@ export class PersonalDetails extends Component{
             name:"",
             phone:"",
             portfolio:"",
-            interested:""
+            interested:"",
+            isSuccess:false,
+            isSet:true,
         }
     }
 
@@ -82,6 +84,9 @@ export class PersonalDetails extends Component{
         const LastName = ""+this.lastEl.current.value;
         const Phone = ""+this.phonePersonEl.current.value;
         const Website = ""+this.websiteEl.current.value;
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -111,7 +116,10 @@ export class PersonalDetails extends Component{
             return res.json();
         })
         .then(resData => {
-            this.componentDidMount();
+            this.setState({
+                isSet:true,
+                isSuccess:true
+            });
         })
         .catch(err => {
             console.log(err);
@@ -122,6 +130,23 @@ export class PersonalDetails extends Component{
     {
         return(
             <Container className="personalDetailsContainer">
+                {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>Nice Name</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
                 <Form onSubmit={this.submitHandler}>
                 <Card style={{borderColor:"#007fbb",borderWidth:"2px",backgroundColor:"transparent",padding:"15px"}}>
                 <Row>
@@ -296,13 +321,21 @@ export class PersonalDetails extends Component{
 
                 <Row >
                 <Col style={{textAlign:"right"}}>
-                    <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>{' '}
+                {
+                                    this.state.isSet && 
+                    <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>}
+                    {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                 </Col>
                 </Row>
 
                 </Container>
                 </Card>
                 </Form>
+            }
             </Container>
 
 

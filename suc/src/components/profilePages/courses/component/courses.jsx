@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,9 @@ export class Courses extends Component
         this.spec = React.createRef();
         this.certificate=React.createRef();
         this.state = {
-            courseData:[]
+            courseData:[],
+            isSuccess:false,
+            isSet:true,
           }
     }
 
@@ -71,6 +73,9 @@ export class Courses extends Component
         const CertId = ""+this.certificateId.current.value;
         const Spec =""+this.spec.current.value;
         const Cert=""+this.certificate.current.value;
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -105,7 +110,9 @@ export class Courses extends Component
             let list = [...this.state.courseData];
             list.push(resData.data.CreateCourse)
             this.setState({
-                courseData: list
+                isSet:true,
+                courseData: list,
+                isSuccess:true
               });
         })
         .catch(err => {
@@ -156,6 +163,24 @@ export class Courses extends Component
             <Row>
                 <Col md={8}>
            <Container className="projectContainer">
+           {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Course Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>A Nice Work Done By You</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                            <Button href="/profile/edit/course" variant="primary">Add Another</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
            <Form onSubmit={this.submitHandler}>
            <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
 
@@ -245,12 +270,20 @@ export class Courses extends Component
                      </Row>
                 <Row >
                     <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" type="submit" size="lg">Add</Button>{' '}
+                    {
+                                    this.state.isSet && 
+                        <Button className="buttonRow" variant="outline-primary" type="submit" size="lg">Add</Button>}
+                        {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                     </Col>
                 </Row>
                
                 </Card>
                 </Form>
+            }
            </Container>
            </Col>
                 <Col md={3}>
