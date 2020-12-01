@@ -63,6 +63,7 @@ class Routes extends Component {
                             <Route path="/requirement" component={Requirement} />
                             <Route path="/studentFailure" component={() => <StudentFailure message="Login through Student"/>} />
                             <Route path="/alumniFailure" component={() => <StudentFailure message="Login through Alumni"/>} />
+                            <Route path="/signUpFailure" component={() => <StudentFailure message="User Already Exist or Network Problem"/>} />
                             <Route path="/failure" component={() => <StudentFailure message="CredentialsFailure"/>} />
                             <Route path='/fullProfile' component={() => <FullProfile/> } />
                                            

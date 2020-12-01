@@ -18,4 +18,13 @@
     height: 20vh;
     width: 20vh;
 }
-
+.alumniSpinnerBorder {
+    color: darkgoldenrod;
+    display: inline-block;
+    margin-bottom: 5vh;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+}

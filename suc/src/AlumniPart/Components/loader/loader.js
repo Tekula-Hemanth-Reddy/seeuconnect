@@ -7,7 +7,7 @@ const Loading =props => {
         <div style={{backgroundColor:"#000"}}>
             <Container className="loaderContainer" style={{height:"100vh"}}>
                 <Card className="loaderCard">
-                <Spinner animation="border" role="status">
+                <Spinner animation="border" className="spinnerBorder" role="status">
                     <span className="sr-only" style={{color:"#61dafb"}}></span>
                 </Spinner>
                 </Card>

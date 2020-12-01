@@ -1,6 +1,5 @@
-import React, { Component,useState} from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { Component} from 'react';
+import {Form,Button,Spinner} from 'react-bootstrap';
 import StudentFailure from '../../screens/failureScreens/component/studentFailure';
 import './css/loginSignup.css';
 import authContext from '../../context/auth-context';
@@ -10,6 +9,7 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
+            isSet:true,
             userType: ""+props.type,
         };
      
@@ -22,6 +22,9 @@ class Login extends Component {
         event.preventDefault();
         const Email = ""+this.emailEl.current.value;
         const Password = ""+this.passwordEl.current.value;
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -49,6 +52,9 @@ class Login extends Component {
             return res.json();
         })
         .then(resData => {
+            this.setState({
+                isSet:true,
+            });
             if(resData.data.login.token){
                 this.context.login(resData.data.login.token,resData.data.login.userId,resData.data.login.userType,resData.data.login.tokenExpiration);
                 if(resData.data.login.userType==='alumni' && this.state.userType==='alumni'){
@@ -96,9 +102,16 @@ class Login extends Component {
                
             </Form.Group>
             <a href="#" style={{textDecoration:"none",float:"right"}}>Forgot Password?</a>
-            <Button className="submitButton" type="submit">
+            {
+                this.state.isSet && <Button className="submitButton" type="submit">
                 Login
             </Button>
+            }
+            {
+                !this.state.isSet && <Spinner animation="border" className="loginSpinnerBorder" role="status">
+                        <span className="sr-only" style={{color:"#61dafb"}}></span>
+                    </Spinner>
+            }
             </Form>
         )
     }
