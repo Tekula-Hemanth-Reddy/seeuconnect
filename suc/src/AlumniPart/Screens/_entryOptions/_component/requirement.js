@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 import authContext from '../../../../context/auth-context';
+import * as RIIcons from 'react-icons/ri';
+import FullProfile from '../../../Components/fullProfile/component/fullProfile';
 
 class Requirement extends Component{
     constructor(props){
@@ -43,7 +45,12 @@ class Requirement extends Component{
         } 
       } 
       
-     
+     openProfile(studentData)
+     {
+       console.log(studentData);
+        sessionStorage.setItem("profileProps", JSON.stringify(studentData));
+        window.open('/fullProfile', "_blank") ;
+     }
       deleteSkill(key){ 
         
         const list = [...this.state.skillList]; 
@@ -290,6 +297,23 @@ class Requirement extends Component{
                         </div>
                     ))}
                 </Col>
+                </Row>
+                <Row>
+                      <Col xs={6}>
+                        {this.state.studentsList.map(item =>(
+                          <Card className="requireCardStyle" style={{marginTop:"10px",marginBottom: "10px"}}>
+                            <Row>
+                              <Col xs={2}><RIIcons.RiFileUserFill/></Col>
+                              <Col xs={5}  style={{marginBottom:"5px"}}><p style={{fontSize:"15px",marginLeft:"-10px",marginBottom:"5px"}}>{item.name}</p> </Col>
+                              <Col xs={4} style={{textAlign:"right"}}><Button 
+                              variant="primary" 
+                              size="sm"
+                              onClick ={ () => this.openProfile(item)}
+                              >Show Full Profile</Button></Col>
+                              </Row>
+                            </Card> 
+                        ))}
+                      </Col>
                 </Row>
                 </Form> 
             </Container>
