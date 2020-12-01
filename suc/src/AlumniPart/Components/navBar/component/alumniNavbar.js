@@ -20,7 +20,7 @@ const AlumniNavBar =props => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <div className='mr'>
                             <Nav className="mr-auto float-right">
-                                <Nav.Link href="#" onClick={()=>history.push('/alumninav')}>Home</Nav.Link>
+                                <Nav.Link href="#" onClick={()=>history.push('/alumniProfile')}>Home</Nav.Link>
                                 <Nav.Link href="#" onClick={()=>history.push('/alumniProfile')}>About</Nav.Link>
                                 <Nav.Link href="#" onClick={()=>history.push('/requirement')}>Recruitment</Nav.Link>
                                 <Nav.Link href="#" onClick={()=>history.push('/details')}>Edit</Nav.Link>

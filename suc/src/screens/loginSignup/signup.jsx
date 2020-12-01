@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import {Form,Button,Col} from 'react-bootstrap';
+import {Form,Button,Col,Spinner} from 'react-bootstrap';
 import './css/signup.css';
 import history from '../../history/history';
 import authContext from '../../context/auth-context';
@@ -7,7 +7,7 @@ import authContext from '../../context/auth-context';
 class SignUp extends Component {
     constructor(props){
         super(props);
-        this.state = {userType: ""+props.type};
+        this.state = {isSet:true,userType: ""+props.type};
         this.nameEl = React.createRef();
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
@@ -25,6 +25,9 @@ class SignUp extends Component {
         if(Password.trim() !== ConPassword.trim()){
             return null;
         }
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -52,6 +55,9 @@ class SignUp extends Component {
             return res.json();
         })
         .then(resData => {
+            this.setState({
+                isSet:true,
+            });
             this.setState({idUser: resData.data.CreateUser._id});
             if(this.state.userType==='alumni'){
                 if(resData.data.CreateUser._id){
@@ -67,7 +73,7 @@ class SignUp extends Component {
             }
         })
         .catch(err => {
-            console.log(err);
+            history.push('/signUpFailure');
         });
     };
     render(){
@@ -94,10 +100,16 @@ class SignUp extends Component {
                 ref={this.conPassEl}  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
                 id="id1" />
                 </Form.Group>
-        
-                <Button className="submitButton" variant="primary" type="submit">
-                    Submit
-                </Button>
+                {
+                    this.state.isSet && <Button className="submitButton" variant="primary" type="submit">
+                        Submit
+                    </Button>
+                }
+                {
+                    !this.state.isSet && <Spinner animation="border" className="signUpSpinnerBorder" role="status">
+                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                        </Spinner>
+                }
             </Form>
         )
     }
