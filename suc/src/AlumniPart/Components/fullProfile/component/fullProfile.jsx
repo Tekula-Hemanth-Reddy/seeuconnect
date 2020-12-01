@@ -17,9 +17,7 @@ class FullProfile extends Component{
 
        this.state={
         studentData: sessionStorage.getItem("profileProps")===null?[]:JSON.parse(sessionStorage.getItem("profileProps")),
-       }
-        
-       
+       } 
       }
       
     render()
@@ -42,12 +40,12 @@ class FullProfile extends Component{
                                     </Row>
                                     <Row style={{marginTop:"10px"}}>
                                         <Col  md="auto">
-                                        <p style={{color:"white",fontSize:"20px",textAlign:"left"}}>{this.state.studentData.name}</p>
+                                            <p style={{color:"white",fontSize:"20px",textAlign:"left"}}>{this.state.studentData.name.split("-")[0]}{" "}{this.state.studentData.name.split("-")[1]}{" "}{this.state.studentData.name.split("-")[2]}</p>
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col  md="auto">
-                                        <p style={{color:"white",fontSize:"20px",textAlign:"left"}}>{this.state.studentData.phoneNumber}</p>
+                                            <p style={{color:"white",fontSize:"20px",textAlign:"left"}}><a href={"tel:"}{...this.state.studentData.phoneNumber.split("-")[0]}{...this.state.studentData.phoneNumber.split("-")[1]} style={{textDecoration:"none"}}>{this.state.studentData.phoneNumber.split("-")[0]}{" "}{this.state.studentData.phoneNumber.split("-")[1]}</a></p>
                                         </Col>
                                     </Row>
                                     <Row>
@@ -187,7 +185,7 @@ class FullProfile extends Component{
                                             <FIIcons.FiLink style={{height:"25px",width:"25px",marginTop:"5px"}} className="userIconProfile3"/>
                                             </Col>
                                             <Col md="auto">
-                                            <a style={{color:"white",textAlign:"left",marginTop:"5px"}}>{item.projectUrl}</a>  
+                                            <a style={{color:"white",textAlign:"left",marginTop:"5px", marginBottom:"5px"}}>{item.projectUrl}</a>  
                                             </Col>
                                             </Row>
                                         </Card>

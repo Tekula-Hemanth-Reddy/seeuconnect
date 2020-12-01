@@ -22,11 +22,13 @@ function navbar(){
             <div className='mr'>
               <Nav className="mr-auto float-right">
                 <Nav.Link href="/">Home</Nav.Link>
-                {/* <Nav.Link href="#features">About</Nav.Link>
-                <Nav.Link href="/contactUs">Contact Us</Nav.Link> */}
+                {/* <Nav.Link href="#features">About</Nav.Link> */}
+                {/* <Nav.Link href="/contactUs">Contact Us</Nav.Link> */}
               </Nav>
             </div>
           </Navbar.Collapse>
+          <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/admin')}>
+        Admin</Button>
         <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/login')}>
         {<FontAwesomeIcon icon={faUser} />}</Button>
       </Navbar>

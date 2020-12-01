@@ -1,0 +1,29 @@
+.mr{
+    width: 100%;
+    margin-right: 30px;
+  }
+  .nav{
+    margin-bottom: 30px;
+  }
+  a{
+    margin-right: 40px;
+  }
+  .personLogin{
+    margin-right: 50px;
+  }
+  .navbar-dark .navbar-nav .nav-link.active{
+    color: blue;
+  }
+  /* media */
+  @media (max-width:700px){
+    a{
+      margin-right: 10px;
+    }
+    .personLogin{
+      margin-right: 10px;
+    }
+    .mr-auto{
+      display: none;
+    }
+  }
+  
