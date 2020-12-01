@@ -23,13 +23,15 @@ class About extends Component {
       cmpAddress: "",
       cmpWebsite: ""
     }
-    console.log(this.state.userId);
   }
 
   static contextType = authContext;
 
   componentDidMount(){
     sessionStorage.removeItem("my_skills");
+    sessionStorage.removeItem("jobType" );
+    sessionStorage.removeItem("jobDays" );
+    sessionStorage.removeItem("jobMoney");
     const requestBody = {
       query: `
       query{

@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {Container,Card,Row,Col,Image} from "react-bootstrap";
+import {Container,Card,Row,Col,Image,Button} from "react-bootstrap";
 import '../styles/styles.css';
 import PersonImage from '../../../../assets/images/sliders/student.png';
 import * as RIIcons from 'react-icons/ri';
@@ -16,13 +16,15 @@ class FullProfile extends Component{
         super(props);
 
        this.state={
-        studentData: sessionStorage.getItem("profileProps")===null?[]:JSON.parse(sessionStorage.getItem("profileProps")),
-       } 
-      }
+            studentData: sessionStorage.getItem("profileProps")===null?[]:JSON.parse(sessionStorage.getItem("profileProps")),   
+        }
+        this.msg=`Hello ${this.state.studentData.name.split("-")[0]} ${this.state.studentData.name.split("-")[1]} ${this.state.studentData.name.split("-")[2]}. I am Your Alumni. we are on highest place to give internships to guys like you . Work Details are given below.\n Work Type :${sessionStorage.getItem("jobType")}\n Working Days :${sessionStorage.getItem("jobDays")}\n Stipend :${sessionStorage.getItem("jobMoney")}\n We are expecting your presence in our organization. If You are Interested about Us fell free to reach out through above mail.`;
+        this.mailto=`mailto:${this.state.studentData.email}`;
+        this.phoneto=`tel:+${this.state.studentData.phoneNumber.split("-")[0].split("+")[1]}${this.state.studentData.phoneNumber.split("-")[1]}`
+    }
       
     render()
     {
-        console.log(this.state.studentData);
         return(
             <div style={{backgroundColor:"black"}}>
                 <Container className="fullProfileContainer">
@@ -45,12 +47,12 @@ class FullProfile extends Component{
                                     </Row>
                                     <Row>
                                         <Col  md="auto">
-                                            <p style={{color:"white",fontSize:"20px",textAlign:"left"}}><a href={"tel:"}{...this.state.studentData.phoneNumber.split("-")[0]}{...this.state.studentData.phoneNumber.split("-")[1]} style={{textDecoration:"none"}}>{this.state.studentData.phoneNumber.split("-")[0]}{" "}{this.state.studentData.phoneNumber.split("-")[1]}</a></p>
+                                            <p style={{color:"white",fontSize:"20px",textAlign:"left"}}><a href={this.phoneto} style={{textDecoration:"none"}}>{this.state.studentData.phoneNumber.split("-")[0]}{" "}{this.state.studentData.phoneNumber.split("-")[1]}</a></p>
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col  md="auto">
-                                        <p style={{color:"white",fontSize:"20px",textAlign:"left"}}>{this.state.studentData.email}</p>
+                                        <p style={{color:"white",fontSize:"20px",textAlign:"left"}}><a href={this.mailto} style={{textDecoration:"none"}}>{this.state.studentData.email}</a></p>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -185,7 +187,7 @@ class FullProfile extends Component{
                                             <FIIcons.FiLink style={{height:"25px",width:"25px",marginTop:"5px"}} className="userIconProfile3"/>
                                             </Col>
                                             <Col md="auto">
-                                            <a style={{color:"white",textAlign:"left",marginTop:"5px", marginBottom:"5px"}}>{item.projectUrl}</a>  
+                                            <a href={item.projectUrl} style={{color:"white",textAlign:"left",marginTop:"5px", marginBottom:"5px"}}>{item.projectUrl}</a>  
                                             </Col>
                                             </Row>
                                         </Card>
@@ -195,6 +197,18 @@ class FullProfile extends Component{
                             </Row>
                                                  
                         </Container>
+                        <div style={{marginTop:"20px"}}>
+                        <form action={this.mailto} method="POST" enctype="multipart/form-data" name="EmailForm">
+                        <textarea name="ContactCommentt" row="50" cols="40" style={{height:"300px",width:"700px", marginTop:"10px"}} 
+                        defaultValue={this.msg}
+                        >
+                        </textarea>
+                        <br/>
+                        <Button type="submit" variant="outline-light"  size="sm" className="buttonSend">
+                            Send offer Letter 
+                        </Button> 
+                    </form>
+                    </div>
                     </Card>
                 </Container>
             </div>

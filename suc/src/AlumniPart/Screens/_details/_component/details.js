@@ -38,6 +38,9 @@ class Details extends Component{
 
     componentDidMount(){
         sessionStorage.removeItem("my_skills");
+        sessionStorage.removeItem("jobType" );
+        sessionStorage.removeItem("jobDays" );
+        sessionStorage.removeItem("jobMoney");
         const requestBody = {
           query: `
           query{
