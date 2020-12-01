@@ -17,9 +17,9 @@ function navbar(){
           <Navbar.Collapse id="basic-navbar-nav">
             <div className='mr'>
               <Nav className="mr-auto float-right">
-                <Nav.Link href="#latest">Latest</Nav.Link>
-                <Nav.Link href="#features">About</Nav.Link>
-                <Nav.Link href="/contactUs">Contact Us</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                {/* <Nav.Link href="#features">About</Nav.Link>
+                <Nav.Link href="/contactUs">Contact Us</Nav.Link> */}
               </Nav>
             </div>
           </Navbar.Collapse>

@@ -64,7 +64,7 @@ class Experience extends Component {
 
   render(){
   return (
-    <Container className="experienceContainer">
+    <Container className="experienceContainer" style={{marginLeft:"75vh"}}>
       <Row>
         <Col xs={1}>
           <div>

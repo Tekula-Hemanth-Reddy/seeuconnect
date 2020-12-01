@@ -17,7 +17,7 @@ function carousel(){
           alt="Graduate"
         />
         <Carousel.Caption>
-          <h3>Graduate</h3>
+        <h1 style={{color:"#002b88"}}>Graduate</h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -27,7 +27,7 @@ function carousel(){
           alt="Build your Profile"
         />
         <Carousel.Caption>
-          <h3>Build your Profile</h3>
+        <h1 style={{color:"#002b88"}}>Build your Profile</h1>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -37,7 +37,7 @@ function carousel(){
           alt="Get to Work "
         />
         <Carousel.Caption>
-          <h3>Get to Work </h3>
+          <h1 style={{color:"#002b88"}}>Get to Work </h1>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

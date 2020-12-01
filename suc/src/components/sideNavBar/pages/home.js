@@ -65,7 +65,6 @@ class Home extends Component {
 
   render(){
   return (
-    
     <Container className="mainHomeContainer">
       <Row>
       <Col xs={6}>
