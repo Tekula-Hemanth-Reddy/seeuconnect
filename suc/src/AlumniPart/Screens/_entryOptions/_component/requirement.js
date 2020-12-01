@@ -10,6 +10,9 @@ import * as RIIcons from 'react-icons/ri';
 class Requirement extends Component{
     constructor(props){
         super(props);
+        this.type = React.createRef();
+        this.days = React.createRef();
+        this.stipend = React.createRef();
         this.state = {
             skillList:[],
             userInput : "", 
@@ -120,8 +123,6 @@ class Requirement extends Component{
             studentsData: resData.data.profile,
             skillList: sessionStorage.getItem("my_skills")===null?[]:JSON.parse(sessionStorage.getItem("my_skills")),
         });
-        console.log(this.state.studentsData);
-        console.log(this.state.skillList);
       })
       .catch(err => {
           console.log(err);
@@ -132,6 +133,16 @@ class Requirement extends Component{
   // i just called this function after retrival of data in compound did mount by giving few fixed values in this.state.skillList 
   //todo: make this function call when you click show button and pass this this.state.studentsData array to new page and show in the list form if possible try to show main details of that paticular student if pressed 
   UsefulData(){
+        const workType = ""+this.type.current.value;
+        const workDays = ""+this.days.current.value;
+        const workMoney =""+this.stipend.current.value;
+        if(workType==="" || workDays==="" || workMoney==="")
+        {
+          return;
+        }
+        sessionStorage.setItem("jobType", workType);
+        sessionStorage.setItem("jobDays", workDays);
+        sessionStorage.setItem("jobMoney", workMoney);
     let listData = [];
     sessionStorage.setItem("my_skills", JSON.stringify(this.state.skillList));
     for (let index = 0; index < this.state.studentsData.length; index++)
@@ -187,7 +198,6 @@ class Requirement extends Component{
                 }
               }
             });
-            console.log(listData);
       } 
   }
   this.setState({
@@ -209,8 +219,7 @@ class Requirement extends Component{
                             <Form.Label></Form.Label>
                             <Form.Control 
                             as="select"
-                            // onChange={inputChange('yCollegeStart')} 
-                            // value={values.ycollegeStart}
+                            ref={this.type}
                             >
                             <option>Home</option>
                             <option>Office</option>
@@ -226,8 +235,7 @@ class Requirement extends Component{
                                 type="Number" 
                                 placeholder="Months"
                                 style={{marginTop:"20px",textAlign:"right"}} 
-                                // onChange={inputChange('collegeName')} 
-                                // value={values.collegeName}/>
+                                ref={this.days}
                              />
                         </Form.Group>
                     </Col>
@@ -240,8 +248,7 @@ class Requirement extends Component{
                                 size="text" 
                                 type="Number" 
                                 placeholder="Money in ₹" 
-                                // onChange={inputChange('collegeName')} 
-                                // value={values.collegeName}/>
+                                ref={this.stipend}
                              />
                         </Form.Group>
                     </Col>
