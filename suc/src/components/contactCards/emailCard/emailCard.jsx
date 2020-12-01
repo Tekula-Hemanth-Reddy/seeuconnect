@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import {Card,Container,Row,Col} from 'react-bootstrap';
 import './emailCard.css';
 

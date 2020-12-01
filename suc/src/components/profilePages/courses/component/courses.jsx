@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
-import history from '../../../../history/history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../styles/styles.css';

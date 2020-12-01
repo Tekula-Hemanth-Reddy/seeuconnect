@@ -4,13 +4,14 @@
     height: 95vh;
     width: 100%;
     padding-top:200px;
+    background-color: transparent;
 }
 .loginSignupCardStyle{
     width: 30rem;
     height: 28rem;
     margin-left:auto;
     margin-right:auto;
-    background-color: black;
+    background-color: transparent;
     border-width: 2px;
     border-color: #61dafb;
     border-radius: 5px;

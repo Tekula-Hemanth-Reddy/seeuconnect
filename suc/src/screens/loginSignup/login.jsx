@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import {Form,Button,Spinner} from 'react-bootstrap';
-import StudentFailure from '../../screens/failureScreens/component/studentFailure';
 import './css/loginSignup.css';
 import authContext from '../../context/auth-context';
 import history from '../../history/history';
@@ -65,20 +64,12 @@ class Login extends Component {
                 }
                 else if(resData.data.login.userType==='alumni' && this.state.userType==='student')
                 {
-                    //here he should login through alumni; but he came login through student;
-                   
                    history.push('/alumniFailure');
-                    
-
                 }
                 else if(resData.data.login.userType==='student' && this.state.userType==='alumni')
                 {
-                    //here he should login through student; but he came login through alumni;
                     history.push('/studentFailure');
-                  
-
-                }
-                
+                  }
             }
         })
         .catch(err => {

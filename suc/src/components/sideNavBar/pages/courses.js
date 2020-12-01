@@ -64,7 +64,7 @@ export class Courses  extends Component
     render()
     {   
         return (
-            <Container className="courses1Container">
+            <Container className="courses1Container" style={{marginLeft:"75vh"}}>
               
               <Row>
                 <Col xs={1}>

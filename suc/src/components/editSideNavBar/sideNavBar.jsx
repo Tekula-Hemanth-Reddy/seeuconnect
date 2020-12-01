@@ -23,7 +23,6 @@ const SideNavBar=()=> {
       <Router>
         <Navbar />
         <Switch>
-          <Redirect from="/profile/home" to="/profile/about" exact />
           <Redirect from="/profile/edit" to="/profile/edit/personalDetails" exact />
           <Route path='/profile/edit/personalDetails' component={PersonalDetails} />
           <Route path='/profile/edit/education' component={Education}/>

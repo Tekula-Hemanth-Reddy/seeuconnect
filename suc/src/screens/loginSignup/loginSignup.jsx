@@ -1,6 +1,6 @@
 import React from "react";
 import './css/loginSignup.css';
-import BackGroundImage from '../../assets/images/background.png';
+import BackGroundImage from '../../assets/images/temp/stars.jpeg';
 import {Card, Tabs,Tab} from 'react-bootstrap';
 import Navbar from '../../components/FirstPage/navbar/navbar';
 import Login from './login';

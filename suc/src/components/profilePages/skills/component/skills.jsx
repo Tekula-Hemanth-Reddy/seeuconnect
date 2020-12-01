@@ -3,7 +3,6 @@ import {Container,Row,Col,Card,Form,Button,Spinner,Modal} from 'react-bootstrap'
 import authContext from '../../../../context/auth-context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import history from '../../../../history/history';
 import '../styles/styles.css';
 
 export class Skills extends Component{
