@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
-import history from '../../../../history/history';
 import '../styles/styles.css';
 
 export class Address extends Component{

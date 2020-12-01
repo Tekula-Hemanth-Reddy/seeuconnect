@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Col, Container, Row,Button} from 'react-bootstrap';
 import './css/home.css';
 import Image from 'react-bootstrap/Image';
-import AdityaImage from '../../../assets/images/background.png';
+import AdityaImage from '../../../assets/images/about.png';
 import authContext from '../../../context/auth-context';
 
 
