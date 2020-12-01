@@ -4,13 +4,13 @@
     margin: 5%;
 }
 .messageAbout{
-    color: #0014cc;
+    color: #007fbb;
     text-align: center;
     margin: auto;
 }
 @media(max-width:1000px){
     .messageAbout{
-        color: #0014cc;
+        color: #007fbb;
         text-align: center;
         margin: 10%;
     } 

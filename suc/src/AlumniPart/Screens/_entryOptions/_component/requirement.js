@@ -329,6 +329,23 @@ class Requirement extends Component{
                     ))}
                 </Col>
                 </Row>
+                <Row>
+                      <Col xs={6}>
+                        {this.state.studentsList.map(item =>(
+                          <Card className="requireCardStyle" style={{marginTop:"10px",marginBottom: "10px"}}>
+                            <Row>
+                              <Col xs={2}><RIIcons.RiFileUserFill/></Col>
+                              <Col xs={5}  style={{marginBottom:"5px"}}><p style={{fontSize:"15px",marginLeft:"-10px",marginBottom:"5px"}}>{item.name}</p> </Col>
+                              <Col xs={4} style={{textAlign:"right"}}><Button 
+                              variant="primary" 
+                              size="sm"
+                              onClick ={ () => this.openProfile(item)}
+                              >Show Full Profile</Button></Col>
+                              </Row>
+                            </Card> 
+                        ))}
+                      </Col>
+                </Row>
                 </Form> 
             </Container>
             </div>

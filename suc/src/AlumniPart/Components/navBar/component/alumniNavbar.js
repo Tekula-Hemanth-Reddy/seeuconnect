@@ -16,7 +16,7 @@ const AlumniNavBar =props => {
             return(
                 <Router>
                     <div className='nav'>
-                    <Navbar fixed="top" bg="dark" variant="dark">
+                    <Navbar fixed="top" bg="#1f1f1f" variant="dark">
                         <Navbar.Brand href="#home">
                         <Image src={Logo} alt="See U Connect" style={{height:"60px",width:"75px"}}/>
                             See U Connect

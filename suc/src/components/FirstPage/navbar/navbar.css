@@ -12,7 +12,7 @@ a{
   margin-right: 50px;
 }
 .navbar-dark .navbar-nav .nav-link.active{
-  color: blue;
+  color: #007fbb;
 }
 /* media */
 @media (max-width:700px){

@@ -7,10 +7,23 @@
 }
 .fullProfileCard{
     border-color: #007fbb;
-    border-width: 2px;
-    background-color: black;
-    width: 85%;
+    border-width: 4px;
+    background-color: transparent;
+    border-radius: 5px;
+    width: 90%;
+    padding: 5%;
     margin-left: 5%;
-    margin-bottom: 10px;
+   
+}
+.userIconProfile{
+    height:"25px";
+    width:"25px";
+    color: #007fbb;
 
+}
+.userIconProfile2{
+    color: #ffc107;
+}
+.userIconProfile3{
+    color: white;
 }
