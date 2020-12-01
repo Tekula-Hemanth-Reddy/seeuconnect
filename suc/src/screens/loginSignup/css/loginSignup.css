@@ -42,6 +42,17 @@
     margin-top: 20px;
     margin-bottom: 30px;
 }
+.loginSpinnerBorder {
+    color: #61dafb;
+    display: inline-block;
+    margin-left: 15vh;
+    margin-bottom: 5vh;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+}
 @media( max-width:900px ){
     .loginSignupContainer{
         height: 95vh;

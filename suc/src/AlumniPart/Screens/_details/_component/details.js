@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Card,Form,Button} from 'react-bootstrap';
+import {Container,Card,Form,Button,Spinner} from 'react-bootstrap';
 import '../_css/details.css';
 import authContext from '../../../../context/auth-context';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
@@ -20,6 +20,7 @@ class Details extends Component{
         this.addressEl = React.createRef();
         this.websiteEl = React.createRef();
         this.state = {
+            isSet:true,
             userId: this.props.alumniId,
             title: "",
             name: "",
@@ -101,6 +102,9 @@ class Details extends Component{
         const PhoneCompany = ""+this.phoneCompanyEl.current.value;
         const Website = ""+this.websiteEl.current.value;
         const Address = ""+this.addressEl.current.value;
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -129,6 +133,9 @@ class Details extends Component{
             return res.json();
         })
         .then(resData => {
+            this.setState({
+                isSet:true,
+            });
             history.push('/alumniProfile');
         })
         .catch(err => {
@@ -279,7 +286,13 @@ class Details extends Component{
                                 </div>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5">
                                 {/* <Image src={BackGround} className="detailsImage"/> */}
-                                <Button  variant="outline-warning" size="lg" type="submit">Save</Button>
+                                {
+                                    this.state.isSet && <Button  variant="outline-warning" size="lg" type="submit">Save</Button>}
+                                {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                                 </div>
                             </div>
                         </Card>

@@ -1,15 +1,21 @@
 .failureCard{
-    background-color: black;
+    background-color: transparent;
+    border-color: #61dafb;
     width: 600px;
     height: 200px;
-    border-radius: 0px;
+    border-radius: 5px;
+    border-width: 2px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
-    margin-top: 250px;
-    border-color: #007fbb;
-    border-width: 2px;
+    margin-top: 10%;
 
+}
+.failureContainer{
+    background-color: transparent;
+    color: white;
+    height: 100vh;
+    width: 100%;
+    padding-top: 10vh;
 }
 .loginFailedTitle{
     color: white;
