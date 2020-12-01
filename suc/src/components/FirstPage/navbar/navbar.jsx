@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar,Nav,Button } from 'react-bootstrap';
+import { Navbar,Nav,Button,Image } from 'react-bootstrap';
 import './navbar.css';
+import Logo from '../../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import {BrowserRouter as Router} from 'react-router-dom';
@@ -13,13 +14,16 @@ function navbar(){
     <Router>
     <div className='nav'>
       <Navbar fixed="top" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">See U Connect</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <Image src={Logo} alt="See U Connect" style={{height:"60px",width:"75px"}}/>
+          See U Connect
+          </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <div className='mr'>
               <Nav className="mr-auto float-right">
-                <Nav.Link href="#latest">Latest</Nav.Link>
-                <Nav.Link href="#features">About</Nav.Link>
-                <Nav.Link href="/contactUs">Contact Us</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                {/* <Nav.Link href="#features">About</Nav.Link>
+                <Nav.Link href="/contactUs">Contact Us</Nav.Link> */}
               </Nav>
             </div>
           </Navbar.Collapse>

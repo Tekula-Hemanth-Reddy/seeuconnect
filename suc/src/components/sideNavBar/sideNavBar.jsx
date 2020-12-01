@@ -1,7 +1,7 @@
 import React from 'react';
 import './sideNavBar.css';
 import Navbar from './navbar/navbar';
-import { BrowserRouter as Router, Switch, Route, Redirect  } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Education from './pages/education';
@@ -23,7 +23,6 @@ const SideNavBar=() =>{
       <Router>
         <Navbar />
         <Switch>
-          <Redirect from="/profile/home" to="/profile/about" exact />
           <Route path='/profile/about' component={() => <About studentId={context.userId}/>} />
           <Route path='/profile/contact' component={Contact}/>
           <Route path='/profile/education' component={Education} />

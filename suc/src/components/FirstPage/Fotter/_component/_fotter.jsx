@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Jumbotron,Button} from 'react-bootstrap';
+import {Jumbotron,Button,Image} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from '../../../../assets/images/logo.png';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faPhoneAlt, faEnvelopeSquare, faPaperPlane,faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import '../_css/_fotterStyles.css'
@@ -11,8 +12,9 @@ function Fotter(){
         <Jumbotron className="fotter">
             <div className="row">
                 <div className="col-lg-2 col-md-4 col-sm-6 col-xl-3 fotterDivision">
-                    <h3>Logo</h3>
-                    <h7>tag line</h7>
+                    <Image src={Logo} alt="See U Connect" style={{height:"100px",width:"100px",marginTop:"-50px",marginLeft:"40px",marginBottom:"5px"}}/>
+                    <br/>
+                    <h7 style={{paddingTop:"5px",paddingBottom:"5px",color:"#fff"}}>Make Sure To Connect</h7>
                     <br/>
                     <h5 className="headingsColor">About Us</h5>
                     <p className="aboutUs">We want to help bring talented students to real time working experience.</p>
