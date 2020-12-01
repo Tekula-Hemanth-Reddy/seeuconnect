@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import '../styles/styles.css';
@@ -18,7 +18,9 @@ export class ReachOut extends Component
             linked: "",
             instagram: "",
             face: "",
-            twitter: ""
+            twitter: "",
+            isSuccess:false,
+            isSet:true,
           }
     }
 
@@ -81,6 +83,9 @@ export class ReachOut extends Component
         const Instagram = ""+this.insEl.current.value;
         const FaceBook = ""+this.facEl.current.value;
         const Twitter = ""+this.twiEl.current.value;
+        this.setState({
+            isSet:false,
+        });
         const requestBody = {
             query: `
             mutation{
@@ -110,7 +115,10 @@ export class ReachOut extends Component
             return res.json();
         })
         .then(resData => {
-            this.componentDidMount();
+            this.setState({
+                isSet:true,
+                isSuccess:true
+            });
         })
         .catch(err => {
             console.log(err);
@@ -122,6 +130,23 @@ export class ReachOut extends Component
     {
         return(
            <Container className="reachOutContainer">
+               {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Skill Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>A Nice Work Done By You</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
                <Form onSubmit={this.submitHandler}>
            <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
 
@@ -234,11 +259,19 @@ export class ReachOut extends Component
 
                 <Row >
                     <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>{' '}
+                    {
+                                    this.state.isSet && 
+                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>}
+                        {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                     </Col>
                 </Row>
                 </Card>
                 </Form>
+            }
            </Container>
 
 
