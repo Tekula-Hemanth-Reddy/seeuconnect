@@ -1,7 +1,7 @@
 .fullProfileContainer{
     background-color: transparent;
     color: white;
-    height: 100vh;
+    height: auto;
     width: 100%;
     padding-top: 10vh;
 }
@@ -11,5 +11,6 @@
     background-color: black;
     width: 85%;
     margin-left: 5%;
+    margin-bottom: 10px;
 
 }
