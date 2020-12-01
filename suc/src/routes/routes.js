@@ -21,6 +21,8 @@ import EditSideBar from '../components/editSideNavBar/sideNavBar';
 import StudentFailure from '../screens/failureScreens/component/studentFailure';
 import FullProfile from '../AlumniPart/Components/fullProfile/component/fullProfile';
 import AuthAdmin from '../Admin/Screens/Auth/_components/auth';
+import AdminNavBar from '../Admin/Components/navBar/component/adminNavbar';
+import LatestNews from '../Admin/Screens/latest/_components/latestNews';
 
 class Routes extends Component {
     state = {
@@ -68,6 +70,8 @@ class Routes extends Component {
                             <Route path="/signUpFailure" component={() => <StudentFailure message="User Already Exist or Network Problem"/>} />
                             <Route path="/failure" component={() => <StudentFailure message="CredentialsFailure"/>} />
                             <Route path='/fullProfile' component={() => <FullProfile/> } />
+                            <Route path='/adminPortal' component={AdminNavBar} />
+                            <Route path="/adminLatestNews" component={LatestNews}/>
                                            
                             {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={sessionStorage.getItem('idUser')}/>}/>}
                             {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={sessionStorage.getItem('idUser')}/>}/>}
