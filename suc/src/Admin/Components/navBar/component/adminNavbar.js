@@ -16,7 +16,7 @@ const AdminNavBar =props => {
             return(
                 <Router>
                     <div className='nav'>
-                    <Navbar fixed="top" bg="dark" variant="dark">
+                    <Navbar fixed="top" bg="#1f1f1f" variant="dark">
                         <Navbar.Brand href="#home">
                         <Image src={Logo} alt="See U Connect" style={{height:"60px",width:"75px"}}/>
                             See U Connect
@@ -24,10 +24,8 @@ const AdminNavBar =props => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <div className='mr'>
                             <Nav className="mr-auto float-right">
-                                <Nav.Link href="#" onClick={()=>history.push('/alumniProfile')}>Home</Nav.Link>
-                                <Nav.Link href="#" onClick={()=>history.push('/alumniProfile')}>About</Nav.Link>
-                                <Nav.Link href="#" onClick={()=>history.push('/requirement')}>Recruitment</Nav.Link>
-                                <Nav.Link href="#" onClick={()=>history.push('/details')}>Edit</Nav.Link>
+                                <Nav.Link href="#" onClick={()=>history.push('/adminLatestNews')}>LatestNews</Nav.Link>
+                                
                             </Nav>
                             </div>
                         </Navbar.Collapse>

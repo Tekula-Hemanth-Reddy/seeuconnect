@@ -1,34 +1,23 @@
 import React,{Component} from 'react';
 import {Container,Card,Form,Button,Row,Col} from 'react-bootstrap';
+import history from '../../../../history/history';
 import '../_css/auth.css';
 
 class Auth extends Component{
     constructor(props){
         super(props);
-        this.titleEl = React.createRef();
-        this.pEl = React.createRef();
-        this.cEl = React.createRef();
-        this.firstEl = React.createRef();
-        this.lastEl = React.createRef();
-        this.phonePersonEl = React.createRef();
-        this.companyEl = React.createRef();
-        this.phoneCompanyEl = React.createRef();
-        this.emailEl = React.createRef();
-        this.addressEl = React.createRef();
-        this.websiteEl = React.createRef();
+        this.MPIN = React.createRef();
         this.state = {
             isSet:true,
-            userId: this.props.alumniId,
-            title: "",
-            name: "",
-            phone: "",
-            email: "",
-            company: "",
-            cmpPhone: "",
-            cmpMail: "",
-            cmpAddress: "",
-            cmpWebsite: ""
+           
           };
+    }
+    checkCredentials() {
+        const mpin=Number(""+this.MPIN.current.value);
+        if(mpin===112233)
+        {
+            history.push('/adminLatestNews');
+        }
     }
     render(){
         return(
@@ -38,23 +27,17 @@ class Auth extends Component{
                         <h2>Authentication</h2>
                         <Card className="adminCardStyle" style={{marginTop:"20px",marginBottom: "20px"}}>
                             <Row>
-                                <Col xs={2} style={{marginTop:"30px",textAlign:"right"}}>Login Id :</Col>
-                                <Col xs={6}>    
-                                <Form.Group>
-                                        <Form.Control 
-                                            size="text" 
-                                            type="text"  
-                                        />
-                                    </Form.Group>
-                                </Col>
-                            </Row>
-                            <Row>
-                            <Col xs={2} style={{marginTop:"10px",textAlign:"right"}}>Password :</Col>
+                            <Col xs={2} style={{marginTop:"10px",textAlign:"right"}}>MPIN:</Col>
                                 <Col xs={6}>
                                     <Form.Group>
                                         <Form.Control 
                                             size="text" 
-                                            type="Password" 
+                                            type="password"
+                                            required
+                                            pattern="[0-9]*"
+                                            id="id1"
+                                            ref={this.MPIN}
+                                            maxLength="6" 
                                         />
                                     </Form.Group>
                                 </Col>
@@ -64,7 +47,10 @@ class Auth extends Component{
                             <Col xs={2} style={{marginTop:"10px",textAlign:"center"}}></Col>
                             <Col xs={6}>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5" style={{marginLeft:"30%"}}>
-                                    <Button  variant="outline-warning" size="lg" type="submit">Login</Button>
+                                    <Button  variant="outline-warning" size="lg" type="submit" 
+                                    onClick={() =>
+                                        this.checkCredentials()
+                                    }>Login</Button>
                                 </div>
                             </Col>
                         </Row>       
