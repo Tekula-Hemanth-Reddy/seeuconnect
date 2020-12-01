@@ -7,7 +7,7 @@
 }
 .mainCard{
     width: 20rem;
-    background-color: #0014cc;
+    background-color: #007fbb;
     /* background: linear-gradient(to right, blue 0%, blue 50%, yellow 50%, yellow 100%); */
     color: white;
 }
@@ -18,7 +18,7 @@
     }
     .mainCard{
         width: 20rem;
-        background-color: #0014cc;
+        background-color: #007fbb;
         color: white;
     }
     .cardDivision{

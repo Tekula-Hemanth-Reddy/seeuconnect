@@ -13,7 +13,7 @@ function navbar(){
   return (
     <Router>
     <div className='nav'>
-      <Navbar fixed="top" bg="dark" variant="dark">
+      <Navbar fixed="top" bg="#000000" variant="dark">
         <Navbar.Brand href="#home">
           <Image src={Logo} alt="See U Connect" style={{height:"60px",width:"75px"}}/>
           See U Connect
