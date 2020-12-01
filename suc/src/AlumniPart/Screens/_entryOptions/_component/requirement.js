@@ -71,23 +71,32 @@ class Requirement extends Component{
     const requestBody = {
       query: `
         query{
-          profile{
+          profile {
             _id
             name
             phoneNumber
             email
             interestedIntern
-            skills{
+            skills {
               skill
             }
-            positions{
+            positions {
               _id
+              positionHeld
+              companyName
+              startDate
+              endDate
             }
-            projects{
+            projects {
               _id
+              projectName
+              projectUrl
+              projectDescription
+              projectDemo
             }
-            courses{
+            courses {
               _id
+              courseName
             }
           }
         }
@@ -149,7 +158,11 @@ class Requirement extends Component{
               positions: element.positions.length,
               projects: element.projects.length,
               courses: element.courses.length,
-              count: match
+              count: match,
+              skills_data:element.skills,
+              projects_data:element.projects,
+              courses_data:element.courses,
+              positions_data:element.positions,
             }
             listData.push(data);
             listData = listData.sort((a, b) => {
