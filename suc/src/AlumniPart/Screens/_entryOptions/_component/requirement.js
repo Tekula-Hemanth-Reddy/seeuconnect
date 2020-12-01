@@ -6,7 +6,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 import authContext from '../../../../context/auth-context';
 import * as RIIcons from 'react-icons/ri';
-import FullProfile from '../../../Components/fullProfile/component/fullProfile';
 
 class Requirement extends Component{
     constructor(props){
@@ -195,8 +194,6 @@ class Requirement extends Component{
     studentsList: listData,
   });
 }
-
-
     render(){
         return(
             <div  style={{backgroundColor:"#000"}}>
@@ -313,38 +310,20 @@ class Requirement extends Component{
                     <Col xs={6}>
                     <h3 style={{color:"#fff",marginTop:"5%"}}>Skills You Needed</h3>
                     {this.state.skillList.map(item =>(
-        
                         <div style={{paddingTop:"3%",paddingBottom:"2%"}}>
-                        <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
-                            <Row>
-                                <Col md={8}>
-                                    <h5 style={{color:"#fff",marginTop:"5px"}}>{item.value}</h5>
-                                </Col>
-                                <Col md={4}>
-                                <Button variant="outline-danger" onClick = { () => this.deleteSkill(item.value) }>{<FontAwesomeIcon icon={faTimes}/>}</Button>
-                                </Col>
-                            </Row>
-                            </Card>
+                          <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
+                              <Row>
+                                  <Col md={8}>
+                                      <h5 style={{color:"#fff",marginTop:"5px"}}>{item.value}</h5>
+                                  </Col>
+                                  <Col md={4}>
+                                  <Button variant="outline-danger" onClick = { () => this.deleteSkill(item.value) }>{<FontAwesomeIcon icon={faTimes}/>}</Button>
+                                  </Col>
+                              </Row>
+                          </Card>
                         </div>
                     ))}
                 </Col>
-                </Row>
-                <Row>
-                      <Col xs={6}>
-                        {this.state.studentsList.map(item =>(
-                          <Card className="requireCardStyle" style={{marginTop:"10px",marginBottom: "10px"}}>
-                            <Row>
-                              <Col xs={2}><RIIcons.RiFileUserFill/></Col>
-                              <Col xs={5}  style={{marginBottom:"5px"}}><p style={{fontSize:"15px",marginLeft:"-10px",marginBottom:"5px"}}>{item.name}</p> </Col>
-                              <Col xs={4} style={{textAlign:"right"}}><Button 
-                              variant="primary" 
-                              size="sm"
-                              onClick ={ () => this.openProfile(item)}
-                              >Show Full Profile</Button></Col>
-                              </Row>
-                            </Card> 
-                        ))}
-                      </Col>
                 </Row>
                 </Form> 
             </Container>

@@ -20,6 +20,7 @@ import StuGraduation from '../screens/loginSignup/loading/student/stuGraduation'
 import EditSideBar from '../components/editSideNavBar/sideNavBar';
 import StudentFailure from '../screens/failureScreens/component/studentFailure';
 import FullProfile from '../AlumniPart/Components/fullProfile/component/fullProfile';
+import AuthAdmin from '../Admin/Screens/Auth/_components/auth';
 
 class Routes extends Component {
     state = {
@@ -55,6 +56,7 @@ class Routes extends Component {
                             <Route path="/student" component={() => <LoginSignup typeUser="student"/>} />
                             <Route path="/profile" component={SideNavBar}/>
                             <Route path='/profile/edit' component={EditSideBar}/>
+                            <Route path='/admin' component={AuthAdmin}/>
 
                             <Route path="/alumni" component={() => <LoginSignup typeUser="alumni"/>} />
                             <Route path="/login" component={Partition} />

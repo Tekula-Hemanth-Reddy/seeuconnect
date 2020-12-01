@@ -27,7 +27,7 @@ function navbar(){
               </Nav>
             </div>
           </Navbar.Collapse>
-          <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/login')}>
+          <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/admin')}>
         Admin</Button>
         <Button className='personLogin' variant="outline-primary float-right" onClick={() => history.push('/login')}>
         {<FontAwesomeIcon icon={faUser} />}</Button>

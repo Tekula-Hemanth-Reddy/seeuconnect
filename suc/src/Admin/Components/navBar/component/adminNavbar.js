@@ -9,7 +9,7 @@ import authContext from '../../../../context/auth-context';
 import Logo from '../../../../assets/images/logo.png';
 import '../css/alumniNavbar.css'
 
-const AlumniNavBar =props => {
+const AdminNavBar =props => {
     return(
         <authContext.Consumer>
             {(context)=>{
@@ -42,4 +42,4 @@ const AlumniNavBar =props => {
         );
 }
 
-export default AlumniNavBar;
+export default AdminNavBar;

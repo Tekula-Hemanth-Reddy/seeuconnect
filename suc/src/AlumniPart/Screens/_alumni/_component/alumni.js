@@ -50,8 +50,6 @@ class About extends Component {
       `
   };
 
-  const token = this.context.token;
-
   fetch('http://localhost:4000/graphql', {
           method: 'POST',
           body: JSON.stringify(requestBody),
