@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Card,Form,Button} from 'react-bootstrap';
+import {Container,Row,Col,Card,Form,Button,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ export class Skills extends Component{
         super(props);
         this.nameEl = React.createRef();
         this.rangeEl = React.createRef()
-        this.state = {skillData: []};
+        this.state = {isSet:true,skillData: [],isSuccess:false};
     }
 
     static contextType = authContext;
@@ -65,6 +65,9 @@ export class Skills extends Component{
         event.preventDefault();
         const Name = ""+this.nameEl.current.value;
         const Range = Number(""+this.rangeEl.current.value);
+        this.setState({
+            isSet:false,
+        });
         const requestBody = {
             query: `
             mutation{
@@ -97,7 +100,9 @@ export class Skills extends Component{
             let list = [...this.state.skillData];
             list.push(resData.data.CreateSkill)
             this.setState({
-                skillData: list
+                isSet:true,
+                skillData: Array.from(new Set(list)),
+                isSuccess:true
               });
         })
         .catch(err => {
@@ -144,9 +149,28 @@ export class Skills extends Component{
     {
         return(
             <div style={{marginLeft:"20vh"}}>
+            
             <Row>
                 <Col md={8}>
                 <Container className="skillsContainer">
+                {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Skill Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>A Nice Work Done By You</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                            <Button href="/profile/edit/skill" variant="primary">Add Another</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
                     <Form onSubmit={this.submitHandler}>
                 <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px",marginTop:"10%"}}>
 
@@ -170,6 +194,7 @@ export class Skills extends Component{
                                         required="true"
                                         ref={this.nameEl}
                                         >
+                                        <option> </option>
                                         <option>C</option>
                                         <option>C++</option>
                                         <option>DS</option>
@@ -221,12 +246,19 @@ export class Skills extends Component{
 
                         <Row style={{marginRight:"10px",marginBottom:"10px"}} >
                             <Col style={{textAlign:"right"}}>
-                                <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Add</Button>{' '}
+                                {
+                                    this.state.isSet && <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Add</Button>}
+                                {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                             </Col>
                         </Row>
 
                         </Card>
                         </Form>
+                    }
                 </Container>
                 </Col>
                 <Col md={3}>

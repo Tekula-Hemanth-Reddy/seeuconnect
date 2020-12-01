@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +14,9 @@ export class Achievement extends Component
         this.desEl = React.createRef();
         this.urlEl = React.createRef();
         this.state = {
-            awardData:[]
+            awardData:[],
+            isSuccess:false,
+            isSet:true,
           }
     }
 
@@ -68,6 +70,9 @@ export class Achievement extends Component
         const Title = ""+this.titleEl.current.value;
         const Description = ""+this.desEl.current.value;
         const File = ""+this.urlEl.current.value;
+        this.setState({
+            isSet:false,
+        });
         const requestBody = {
             query: `
             mutation{
@@ -100,7 +105,9 @@ export class Achievement extends Component
             let list = [...this.state.awardData];
             list.push(resData.data.CreateAchievement)
             this.setState({
-                awardData: list
+                isSet:true,
+                awardData: list,
+                isSuccess:true
               });
         })
         .catch(err => {
@@ -149,6 +156,24 @@ export class Achievement extends Component
             <Row>
                 <Col md={8}>
            <Container className="projectContainer">
+           {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Achievement Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>A Nice Work Done By You</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                            <Button href="/profile/edit/achievement" variant="primary">Add Another</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
                <Form onSubmit={this.submitHandler}>
            <Card style={{borderWidth:"2px",borderColor:"#007fbb",backgroundColor:"transparent",padding:"15px"}}>
 
@@ -219,12 +244,20 @@ export class Achievement extends Component
                      </Row>
                 <Row>
                     <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Add</Button>
+                    {
+                                    this.state.isSet && 
+                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Add</Button>}
+                        {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                     </Col>
                 </Row>
                
                 </Card>
                 </Form>
+                }
            </Container>
            </Col>
                 <Col md={3}>

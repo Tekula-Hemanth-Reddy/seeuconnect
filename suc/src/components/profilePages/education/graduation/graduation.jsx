@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import './styles/styles.css';
@@ -15,7 +15,9 @@ export class Graduation extends Component
           gc:"",
           gs:"",
           gsy:"",
-          gey:""
+          gey:"",
+          isSet:true,
+          isSuccess:false
         }
       }
     
@@ -109,6 +111,9 @@ export class Graduation extends Component
             const NewcollegeStream= ""+this.props.values.collegeStream;
             const NewcollegeCourse= ""+this.props.values.collegeCourse;
             const NewcollegeBoard= ""+this.props.values.collegeBoard;
+            this.setState({
+                isSet:false,
+            });
     
             const requestBody = {
                 query: `
@@ -136,7 +141,10 @@ export class Graduation extends Component
                 return res.json();
             })
             .then(resData => {
-                history.push('/profile/edit');
+                this.setState({
+                    isSet:true,
+                    isSuccess:true
+                  });
             })
             .catch(err => {
                 console.log(err);
@@ -144,6 +152,23 @@ export class Graduation extends Component
         };    
     return(
         <Container className="schoolContainer">
+            {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Skill Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>A Nice Work Done By You</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
             <Form onSubmit={submitHandler}>
         <Card style={{borderColor:"#007fbb",borderWidth:"2px",width:"90%",backgroundColor:"transparent",padding:"20px"}}>
             <Row>
@@ -371,12 +396,20 @@ export class Graduation extends Component
                     <Button className="buttonRow" variant="outline-warning" size="lg" onClick={this.back}>Previous</Button>{' '}
                 </Col>           
                 <Col style={{textAlign:"right"}}>
-                    <Button className="buttonRow" variant="outline-primary" size="lg"  onClick={submitHandler}>Submit</Button>{' '}
+                {
+                    this.state.isSet && 
+                    <Button className="buttonRow" variant="outline-primary" size="lg"  onClick={submitHandler}>Submit</Button>}
+                    {
+                        !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                <span className="sr-only" style={{color:"#61dafb"}}></span>
+                            </Spinner>
+                    }
                 </Col>
             </Row>
 
             </Card>
             </Form>
+        }
         </Container>
 
     );

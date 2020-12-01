@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Container,Row,Col,Form,Button,Card} from 'react-bootstrap';
+import {Container,Row,Col,Form,Button,Card,Spinner,Modal} from 'react-bootstrap';
 import authContext from '../../../../context/auth-context';
 import history from '../../../../history/history';
 import '../styles/styles.css';
@@ -16,6 +16,8 @@ export class Address extends Component{
             State: "",
             City: "",
             PinCode: "",
+            isSuccess:false,
+            isSet:true,
           }
     }
 
@@ -76,6 +78,9 @@ export class Address extends Component{
         const City = ""+this.cityEl.current.value;
         const Pin = ""+this.pinEl.current.value;
         const Address = ""+this.addressEl.current.value;
+        this.setState({
+            isSet:false,
+        });
 
         const requestBody = {
             query: `
@@ -106,7 +111,10 @@ export class Address extends Component{
             return res.json();
         })
         .then(resData => {
-            this.componentDidMount();
+            this.setState({
+                isSet:true,
+                isSuccess:true
+            });
         })
         .catch(err => {
             console.log(err);
@@ -118,6 +126,23 @@ export class Address extends Component{
     {
         return(
             <Container className="personalDetailsContainer">
+                {this.state.isSuccess && <div style={{marginTop:"0px"}}>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Address Added SuccessFully</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <p>good place for living</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button href="/profile/about" variant="info">Done</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </div>
+            }
+                {!this.state.isSuccess &&
                 <Form onSubmit={this.submitHandler}>
                 <Card style={{borderColor:"#007fbb",borderWidth:"2px",backgroundColor:"transparent",padding:"15px"}}>
                 <Row>
@@ -225,7 +250,14 @@ export class Address extends Component{
                 </Row>
                 <Row >
                     <Col style={{textAlign:"right"}}>
-                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>{' '}
+                    {
+                                    this.state.isSet && 
+                        <Button className="buttonRow" variant="outline-primary" size="lg" type='submit'>Submit</Button>}
+                        {
+                                    !this.state.isSet && <Spinner animation="border" className="alumniSpinnerBorder" role="status">
+                                            <span className="sr-only" style={{color:"#61dafb"}}></span>
+                                        </Spinner>
+                                }
                     </Col>
                 </Row>
                 
@@ -233,6 +265,7 @@ export class Address extends Component{
                 
                 </Card>
                 </Form>
+            }
             </Container>
 
 
