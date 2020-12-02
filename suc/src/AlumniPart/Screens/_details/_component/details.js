@@ -4,6 +4,7 @@ import '../_css/details.css';
 import authContext from '../../../../context/auth-context';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 import history from '../../../../history/history';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 class Details extends Component{
     constructor(props){
@@ -301,6 +302,7 @@ class Details extends Component{
                         </Card>
                     </Form>
                 </Container>
+                <Fotter/>
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React from "react";
 import {Container,Card,Button} from "react-bootstrap";
+import Fotter from '../../../components/FirstPage/Fotter/_component/_fotter';
 import '../css/styles.css';
 
 function StudentFailure(props) {
@@ -18,6 +19,7 @@ function StudentFailure(props) {
                         </Card.Body>
                     </Card>
                 </Container>
+                <Fotter/>
             </div>
         );
     

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelopeSquare, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import authContext from '../../../../context/auth-context';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 
 class About extends Component {
@@ -21,7 +22,11 @@ class About extends Component {
       cmpPhone: "",
       cmpMail: "",
       cmpAddress: "",
-      cmpWebsite: ""
+      cmpWebsite: "",
+      userMailTo: "",
+      userPhoneTo: "",
+      companyMailTo: "",
+      companyPhoneTo: ""
     }
   }
 
@@ -74,7 +79,12 @@ class About extends Component {
           cmpPhone: resData.data.jobGivers.companyPhone,
           cmpMail: resData.data.jobGivers.companyMail,
           cmpAddress: resData.data.jobGivers.companyAddress,
-          cmpWebsite: resData.data.jobGivers.companyWebsite});
+          cmpWebsite: resData.data.jobGivers.companyWebsite,
+          userMailTo: `mailto:${resData.data.jobGivers.personMail}`,
+          companyMailTo: `mailto:${resData.data.jobGivers.companyMail}`,
+          userPhoneTo: `tel:${resData.data.jobGivers.personPhone.split(" ")[0]}${resData.data.jobGivers.personPhone.split(" ")[1]}`,
+          companyPhoneTo: `tel:${resData.data.jobGivers.companyPhone.split(" ")[0]}${resData.data.jobGivers.companyPhone.split(" ")[1]}`
+        });
       })
       .catch(err => {
           console.log(err);
@@ -144,7 +154,7 @@ class About extends Component {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>{this.state.cmpMail}</a>
+                <a href={this.state.companyMailTo} style={{textDecoration:"none"}}>{this.state.cmpMail}</a>
               </Col>
             </Row>
             <Row>
@@ -190,7 +200,7 @@ class About extends Component {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="tel:+919876543210" style={{textDecoration:"none"}}>{this.state.phone}</a>
+                <a href={this.state.userPhoneTo} style={{textDecoration:"none"}}>{this.state.phone}</a>
               </Col>
             </Row>
             <Row>
@@ -204,7 +214,7 @@ class About extends Component {
                 :
               </Col>
               <Col xs={6} className="rightCard">
-                <a href="mailto:dummy@gmail.com" style={{textDecoration:"none"}}>{this.state.email}</a>
+                <a href={this.state.userMailTo} style={{textDecoration:"none"}}>{this.state.email}</a>
               </Col>
             </Row>
         </Card>
@@ -217,7 +227,7 @@ class About extends Component {
                 :
               </Col>
               <Col xs={5} className="rightCard">
-                <a href="https://tidbeat.com/" style={{textDecoration:"none"}}>{this.state.cmpWebsite}</a>
+                <a href={this.state.cmpWebsite} style={{textDecoration:"none"}} target="_blank">{this.state.cmpWebsite}</a>
               </Col>
             </Row>
         </Card>
@@ -225,6 +235,7 @@ class About extends Component {
       </Row>
     </Container>
         </Container>
+        <Fotter/>
       </div>
     );
   }

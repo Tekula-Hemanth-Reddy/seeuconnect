@@ -6,6 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import NavBar from '../../../Components/navBar/component/alumniNavbar';
 import authContext from '../../../../context/auth-context';
 import * as RIIcons from 'react-icons/ri';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 class Requirement extends Component{
     constructor(props){
@@ -137,7 +138,7 @@ class Requirement extends Component{
         const workType = ""+this.type.current.value;
         const workDays = ""+this.days.current.value;
         const workMoney =""+this.stipend.current.value;
-        if(workType==="" || workDays==="" || workMoney==="")
+        if(workType==="" || workDays==="" || workMoney==="" || this.state.skillList.length===0)
         {
           return;
         }
@@ -335,6 +336,7 @@ class Requirement extends Component{
                 </Row>
                 </Form> 
             </Container>
+            <Fotter/>
             </div>
         );
     }

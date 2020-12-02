@@ -4,6 +4,7 @@ import {Container,Row,Col,Card,Form,Button,Spinner,Modal} from 'react-bootstrap'
 import authContext from '../../../../context/auth-context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 import '../css/styles.css';
 
 export class LatestNews extends Component{
@@ -266,6 +267,7 @@ export class LatestNews extends Component{
                     ))}
                 </Col>
                 </Row>
+                <Fotter/>
                 </div>
             );
     }

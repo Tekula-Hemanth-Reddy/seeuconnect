@@ -4,6 +4,7 @@ import studentImg from '../../../assets/images/sliders/student.png';
 import alumniImg from '../../../assets/images/sliders/alumni.png';
 import NavBar from '../../../components/FirstPage/navbar/navbar';
 import history from '../../../history/history';
+import Fotter from '../../../components/FirstPage/Fotter/_component/_fotter';
 import '../_css/partition.css';
 
 class Partition extends Component{
@@ -39,6 +40,7 @@ class Partition extends Component{
                         </div>
                     </div>
                 </div>
+                <Fotter/>
             </div>
         );
     }

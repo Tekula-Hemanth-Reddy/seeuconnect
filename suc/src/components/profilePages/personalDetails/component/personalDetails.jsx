@@ -264,6 +264,7 @@ export class PersonalDetails extends Component{
                                             ref={this.phonePersonEl}
                                             pattern="[6789][0-9]{9}"
                                             maxLength="10"
+                                            defaultValue={this.state.phone.split("-")[1]}
                                             title="The phone number should contain 10 digits and must be Indian Phone number"
                                             required
                                             id="id1"

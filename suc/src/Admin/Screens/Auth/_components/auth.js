@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Container,Card,Form,Button,Row,Col} from 'react-bootstrap';
 import history from '../../../../history/history';
 import '../_css/auth.css';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter'
 
 class Auth extends Component{
     constructor(props){
@@ -47,7 +48,7 @@ class Auth extends Component{
                         <Row>
                             <Col xs={2} style={{marginTop:"10px",textAlign:"center"}}></Col>
                             <Col xs={6}>
-                                <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5" style={{marginLeft:"30%"}}>
+                                <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5" style={{marginLeft:"50%"}}>
                                     <Button  variant="outline-warning" size="lg" type="submit" 
                                     onClick={() =>
                                         this.checkCredentials()
@@ -57,6 +58,7 @@ class Auth extends Component{
                         </Row>       
                     </Form>
                 </Container>
+                <Fotter/>
             </div>
         );
     }

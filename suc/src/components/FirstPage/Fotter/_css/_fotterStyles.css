@@ -1,5 +1,7 @@
 .fotter{
     background-color: black;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
 }
 .fotterDivision{
     text-align: left;
