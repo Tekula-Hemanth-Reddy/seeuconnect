@@ -264,11 +264,8 @@ export class PersonalDetails extends Component{
                                             ref={this.phonePersonEl}
                                             pattern="[6789][0-9]{9}"
                                             maxLength="10"
-<<<<<<< HEAD
                                             defaultValue={this.state.phone.split("-")[1]}
-=======
                                             title="The phone number should contain 10 digits and must be Indian Phone number"
->>>>>>> 6fbad8d088a5d393b5b3677f9ad9c89141332b06
                                             required
                                             id="id1"
                                         ></Form.Control>
