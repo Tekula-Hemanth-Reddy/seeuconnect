@@ -214,7 +214,7 @@ export class Achievement extends Component
                             <Form.Group>
                                 <Form.Control size="text" 
                                     as="textarea"
-                                    maxlength="150"
+                                    maxLength="250"
                                     rows={4} 
                                     placeholder=""
                                     ref={this.desEl}

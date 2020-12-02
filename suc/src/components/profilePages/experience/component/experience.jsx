@@ -252,7 +252,7 @@ export class Experience extends Component
                                 <Form.Control size="text" 
                                     as="textarea"
                                     rows={4} 
-                                    maxlength="150"
+                                    maxLength="250"
                                     placeholder=""
                                     ref={this.desEl}
                                     />

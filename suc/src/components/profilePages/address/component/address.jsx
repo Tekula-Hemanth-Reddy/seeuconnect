@@ -214,6 +214,8 @@ export class Address extends Component{
                                             placeholder="111111"
                                             pattern="[1-9][0-9]{5}"
                                             id="id1"
+                                            maxLength="6"
+                                            title="Enter a proper Pincode"
                                             defaultValue={this.state.PinCode}
                                             ref={this.pinEl} 
                                         ></Form.Control>
@@ -235,7 +237,7 @@ export class Address extends Component{
                                         <Form.Control 
                                             as="textarea"
                                             rows={4} 
-                                            maxLength="200"
+                                            maxLength="250"
                                             ref={this.addressEl}
                                             placeholder="Hno-1/1/1/ Ayyapa Society Madhapur,Hyderabad"
                                             defaultValue={this.state.location}

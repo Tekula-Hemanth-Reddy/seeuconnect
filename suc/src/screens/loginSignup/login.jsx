@@ -89,9 +89,11 @@ class Login extends Component {
             <Form.Group className="inputSize" controlId="formBasicPassword">
                 <Form.Control required type="password" placeholder="Password*" id="id1"
                  ref={this.passwordEl}
-                 pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" />
+                 pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
+                 title="Password should contain(1(A-Z),1(a-z),1(0-9),1($,%,&))" />
                
             </Form.Group>
+            
             {/* <a href="#" style={{textDecoration:"none",float:"right"}}>Forgot Password?</a> */}
             {
                 this.state.isSet && <Button className="submitButton" type="submit">

@@ -182,6 +182,7 @@ export  class Schooling extends Component
                                 placeholder="9.86"
                                 id="id1"
                                 required
+                                title="Enter a Correct cgpa Value;it lies between 0 and 10"
                                 defaultValue={this.state.sg}
                                 onChange={inputChange('schoolGrade')} value={values.schoolGrade}/>
                             <br />

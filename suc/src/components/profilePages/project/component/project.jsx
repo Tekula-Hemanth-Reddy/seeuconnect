@@ -226,7 +226,7 @@ export class Project extends Component
                                     rows={4} 
                                     placeholder=""
                                     ref={this.desEl}
-                                    maxlength="550"
+                                    maxLength="200"
                                     id="id1"
                                     required="true"
                                     />
