@@ -1,6 +1,7 @@
 import React from 'react';
 import history from '../../../../history/history';
 import authContext from '../../../../context/auth-context';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 import Loading from '../../../../AlumniPart/Components/loader/loader';
 
 const StuReachOut =props => {
@@ -39,6 +40,7 @@ const StuReachOut =props => {
                 }}
             </authContext.Consumer>
             <Loading />
+            <Fotter/>
         </div>
     )
 }

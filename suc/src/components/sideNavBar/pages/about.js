@@ -21,7 +21,9 @@ class About extends Component {
       pin: "",
       phone: "",
       email: "",
-      website: ""
+      website: "",
+      phoneTo: "",
+      mailTo: "",
     }
   }
 
@@ -71,7 +73,9 @@ class About extends Component {
           pin: resData.data.users.profile.addresses.pinCode,
           phone: resData.data.users.profile.phoneNumber===null?"+91- ":resData.data.users.profile.phoneNumber,
           email: resData.data.users.profile.email,
-          website: resData.data.users.profile.portFolio
+          website: resData.data.users.profile.portFolio,
+          phoneTo: `tel:${this.state.phone.split("-")[0]}${this.state.phone.split("-")[1]}`,
+          mailTo: `mailto:${resData.data.users.profile.email}`
         });
       })
       .catch(err => {
@@ -138,13 +142,13 @@ class About extends Component {
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Phone</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara"><a href={"tel:"}{...this.state.phone.split("-")[0]}{...this.state.phone.split("-")[1]} style={{textDecoration:"none"}}>{this.state.phone.split("-")[0]}{" "}{this.state.phone.split("-")[1]}</a></p></Col>
+            <Col xs={6} ><p className="commonPara"><a href={this.state.phoneTo} style={{textDecoration:"none"}}>{this.state.phone.split("-")[0]}{" "}{this.state.phone.split("-")[1]}</a></p></Col>
           </Row>
 
           <Row className="commonRow">
             <Col xs={3} ><p className="commonPara">Email</p></Col>
             <Col xs={1} >:</Col>
-            <Col xs={6} ><p className="commonPara"><a href={"mailto:"}{...this.state.email} style={{textDecoration:"none"}}>{this.state.email}</a></p></Col>
+            <Col xs={6} ><p className="commonPara"><a href={this.state.mailTo} style={{textDecoration:"none"}}>{this.state.email}</a></p></Col>
           </Row>
 
           <Row className="commonRow">

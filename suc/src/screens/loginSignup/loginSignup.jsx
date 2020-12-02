@@ -4,6 +4,7 @@ import BackGroundImage from '../../assets/images/temp/stars.jpeg';
 import {Card, Tabs,Tab} from 'react-bootstrap';
 import Navbar from '../../components/FirstPage/navbar/navbar';
 import Login from './login';
+import Fotter from '../../components/FirstPage/Fotter/_component/_fotter'
 import SignUp from './signup';
 
 
@@ -24,6 +25,7 @@ function LoginSignup(props)
             </Tabs>
             </Card>
             </div>
+            <Fotter/>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import history from '../../../../history/history';
 import authContext from '../../../../context/auth-context';
 import Loading from '../../../../AlumniPart/Components/loader/loader';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 const StuAddress =props => {
     return(
@@ -39,6 +40,7 @@ const StuAddress =props => {
                 }}
             </authContext.Consumer>
             <Loading />
+            <Fotter/>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import history from '../../../../history/history';
 import authContext from '../../../../context/auth-context';
 import Loader from '../../../../AlumniPart/Components/loader/loader';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 const Loading =props => {
     return(
@@ -40,6 +41,7 @@ const Loading =props => {
                 }}
             </authContext.Consumer>
             <Loader />
+            <Fotter/>
         </div>
     )
 }

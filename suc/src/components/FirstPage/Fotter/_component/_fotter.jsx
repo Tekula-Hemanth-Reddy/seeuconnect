@@ -56,6 +56,9 @@ function Fotter(){
                     
                 </ul>
             </div>
+            <div style={{color:"white", fontSize:"14px"}}>
+                Copyright ©2020. Aditya Nalla, Hemanth Reddy Tekula. All Rights Reserved. 
+            </div>
         </Jumbotron>
     );
 }

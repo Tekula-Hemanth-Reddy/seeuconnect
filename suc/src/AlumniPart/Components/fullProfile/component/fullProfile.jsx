@@ -9,6 +9,7 @@ import * as FIIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import * as BsIcons from 'react-icons/bs';
 import * as BIIcons from 'react-icons/bi';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 class FullProfile extends Component{
   
@@ -211,6 +212,7 @@ class FullProfile extends Component{
                     </div>
                     </Card>
                 </Container>
+                <Fotter/>
             </div>
         );
     }

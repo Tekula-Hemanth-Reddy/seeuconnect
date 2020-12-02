@@ -262,6 +262,7 @@ export class PersonalDetails extends Component{
                                             ref={this.phonePersonEl}
                                             pattern="[6789][0-9]{9}"
                                             maxLength="10"
+                                            defaultValue={this.state.phone.split("-")[1]}
                                             required
                                             id="id1"
                                         ></Form.Control>
