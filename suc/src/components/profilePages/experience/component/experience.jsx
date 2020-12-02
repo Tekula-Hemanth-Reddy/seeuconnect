@@ -112,6 +112,9 @@ export class Experience extends Component
         })
         .then(resData => {
             let list = [...this.state.positionData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreatePosition._id 
+            })
             list.push(resData.data.CreatePosition)
             this.setState({
                 isSet:true,

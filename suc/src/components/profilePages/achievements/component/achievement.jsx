@@ -102,6 +102,9 @@ export class Achievement extends Component
         })
         .then(resData => {
             let list = [...this.state.awardData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateAchievement._id 
+            })
             list.push(resData.data.CreateAchievement)
             this.setState({
                 isSet:true,
