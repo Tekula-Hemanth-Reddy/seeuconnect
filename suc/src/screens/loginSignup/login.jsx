@@ -92,7 +92,7 @@ class Login extends Component {
                  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" />
                
             </Form.Group>
-            <a href="#" style={{textDecoration:"none",float:"right"}}>Forgot Password?</a>
+            {/* <a href="#" style={{textDecoration:"none",float:"right"}}>Forgot Password?</a> */}
             {
                 this.state.isSet && <Button className="submitButton" type="submit">
                 Login

@@ -33,12 +33,13 @@ class Requirement extends Component{
       
             value : this.state.userInput 
           }; 
-
-          const list = [...this.state.skillList]; 
-         
+          let list = [...this.state.skillList];
+          if(this.state.skillList.length!==0){
+            list = list.filter(function(common) { 
+              return common.value !== userInput1.value 
+          })            
+          }
           list.push(userInput1); 
-          
-          console.log(list);
         
           this.setState({ 
             skillList:list, 

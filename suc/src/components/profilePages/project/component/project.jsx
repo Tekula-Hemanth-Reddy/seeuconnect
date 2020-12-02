@@ -106,6 +106,9 @@ export class Project extends Component
         })
         .then(resData => {
             let list = [...this.state.projectData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateProject._id 
+            })
             list.push(resData.data.CreateProject)
             this.setState({
                 isSet:true,

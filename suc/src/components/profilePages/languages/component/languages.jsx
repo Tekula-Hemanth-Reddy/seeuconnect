@@ -90,6 +90,9 @@ export class Languages extends Component{
         })
         .then(resData => {
             let list = [...this.state.languageData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateLanguage._id 
+            })
             list.push(resData.data.CreateLanguage)
             this.setState({
                 isSet:true,

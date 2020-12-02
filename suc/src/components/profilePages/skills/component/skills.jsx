@@ -97,10 +97,13 @@ export class Skills extends Component{
         })
         .then(resData => {
             let list = [...this.state.skillData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateSkill._id 
+            })
             list.push(resData.data.CreateSkill)
             this.setState({
                 isSet:true,
-                skillData: Array.from(new Set(list)),
+                skillData: list,
                 isSuccess:true
               });
         })
