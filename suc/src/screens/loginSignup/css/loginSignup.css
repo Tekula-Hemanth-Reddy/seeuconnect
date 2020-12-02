@@ -46,8 +46,7 @@
 .loginSpinnerBorder {
     color: #61dafb;
     display: inline-block;
-    margin-left: 15vh;
-    margin-bottom: 5vh;
+    margin-top: 3vh;
     vertical-align: text-bottom;
     border: .25em solid currentColor;
     border-right-color: transparent;

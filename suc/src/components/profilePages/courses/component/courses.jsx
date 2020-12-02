@@ -107,6 +107,9 @@ export class Courses extends Component
         })
         .then(resData => {
             let list = [...this.state.courseData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateCourse._id 
+            })
             list.push(resData.data.CreateCourse)
             this.setState({
                 isSet:true,

@@ -93,10 +93,13 @@ export class LatestNews extends Component{
             return res.json();
         }).then(resData => {
             let list = [...this.state.latestData];
+            list= list.filter(function(common) { 
+                return common._id !== resData.data.CreateLatest._id 
+            })
             list.push(resData.data.CreateLatest)
             this.setState({
                 isSet:true,
-                latestData: Array.from(new Set(list)),
+                latestData: list,
                 isSuccess:true
               });
         })
