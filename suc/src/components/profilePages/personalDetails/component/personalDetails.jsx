@@ -189,6 +189,7 @@ export class PersonalDetails extends Component{
                                             required
                                             id="id1"
                                             pattern="[a-zA-Z ]+"
+                                            title="The name should contain only characters"
                                             defaultValue={this.state.name.split("-")[1]}
                                             ref={this.firstEl} 
                                         />
@@ -212,6 +213,7 @@ export class PersonalDetails extends Component{
                                             defaultValue={this.state.name.split("-")[2]}
                                             ref={this.lastEl} 
                                             required
+                                            title="The name should contain only characters"
                                             id="id1"
                                             pattern="[a-zA-Z ]+"
                                         />
@@ -262,7 +264,11 @@ export class PersonalDetails extends Component{
                                             ref={this.phonePersonEl}
                                             pattern="[6789][0-9]{9}"
                                             maxLength="10"
+<<<<<<< HEAD
                                             defaultValue={this.state.phone.split("-")[1]}
+=======
+                                            title="The phone number should contain 10 digits and must be Indian Phone number"
+>>>>>>> 6fbad8d088a5d393b5b3677f9ad9c89141332b06
                                             required
                                             id="id1"
                                         ></Form.Control>
@@ -286,6 +292,7 @@ export class PersonalDetails extends Component{
                                             size="text" 
                                             type="url"
                                             id="id1"
+                                            title="Provide a proper Url"
                                             placeholder={"https://www.vce.ac.in"}
                                             ref={this.websiteEl}
                                             defaultValue={this.state.portfolio}

@@ -38,6 +38,7 @@ class Auth extends Component{
                                             pattern="[0-9]*"
                                             id="id1"
                                             ref={this.MPIN}
+                                            title="Type the Correct MPIN"
                                             maxLength="6" 
                                         />
                                     </Form.Group>

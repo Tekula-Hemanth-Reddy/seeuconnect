@@ -264,6 +264,7 @@ export class Courses extends Component
                                         type="url" 
                                         placeholder="https://gdrive.com/certficate"
                                         ref={this.certificate}
+                                        id="id1"
                                         />
                                     <br />
                                 </Form.Group>
