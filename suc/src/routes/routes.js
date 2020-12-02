@@ -22,7 +22,7 @@ import StudentFailure from '../screens/failureScreens/component/studentFailure';
 import FullProfile from '../AlumniPart/Components/fullProfile/component/fullProfile';
 import AuthAdmin from '../Admin/Screens/Auth/_components/auth';
 import AdminNavBar from '../Admin/Components/navBar/component/adminNavbar';
-import LatestNews from '../Admin/Screens/Latest/_components/latestNews';
+import AdminLatestNews from '../Admin/Screens/latest/_components/latestNews';
 
 class Routes extends Component {
     state = {
@@ -71,7 +71,7 @@ class Routes extends Component {
                             <Route path="/failure" component={() => <StudentFailure message="CredentialsFailure"/>} />
                             <Route path='/fullProfile' component={() => <FullProfile/> } />
                             <Route path='/adminPortal' component={AdminNavBar} />
-                            <Route path="/adminLatestNews" component={LatestNews}/>
+                            <Route path="/adminLatestNews" component={AdminLatestNews}/>
                                            
                             {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={sessionStorage.getItem('idUser')}/>}/>}
                             {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={sessionStorage.getItem('idUser')}/>}/>}

@@ -92,13 +92,16 @@ class SignUp extends Component {
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword">
                 <Form.Control required type="password" placeholder="Password*" ref={this.passwordEl} 
                 id="id1"
-                 pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})"/>
+                 pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
+                 title="Password should contain(1(A-Z),1(a-z),1(0-9),1($,%,&))"/>
                 </Form.Group>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword2">
                 <Form.Control required type="Password" placeholder="Confirm Password*" 
+                title="Password should contain(1(A-Z),1(a-z),1(0-9),1($,%,&))"
                 ref={this.conPassEl}  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
                 id="id1" />
+              
                 </Form.Group>
                 {
                     this.state.isSet && <Button className="submitButton" variant="primary" type="submit">
