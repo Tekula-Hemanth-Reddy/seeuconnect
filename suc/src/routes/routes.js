@@ -22,7 +22,7 @@ import StudentFailure from '../screens/failureScreens/component/studentFailure';
 import FullProfile from '../AlumniPart/Components/fullProfile/component/fullProfile';
 import AuthAdmin from '../Admin/Screens/Auth/_components/auth';
 import AdminNavBar from '../Admin/Components/navBar/component/adminNavbar';
-import AdminLatestNews from '../Admin/Screens/latest/_components/latestNews';
+import AdminLatestNews from '../Admin/Screens/Latest/_components/latestNews';
 
 class Routes extends Component {
     state = {

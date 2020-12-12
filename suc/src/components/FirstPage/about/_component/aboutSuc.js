@@ -11,7 +11,7 @@ class AboutSuc extends Component{
                 <div className="row center">
                     <div className="col-lg-7 messageAbout">
                         <h3>
-                            We want to help bring talented students to real time working experience.
+                            We want to help talented students and bring them  real time working experience.
                         </h3>
                     </div>
                     <div className="col-lg-5 ">
