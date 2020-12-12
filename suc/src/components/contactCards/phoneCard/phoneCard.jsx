@@ -18,9 +18,9 @@ function PhoneCard(props)
                 <Row className="commonPRow">
                     <Col xs={3} className="commonPPara">Mobile</Col>
                     <Col xs={1} className="commonPPara">:</Col>
-                    <Col xs={6}><p className="commonPPara">{props.Mobile}</p></Col>
-                    {/* <a href={"tel:"}{...props.Mobile.split("-")[0]}{...this.props.Mobile.split("-")[1]} style={{textDecoration:"none"}}>{props.Mobile.split("-")[0]}{" "}{this.props.Mobile.split("-")[1]}</a> */}
-                </Row>
+                    <Col xs={6}><p className="commonPPara"><a href={"tel:"}{...props.Mobile} style={{textDecoration:"none"}}>{props.Mobile}</a>
+                </p></Col>
+                    </Row>
 
                
             </Container>
