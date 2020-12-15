@@ -16,6 +16,19 @@ module.exports = {
             throw err;
         }
     },
+    companies: async() =>{
+        try{
+            const alumniCompany = await Alumni.find();
+            return alumniCompany.map(result => {
+                return { ...result._doc, _id: result._doc._id.toString(),
+                    users: userInfo.bind(this,result._doc.userId)
+                }
+            });
+        }
+        catch (err){
+            throw err;
+        }
+    },
 
     CreateAlumni : async (args) => {
         try {
@@ -29,6 +42,7 @@ module.exports = {
             companyMail: null,
             companyAddress: null,
             companyWebsite: null,
+            blocked: true,
             userId: args.userId
             });
             const result = await information.save();
@@ -55,13 +69,27 @@ module.exports = {
         alumniUser.companyPhone = args.alumniInput.companyPhone,
         alumniUser.companyMail = args.alumniInput.companyMail,
         alumniUser.companyAddress = args.alumniInput.companyAddress,
-        alumniUser.companyWebsite = args.alumniInput.companyWebsite
+        alumniUser.companyWebsite = args.alumniInput.companyWebsite,
+        alumniUser.blocked = args.alumniInput.companyName!==null?false:true
         await alumniUser.save();
         return { ...alumniUser._doc, _id: alumniUser._doc._id.toString(),
             users: userInfo.bind(this,alumniUser._doc.userId)
         };
         }
         catch (err) {
+            throw err;
+        }
+    },
+    CompanyUpdate: async args =>{
+        try{
+            const alumniUser = await Alumni.findById(args.alumniId);
+            alumniUser.blocked = !alumniUser.blocked
+            await alumniUser.save();
+            return { ...alumniUser._doc, _id: alumniUser._doc._id.toString(),
+                users: userInfo.bind(this,alumniUser._doc.userId)
+            };
+        }
+        catch (err){
             throw err;
         }
     }

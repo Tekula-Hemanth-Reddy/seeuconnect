@@ -15,6 +15,7 @@ class Requirement extends Component{
         this.days = React.createRef();
         this.stipend = React.createRef();
         this.state = {
+            isBlocked:false,
             skillList:[],
             userInput : "", 
             studentsData:[],
@@ -72,69 +73,79 @@ class Requirement extends Component{
 
     componentDidMount()
     {
-    const requestBody = {
-      query: `
-        query{
-          profile {
-            _id
-            name
-            phoneNumber
-            email
-            interestedIntern
-            skills {
-              skill
-            }
-            positions {
-              _id
-              positionHeld
-              companyName
-              startDate
-              endDate
-            }
-            projects {
-              _id
-              projectName
-              projectUrl
-              projectDescription
-              projectDemo
-            }
-            courses {
-              _id
-              courseName
-            }
-          }
-        }
-      `
-  };
-
-  fetch('http://localhost:4000/graphql', {
-          method: 'POST',
-          body: JSON.stringify(requestBody),
-          headers: {
-              'Content-Type': 'application/json',
-              // 'Authorization': 'Bearer ' + token
-          }
-      }).then(res => {
-          if(res.status!== 200 && res.status!== 201){
-              throw new Error('Failed!');
-          }
-          return res.json();
-      })
-      .then(resData => {
-          this.setState({
-            studentsData: resData.data.profile,
-            skillList: sessionStorage.getItem("my_skills")===null?[]:JSON.parse(sessionStorage.getItem("my_skills")),
+      if(sessionStorage.getItem("blocked")==="notBlocked"){
+        this.setState({
+          isBlocked:false,
         });
-      })
-      .catch(err => {
-          console.log(err);
-      });
+      }
+      else{
+        this.setState({
+          isBlocked:true,
+        });
+      }
+      if(!this.state.isBlocked)
+      {
+        const requestBody = {
+          query: `
+            query{
+              profile {
+                _id
+                name
+                phoneNumber
+                email
+                interestedIntern
+                skills {
+                  skill
+                }
+                positions {
+                  _id
+                  positionHeld
+                  companyName
+                  startDate
+                  endDate
+                }
+                projects {
+                  _id
+                  projectName
+                  projectUrl
+                  projectDescription
+                  projectDemo
+                }
+                courses {
+                  _id
+                  courseName
+                }
+              }
+            }
+          `
+      };
+
+      fetch('http://localhost:4000/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: {
+                  'Content-Type': 'application/json',
+                  // 'Authorization': 'Bearer ' + token
+              }
+          }).then(res => {
+              if(res.status!== 200 && res.status!== 201){
+                  throw new Error('Failed!');
+              }
+              return res.json();
+          })
+          .then(resData => {
+              this.setState({
+                studentsData: resData.data.profile,
+                skillList: sessionStorage.getItem("my_skills")===null?[]:JSON.parse(sessionStorage.getItem("my_skills")),
+            });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+    }
   }
 
-  //it is a function which returns the list of ids in sorted order by comparing the skills needed by him with the profile skills as of now 
-  // i just called this function after retrival of data in compound did mount by giving few fixed values in this.state.skillList 
-  //todo: make this function call when you click show button and pass this this.state.studentsData array to new page and show in the list form if possible try to show main details of that paticular student if pressed 
-  UsefulData(){
+ UsefulData(){
         const workType = ""+this.type.current.value;
         const workDays = ""+this.days.current.value;
         const workMoney =""+this.stipend.current.value;
@@ -294,12 +305,14 @@ class Requirement extends Component{
                     </Card>
                     <Row>
                     <Col xs={12}>
-                      <Button variant="outline-warning" onClick={this.UsefulData.bind(this)}>Show People</Button>
+                      {!this.state.isBlocked &&
+                      <Button variant="outline-warning" onClick={this.UsefulData.bind(this)}>Show People</Button>}
                     </Col>
                     </Row>
                         <Row>
                           <Col xs={12}>
-                          <h3 style={{color:"#fff",marginTop:"5%"}}>People You Needed</h3>
+                          {!this.state.isBlocked &&<h3 style={{color:"#fff",marginTop:"5%"}}>People You Needed</h3>}
+                          {this.state.isBlocked && <h3>Sorry To say Sir/Madam Your company is in Block List So Please Contact Admin Or Register Your Company</h3>}
                             {this.state.studentsList.map(item =>(
                               <Card className="requireCardStyle" style={{marginTop:"10px",marginBottom: "10px"}}>
                                 <Row>

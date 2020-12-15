@@ -25,7 +25,7 @@ const AdminNavBar =props => {
                             <div className='mr'>
                             <Nav className="mr-auto float-right">
                                 <Nav.Link href="#" onClick={()=>history.push('/adminLatestNews')}>LatestNews</Nav.Link>
-                                
+                                <Nav.Link href="#" onClick={()=>history.push('/Companies')}>Companies</Nav.Link>
                             </Nav>
                             </div>
                         </Navbar.Collapse>
