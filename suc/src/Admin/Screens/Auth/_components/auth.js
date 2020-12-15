@@ -43,16 +43,22 @@ class Auth extends Component{
                                         />
                                     </Form.Group>
                                 </Col>
+                                <Col xs={3}>
+                                <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5" style={{marginLeft:"50%"}}>
+                                    <Button  variant="outline-warning" size="lg" type="submit" 
+                                    onClick={() =>
+                                        this.checkCredentials()
+                                    }>Login</Button>
+                                </div>
+                            </Col>
                             </Row>
                         </Card>
                         <Row>
                             <Col xs={2} style={{marginTop:"10px",textAlign:"center"}}></Col>
                             <Col xs={6}>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5" style={{marginLeft:"50%"}}>
-                                    <Button  variant="outline-warning" size="lg" type="submit" 
-                                    onClick={() =>
-                                        this.checkCredentials()
-                                    }>Login</Button>
+                                    <Button  variant="outline-primary" size="lg" href="/home" 
+                                    >Home</Button>
                                 </div>
                             </Col>
                         </Row>       

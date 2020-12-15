@@ -99,6 +99,7 @@ type Alumni{
     companyName: String
     companyPhone: String
     companyMail: String
+    blocked: Boolean
     companyAddress: String
     companyWebsite: String
     users: User!
@@ -306,6 +307,7 @@ type RootQuery {
     education : [Education]
     profile: [Profile]
     latest: [Latest]
+    companies:[Alumni]
 }
 
 type RootMutation {
@@ -335,6 +337,7 @@ type RootMutation {
     UpdateCollege(collegeInput: CollegeInput): College
     UpdateGraduation(graduationInput: GraduationInput): Graduation
     UpdateEducation(educationInput: EducationInput): Education
+    CompanyUpdate(alumniId: String!): Alumni
 
     DeleteSkill(skillId: String!): Skill
     DeleteProject(projectId: String!): Project

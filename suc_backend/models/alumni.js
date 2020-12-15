@@ -35,6 +35,10 @@ const AlumniSchema = new Schema({
         type: String,
         required: false
     },
+    blocked:{
+        type: Boolean,
+        required: true
+    },
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User",

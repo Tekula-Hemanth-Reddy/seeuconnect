@@ -23,6 +23,7 @@ import FullProfile from '../AlumniPart/Components/fullProfile/component/fullProf
 import AuthAdmin from '../Admin/Screens/Auth/_components/auth';
 import AdminNavBar from '../Admin/Components/navBar/component/adminNavbar';
 import AdminLatestNews from '../Admin/Screens/Latest/_components/latestNews';
+import Companies from '../Admin/Screens/Companies/_components/companies';
 
 class Routes extends Component {
     state = {
@@ -72,6 +73,7 @@ class Routes extends Component {
                             <Route path='/fullProfile' component={() => <FullProfile/> } />
                             <Route path='/adminPortal' component={AdminNavBar} />
                             <Route path="/adminLatestNews" component={AdminLatestNews}/>
+                            <Route path="/Companies" component={Companies}/>
                                            
                             {this.state.idUser && <Route path="/loading" component={() => <AlumniLoader alumniId={sessionStorage.getItem('idUser')}/>}/>}
                             {this.state.idUser && <Route path="/stuproloading" component={() => <StuProfile studentId={sessionStorage.getItem('idUser')}/>}/>}

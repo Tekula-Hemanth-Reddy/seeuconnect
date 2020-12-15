@@ -26,7 +26,8 @@ class About extends Component {
       userMailTo: "",
       userPhoneTo: "",
       companyMailTo: "",
-      companyPhoneTo: ""
+      companyPhoneTo: "",
+      blocked: false
     }
   }
 
@@ -49,6 +50,7 @@ class About extends Component {
           companyMail
           companyAddress
           companyWebsite
+          blocked
           users{
             name
           }
@@ -73,18 +75,21 @@ class About extends Component {
       .then(resData => {
           this.setState({title: resData.data.jobGivers.users.name,
           name: resData.data.jobGivers.name,
-          phone: resData.data.jobGivers.personPhone,
+          phone: (""+resData.data.jobGivers.personPhone==="")?"+91 0000000000":""+resData.data.jobGivers.personPhone,
           email: resData.data.jobGivers.personMail,
           company: resData.data.jobGivers.companyName,
-          cmpPhone: resData.data.jobGivers.companyPhone,
+          cmpPhone: (""+resData.data.jobGivers.companyPhone==="")?"+91 0000000000":""+resData.data.jobGivers.companyPhone,
           cmpMail: resData.data.jobGivers.companyMail,
           cmpAddress: resData.data.jobGivers.companyAddress,
           cmpWebsite: resData.data.jobGivers.companyWebsite,
+          blocked: resData.data.jobGivers.blocked,
           userMailTo: `mailto:${resData.data.jobGivers.personMail}`,
           companyMailTo: `mailto:${resData.data.jobGivers.companyMail}`,
-          userPhoneTo: `tel:${resData.data.jobGivers.personPhone.split(" ")[0]}${resData.data.jobGivers.personPhone.split(" ")[1]}`,
-          companyPhoneTo: `tel:${resData.data.jobGivers.companyPhone.split(" ")[0]}${resData.data.jobGivers.companyPhone.split(" ")[1]}`
+          userPhoneTo: `tel:${this.state.phone.split(" ")[0]}${this.state.phone.split(" ")[1]}`,
+          companyPhoneTo: `tel:${this.state.cmpPhone.split(" ")[0]}${this.state.cmpPhone.split(" ")[1]}`
         });
+        if(this.state.blocked){sessionStorage.setItem("blocked","blocked");}
+        else {sessionStorage.setItem("blocked","notBlocked");}
       })
       .catch(err => {
           console.log(err);
