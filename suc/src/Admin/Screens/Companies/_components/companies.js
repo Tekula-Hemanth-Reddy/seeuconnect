@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Container,Card,Row,Col,Button} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import AdminNavBar from '../../../Components/navBar/component/adminNavbar';
+import Fotter from '../../../../components/FirstPage/Fotter/_component/_fotter';
 
 class companies extends Component {
 
@@ -156,6 +156,9 @@ class companies extends Component {
     render() {
         return (
             <div style={{backgroundColor:"#000",height:"100vh"}}>
+                <div style={{marginBottom:"60px"}}>
+                    <AdminNavBar/>
+                </div>
                 <Container className="companyContainer">
                     <div className="row" style={{paddingBottom:"10%"}}>
                         <div className="col-lg-6 col-md-6 col-sm-12">
@@ -218,6 +221,7 @@ class companies extends Component {
                         </div>
                     </div>
                 </Container>
+                <Fotter/>
             </div>
         );
     }
