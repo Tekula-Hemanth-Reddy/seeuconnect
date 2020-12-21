@@ -14,3 +14,12 @@
     color: white;
     padding: 5vh;
 }
+i{
+    position: absolute;
+    color: black;
+    right: 16%;
+}
+i:hover {
+    color: #007fbb;
+    cursor: pointer;
+}
