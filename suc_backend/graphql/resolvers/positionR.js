@@ -15,6 +15,8 @@ module.exports = {
             // const stand = await Position.find({profileId: {$in: pId.profileId}});
             return stand.map(result => {
                 return { ...result._doc, _id: result._doc._id.toString(),
+                    startDate: new Date(result._doc.startDate).toISOString().split("T")[0],
+                    endDate: new Date(result._doc.endDate).toISOString().split("T")[0],
                     profile: profileInfo.bind(this,result._doc.profileId)
                 };
             });
@@ -36,6 +38,8 @@ module.exports = {
             try {
                 const result = await userPosition.save();
                 return { ...result._doc, _id: result._doc._id.toString(),
+                    startDate: new Date(result._doc.startDate).toISOString().split("T")[0],
+                    endDate: new Date(result._doc.endDate).toISOString().split("T")[0],
                     profile: profileInfo.bind(this,result._doc.profileId)
                 };
             } catch (err) {
@@ -57,6 +61,8 @@ module.exports = {
                 profile.positionId.push(result.id);
                 await profile.save();
                 return { ...result._doc, _id: result._doc._id.toString(),
+                    startDate: new Date(result._doc.startDate).toISOString().split("T")[0],
+                    endDate: new Date(result._doc.endDate).toISOString().split("T")[0],
                     profile: profileInfo.bind(this,result._doc.profileId)
                 };
             } catch (err) {
@@ -68,7 +74,9 @@ module.exports = {
         try {
             const stand = await Position.findById(args.positionId);
             await Position.deleteOne({_id: args.positionId});
-            return { ...stand._doc, _id: stand._doc._id.toString()};
+            return { ...stand._doc, _id: stand._doc._id.toString(),
+                startDate: new Date(result._doc.startDate).toISOString().split("T")[0],
+                endDate: new Date(result._doc.endDate).toISOString().toISOString().split("T")[0]};
         } catch (err) {
             throw err;
         }

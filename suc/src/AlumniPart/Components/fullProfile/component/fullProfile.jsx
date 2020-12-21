@@ -138,7 +138,7 @@ class FullProfile extends Component{
                                             <FaIcons.FaRegCalendarAlt style={{height:"25px",width:"25px",marginTop:"5px"}} className="userIconProfile3"/>
                                             </Col>
                                             <Col md="auto">
-                                            <p style={{color:"white",textAlign:"left",marginTop:"5px"}}>{item.startDate}-{item.endDate}</p>  
+                                            <p style={{color:"white",textAlign:"left",marginTop:"5px"}}>{item.startDate}{" - "}{item.endDate}</p>  
                                             </Col>
                                             </Row>
                                         </Card>
