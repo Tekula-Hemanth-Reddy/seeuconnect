@@ -93,11 +93,11 @@ export class Projects  extends Component
                                 <Card.Subtitle className="mb-2 text-muted subtitleText">{item.projectDescription}</Card.Subtitle>
                             
                                 <Card.Text className="cardText">
-                                    {item.projectUrl}
+                                  Project Url : <a href={item.projectUrl} target="_blank">{item.projectUrl}</a>
                                 </Card.Text>
 
                                 <Card.Text href="#" className="cardText">
-                                <a href="#">{item.projectDemo}</a>
+                                Project Demo : <a href={item.projectDemo} target="_blank">{item.projectDemo}</a>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
