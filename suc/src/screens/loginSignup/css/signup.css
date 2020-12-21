@@ -42,3 +42,13 @@
     color: red;
 }
 
+i{
+    position: absolute;
+    top: 51%;
+    right: 16%;
+}
+i:hover {
+    color: #007fbb;
+    cursor: pointer;
+}
+
