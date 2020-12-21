@@ -90,14 +90,11 @@ class Experience extends Component {
                         <Col xs={8}><p className="titleText">{item.positionHeld}{" At "}{item.companyName}</p></Col>
                         </Row>
                     </Card.Title>
-
-                    <Card.Subtitle className="mb-2 text-muted subtitleText">{item.startData}{" - "}{item.endDate}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted subtitleText">{"from "}{item.startDate}{" till "}{item.endDate}</Card.Subtitle>
                   
                     <Card.Text className="cardText">
                         {item.positionDescription}
                     </Card.Text>
-{/* 
-                    <Card.Link href="#" className="linkText">https://google.com</Card.Link> */}
                 </Card.Body>
             </Card>
             </Col>
