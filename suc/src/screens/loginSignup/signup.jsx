@@ -2,12 +2,17 @@ import React, { Component} from 'react';
 import {Form,Button,Col,Spinner} from 'react-bootstrap';
 import './css/signup.css';
 import history from '../../history/history';
+import * as FAIcons from 'react-icons/fa';
 import authContext from '../../context/auth-context';
 
 class SignUp extends Component {
     constructor(props){
         super(props);
-        this.state = {isSet:true,userType: ""+props.type};
+        this.state = {isSet:true,
+            userType: ""+props.type,
+            passwordShown:false,
+            passwordShown1:false,
+        };
         this.nameEl = React.createRef();
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
@@ -15,6 +20,47 @@ class SignUp extends Component {
     }
     static contextType = authContext;
 
+    showPassword()
+    {
+        if(!this.state.passwordShown)
+        {
+            this.setState(
+                {
+                    passwordShown:true,
+                }
+            );
+        }
+        else
+        {
+            this.setState(
+                {
+                    passwordShown:false,
+                }
+            );
+        }
+        
+    }
+
+    showPassword1()
+    {
+        if(!this.state.passwordShown1)
+        {
+            this.setState(
+                {
+                    passwordShown1:true,
+                }
+            );
+        }
+        else
+        {
+            this.setState(
+                {
+                    passwordShown1:false,
+                }
+            );
+        }
+        
+    }
     submitHandler = (event) =>{
         event.preventDefault();
         const Name = ""+this.nameEl.current.value;
@@ -90,17 +136,19 @@ class SignUp extends Component {
                 </Form.Group>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword">
-                <Form.Control required type="password" placeholder="Password*" ref={this.passwordEl} 
+                <Form.Control required type={this.state.passwordShown ? "text" : "password"} placeholder="Password*" ref={this.passwordEl} 
                 id="id1"
                  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
                  title="Password should contain(1(A-Z),1(a-z),1(0-9),1($,%,&))"/>
                 </Form.Group>
+                <i onClick={this.showPassword.bind(this)}><FAIcons.FaEye/></i>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword2">
-                <Form.Control required type="Password" placeholder="Confirm Password*" 
+                <Form.Control required type={this.state.passwordShown1 ? "text" : "password"} placeholder="Confirm Password*" 
                 title="Password should contain(1(A-Z),1(a-z),1(0-9),1($,%,&))"
                 ref={this.conPassEl}  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})" 
                 id="id1" />
+                <i onClick={this.showPassword1.bind(this)} style={{marginTop:"-13px"}}><FAIcons.FaEye/></i>
               
                 </Form.Group>
                 {
