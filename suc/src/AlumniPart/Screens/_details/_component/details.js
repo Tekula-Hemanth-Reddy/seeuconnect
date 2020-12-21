@@ -152,7 +152,7 @@ class Details extends Component{
                 <NavBar />
                 <Container className="detailsContainer">
                     <Form onSubmit={this.submitHandler}>
-                        <h2>Personel Details</h2>
+                        <h2>Personal Details</h2>
                         <Card className="detailsCardStyle" style={{marginTop:"20px",marginBottom: "20px"}}>
                             <div className="row">
                                 <div className="col-lg-2 col-md-2 col-sm-2 col-xl-2">
@@ -162,7 +162,7 @@ class Details extends Component{
                                             type="text"
                                             placeholder={"Mr./Miss"}
                                             defaultValue={this.state.phone.substring(0,3)}
-                                            defaultValue={this.state.name.split("-")[1]}
+                                            defaultValue={this.state.name.split("-")[0]}
                                             ref={this.titleEl} 
                                         ></Form.Control>
                                     </Form.Group>
@@ -289,7 +289,6 @@ class Details extends Component{
                                     </Form.Group>
                                 </div>
                                 <div className="col-lg-5 col-md-5 col-sm-5 col-xl-5">
-                                {/* <Image src={BackGround} className="detailsImage"/> */}
                                 {
                                     this.state.isSet && <Button  variant="outline-warning" size="lg" type="submit">Save</Button>}
                                 {

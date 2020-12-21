@@ -4,8 +4,6 @@ import './phoneCard.css';
 
 function PhoneCard(props) 
 {
-    
-   
     return(
         <Card className="mainPCard">
             <Container>
@@ -18,8 +16,8 @@ function PhoneCard(props)
                 <Row className="commonPRow">
                     <Col xs={3} className="commonPPara">Mobile</Col>
                     <Col xs={1} className="commonPPara">:</Col>
-                    <Col xs={6}><p className="commonPPara"><a href={"tel:"}{...props.Mobile} style={{textDecoration:"none"}}>{props.Mobile}</a>
-                </p></Col>
+                    {props.Mobile &&<Col xs={6}><p className="commonPPara">{props.Mobile.split("-")[0]}{" "}{props.Mobile.split("-")[1]}
+                </p></Col>}
                     </Row>
 
                

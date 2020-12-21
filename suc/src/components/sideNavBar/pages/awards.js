@@ -95,7 +95,7 @@ export class Awards  extends Component
                                 </Card.Text>
 
                                 <Card.Text href="#" className="cardText">
-                                <a href="#">{item.certificate}</a>
+                                <a href={item.certificate} target="_blank">{item.certificate}</a>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

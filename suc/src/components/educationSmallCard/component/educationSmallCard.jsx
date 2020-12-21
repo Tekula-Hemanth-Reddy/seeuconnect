@@ -166,8 +166,7 @@ export class EducationSmallCard extends Component
                       <Accordion.Collapse eventKey="0">
                           <Card.Body>
                               <div>
-                                  <p className="descriptionText"> {item.title} has been done in {item.school} during the year {item.year} 
-                                  which is affiliated to board {item.board}. Passed out with Grade {item.grade}  </p>
+                                  <p className="descriptionText"> {item.title} has been done in {item.school} during the year {item.year} which is affiliated to board {item.board}. Passed out with Grade {item.grade}  </p>
                               </div>
                           </Card.Body>
                       </Accordion.Collapse>

@@ -128,6 +128,7 @@ const positionInfo = async profileId => {
         const stand = await Position.find({profileId: {$in: profileId}});
         return stand.map(result => {
             return { ...result._doc, _id: result._doc._id.toString(),
+                startDate: new Date(result._doc.startDate),
                 profile: profileInfo.bind(this,result._doc.profileId)
             };
         });
