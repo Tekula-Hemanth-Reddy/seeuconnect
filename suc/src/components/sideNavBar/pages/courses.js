@@ -90,14 +90,14 @@ export class Courses  extends Component
                                     </Row>
                                 </Card.Title>
 
-                                <Card.Subtitle className="mb-2 text-muted subtitleText">{item.certificate}</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted subtitleText"><a href={item.certificate} target="_blank">{item.certificate}</a></Card.Subtitle>
                             
                                 <Card.Text className="cardText">
                                     {item.specialization}
                                 </Card.Text>
 
                                 <Card.Text href="#" className="cardText">
-                                <a href="#">{item.credentials}</a>
+                                <a href={item.credentials} target="_blank">{item.credentials}</a>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

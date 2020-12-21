@@ -6,9 +6,9 @@ import './logodesignStyles.css';
 function LogodesignCard()
 {
     return(
-        <Card className="mainLCard">
+        <Card className="mainLCard" style={{paddingLeft:"2px",paddingRight:"2px"}}>
         <HIIcons.FaRegLightbulb className="cardLIcon"/>
-        <Card.Title className="cardLTitle">DesignThinking</Card.Title>
+        <Card.Title className="cardLTitle">Design Thinking</Card.Title>
         </Card>
 
     );
