@@ -127,12 +127,12 @@ class SignUp extends Component {
             <Form onSubmit={this.submitHandler}>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridLastName">
-                <Form.Control required type="name" placeholder="Name*" ref={this.nameEl} />
+                <Form.Control required type="name" placeholder="Name*" ref={this.nameEl} autoComplete="off" />
                 </Form.Group>
         
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridEmail">
                 <Form.Control required="Enter valid email" type="email" placeholder="Enter email*" ref={this.emailEl} 
-                title="Please enter Valid email Address" id="id1"/>
+                title="Please enter Valid email Address" id="id1" autoComplete="off"/>
                 </Form.Group>
 
                 <Form.Group  className="inputSize"  as={Col} controlId="formGridPassword">

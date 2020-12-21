@@ -297,6 +297,14 @@ class Requirement extends Component{
                         <option>Node</option>
                         <option>MongoDb</option> 
                         <option>Graphql</option>
+                        <option>Matlab</option>
+                        <option>Verilog</option>
+                        <option>Ardino</option>
+                        <option>Nodencu</option>
+                        <option>Rasberrypi</option>
+                        <option>LoraTechnology</option>
+                        <option>Networking</option>
+                        <option>Assembly Language</option>
                         </Form.Control>
                         </Form.Group>
                         <Button variant="primary" 
